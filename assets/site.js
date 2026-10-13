@@ -4,7 +4,8 @@
 var ZLEARN_MATIERES = [
   { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 35 },
   { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41 },
-  { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 36 }
+  { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 36 },
+  { id: "sira", name: "مادة السيرة النبوية", book: "السيرة النبوية", file: "sira/index.html", total: 36 }
 ];
 
 (function () {
@@ -291,7 +292,7 @@ var ZLEARN_MATIERES = [
   var input = doc.getElementById("q");
   var sr = doc.getElementById("sr");
   var index = [];
-  var SUBJ_NAMES = { fiqh: "الفقه", aqida: "العقيدة", tajwid: "التجويد" };
+  var SUBJ_NAMES = { fiqh: "الفقه", aqida: "العقيدة", tajwid: "التجويد", sira: "السيرة النبوية" };
   Array.prototype.forEach.call(doc.querySelectorAll(".subject"), function (subjectEl) {
     var sub = subjectEl.getAttribute("data-subject");
     var subjName = SUBJ_NAMES[sub] || sub;

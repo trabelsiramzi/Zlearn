@@ -36,6 +36,9 @@ Vérifier les doublons : un dars déjà présent ne doit pas être réintégré.
 
 Hiérarchie : **Matière → Dars → Chapitres → Sous-chapitres → Notions essentielles**.
 
+⚠️ Le brouillon (`brouillon-dars-<id>.md`) est **temporaire** : il doit être supprimé
+dès que le dars est intégré et validé. Ne jamais le laisser dans le dépôt.
+
 Construire le bloc de dars dans cet ordre (aligné sur `SKILL-general.md`) :
 
 1. En-tête : matière · numéro du dars · titre.

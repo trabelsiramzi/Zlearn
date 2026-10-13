@@ -15,14 +15,17 @@ Déroulé obligatoire :
    Si l'un des deux est incertain, **pose une question ciblée et arrête-toi**.
    Vérifie qu'il n'existe pas déjà (doublon) dans la page de la matière.
 3. Lance le sous-agent **pedagogy-organizer** avec la transcription et les métadonnées.
-   Il produit `brouillon-dars-<id>.md` (plan fidèle + quiz + checklist + « À vérifier »).
+   Il produit un brouillon temporaire `brouillon-dars-<id>.md` (plan fidèle + quiz +
+   checklist + « À vérifier »).
 4. Lance le sous-agent **frontend-integrator** avec le brouillon et le chemin de la page
    de la matière (`<matière>/index.html`). Il sauvegarde, écrit le bloc depuis le gabarit,
    fusionne via `merge_lesson.py`, met à jour onglet + chips (+ nouvelle matière si besoin,
    soit dossier + carte d'accueil + manifeste `ZLEARN_MATIERES`) et lance le validateur.
 5. Lance le sous-agent **qa-verifier** pour le contrôle final indépendant.
 6. Corrige les éventuels problèmes signalés, puis relance le validateur.
-7. Réponse finale (format de `SKILL-general.md`) :
+7. **Supprime le brouillon** (`brouillon-dars-<id>.md`) : c'est un artefact temporaire,
+   il ne doit pas rester dans le dépôt.
+8. Réponse finale (format de `SKILL-general.md`) :
    - « Ajouté : matière, dars n°, contenu ».
    - « À vérifier : corrections, dates/noms incertains, ajouts, numérotation ».
    - fichiers modifiés, chemin de la sauvegarde, résultat du validateur.

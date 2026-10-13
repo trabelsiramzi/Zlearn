@@ -34,7 +34,7 @@ Procédure :
 5. Signaler les erreurs manifestes d'auto-transcription et les passages ambigus.
 6. Proposer le visuel adapté à chaque chapitre (arbre, tableau, étapes, cartes, encadré).
 
-Livrable (dans un fichier `brouillon-dars-<id>.md`) :
+Livrable (dans un fichier temporaire `brouillon-dars-<id>.md`) :
 
 - Métadonnées : matière, dars n°, titre, préfixe d'id, clé du groupe de progression.
 - Résumé en trois phrases.
@@ -45,6 +45,9 @@ Livrable (dans un fichier `brouillon-dars-<id>.md`) :
 - Checklist de révision (points « à mémoriser »).
 - Section « À vérifier » : corrections apportées, dates/noms incertains, ajouts personnels,
   décalage de numérotation éventuel.
+
+⚠️ **Le brouillon est temporaire** : il doit être supprimé dès que le dars est intégré
+et validé. Ne jamais le laisser dans le dépôt.
 
 Règles : **rien d'inventé**. Tout fait vient de la transcription. Pas de poème/verset
 recopié. Ton simple, orienté examen. Réponds en français (ou dans la langue de l'utilisateur).

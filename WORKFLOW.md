@@ -32,10 +32,13 @@ Utiliser la commande OpenCode `/nouveau-dars` :
 
 Elle enchaîne automatiquement :
 1. `pedagogy-organizer` — analyse et structure la transcription (matière, dars, chapitres,
-   définitions, règles, exemples, quiz, checklist) dans `brouillon-dars-<id>.md`.
+   définitions, règles, exemples, quiz, checklist) dans un brouillon temporaire
+   `brouillon-dars-<id>.md` (supprimé après intégration).
 2. `frontend-integrator` — sauvegarde la **page de la matière** (`<matière>/index.html`),
    écrit le bloc depuis le gabarit, fusionne et met à jour la navigation de la page.
 3. `qa-verifier` — contrôle indépendant (ids, ancres, quiz, progression, RTL, JS, régressions).
+4. **Suppression du brouillon** — le fichier temporaire est supprimé une fois le dars
+   intégré et validé.
 
 Si la matière ou le numéro du dars est incertain, l'agent **pose une question** avant d'intégrer.
 
