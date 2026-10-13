@@ -6,7 +6,7 @@ var ZLEARN_MATIERES = [
   { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41 },
   { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 36 },
   { id: "sira", name: "مادة السيرة النbوية", book: "السيرة النبوية", file: "sira/index.html", total: 36 },
-  { id: "hadith", name: "مادة الحديث", book: "شرح الأربعين النووية", file: "hadith/index.html", total: 12 }
+  { id: "hadith", name: "مادة الحديث", book: "شرح الأربعين النووية", file: "hadith/index.html", total: 24 }
 ];
 
 (function () {
