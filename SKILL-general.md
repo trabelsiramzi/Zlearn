@@ -7,6 +7,11 @@ description: Turn lesson transcripts (YouTube or any video/audio course) into on
 
 The user sends lesson transcripts one at a time. You build and keep growing **one single revision document** organised by subject, then by lesson. Each new transcript is added to the same document, never to a new one.
 
+> **Zlearn adaptation**: this project applies the method as a static **multi-page site**
+> (home page + one folder per subject + shared `assets/`). The functional rules below stay
+> unchanged; the target file for a lesson is the subject's page, and styling/scripting are
+> shared in `assets/`. See `AGENTS.md` and `.opencode/skills/transcript-to-lesson/`.
+
 ## Settings to confirm once (then remember)
 - **Document language and direction** (e.g. Arabic RTL, French, English). Write the document in that language. Talk to the user in the language they write to you.
 - **Output format**: a single self-contained HTML page (preferred, supports diagrams and navigation), or the format the user names (docx, pdf, slides). If a published-page tool such as an Artifact is available, publish there and **republish the same file/URL** on every update.

@@ -1,0 +1,6 @@
+# Sauvegardes horodatées du site (générées par merge_lesson.py et les agents)
+backups/
+# Dépendances locales éventuelles (test DOM jsdom)
+node_modules/
+package.json
+package-lock.json

@@ -1,0 +1,87 @@
+<!--
+  Gabarit de bloc de dars — Zlearn.
+  Remplacer <PREFIX> par le préfixe d'id (ex. l4-, aq4-, tj3-), <ID> par la clé du
+  dars (ex. l4), <N> par le numéro, <SUBJECT> par fiqh|aqida|tajwid.
+  Conserver les commentaires de garde : le validateur et le script de fusion s'en servent.
+-->
+<div class="lesson" id="lesson-<ID>" data-lesson="<N>">
+
+<div class="part-head">
+  <p>مادة <MATIERE> · الدرس <ORDINAL></p>
+  <h2><TITRE></h2>
+</div>
+
+<section id="<PREFIX>summary">
+  <h2>الخلاصة في ثلاث جمل</h2>
+  <div class="sum-box">
+    <p>…</p><p>…</p><p>…</p>
+  </div>
+</section>
+
+<section id="<PREFIX>map">
+  <h2>الخريطة الذهنية</h2>
+  <p class="lede">وصف مختصر للخريطة.</p>
+  <div class="scroll">
+    <svg viewBox="0 0 960 620" role="img" aria-label="خريطة ذهنية: …">
+      <!-- ~6 branches, ids de marqueurs uniques (ex. <PREFIX>arrow) -->
+    </svg>
+  </div>
+  <p class="hint">مرّر الخريطة أفقيًا على الشاشات الصغيرة.</p>
+</section>
+
+<section id="<PREFIX>parts">
+  <h2>المحاور</h2>
+  <!-- arbre / tableau / étapes / cartes selon le contenu réel -->
+</section>
+
+<section id="<PREFIX>terms">
+  <h2>المصطلحات</h2>
+  <dl class="terms">
+    <div><dt>مصطلح</dt><dd>تعريف</dd></div>
+  </dl>
+</section>
+
+<section id="<PREFIX>memorize">
+  <h2>ما يجب حفظه</h2>
+  <p class="lede">علّم على كل نقطة تتقنها. يبقى تقدمك محفوظًا في هذا المتصفح.</p>
+  <div class="group" data-key="<ID>">
+    <div class="progress">
+      <div class="bar" aria-hidden="true"><span class="pfill"></span></div>
+      <span class="plabel">0 من 10</span>
+    </div>
+    <ul class="checks">
+      <li><label class="check"><input type="checkbox" id="<ID>-k1"><span>…</span></label></li>
+      <!-- ⚠ le nombre « من N » doit égaler le nombre de cases -->
+    </ul>
+  </div>
+</section>
+
+<section id="<PREFIX>quiz">
+  <h2>اختبر نفسك</h2>
+  <div class="quiz-head">
+    <p class="lede">أجب في ذهنك أولًا، ثم افتح الجواب.</p>
+    <button class="btn toggle-all" type="button" data-target="<PREFIX>quiz">إظهار كل الأجوبة</button>
+  </div>
+  <details><summary>…</summary><p class="ans">…</p></details>
+  <!-- 10 à 12 questions -->
+</section>
+
+</div>
+
+<!--
+  Ligne chips à ajouter dans nav.toc (la TOC se complète automatiquement au chargement) :
+
+  <div class="wrap chips" data-subject="<SUBJECT>" data-for="<N>">
+    <a href="#<PREFIX>summary">الخلاصة</a>
+    <a href="#<PREFIX>map">الخريطة</a>
+    <a href="#<PREFIX>terms">المصطلحات</a>
+    <a href="#<PREFIX>memorize">للحفظ</a>
+    <a href="#<PREFIX>quiz">اختبر نفسك</a>
+  </div>
+
+  Onglet à ajouter dans la ligne .tabs de la matière :
+
+  <button class="tab" type="button" role="tab" data-lesson="<N>" aria-selected="false">
+    الدرس <ORDINAL><small><TITRE court></small>
+  </button>
+-->
