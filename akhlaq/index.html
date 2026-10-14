@@ -17,17 +17,17 @@
 </div></header>
 <nav class="toc" aria-label="دروس المادة وفهرس كل درس"><div class="wrap toolbar">
   <a class="brand" href="../index.html" aria-label="العودة إلى كل المواد">كل المواد</a>
-  <div class="search" role="search"><label class="vh" for="q">البحث في الدروس والمحاور</label><input id="q" type="search" autocomplete="off" placeholder="ابحث في الدروس والمحاور…" aria-label="ابحث في الدروس والمحاور" aria-expanded="false" aria-controls="sr"><span class="ico" aria-hidden="true">⌕</span><div class="sr" id="sr" aria-label="نتائج البحث" hidden></div></div>
+  <div class="search" role="search"><label class="vh" for="q">البحث في محتوى هذه المادة وعناوين بقية المواد</label><input id="q" type="search" autocomplete="off" placeholder="ابحث في محتوى المادة وعناوين الدروس الأخرى…" aria-label="ابحث في محتوى المادة والعناوين الأخرى" aria-expanded="false" aria-controls="sr"><span class="ico" aria-hidden="true">⌕</span><div class="sr" id="sr" role="region" aria-label="نتائج البحث" aria-live="polite" hidden></div></div>
   <button id="theme-toggle" class="icon-btn" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false">🌙</button>
-  <div class="gprog" title="عدد الدروس التي أتممتها من الدروس المنشورة"><span class="gb" aria-hidden="true"><span class="gfill"></span></span><span id="gplabel" role="status" aria-live="polite">أتممت 0 من 21 درسًا</span></div>
+  <div class="gprog" title="عدد الدروس التي أتممتها من الدروس المنشورة"><span class="gb" role="progressbar" aria-label="الدروس المكتملة من الدروس المنشورة" aria-valuemin="0" aria-valuemax="21" aria-valuenow="0" aria-valuetext="0 من 21 درسًا مكتملًا"><span class="gfill"></span></span><span id="gplabel" role="status" aria-live="polite">أتممت 0 من 21 درسًا</span></div>
 </div>
-<div class="wrap tabs" role="tablist" data-subject="akhlaq" aria-label="دروس الأخلاق"><button class="tab" type="button" role="tab" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى علم الأخلاق وآداب العلم</small></button><button class="tab" type="button" role="tab" data-lesson="2" aria-selected="false">الدرس الثاني<small>مقدمة الكتاب وفضل العلم</small></button><button class="tab" type="button" role="tab" data-lesson="3" aria-selected="false">الدرس الثالث<small>إخلاص النية وآداب العالم</small></button></div>
+<div class="wrap tabs" role="tablist" data-subject="akhlaq" aria-label="دروس الأخلاق"><button class="tab" type="button" role="tab" id="tab-akhlaq-1" aria-controls="lesson-ak1" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى علم الأخلاق وآداب العلم</small></button><button class="tab" type="button" role="tab" id="tab-akhlaq-2" aria-controls="lesson-ak2" data-lesson="2" aria-selected="false">الدرس الثاني<small>مقدمة الكتاب وفضل العلم</small></button><button class="tab" type="button" role="tab" id="tab-akhlaq-3" aria-controls="lesson-ak3" data-lesson="3" aria-selected="false">الدرس الثالث<small>إخلاص النية وآداب العالم</small></button></div>
 <div class="wrap chips" data-subject="akhlaq" data-for="1"><a href="#ak1-summary">نظرة عامة</a><a href="#ak1-map">الخريطة</a><a href="#ak1-context">المادة والكتاب</a><a href="#ak1-adab">العلم والأدب</a><a href="#ak1-terms">المصطلحات</a><a href="#ak1-memorize">تحقق من فهمك</a><a href="#ak1-quiz">تدرّب</a></div>
 <div class="wrap chips" data-subject="akhlaq" data-for="2"><a href="#ak2-summary">نظرة عامة</a><a href="#ak2-map">الخريطة</a><a href="#ak2-intro">مقدمة الكتاب</a><a href="#ak2-plan">أبواب الكتاب</a><a href="#ak2-merit">فضل العلم</a><a href="#ak2-terms">المصطلحات</a><a href="#ak2-memorize">تحقق من فهمك</a><a href="#ak2-quiz">تدرّب</a></div>
 <div class="wrap chips" data-subject="akhlaq" data-for="3"><a href="#ak3-summary">نظرة عامة</a><a href="#ak3-map">الخريطة</a><a href="#ak3-intention">النية</a><a href="#ak3-conduct">آداب العالم</a><a href="#ak3-terms">المصطلحات</a><a href="#ak3-memorize">تحقق من فهمك</a><a href="#ak3-quiz">تدرّب</a></div>
 </nav>
 <main class="wrap" id="main"><div class="subject" data-subject="akhlaq">
-<div class="lesson" id="lesson-ak1" data-lesson="1">
+<div class="lesson" id="lesson-ak1" data-lesson="1" role="tabpanel" aria-labelledby="tab-akhlaq-1" tabindex="0">
 <div class="part-head"><p>مادة الأخلاق · الدرس الأول</p><h2>مدخل إلى علم الأخلاق وآداب العلم</h2></div>
 <div class="goals"><h3>أهداف الدرس</h3><ul><li>تشرح كيف تُكتسب الأخلاق بحسب مقدمة الأستاذ.</li><li>تتعرف إلى كتاب المادة ومؤلفه.</li><li>توضح كيف يجتمع طلب العلم مع التأدب والعمل.</li></ul></div>
 <section id="ak1-summary"><h2>الخلاصة في ثلاث جمل</h2><div class="sum-box">
@@ -71,7 +71,7 @@
 <div class="application" id="akhlaq1-activity"><h3>نشاط تطبيقي من محتوى الدرس: تأمل في القدوة</h3><p>اختر سلوكًا واحدًا يوضح تعلّم الأدب بالمصاحبة كما شرحه الأستاذ، ثم اشرح كيف يجتمع عند طالب العلم جناح العلم وجناح الأدب.</p><details><summary>اعرض معيار الإجابة بعد المحاولة</summary><p class="ans">اربط المثال بقول الأستاذ إن الأخلاق تُرى في المعاملة والسلوك، وبفكرة الجناحين في الدرس.</p></details></div>
 </section>
 </div>
-<div class="lesson" id="lesson-ak2" data-lesson="2">
+<div class="lesson" id="lesson-ak2" data-lesson="2" role="tabpanel" aria-labelledby="tab-akhlaq-2" tabindex="0">
 <div class="part-head"><p>مادة الأخلاق · الدرس الثاني</p><h2>مقدمة الكتاب وفضل العلم والعلماء</h2></div>
 <div class="goals"><h3>أهداف الدرس</h3><ul><li>تلخص هدف المؤلف وأبواب كتابه الخمسة.</li><li>تذكر بعض الأدلة والآثار التي ساقها الدرس في فضل العلم.</li><li>توضح لماذا يحتاج العالم إلى العمل والأدب مع العلم.</li></ul></div>
 <section id="ak2-summary"><h2>الخلاصة في ثلاث جمل</h2><div class="sum-box">
@@ -105,7 +105,7 @@
 <div class="application" id="akhlaq2-activity"><h3>نشاط تطبيقي من محتوى الدرس: خريطة الكتاب</h3><p>من غير الرجوع إلى النص، اكتب أبواب الكتاب الخمسة، ثم اختر بابًا واشرح صلته بموضوع «أدب العالم والمتعلم».</p><details><summary>اعرض معيار الإجابة بعد المحاولة</summary><p class="ans">تجد ترتيب الأبواب وموضوع كل باب في فقرة التعريف بالكتاب.</p></details></div>
 </section>
 </div>
-<div class="lesson" id="lesson-ak3" data-lesson="3">
+<div class="lesson" id="lesson-ak3" data-lesson="3" role="tabpanel" aria-labelledby="tab-akhlaq-3" tabindex="0">
 <div class="part-head"><p>مادة الأخلاق · الدرس الثالث</p><h2>إخلاص النية وآداب العالم في نفسه</h2></div>
 <div class="goals"><h3>أهداف الدرس</h3><ul><li>تفرق بين طلب العلم لله وطلبه للجاه أو السمعة.</li><li>تلخص آداب العالم السبعة المذكورة في الدرس.</li><li>تشرح الفرق بين الزهد القلبي ومظهر الفقر.</li></ul></div>
 <section id="ak3-summary"><h2>الخلاصة في ثلاث جمل</h2><div class="sum-box">
@@ -148,6 +148,13 @@
 </section>
 </div>
 </div></main>
-<footer class="wrap"><p>مادة الأخلاق — مسار تعلم السنة الأولى. أُعدّت من تفريغ الدروس وتُحدَّث تدريجيًا عند إضافة كل درس جديد.</p><p>تُحفظ حالة الدروس التي أتممتها على هذا الجهاز فقط.</p></footer>
+<footer class="wrap"><p>مادة الأخلاق — مسار تعلم السنة الأولى. أُعدّت من تفريغ الدروس وتُحدَّث تدريجيًا عند إضافة كل درس جديد.</p><p>تُحفظ حالة الدروس التي أتممتها على هذا الجهاز فقط.</p><div class="progress-tools" aria-label="نقل تقدمك بين الأجهزة">
+  <button class="btn" type="button" data-progress-export>تصدير التقدم</button>
+  <label class="progress-import-label" for="progress-import">استيراد ملف تقدم JSON</label>
+  <input id="progress-import" class="progress-import" type="file" accept="application/json,.json">
+  <p class="progress-transfer-note">تُحدَّث الحالات الموجودة في الملف، وتبقى الحالات الأخرى كما هي.</p>
+  <p class="progress-transfer-status" role="status" aria-live="polite"></p>
+</div>
+</footer>
 <button class="toTop" id="toTop" type="button" aria-label="عودة إلى أعلى الصفحة">↑</button>
-</div><script src="../assets/site.js"></script></body></html>
+</div><script src="../assets/search-index.js"></script><script src="../assets/site.js"></script></body></html>

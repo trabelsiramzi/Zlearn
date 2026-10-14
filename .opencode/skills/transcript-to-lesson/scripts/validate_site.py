@@ -2,7 +2,8 @@
 """Validateur statique du site d’apprentissage Zlearn (multi-pages).
 
 Le site est découpé en : ``index.html`` (accueil) + un dossier par matière
-(``fiqh/``, ``aqida/``, ``tajwid/``, ``sira/``, ``hadith/``) + ``assets/site.css`` et ``assets/site.js``.
+(``fiqh/``, ``aqida/``, ``tajwid/``, ``sira/``, ``hadith/``, ``akhlaq/``, ``nahw/``)
++ les scripts et styles partagés dans ``assets/``.
 
 Usage :
     python3 validate_site.py [chemin]
@@ -20,9 +21,10 @@ Contrôles par page :
   - chaque bouton ``.toggle-all`` cible une section existante.
 
 Contrôles inter-pages (mode dossier) :
-  - les trois matières sont présentes dans l'arborescence ;
-  - le manifeste ``ZLEARN_MATIERES`` de ``assets/site.js`` liste chaque matière une fois
-    et son ``total`` correspond au nombre réel de cases à cocher de sa page.
+  - les sept matières sont présentes dans l'arborescence ;
+  - le manifeste ``ZLEARN_MATIERES`` de ``assets/site.js`` liste chaque matière et
+    ses nombres de cases et de dars correspondent aux pages ;
+  - l'index global de recherche pointe vers des sections valides de la bonne matière.
 
 Sortie : rapport lisible, code retour ≠ 0 si au moins une erreur.
 Aucune dépendance externe (bibliothèque standard Python uniquement).
@@ -33,6 +35,7 @@ from __future__ import annotations
 import os
 import re
 import sys
+import json
 from collections import Counter
 from html.parser import HTMLParser
 
@@ -75,6 +78,14 @@ class SiteParser(HTMLParser):
         self.toggle_targets: list[tuple[str, int]] = []
         self.subjects: list[str] = []
         self.lessons: list[tuple[str, int]] = []
+        self.tabs: list[tuple[str | None, str | None, int]] = []
+        self.panels: list[tuple[str | None, str | None, int]] = []
+        self.scripts: list[str] = []
+        self._lesson_depths: list[int] = []
+        self._section_stack: list[dict] = []
+        self._heading_capture = False
+        self._heading_text: list[str] = []
+        self.search_sections: set[str] = set()
         self.checkbox_total = 0
 
     # -- helpers ---------------------------------------------------------
@@ -109,6 +120,18 @@ class SiteParser(HTMLParser):
             self.subjects.append(self._get(attrs, "data-subject"))
         if tag == "div" and "lesson" in classes and self._get(attrs, "data-lesson"):
             self.lessons.append((self._get(attrs, "data-lesson"), line))
+            self._lesson_depths.append(len(self.open_stack) + 1)
+            if self._get(attrs, "role") == "tabpanel":
+                self.panels.append((_id, self._get(attrs, "aria-labelledby"), line))
+        if tag == "section" and _id and self._lesson_depths:
+            self._section_stack.append({"id": _id, "heading": ""})
+        if tag == "h2" and self._section_stack:
+            self._heading_capture = True
+            self._heading_text = []
+        if tag == "button" and self._get(attrs, "role") == "tab":
+            self.tabs.append((_id, self._get(attrs, "aria-controls"), line))
+        if tag == "script" and self._get(attrs, "src"):
+            self.scripts.append(self._get(attrs, "src"))
         if tag == "div" and "group" in classes:
             g = {"key": self._get(attrs, "data-key"), "depth": len(self.open_stack) + 1,
                  "checkboxes": 0, "has_pfill": False, "label": None, "line": line}
@@ -144,6 +167,14 @@ class SiteParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag in VOID:
             return
+        if tag == "h2" and self._heading_capture:
+            if self._section_stack:
+                self._section_stack[-1]["heading"] = " ".join("".join(self._heading_text).split())
+            self._heading_capture = False
+        if tag == "section" and self._section_stack:
+            section = self._section_stack.pop()
+            if section["heading"]:
+                self.search_sections.add(section["id"])
         if tag in self.open_stack:
             while self.open_stack:
                 top = self.open_stack.pop()
@@ -151,12 +182,16 @@ class SiteParser(HTMLParser):
                     break
         else:
             self.stack_errors.append(f"ligne {self.getpos()[0]} : </{tag}> sans ouvrante")
+        while self._lesson_depths and self._lesson_depths[-1] > len(self.open_stack):
+            self._lesson_depths.pop()
         while self._group_stack and self._group_stack[-1]["depth"] > len(self.open_stack):
             self._group_stack.pop()
 
     def handle_data(self, data):
         if self._capture is not None:
             self._capture["group"]["label"] += data
+        if self._heading_capture:
+            self._heading_text.append(data)
 
     def close(self):
         super().close()
@@ -196,6 +231,15 @@ def validate_file(path: str) -> tuple[SiteParser, list[str], list[str]]:
     for anchor, line in parser.anchors:
         if anchor not in existing:
             errors.append(f'ancre cassée href="#{anchor}" (ligne {line})')
+
+    panels_by_id = {panel_id: label for panel_id, label, _ in parser.panels}
+    tabs_by_id = {tab_id: panel_id for tab_id, panel_id, _ in parser.tabs}
+    for tab_id, panel_id, line in parser.tabs:
+        if not tab_id or not panel_id or panels_by_id.get(panel_id) != tab_id:
+            errors.append(f"onglet sans panneau ARIA correspondant (ligne {line})")
+    for panel_id, tab_id, line in parser.panels:
+        if not panel_id or tabs_by_id.get(tab_id) != panel_id:
+            errors.append(f"panneau sans onglet ARIA correspondant (ligne {line})")
 
     errors.extend(parser.stack_errors)
 
@@ -262,6 +306,10 @@ def main(argv: list[str]) -> int:
     subjects_seen: list[str] = []
     totals_by_page: dict[str, int] = {}
     lessons_by_page: dict[str, int] = {}
+    lesson_numbers_by_page: dict[str, set[str]] = {}
+    ids_by_page: dict[str, set[str]] = {}
+    search_sections_by_page: dict[str, set[str]] = {}
+    scripts_by_page: dict[str, list[str]] = {}
 
     for page in pages:
         parser, errors, warnings = validate_file(page)
@@ -269,6 +317,10 @@ def main(argv: list[str]) -> int:
         if parser.subjects:
             totals_by_page[parser.subjects[0]] = parser.checkbox_total
             lessons_by_page[parser.subjects[0]] = len(parser.lessons)
+            lesson_numbers_by_page[parser.subjects[0]] = {n for n, _ in parser.lessons}
+            ids_by_page[parser.subjects[0]] = {i for i, _ in parser.ids}
+            search_sections_by_page[parser.subjects[0]] = parser.search_sections
+            scripts_by_page[parser.subjects[0]] = parser.scripts
             numbers = [n for n, _ in parser.lessons]
             if len(numbers) != len(set(numbers)):
                 all_errors.append(f"{page} : numéro data-lesson dupliqué")
@@ -318,6 +370,62 @@ def main(argv: list[str]) -> int:
                     )
         else:
             all_errors.append("assets/site.js introuvable (manifeste de progression)")
+
+        # Recherche globale : chaque entrée doit mener à une vraie section de la bonne matière.
+        search_index = os.path.join(target, "assets", "search-index.js")
+        if os.path.isfile(search_index):
+            source = open(search_index, encoding="utf-8").read()
+            match = re.search(r"var\s+ZLEARN_SEARCH_SECTIONS\s*=\s*(\[.*?\]);", source, re.S)
+            if not match:
+                all_errors.append("assets/search-index.js : tableau ZLEARN_SEARCH_SECTIONS introuvable")
+            else:
+                try:
+                    search_rows = json.loads(match.group(1))
+                except json.JSONDecodeError as exc:
+                    search_rows = []
+                    all_errors.append(f"assets/search-index.js : JSON invalide ({exc})")
+                seen_search: set[tuple[str, str]] = set()
+                for row in search_rows:
+                    if not isinstance(row, dict):
+                        all_errors.append("assets/search-index.js : entrée qui n'est pas un objet")
+                        continue
+                    sub, file_name, anchor = row.get("sub"), row.get("file"), row.get("id")
+                    key = (str(sub), str(anchor))
+                    if key in seen_search:
+                        all_errors.append(f"assets/search-index.js : entrée dupliquée {key}")
+                    seen_search.add(key)
+                    if sub not in EXPECTED_SUBJECTS or file_name != f"{sub}/index.html":
+                        all_errors.append(f"assets/search-index.js : matière ou fichier invalide pour {key}")
+                        continue
+                    if anchor not in ids_by_page.get(sub, set()):
+                        all_errors.append(f"assets/search-index.js : ancre {anchor!r} absente de {sub}/index.html")
+                    if row.get("lesson") not in lesson_numbers_by_page.get(sub, set()):
+                        all_errors.append(f"assets/search-index.js : numéro de dars invalide pour {key}")
+                if not search_rows:
+                    all_errors.append("assets/search-index.js : index vide")
+                expected_search = {
+                    (sub, anchor)
+                    for sub, anchors in search_sections_by_page.items()
+                    for anchor in anchors
+                }
+                missing_search = expected_search - seen_search
+                stale_search = seen_search - expected_search
+                if missing_search:
+                    all_errors.append(
+                        "assets/search-index.js : sections absentes : "
+                        + ", ".join(f"{sub}#{anchor}" for sub, anchor in sorted(missing_search)[:12])
+                    )
+                if stale_search:
+                    all_errors.append(
+                        "assets/search-index.js : entrées sans titre de section : "
+                        + ", ".join(f"{sub}#{anchor}" for sub, anchor in sorted(stale_search)[:12])
+                    )
+                for sub in EXPECTED_SUBJECTS:
+                    expected_script = "../assets/search-index.js"
+                    if expected_script not in scripts_by_page.get(sub, []):
+                        all_errors.append(f"{sub}/index.html : chargement de search-index.js absent")
+        else:
+            all_errors.append("assets/search-index.js introuvable (recherche inter-matières)")
 
     print("=" * 60)
     if all_errors:

@@ -13,7 +13,8 @@ ni dépendance runtime.
   contenant ses dars. C'est **l'unique** document à modifier pour une matière donnée.
   Ne jamais créer un site parallèle ni réinitialiser les contenus existants.
 - `assets/site.css` — tout le style (variables `--xxx`, thème clair/sombre).
-- `assets/site.js` — tout le script partagé (ES5) + le manifeste `ZLEARN_MATIERES`.
+- `assets/site.js` — script partagé ES5, progression et interactions ;
+- `assets/search-index.js` — titres des sections de toutes les matières pour la recherche globale.
 - `backups/` — sauvegardes horodatées avant toute modification importante.
 
 ## Règles non négociables

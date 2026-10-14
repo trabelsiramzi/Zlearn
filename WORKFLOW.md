@@ -4,7 +4,8 @@ Site d’apprentissage de la première année, **statique et multi-pages** :
 - `index.html` — accueil (liste des matières, parcours, progression d’apprentissage) ;
 - `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html`, `sira/index.html`,
   `hadith/index.html`, `akhlaq/index.html`, `nahw/index.html` — une page par matière ;
-- `assets/site.css` / `assets/site.js` — style et script partagés.
+- `assets/site.css` / `assets/site.js` — style, progression et interactions partagés ;
+- `assets/search-index.js` — titres indexés pour la recherche inter-matières.
 
 Aucun build, aucune dépendance runtime. Ouvrir `index.html` dans un navigateur suffit.
 Pour que `localStorage` (progression, thème) et les chemins relatifs fonctionnent
@@ -35,7 +36,8 @@ Elle enchaîne automatiquement :
 1. `pedagogy-organizer` — transforme la transcription en parcours d’apprentissage (objectifs, explications, exemples, exercices, feedback, sources et aides de révision) dans un brouillon temporaire
    `brouillon-dars-<id>.md` (supprimé après intégration).
 2. `frontend-integrator` — sauvegarde la **page de la matière** (`<matière>/index.html`),
-   écrit le bloc depuis le gabarit, fusionne et met à jour la navigation de la page.
+   écrit le bloc depuis le gabarit, fusionne et met à jour la navigation de la page et
+   `assets/search-index.js`.
 3. `qa-verifier` — contrôle indépendant (ids, ancres, quiz, progression, RTL, JS, régressions).
 4. **Suppression du brouillon** — le fichier temporaire est supprimé une fois le dars
    intégré et validé.
@@ -80,7 +82,7 @@ Avant toute modification de masse, une copie horodatée est créée dans `backup
 | `SKILL-general.md` | Référence fonctionnelle de transformation des transcriptions |
 | `index.html` | Accueil : matières, dars, progression |
 | Pages `fiqh/`, `aqida/`, `tajwid/`, `sira/`, `hadith/`, `akhlaq/`, `nahw/` | Une page par matière |
-| `assets/site.css`, `assets/site.js` | Style et script partagés (+ manifeste `ZLEARN_MATIERES`) |
+| `assets/site.css`, `assets/site.js`, `assets/search-index.js` | Style, interactions, manifeste et index global de recherche |
 | `AGENTS.md` | Instructions projet pour OpenCode |
 | `.opencode/skills/transcript-to-lesson/` | Compétence + scripts + gabarit + conventions |
 | `.opencode/skills/rtl-arabic-a11y/` | Règles RTL / arabe / accessibilité |

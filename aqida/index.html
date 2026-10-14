@@ -25,21 +25,21 @@
   <div class="wrap toolbar">
     <a class="brand" href="../index.html" aria-label="العودة إلى كل المواد">كل المواد</a>
     <div class="search" role="search">
-      <label class="vh" for="q">البحث في الدروس والمحاور</label>
-      <input id="q" type="search" autocomplete="off" placeholder="ابحث في الدروس والمحاور…" aria-label="ابحث في الدروس والمحاور" aria-expanded="false" aria-controls="sr">
+      <label class="vh" for="q">البحث في محتوى هذه المادة وعناوين بقية المواد</label>
+      <input id="q" type="search" autocomplete="off" placeholder="ابحث في محتوى المادة وعناوين الدروس الأخرى…" aria-label="ابحث في محتوى المادة والعناوين الأخرى" aria-expanded="false" aria-controls="sr">
       <span class="ico" aria-hidden="true">⌕</span>
-      <div class="sr" id="sr" aria-label="نتائج البحث" hidden></div>
+      <div class="sr" id="sr" role="region" aria-label="نتائج البحث" aria-live="polite" hidden></div>
     </div>
     <button id="theme-toggle" class="icon-btn" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false">🌙</button>
     <div class="gprog" title="عدد الدروس التي أتممتها من الدروس المنشورة">
-      <span class="gb" aria-hidden="true"><span class="gfill"></span></span>
+      <span class="gb" role="progressbar" aria-label="الدروس المكتملة من الدروس المنشورة" aria-valuemin="0" aria-valuemax="21" aria-valuenow="0" aria-valuetext="0 من 21 درسًا مكتملًا"><span class="gfill"></span></span>
       <span id="gplabel" role="status" aria-live="polite">أتممت 0 من 21 درسًا</span>
     </div>
   </div>
   <div class="wrap tabs" role="tablist" data-subject="aqida" aria-label="دروس العقيدة">
-    <button class="tab" type="button" role="tab" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى علم العقيدة</small></button>
-    <button class="tab" type="button" role="tab" data-lesson="2" aria-selected="false">الدرس الثاني<small>المبادئ العشرة</small></button>
-<button class="tab" type="button" role="tab" data-lesson="3" aria-selected="false">الدرس الثالث<small>التراجم وقراءة المقدمة</small></button>
+    <button class="tab" type="button" role="tab" id="tab-aqida-1" aria-controls="lesson-aq1" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى علم العقيدة</small></button>
+    <button class="tab" type="button" role="tab" id="tab-aqida-2" aria-controls="lesson-aq2" data-lesson="2" aria-selected="false">الدرس الثاني<small>المبادئ العشرة</small></button>
+<button class="tab" type="button" role="tab" id="tab-aqida-3" aria-controls="lesson-aq3" data-lesson="3" aria-selected="false">الدرس الثالث<small>التراجم وقراءة المقدمة</small></button>
   </div>
   <div class="wrap chips" data-subject="aqida" data-for="1">
     <a href="#aq1-summary">نظرة عامة</a>
@@ -72,7 +72,7 @@
 
 <div class="subject" data-subject="aqida">
 
-<div class="lesson" id="lesson-aq1" data-lesson="1">
+<div class="lesson" id="lesson-aq1" data-lesson="1" role="tabpanel" aria-labelledby="tab-aqida-1" tabindex="0">
 
 <div class="part-head">
   <p>مادة العقيدة · الدرس الأول</p>
@@ -344,7 +344,7 @@
 
 </div>
 
-<div class="lesson" id="lesson-aq2" data-lesson="2">
+<div class="lesson" id="lesson-aq2" data-lesson="2" role="tabpanel" aria-labelledby="tab-aqida-2" tabindex="0">
 
 <div class="part-head">
   <p>مادة العقيدة · الدرس الثاني</p>
@@ -812,7 +812,7 @@
 
 </div>
 
-<div class="lesson" id="lesson-aq3" data-lesson="3">
+<div class="lesson" id="lesson-aq3" data-lesson="3" role="tabpanel" aria-labelledby="tab-aqida-3" tabindex="0">
 
 <div class="part-head">
   <p>مادة العقيدة · الدرس الثالث</p>
@@ -1218,11 +1218,18 @@
 <footer class="wrap">
   <p>مادة العقيدة — مسار تعلم السنة الأولى. أُعدّت من تفريغ الدروس وتُحدَّث تدريجيًا عند إضافة كل درس جديد.</p>
   <p>تُحفظ حالة الدروس التي أتممتها على هذا الجهاز فقط.</p>
+<div class="progress-tools" aria-label="نقل تقدمك بين الأجهزة">
+  <button class="btn" type="button" data-progress-export>تصدير التقدم</button>
+  <label class="progress-import-label" for="progress-import">استيراد ملف تقدم JSON</label>
+  <input id="progress-import" class="progress-import" type="file" accept="application/json,.json">
+  <p class="progress-transfer-note">تُحدَّث الحالات الموجودة في الملف، وتبقى الحالات الأخرى كما هي.</p>
+  <p class="progress-transfer-status" role="status" aria-live="polite"></p>
+</div>
 </footer>
 
 <button class="toTop" id="toTop" type="button" aria-label="عودة إلى أعلى الصفحة">↑</button>
 
 </div>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/search-index.js"></script><script src="../assets/site.js"></script>
 </body></html>

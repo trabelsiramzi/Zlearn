@@ -11,6 +11,7 @@ var ZLEARN_MATIERES = [
   { id: "nahw", name: "مادة النحو", book: "الدروس النحوية", file: "nahw/index.html", total: 27, lessons: 3 }
 ];
 
+
 (function () {
   document.querySelectorAll(".group").forEach(function (g) {
     var gkey = "mourshid-" + g.getAttribute("data-key");
@@ -45,7 +46,10 @@ var ZLEARN_MATIERES = [
     var open = false;
     btn.addEventListener("click", function () {
       open = !open;
-      document.getElementById(btn.getAttribute("data-target")).querySelectorAll("details").forEach(function (d) { d.open = open; });
+      var target = document.getElementById(btn.getAttribute("data-target"));
+      Array.prototype.forEach.call(target.children, function (d) {
+        if (d.tagName && d.tagName.toLowerCase() === "details") d.open = open;
+      });
       btn.textContent = open ? "إخفاء كل الأجوبة" : "إظهار كل الأجوبة";
     });
   });
@@ -112,7 +116,11 @@ var ZLEARN_MATIERES = [
     tabRows.forEach(function (row) {
       var on = row.getAttribute("data-subject") === sub;
       row.hidden = !on;
-      Array.prototype.slice.call(row.querySelectorAll(".tab")).forEach(function (t) { t.setAttribute("aria-selected", on && t.getAttribute("data-lesson") === n ? "true" : "false"); });
+      Array.prototype.slice.call(row.querySelectorAll(".tab")).forEach(function (t) {
+        var selected = on && t.getAttribute("data-lesson") === n;
+        t.setAttribute("aria-selected", selected ? "true" : "false");
+        t.setAttribute("tabindex", selected ? "0" : "-1");
+      });
     });
     chipRows.forEach(function (c) { c.hidden = !(c.getAttribute("data-subject") === sub && c.getAttribute("data-for") === n); });
     try {
@@ -145,6 +153,10 @@ var ZLEARN_MATIERES = [
         var n = t.getAttribute("data-lesson");
         try { localStorage.setItem("mourshid-last-" + sub, n); } catch (e) {}
         show(sub, n, true);
+        var panel = doc.querySelector('.subject[data-subject="' + sub + '"] .lesson[data-lesson="' + n + '"]');
+        if (panel && window.history && window.history.pushState && window.location.hash !== "#" + panel.id) {
+          try { window.history.pushState({ lesson: panel.id }, "", "#" + panel.id); } catch (e2) {}
+        }
       });
     });
   });
@@ -166,6 +178,13 @@ var ZLEARN_MATIERES = [
     if (!document.querySelector('.subject[data-subject="' + sub0 + '"]')) { sub0 = lastSub; n0 = ls0[0].getAttribute("data-lesson"); }
   }
   show(sub0, n0, false);
+  window.addEventListener("popstate", function () {
+    var hashTarget = (location.hash || "").slice(1);
+    var targetEl = hashTarget ? document.getElementById(hashTarget) : null;
+    var targetLesson = targetEl && targetEl.closest ? targetEl.closest(".lesson") : null;
+    if (targetLesson) show(targetLesson.parentNode.getAttribute("data-subject"), targetLesson.getAttribute("data-lesson"), false);
+    else show(sub0, n0, false);
+  });
 })();
 
 /* Parcours d’apprentissage : suivi des leçons terminées et reprise du parcours.
@@ -208,26 +227,50 @@ var ZLEARN_MATIERES = [
     var labelGlobal = doc.getElementById("gplabel");
     var fillGlobal = doc.querySelector(".gprog .gfill");
     if (labelGlobal) labelGlobal.textContent = "أتممت " + done + " من " + total + " درسًا منشورًا";
-    if (fillGlobal) fillGlobal.style.width = (total ? done / total * 100 : 0) + "%";
+    if (fillGlobal) {
+      fillGlobal.style.width = (total ? done / total * 100 : 0) + "%";
+      var globalBar = fillGlobal.parentNode;
+      globalBar.setAttribute("aria-valuemin", "0");
+      globalBar.setAttribute("aria-valuemax", String(total));
+      globalBar.setAttribute("aria-valuenow", String(done));
+      globalBar.setAttribute("aria-valuetext", done + " من " + total + " درسًا منشورًا مكتملًا");
+    }
 
     var resume = doc.getElementById("continue-learning");
     var hint = doc.getElementById("continue-hint");
     if (resume) {
-      var best = null;
+      var best = null, bestIndex = -1;
       for (i = 0; i < mats.length; i++) {
         var st = readState(mats[i].id);
         if (st.lastLesson && (!best || (st.lastAt || 0) > (best.at || 0))) {
-          best = { id: mats[i].id, name: mats[i].name, lesson: String(st.lastLesson), at: st.lastAt || 0 };
+          best = { id: mats[i].id, name: mats[i].name, lesson: String(st.lastLesson), at: st.lastAt || 0, completed: st.completed || {} };
+          bestIndex = i;
         }
       }
-      if (best) {
-        var resumeCard = doc.querySelector('[data-matiere-card="' + best.id + '"]');
-        var resumeLink = resumeCard && resumeCard.querySelector('a[data-lesson="' + best.lesson + '"]');
-        if (resumeLink) {
-          resume.href = resumeLink.href;
-          resume.textContent = "واصل التعلم · " + best.name + " · الدرس " + best.lesson;
-          if (hint) hint.textContent = "افتح آخر درس تابعتَه على هذا الجهاز.";
+      if (!best) { best = { id: mats[0].id, name: mats[0].name, lesson: "1", completed: {}, fresh: true }; bestIndex = 0; }
+      var target = best, nextNumber = null, max = mats[bestIndex].lessons || 0;
+      if (best.completed[best.lesson]) {
+        for (var step = 1; step <= max; step++) {
+          var candidate = String((parseInt(best.lesson, 10) + step - 1) % max + 1);
+          if (!best.completed[candidate]) { nextNumber = candidate; break; }
         }
+        if (nextNumber) target = { id: best.id, name: best.name, lesson: nextNumber, completed: best.completed };
+        else {
+          for (var offset = 1; offset < mats.length && !nextNumber; offset++) {
+            var otherIndex = (bestIndex + offset) % mats.length, other = mats[otherIndex], otherState = readState(other.id), otherMax = other.lessons || 0;
+            for (var j = 1; j <= otherMax; j++) if (!(otherState.completed || {})[String(j)]) {
+              target = { id: other.id, name: other.name, lesson: String(j), completed: otherState.completed || {} };
+              nextNumber = String(j); break;
+            }
+          }
+        }
+      }
+      var resumeCard = doc.querySelector('[data-matiere-card="' + target.id + '"]');
+      var resumeLink = resumeCard && resumeCard.querySelector('a[data-lesson="' + target.lesson + '"]');
+      if (resumeLink) {
+        resume.href = resumeLink.href;
+        resume.textContent = best.fresh ? "ابدأ الدرس الأول · " + target.name : (target.completed[target.lesson] ? "راجع درسًا · " + target.name + " · الدرس " + target.lesson : "واصل التعلم · " + target.name + " · الدرس " + target.lesson);
+        if (hint) hint.textContent = target.completed[target.lesson] ? "أتممت الدروس المنشورة. يمكنك مراجعة آخر درس أو اختيار مادة أخرى." : (best.fresh ? "ابدأ من هنا، وستظهر لك متابعة مناسبة بعد فتح الدروس." : (target.lesson !== best.lesson || target.id !== best.id ? "أكملت آخر درس مفتوح؛ هذا هو الدرس التالي غير المكتمل." : "افتح آخر درس تابعتَه على هذا الجهاز."));
       }
     }
   }
@@ -313,6 +356,121 @@ var ZLEARN_MATIERES = [
   updateProgress();
 })();
 
+/* Activités : conserver les réponses de l'apprenant localement et révéler le
+   critère seulement quand il le demande. Les réponses restent distinctes du quiz. */
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll(".application"), function (activity) {
+    if (!activity.id || activity.querySelector("textarea")) return;
+    var label = document.createElement("label");
+    var answer = document.createElement("textarea");
+    var id = activity.id + "-answer", key = "zlearn-answer-" + activity.id;
+    label.setAttribute("for", id);
+    label.textContent = "اكتب إجابتك قبل عرض معيار الإجابة";
+    answer.id = id;
+    answer.rows = 4;
+    answer.placeholder = "اكتب إجابتك هنا…";
+    answer.setAttribute("aria-describedby", id + "-saved");
+    try { answer.value = localStorage.getItem(key) || ""; } catch (e) {}
+    var status = document.createElement("p");
+    status.id = id + "-saved";
+    status.className = "application-status";
+    status.setAttribute("role", "status");
+    status.textContent = answer.value ? "إجابتك محفوظة على هذا الجهاز." : "تُحفظ إجابتك على هذا الجهاز فقط.";
+    answer.addEventListener("input", function () {
+      try { localStorage.setItem(key, answer.value); status.textContent = "حُفظت إجابتك على هذا الجهاز."; }
+      catch (e) { status.textContent = "تعذر حفظ الإجابة؛ يمكنك متابعة المحاولة دون حفظ."; }
+    });
+    var clear = document.createElement("button");
+    clear.type = "button";
+    clear.className = "btn application-clear";
+    clear.textContent = "مسح إجابتي";
+    clear.addEventListener("click", function () {
+      answer.value = "";
+      try { localStorage.removeItem(key); } catch (e) {}
+      status.textContent = "مُسحت الإجابة المحفوظة.";
+      answer.focus();
+    });
+    var controls = document.createElement("div");
+    controls.className = "application-tools";
+    controls.appendChild(status);
+    controls.appendChild(clear);
+    var model = activity.querySelector("details");
+    if (model) {
+      activity.insertBefore(label, model);
+      activity.insertBefore(answer, model);
+      activity.insertBefore(controls, model);
+    } else {
+      activity.appendChild(label);
+      activity.appendChild(answer);
+      activity.appendChild(controls);
+    }
+  });
+})();
+
+/* Export/import local : seules les données Zlearn sont incluses, sans thème ni
+   données d'autres applications. L'import est validé puis relit la page. */
+(function () {
+  var doc = document;
+  var exportButtons = doc.querySelectorAll("[data-progress-export]");
+  var fileInput = doc.getElementById("progress-import");
+  var status = doc.querySelector(".progress-transfer-status");
+  if (!exportButtons.length || !fileInput || !status) return;
+  function allowedKey(key) {
+    return /^mourshid-(theme|tab-[a-z-]+|last-[a-z-]+|learning-[a-z-]+|prog-[a-z-]+|quiz-[a-z0-9-]+|[a-z0-9-]+)$/.test(key) || /^zlearn-answer-[a-z0-9-]+$/.test(key);
+  }
+  function collect() {
+    var data = {}, i, key;
+    for (i = 0; i < localStorage.length; i++) {
+      key = localStorage.key(i);
+      if (key && allowedKey(key)) data[key] = localStorage.getItem(key);
+    }
+    return data;
+  }
+  Array.prototype.forEach.call(exportButtons, function (button) {
+    button.addEventListener("click", function () {
+      var payload;
+      try { payload = JSON.stringify({ format: "zlearn-progress", version: 1, exportedAt: new Date().toISOString(), data: collect() }); }
+      catch (e) { status.textContent = "تعذر قراءة التقدم المحفوظ."; return; }
+      var link = doc.createElement("a"), url;
+      try {
+        if (window.Blob && window.URL && window.URL.createObjectURL) {
+          url = window.URL.createObjectURL(new Blob([payload], { type: "application/json" }));
+        } else url = "data:application/json;charset=utf-8," + encodeURIComponent(payload);
+        link.href = url;
+        link.download = "zlearn-progress.json";
+        link.style.display = "none";
+        doc.body.appendChild(link);
+        link.click();
+        doc.body.removeChild(link);
+        if (window.URL && window.URL.revokeObjectURL && url.indexOf("blob:") === 0) window.setTimeout(function () { window.URL.revokeObjectURL(url); }, 1000);
+        status.textContent = "نُزّل ملف تقدمك. احتفظ به لاستيراده على جهاز آخر.";
+      } catch (e2) { status.textContent = "تعذر إنشاء ملف التقدم في هذا المتصفح."; }
+    });
+  });
+  fileInput.addEventListener("change", function () {
+    var file = fileInput.files && fileInput.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onerror = function () { status.textContent = "تعذرت قراءة الملف."; };
+    reader.onload = function () {
+      var payload;
+      try { payload = JSON.parse(reader.result); }
+      catch (e) { status.textContent = "الملف ليس JSON صالحًا."; return; }
+      if (!payload || payload.format !== "zlearn-progress" || payload.version !== 1 || !payload.data || typeof payload.data !== "object" || Array.isArray(payload.data)) {
+        status.textContent = "هذا الملف ليس نسخة تقدم صالحة من Zlearn."; return;
+      }
+      try {
+        Object.keys(payload.data).forEach(function (key) {
+          if (allowedKey(key) && typeof payload.data[key] === "string") localStorage.setItem(key, payload.data[key]);
+        });
+        status.textContent = "استُورد التقدم. يجري تحديث الصفحة…";
+        window.setTimeout(function () { window.location.reload(); }, 350);
+      } catch (e2) { status.textContent = "تعذر حفظ بعض البيانات المستوردة في هذا المتصفح."; }
+    };
+    reader.readAsText(file);
+  });
+})();
+
 /* Interactions : thème clair/sombre, recherche globale, progression globale,
    navigation clavier des onglets, section active, retour en haut.
    ES5, sans dépendance. Toutes les sauvegardes sont protégées par try/catch. */
@@ -331,6 +489,11 @@ var ZLEARN_MATIERES = [
 
   /* --- Afficher une leçon en réutilisant les boutons du site --- */
   function goTo(sub, lesson, id) {
+    if (sub !== PAGE) {
+      var mat = MATS.filter(function (item) { return item.id === sub; })[0];
+      if (mat) window.location.href = mat.file + (id ? "#" + id : "#lesson-" + lesson);
+      return;
+    }
     var sb = doc.querySelector('.subj[data-subject="' + sub + '"]');
     if (sb) sb.click();
     var tab = doc.querySelector('.tabs[data-subject="' + sub + '"] .tab[data-lesson="' + lesson + '"]');
@@ -343,6 +506,8 @@ var ZLEARN_MATIERES = [
         } else if (typeof window.scrollTo === "function") {
           window.scrollTo(0, el.offsetTop);
         }
+        el.setAttribute("tabindex", "-1");
+        if (typeof el.focus === "function") el.focus();
         try { history.replaceState(null, "", "#" + id); } catch (e2) {}
       }
     }
@@ -420,7 +585,7 @@ var ZLEARN_MATIERES = [
   var input = doc.getElementById("q");
   var sr = doc.getElementById("sr");
   var index = [];
-  var SUBJ_NAMES = { fiqh: "الفقه", aqida: "العقيدة", tajwid: "التجويد", sira: "السيرة النبوية", hadith: "الحديث" };
+  var SUBJ_NAMES = { fiqh: "الفقه", aqida: "العقيدة", tajwid: "التجويد", sira: "السيرة النبوية", hadith: "الحديث", akhlaq: "الأخلاق", nahw: "النحو" };
   Array.prototype.forEach.call(doc.querySelectorAll(".subject"), function (subjectEl) {
     var sub = subjectEl.getAttribute("data-subject");
     var subjName = SUBJ_NAMES[sub] || sub;
@@ -461,6 +626,19 @@ var ZLEARN_MATIERES = [
         hits.push({ it: it, score: (strong ? 2 : 0) + (inTitle ? 1 : 0) });
       }
     }
+    var crossIndex = (typeof ZLEARN_SEARCH_SECTIONS !== "undefined") ? ZLEARN_SEARCH_SECTIONS : [];
+    for (i = 0; i < crossIndex.length; i++) {
+      var cross = crossIndex[i];
+      if (cross.sub === PAGE) continue;
+      var crossName = SUBJ_NAMES[cross.sub] || cross.sub;
+      var crossHay = norm(cross.section + " " + cross.title + " " + crossName), crossOk = true;
+      for (j = 0; j < terms.length; j++) if (crossHay.indexOf(terms[j]) < 0) { crossOk = false; break; }
+      if (crossOk) {
+        var crossStrong = terms.some(function (t) { return norm(cross.section).indexOf(t) >= 0; });
+        var crossTitle = terms.some(function (t) { return norm(cross.title).indexOf(t) >= 0; });
+        hits.push({ it: { sub: cross.sub, lesson: cross.lesson, id: cross.id, file: cross.file, subjName: crossName, sec: cross.section, title: cross.title }, score: (crossStrong ? 2 : 0) + (crossTitle ? 1 : 0) });
+      }
+    }
     hits.sort(function (a, b) { return b.score - a.score; });
     if (!hits.length) {
       var e = doc.createElement("div");
@@ -474,13 +652,14 @@ var ZLEARN_MATIERES = [
     hits.slice(0, 20).forEach(function (h) {
       var it = h.it;
       var a = doc.createElement("a");
-      a.setAttribute("href", "#" + it.id);
+      var localResult = it.sub === PAGE;
+      a.setAttribute("href", localResult ? "#" + it.id : it.file + "#" + it.id);
       a.textContent = it.sec;
       var c = doc.createElement("span");
       c.className = "ctx";
       c.textContent = it.subjName + " · " + it.title + " — " + it.sec;
       a.appendChild(c);
-      a.addEventListener("click", function (ev) {
+      if (localResult) a.addEventListener("click", function (ev) {
         ev.preventDefault();
         goTo(it.sub, it.lesson, it.id);
         if (input) input.value = "";
@@ -510,6 +689,17 @@ var ZLEARN_MATIERES = [
     });
     doc.addEventListener("click", function (ev) {
       if (!sr.hidden && !sr.contains(ev.target) && ev.target !== input) hideResults();
+    });
+    sr.addEventListener("keydown", function (ev) {
+      var links = Array.prototype.slice.call(sr.querySelectorAll("a"));
+      var current = links.indexOf(doc.activeElement);
+      if (ev.key === "Escape") { ev.preventDefault(); hideResults(); input.focus(); }
+      else if ((ev.key === "ArrowDown" || ev.key === "ArrowUp") && links.length) {
+        ev.preventDefault();
+        var next = ev.key === "ArrowDown" ? Math.min(links.length - 1, current + 1) : Math.max(0, current - 1);
+        if (current <= 0 && ev.key === "ArrowUp") input.focus();
+        else links[next].focus();
+      }
     });
   }
 
@@ -587,7 +777,9 @@ var ZLEARN_MATIERES = [
   function pad(n) { return n < 10 ? "0" + n : String(n); }
   function fmt(ts) { var d = new Date(ts); return pad(d.getDate()) + "/" + pad(d.getMonth() + 1); }
   Array.prototype.forEach.call(doc.querySelectorAll('section[id$="quiz"]'), function (quiz) {
-    var items = Array.prototype.slice.call(quiz.querySelectorAll("details"));
+    var items = Array.prototype.filter.call(quiz.children, function (child) {
+      return child.tagName && child.tagName.toLowerCase() === "details";
+    });
     if (!items.length) return;
     var key = "mourshid-quiz-" + quiz.id;
     var st = { g: {}, at: 0 };

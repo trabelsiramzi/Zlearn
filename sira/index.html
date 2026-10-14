@@ -25,21 +25,21 @@
   <div class="wrap toolbar">
     <a class="brand" href="../index.html" aria-label="العودة إلى كل المواد">كل المواد</a>
     <div class="search" role="search">
-      <label class="vh" for="q">البحث في الدروس والمحاور</label>
-      <input id="q" type="search" autocomplete="off" placeholder="ابحث في الدروس والمحاور…" aria-label="ابحث في الدروس والمحاور" aria-expanded="false" aria-controls="sr">
+      <label class="vh" for="q">البحث في محتوى هذه المادة وعناوين بقية المواد</label>
+      <input id="q" type="search" autocomplete="off" placeholder="ابحث في محتوى المادة وعناوين الدروس الأخرى…" aria-label="ابحث في محتوى المادة والعناوين الأخرى" aria-expanded="false" aria-controls="sr">
       <span class="ico" aria-hidden="true">⌕</span>
-      <div class="sr" id="sr" aria-label="نتائج البحث" hidden></div>
+      <div class="sr" id="sr" role="region" aria-label="نتائج البحث" aria-live="polite" hidden></div>
     </div>
     <button id="theme-toggle" class="icon-btn" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false">🌙</button>
     <div class="gprog" title="عدد الدروس التي أتممتها من الدروس المنشورة">
-      <span class="gb" aria-hidden="true"><span class="gfill"></span></span>
+      <span class="gb" role="progressbar" aria-label="الدروس المكتملة من الدروس المنشورة" aria-valuemin="0" aria-valuemax="21" aria-valuenow="0" aria-valuetext="0 من 21 درسًا مكتملًا"><span class="gfill"></span></span>
       <span id="gplabel" role="status" aria-live="polite">أتممت 0 من 21 درسًا</span>
     </div>
   </div>
   <div class="wrap tabs" role="tablist" data-subject="sira" aria-label="دروس السيرة النبوية">
-    <button class="tab" type="button" role="tab" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى السيرة والنسب</small></button>
-    <button class="tab" type="button" role="tab" data-lesson="2" aria-selected="false">الدرس الثاني<small>مولده ﷺ ويتمه</small></button>
-    <button class="tab" type="button" role="tab" data-lesson="3" aria-selected="false">الدرس الثالث<small>زمزم والإيلاف</small></button>
+    <button class="tab" type="button" role="tab" id="tab-sira-1" aria-controls="lesson-h1" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى السيرة والنسب</small></button>
+    <button class="tab" type="button" role="tab" id="tab-sira-2" aria-controls="lesson-s2" data-lesson="2" aria-selected="false">الدرس الثاني<small>مولده ﷺ ويتمه</small></button>
+    <button class="tab" type="button" role="tab" id="tab-sira-3" aria-controls="lesson-s3" data-lesson="3" aria-selected="false">الدرس الثالث<small>زمزم والإيلاف</small></button>
   </div>
   <div class="wrap chips" data-subject="sira" data-for="1"><a href="#h1-summary">نظرة عامة</a><a href="#h1-map">الخريطة</a><a href="#h1-def">تعريف السيرة</a><a href="#h1-books">كتب السيرة</a><a href="#h1-virtues">فضائل طلب العلم</a><a href="#h1-names">أسماء النبي ﷺ</a><a href="#h1-lineage">النسب الشريف</a><a href="#h1-months">الأشهر</a><a href="#h1-terms">المصطلحات</a><a href="#h1-memorize">تحقق من فهمك</a><a href="#h1-quiz">تدرّب</a></div>
   <div class="wrap chips" data-subject="sira" data-for="2"><a href="#s2-summary">نظرة عامة</a><a href="#s2-map">الخريطة</a><a href="#s2-father">وفاة عبد الله</a><a href="#s2-mother">أمة بنت وهب</a><a href="#s2-death">وفاة أمه</a><a href="#s2-terms">المصطلحات</a><a href="#s2-memorize">تحقق من فهمك</a><a href="#s2-quiz">تدرّب</a></div>
@@ -50,7 +50,7 @@
 
 <div class="subject" data-subject="sira">
 
-<div class="lesson" id="lesson-h1" data-lesson="1">
+<div class="lesson" id="lesson-h1" data-lesson="1" role="tabpanel" aria-labelledby="tab-sira-1" tabindex="0">
 
 <div class="part-head">
   <p>مادة السيرة النبوية · الدرس الأول</p>
@@ -417,7 +417,7 @@
 </section>
 
 </div>
-<div class="lesson" id="lesson-s2" data-lesson="2">
+<div class="lesson" id="lesson-s2" data-lesson="2" role="tabpanel" aria-labelledby="tab-sira-2" tabindex="0">
 
 <div class="part-head">
   <p>مادة السيرة النبوية · الدرس الثاني</p>
@@ -674,7 +674,7 @@
 </section>
 
 </div>
-<div class="lesson" id="lesson-s3" data-lesson="3">
+<div class="lesson" id="lesson-s3" data-lesson="3" role="tabpanel" aria-labelledby="tab-sira-3" tabindex="0">
 
 <div class="part-head">
   <p>مادة السيرة النبوية · الدرس الثالث</p>
@@ -991,11 +991,18 @@
 <footer class="wrap">
   <p>مادة السيرة النبوية — مسار تعلم السنة الأولى. أُعدّت من تفريغ الدروس وتُحدَّث تدريجيًا عند إضافة كل درس جديد.</p>
   <p>تُحفظ حالة الدروس التي أتممتها على هذا الجهاز فقط.</p>
+<div class="progress-tools" aria-label="نقل تقدمك بين الأجهزة">
+  <button class="btn" type="button" data-progress-export>تصدير التقدم</button>
+  <label class="progress-import-label" for="progress-import">استيراد ملف تقدم JSON</label>
+  <input id="progress-import" class="progress-import" type="file" accept="application/json,.json">
+  <p class="progress-transfer-note">تُحدَّث الحالات الموجودة في الملف، وتبقى الحالات الأخرى كما هي.</p>
+  <p class="progress-transfer-status" role="status" aria-live="polite"></p>
+</div>
 </footer>
 
 <button class="toTop" id="toTop" type="button" aria-label="عودة إلى أعلى الصفحة">↑</button>
 
 </div>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/search-index.js"></script><script src="../assets/site.js"></script>
 </body></html>

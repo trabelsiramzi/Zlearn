@@ -25,21 +25,21 @@
   <div class="wrap toolbar">
     <a class="brand" href="../index.html" aria-label="العودة إلى كل المواد">كل المواد</a>
     <div class="search" role="search">
-      <label class="vh" for="q">البحث في الدروس والمحاور</label>
-      <input id="q" type="search" autocomplete="off" placeholder="ابحث في الدروس والمحاور…" aria-label="ابحث في الدروس والمحاور" aria-expanded="false" aria-controls="sr">
+      <label class="vh" for="q">البحث في محتوى هذه المادة وعناوين بقية المواد</label>
+      <input id="q" type="search" autocomplete="off" placeholder="ابحث في محتوى المادة وعناوين الدروس الأخرى…" aria-label="ابحث في محتوى المادة والعناوين الأخرى" aria-expanded="false" aria-controls="sr">
       <span class="ico" aria-hidden="true">⌕</span>
-      <div class="sr" id="sr" aria-label="نتائج البحث" hidden></div>
+      <div class="sr" id="sr" role="region" aria-label="نتائج البحث" aria-live="polite" hidden></div>
     </div>
     <button id="theme-toggle" class="icon-btn" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false">🌙</button>
     <div class="gprog" title="عدد الدروس التي أتممتها من الدروس المنشورة">
-      <span class="gb" aria-hidden="true"><span class="gfill"></span></span>
+      <span class="gb" role="progressbar" aria-label="الدروس المكتملة من الدروس المنشورة" aria-valuemin="0" aria-valuemax="21" aria-valuenow="0" aria-valuetext="0 من 21 درسًا مكتملًا"><span class="gfill"></span></span>
       <span id="gplabel" role="status" aria-live="polite">أتممت 0 من 21 درسًا</span>
     </div>
   </div>
   <div class="wrap tabs" role="tablist" data-subject="hadith" aria-label="دروس الحديث">
-    <button class="tab" type="button" role="tab" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى الأربعين النووية</small></button>
-    <button class="tab" type="button" role="tab" data-lesson="2" aria-selected="false">الدرس الثاني<small>حديث النية</small></button>
-    <button class="tab" type="button" role="tab" data-lesson="3" aria-selected="false">الدرس الثالث<small>حديث جبريل — مراتب الدين</small></button>
+    <button class="tab" type="button" role="tab" id="tab-hadith-1" aria-controls="lesson-hd1" data-lesson="1" aria-selected="false">الدرس الأول<small>مدخل إلى الأربعين النووية</small></button>
+    <button class="tab" type="button" role="tab" id="tab-hadith-2" aria-controls="lesson-hd2" data-lesson="2" aria-selected="false">الدرس الثاني<small>حديث النية</small></button>
+    <button class="tab" type="button" role="tab" id="tab-hadith-3" aria-controls="lesson-hd3" data-lesson="3" aria-selected="false">الدرس الثالث<small>حديث جبريل — مراتب الدين</small></button>
   </div>
   <div class="wrap chips" data-subject="hadith" data-for="1"><a href="#hd1-summary">نظرة عامة</a><a href="#hd1-map">الخريطة</a><a href="#hd1-book">الكتاب والمؤلف</a><a href="#hd1-virtues">فضائل طلب العلم</a><a href="#hd1-path">المحجة البيضاء</a><a href="#hd1-salawat">فضل الصلاة</a><a href="#hd1-method">منهج النووي</a><a href="#hd1-terms">المصطلحات</a><a href="#hd1-memorize">تحقق من فهمك</a><a href="#hd1-quiz">تدرّب</a></div>
   <div class="wrap chips" data-subject="hadith" data-for="2"><a href="#hd2-summary">نظرة عامة</a><a href="#hd2-hadith-text">نص الحديث</a><a href="#hd2-map">الخريطة</a><a href="#hd2-hadith">الحديث والراوي</a><a href="#hd2-omar">ترجمة عمر</a><a href="#hd2-meaning">شرح الحديث</a><a href="#hd2-ranks">مراتب النية</a><a href="#hd2-intersect">تداخل العبادات</a><a href="#hd2-cause">سبب الورود</a><a href="#hd2-terms">المصطلحات</a><a href="#hd2-memorize">تحقق من فهمك</a><a href="#hd2-quiz">تدرّب</a></div>
@@ -50,7 +50,7 @@
 
 <div class="subject" data-subject="hadith">
 
-<div class="lesson" id="lesson-hd1" data-lesson="1">
+<div class="lesson" id="lesson-hd1" data-lesson="1" role="tabpanel" aria-labelledby="tab-hadith-1" tabindex="0">
 
 <div class="part-head">
   <p>مادة الحديث · الدرس الأول</p>
@@ -342,7 +342,7 @@
 </section>
 
 </div>
-<div class="lesson" id="lesson-hd2" data-lesson="2">
+<div class="lesson" id="lesson-hd2" data-lesson="2" role="tabpanel" aria-labelledby="tab-hadith-2" tabindex="0">
 
 <div class="part-head">
   <p>مادة الحديث · الدرس الثاني</p>
@@ -683,7 +683,7 @@
 <div class="application" id="hadith2-activity"><h3>نشاط تطبيقي من محتوى الدرس: حلّل النية</h3><p>اختر فعلًا واحدًا من أمثلة حياتك، واكتب كيف تشرح أثر النية فيه مستعينًا بحديث «إنما الأعمال بالنيات».</p><details><summary>اعرض معيار الإجابة بعد المحاولة</summary><p class="ans">قدّم تطبيقًا شخصيًا يوضح الفكرة، ولا تنسب إليه حكمًا فقهيًا جديدًا.</p></details></div>
 </section>
 </div>
-<div class="lesson" id="lesson-hd3" data-lesson="3">
+<div class="lesson" id="lesson-hd3" data-lesson="3" role="tabpanel" aria-labelledby="tab-hadith-3" tabindex="0">
 
 <div class="part-head">
   <p>مادة الحديث · الدرس الثالث</p>
@@ -1067,11 +1067,18 @@
 <footer class="wrap">
   <p>مادة الحديث — مسار تعلم السنة الأولى. أُعدّت من تفريغ الدروس وتُحدَّث تدريجيًا عند إضافة كل درس جديد.</p>
   <p>تُحفظ حالة الدروس التي أتممتها على هذا الجهاز فقط.</p>
+<div class="progress-tools" aria-label="نقل تقدمك بين الأجهزة">
+  <button class="btn" type="button" data-progress-export>تصدير التقدم</button>
+  <label class="progress-import-label" for="progress-import">استيراد ملف تقدم JSON</label>
+  <input id="progress-import" class="progress-import" type="file" accept="application/json,.json">
+  <p class="progress-transfer-note">تُحدَّث الحالات الموجودة في الملف، وتبقى الحالات الأخرى كما هي.</p>
+  <p class="progress-transfer-status" role="status" aria-live="polite"></p>
+</div>
 </footer>
 
 <button class="toTop" id="toTop" type="button" aria-label="عودة إلى أعلى الصفحة">↑</button>
 
 </div>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/search-index.js"></script><script src="../assets/site.js"></script>
 </body></html>

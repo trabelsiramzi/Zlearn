@@ -75,7 +75,9 @@ Le gabarit est dans `templates/lesson-block.html`. Les conventions de nommage so
 5. Mettre à jour, **dans la page de la matière** : onglet `.tab` du dars, ligne `chips`
    du dars, et si besoin nouvelle matière (dossier `<matière>/index.html` + carte dans
    `index.html`). Le script de navigation du site **génère automatiquement** les liens de
-   section manquants : au minimum, fournir la ligne `chips`.
+   section manquants : au minimum, fournir la ligne `chips`. Relier le tab à son panneau
+   par `aria-controls` / `aria-labelledby`, puis ajouter les titres et ancres du dars à
+   `assets/search-index.js` pour la recherche inter-matières.
 6. Si une **nouvelle matière** est créée : ajouter une entrée dans le manifeste
    `ZLEARN_MATIERES` de `assets/site.js` (avec `total` = nombre de cases) et une carte
    dans `index.html`. Si une matière existante gagne un dars contenant de nouvelles cases,
