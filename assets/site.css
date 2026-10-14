@@ -255,3 +255,22 @@ section { scroll-margin-top: 230px; }
 .mprog { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 12px; }
 .mprog .bar { flex: 1; }
 .mlabel { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 4ch; text-align: start; }
+
+/* Objectifs et durée en tête de chaque leçon */
+.goals { background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--blue); border-radius: 14px; padding: 14px 22px 16px; margin: 14px 0 4px; }
+.goals-time { margin: 0 0 6px; color: var(--muted); font-size: .9rem; }
+.goals h3 { margin: 0 0 6px; font-family: var(--display); font-size: 1.3rem; line-height: 1.5; }
+.goals ul { margin: 0; padding-inline-start: 1.3rem; }
+.goals li { margin: 3px 0; }
+
+/* Glossaires : sous-titres par nature d'entrée (termes, personnes, lieux) */
+.terms-sub { margin: 22px 0 8px; font-family: var(--display); font-size: 1.3rem; line-height: 1.5; color: var(--muted); }
+.terms-sub:first-of-type { margin-top: 8px; }
+
+/* Texte d'un hadith : lisible, voyellé, grande interligne */
+.hadith-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; font-family: var(--display); font-size: 1.45rem; line-height: 2.2; }
+.hadith-box p { margin: 0 0 10px; }
+.hadith-box p:last-child { margin: 0; }
+.hadith-box .takhrij { font-size: 1.05rem; color: var(--muted); }
+.matn-ref { margin: 0 0 12px; }
+.matn-ref .hadith-box { border: 0; border-top: 1px solid var(--line); border-radius: 0 0 12px 12px; }
