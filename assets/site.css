@@ -241,7 +241,7 @@ footer { padding-block: 30px 40px; color: var(--muted); font-size: .88rem; }
 .toTop { position: fixed; inset-inline-start: 16px; bottom: 16px; z-index: 30; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 1.25rem; cursor: pointer; display: none; place-items: center; box-shadow: 0 6px 18px rgba(0,0,0,.2); }
 .toTop.on { display: grid; }
 section { scroll-margin-top: 230px; }
-@media (max-width: 560px) { .brand { display: none; } .gprog { font-size: .8rem; } }
+@media (max-width: 560px) { .brand { font-size: .96rem; } .gprog { font-size: .8rem; } }
 @media (prefers-reduced-motion: reduce) { .bar span, .gprog .gb span, .skip { transition: none; } }
 /* ===== Architecture multi-pages (index.html + un dossier par matière) ===== */
 .crumb { margin: 0 0 6px; font-size: .9rem; }
