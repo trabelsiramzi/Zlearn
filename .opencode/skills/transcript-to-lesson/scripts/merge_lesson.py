@@ -2,7 +2,7 @@
 """Fusionne un bloc de dars (fichier HTML séparé) dans une page matière du site.
 
 Le site est multi-pages : chaque matière vit dans son dossier (``fiqh/index.html``,
-``aqida/index.html``, ``tajwid/index.html``). Un nouveau dars s'ajoute donc dans la page
+``aqida/index.html``, ``tajwid/index.html``, ``sira/index.html``, ``hadith/index.html``). Un nouveau dars s'ajoute donc dans la page
 de sa matière.
 
 Méthode recommandée par SKILL-general.md (§Technique, gros fichiers) : écrire la
@@ -15,7 +15,7 @@ Usage :
         --fragment dars-l4.html
 
 Options :
-    --anchor TEXTE   marqueur d'insertion (défaut : fermeture du .subject avant </main>)
+    --anchor TEXTE   marqueur d'insertion (défaut : fermeture du .subject avant </main>, détectée par regex)
     --after          insérer après l'ancre (défaut : avant)
     --backups DIR    dossier des sauvegardes (défaut : backups/ à la racine)
     --dry-run        afficher ce qui serait fait sans écrire
@@ -34,6 +34,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -53,7 +54,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--site", required=True)
     ap.add_argument("--fragment", required=True)
-    ap.add_argument("--anchor", default="</div>\n\n</main>")
+    ap.add_argument("--anchor", default=None)
     ap.add_argument("--after", action="store_true")
     ap.add_argument("--backups", default=None)
     ap.add_argument("--dry-run", action="store_true")
@@ -70,6 +71,14 @@ def main() -> int:
     html = site.read_text(encoding="utf-8")
     fragment = frag.read_text(encoding="utf-8").strip()
 
+    if args.anchor is None:
+        # Ancre par défaut : fermeture du .subject juste avant </main>, quels que
+        # soient les sauts de ligne entre les deux balises.
+        matches = list(re.finditer(r"</div>\s*</main>", html))
+        if len(matches) != 1:
+            print(f"[ERREUR] ancre par défaut trouvée {len(matches)} fois (attendu : 1).", file=sys.stderr)
+            return 1
+        args.anchor = matches[0].group(0)
     occurrences = html.count(args.anchor)
     if occurrences != 1:
         print(f"[ERREUR] l'ancre apparaît {occurrences} fois (attendu : 1).", file=sys.stderr)

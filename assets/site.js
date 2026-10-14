@@ -5,16 +5,11 @@ var ZLEARN_MATIERES = [
   { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 35 },
   { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41 },
   { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 36 },
-  { id: "sira", name: "مادة السيرة النbوية", book: "السيرة النبوية", file: "sira/index.html", total: 36 },
+  { id: "sira", name: "مادة السيرة النبوية", book: "السيرة النبوية", file: "sira/index.html", total: 36 },
   { id: "hadith", name: "مادة الحديث", book: "شرح الأربعين النووية", file: "hadith/index.html", total: 36 }
 ];
 
 (function () {
-  var KEY = "mourshid-l1";
-  var state = {};
-  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
-
   document.querySelectorAll(".group").forEach(function (g) {
     var gkey = "mourshid-" + g.getAttribute("data-key");
     var gstate = {};

@@ -2,7 +2,7 @@
 """Validateur statique du site de révision Zlearn (multi-pages).
 
 Le site est découpé en : ``index.html`` (accueil) + un dossier par matière
-(``fiqh/``, ``aqida/``, ``tajwid/``) + ``assets/site.css`` et ``assets/site.js``.
+(``fiqh/``, ``aqida/``, ``tajwid/``, ``sira/``, ``hadith/``) + ``assets/site.css`` et ``assets/site.js``.
 
 Usage :
     python3 validate_site.py [chemin]
@@ -58,7 +58,7 @@ AUTO_CLOSE = {
 
 ARABIC_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
 SKIP_DIRS = {".git", ".opencode", "backups", "node_modules"}
-EXPECTED_SUBJECTS = ("fiqh", "aqida", "tajwid")
+EXPECTED_SUBJECTS = ("fiqh", "aqida", "tajwid", "sira", "hadith")
 
 
 class SiteParser(HTMLParser):
