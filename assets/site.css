@@ -192,15 +192,12 @@ footer { padding-block: 30px 40px; color: var(--muted); font-size: .88rem; }
 .rule-box h3 { margin: 0; font-family: var(--display); font-size: 1.3rem; }
 .rule-box p { margin: 0; }
 .poem { display: grid; gap: 10px; margin-top: 10px; }
-.bayt { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid var(--line); border-inline-start: 4px solid var(--gold); border-radius: 10px; background: var(--bg); }
-.bayt-part { min-width: 0; padding: 8px 14px 10px; }
-.bayt-part + .bayt-part { border-inline-start: 1px solid var(--line); }
-.bayt-label { display: block; color: var(--muted); font-size: .76rem; line-height: 1.5; }
+.bayt { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(14px, 4vw, 42px); padding: 9px 14px; border-inline-start: 4px solid var(--gold); border-bottom: 1px solid var(--line); background: var(--bg); }
+.bayt-part { min-width: 0; }
 .bayt-text { display: block; font-family: var(--display); font-size: 1.16rem; line-height: 1.8; }
 @media (max-width: 520px) {
-  .bayt { grid-template-columns: 1fr; }
-  .bayt-part + .bayt-part { border-inline-start: 0; border-top: 1px solid var(--line); }
-  .bayt-part { padding: 6px 12px 8px; }
+  .bayt { column-gap: 10px; padding: 7px 8px; }
+  .bayt-text { font-size: 1rem; }
 }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 0 0 14px; padding: 0; list-style: none; }
 .legend li { border-radius: 999px; padding: 1px 14px; background: var(--t); color: var(--c); font-weight: 600; font-size: .9rem; }
