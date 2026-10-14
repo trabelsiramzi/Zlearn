@@ -1746,4 +1746,68 @@ var ZLEARN_SEARCH_SECTIONS = [
     "id": "nh3-quiz",
     "section": "تدرّب وتحقق من فهمك"
   }
+,
+  {
+    "sub": "fiqh",
+    "file": "fiqh/index.html",
+    "lesson": "1",
+    "lessonId": "lesson-1",
+    "title": "مقدمة المنظومة",
+    "id": "l1-source",
+    "section": "الأبيات التي سنبني عليها الدرس"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/index.html",
+    "lesson": "2",
+    "lessonId": "lesson-2",
+    "title": "أقسام الحكم الشرعي",
+    "id": "l2-source",
+    "section": "الأبيات التي سنشرح بها أقسام الحكم الشرعي"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/index.html",
+    "lesson": "3",
+    "lessonId": "lesson-3",
+    "title": "كتاب الطهارة",
+    "id": "l3-source",
+    "section": "البيت الذي سنحلل به أحكام الماء"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/index.html",
+    "lesson": "1",
+    "lessonId": "lesson-aq1",
+    "title": "مدخل إلى علم العقيدة",
+    "id": "aq1-source",
+    "section": "الآية التي سنبني عليها المدخل"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/index.html",
+    "lesson": "2",
+    "lessonId": "lesson-aq2",
+    "title": "المبادئ العشرة لعلم العقيدة",
+    "id": "aq2-source",
+    "section": "الأبيات التي سنستخدمها للتعرّف إلى المبادئ العشرة"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/index.html",
+    "lesson": "1",
+    "lessonId": "lesson-tj1",
+    "title": "مقدمة علم التجويد وتعريفه",
+    "id": "tj1-source",
+    "section": "الأبيات التي سنستخدمها للتعرّف إلى مبادئ العلم"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/index.html",
+    "lesson": "2",
+    "lessonId": "lesson-tj2",
+    "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
+    "id": "tj2-source",
+    "section": "الآية التي سنقرأها في هذا الدرس"
+  }
 ];
