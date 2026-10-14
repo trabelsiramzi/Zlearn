@@ -489,6 +489,15 @@ var ZLEARN_SEARCH_SECTIONS = [
   {
     "sub": "tajwid",
     "file": "tajwid/index.html",
+    "lesson": "3",
+    "lessonId": "lesson-tj3",
+    "title": "نظم المقدمة — مقدمة تحفة الأطفال",
+    "id": "tj3-text",
+    "section": "نص مقدمة تحفة الأطفال"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
