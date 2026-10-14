@@ -281,3 +281,30 @@ section { scroll-margin-top: 230px; }
 .hadith-box .takhrij { font-size: 1.05rem; color: var(--muted); }
 .matn-ref { margin: 0 0 12px; }
 .matn-ref .hadith-box { border: 0; border-top: 1px solid var(--line); border-radius: 0 0 12px 12px; }
+
+/* Quiz : auto-évaluation */
+.quiz-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 12px; }
+.quiz-score { margin: 0; margin-inline-end: auto; font-weight: 600; }
+.quiz-advice { flex-basis: 100%; margin: 0; color: var(--muted); font-size: .92rem; }
+.quiz-advice:empty { display: none; }
+.btn:disabled { opacity: .5; cursor: default; }
+.self-grade { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px 14px; }
+.self-grade .btn[aria-pressed="true"].grade-ok { background: var(--green-tint); color: var(--green); border-color: var(--green); }
+.self-grade .btn[aria-pressed="true"].grade-review { background: var(--amber-tint); color: var(--amber); border-color: var(--amber); }
+details[data-grade="ok"] { border-inline-start: 5px solid var(--green); }
+details[data-grade="review"] { border-inline-start: 5px solid var(--amber); }
+.only-review details:not([data-grade="review"]) { display: none; }
+
+/* Cartes mentales : version cartes sur petit écran */
+.map-list { display: none; }
+.map-list h3 { font-family: var(--display); font-size: 1.5rem; line-height: 1.5; margin: 0 0 10px; }
+.map-list ul { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.map-list li { background: var(--t, var(--panel)); border-inline-start: 5px solid var(--c, var(--muted)); border-radius: 12px; padding: 10px 16px 12px; }
+.map-list li strong { display: block; font-family: var(--display); font-size: 1.3rem; line-height: 1.5; color: var(--c, var(--ink)); }
+.map-list li p { margin: 0; color: var(--ink); font-size: .98rem; line-height: 1.7; }
+@media (max-width: 700px) {
+  .scroll.has-list:not(.force) { display: none; }
+  .scroll.has-list:not(.force) ~ .hint { display: none; }
+  .map-list { display: block; }
+  .map-list.force h3, .map-list.force ul { display: none; }
+}
