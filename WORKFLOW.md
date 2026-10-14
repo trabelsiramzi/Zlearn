@@ -1,8 +1,9 @@
 # Zlearn — guide d'utilisation et workflow
 
-Site de révision de la première année, **statique et multi-pages** :
-- `index.html` — accueil (liste des matières, dars, progression) ;
-- `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html` — une page par matière ;
+Site d’apprentissage de la première année, **statique et multi-pages** :
+- `index.html` — accueil (liste des matières, parcours, progression d’apprentissage) ;
+- `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html`, `sira/index.html`,
+  `hadith/index.html`, `akhlaq/index.html`, `nahw/index.html` — une page par matière ;
 - `assets/site.css` / `assets/site.js` — style et script partagés.
 
 Aucun build, aucune dépendance runtime. Ouvrir `index.html` dans un navigateur suffit.
@@ -31,8 +32,7 @@ Utiliser la commande OpenCode `/nouveau-dars` :
 ```
 
 Elle enchaîne automatiquement :
-1. `pedagogy-organizer` — analyse et structure la transcription (matière, dars, chapitres,
-   définitions, règles, exemples, quiz, checklist) dans un brouillon temporaire
+1. `pedagogy-organizer` — transforme la transcription en parcours d’apprentissage (objectifs, explications, exemples, exercices, feedback, sources et aides de révision) dans un brouillon temporaire
    `brouillon-dars-<id>.md` (supprimé après intégration).
 2. `frontend-integrator` — sauvegarde la **page de la matière** (`<matière>/index.html`),
    écrit le bloc depuis le gabarit, fusionne et met à jour la navigation de la page.
@@ -45,7 +45,7 @@ Si la matière ou le numéro du dars est incertain, l'agent **pose une question*
 ### Format attendu de la transcription
 
 - Un fichier texte/`.md` (sous-titres YouTube collés, sortie d'ASR, PDF recopié) ou la transcription collée directement.
-- Idéalement, préciser en tête : **matière** (`fiqh` / `aqida` / `tajwid`) et **numéro du dars**
+- Idéalement, préciser en tête : **matière** (`fiqh` / `aqida` / `tajwid` / `sira` / `hadith` / `akhlaq` / `nahw`) et **numéro du dars**
   (il sera déduit du contenu s'il est absent, mais une indication évite toute ambiguïté).
 - Indiquer le **titre** s'il est connu.
 
@@ -79,7 +79,7 @@ Avant toute modification de masse, une copie horodatée est créée dans `backup
 | ------- | ---- |
 | `SKILL-general.md` | Référence fonctionnelle de transformation des transcriptions |
 | `index.html` | Accueil : matières, dars, progression |
-| `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html` | Une page par matière (documents à modifier) |
+| Pages `fiqh/`, `aqida/`, `tajwid/`, `sira/`, `hadith/`, `akhlaq/`, `nahw/` | Une page par matière |
 | `assets/site.css`, `assets/site.js` | Style et script partagés (+ manifeste `ZLEARN_MATIERES`) |
 | `AGENTS.md` | Instructions projet pour OpenCode |
 | `.opencode/skills/transcript-to-lesson/` | Compétence + scripts + gabarit + conventions |

@@ -1,16 +1,15 @@
 # Zlearn — instructions projet
 
-Site de révision de la première année (enseignement zaytounien) en arabe RTL : un site
+Site d’apprentissage de la première année (enseignement zaytounien) en arabe RTL : un site
 **statique multi-pages** (accueil + un dossier par matière + assets partagés), sans build
 ni dépendance runtime.
 
 ## Fichiers de référence
 
-- `SKILL-general.md` — **référence fonctionnelle** de la transformation d'une transcription
-  en fiche de révision. Ne pas la contredire ; toute adaptation doit être justifiée
-  (voir « Adaptation projet » dans ce fichier).
+- `SKILL-general.md` — **référence fonctionnelle** pour transformer une transcription en leçon qui enseigne, fait pratiquer et permet de vérifier sa compréhension. Les compléments externes doivent être vérifiés et signalés.
 - `index.html` — page d'accueil : liste les matières, leurs dars et leur progression.
-- `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html` — **une page par matière**
+- `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html`, `sira/index.html`,
+  `hadith/index.html`, `akhlaq/index.html`, `nahw/index.html` — **une page par matière**
   contenant ses dars. C'est **l'unique** document à modifier pour une matière donnée.
   Ne jamais créer un site parallèle ni réinitialiser les contenus existants.
 - `assets/site.css` — tout le style (variables `--xxx`, thème clair/sombre).
@@ -39,15 +38,14 @@ La compétence `.opencode/skills/transcript-to-lesson` détaille les étapes et 
 ## Adaptation projet
 
 Le site a été découpé depuis un fichier unique initial vers un site multi-pages pour
-alléger chaque page. L'esprit de `SKILL-general.md` est conservé (contenu cumulatif,
-mêmes composants, même navigation à trois niveaux), mais la cible d'écriture est la page
-de la matière, et le style/script sont mutualisés dans `assets/`.
+alléger chaque page. La cible d'écriture est la page de la matière. Chaque dars doit d’abord enseigner, puis faire pratiquer et guider l’étudiant vers la suite. Les résumés, listes de mémorisation et quiz de rappel restent des aides complémentaires. Les styles/scripts sont mutualisés dans `assets/`.
 
 ## Style du code
 
 - CSS : variables `--xxx` uniquement, compatibles thème sombre ; pas de couleur en dur.
 - JS : ES5 vanilla (le site cible des navigateurs mobiles anciens), enveloppé dans des IIFE.
 - Arabe : `dir="rtl" lang="ar"`, police `Amiri` (titres) + `IBM Plex Sans Arabic` (texte).
-- Progression : chaque page matière enregistre son agrégat sous `mourshid-prog-<matière>` ;
+- Mémorisation : chaque page matière enregistre son agrégat sous `mourshid-prog-<matière>` ;
   les `total` du manifeste `ZLEARN_MATIERES` (dans `assets/site.js`) doivent correspondre
-  au nombre réel de cases (vérifié par le validateur).
+  au nombre réel de cases. Le parcours de leçons terminées est stocké séparément sous
+  `mourshid-learning-<matière>` ; `lessons` doit correspondre aux dars publiés.

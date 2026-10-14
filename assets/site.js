@@ -1,14 +1,14 @@
 /* Zlearn — script partagé par toutes les pages (ES5, sans dépendance).
-   Progressions : chaque page matière enregistre son total sous
-   « mourshid-prog-<id> » ; la barre globale additionne les matières. */
+   Le manifeste suit séparément les cases de mémorisation (total) et les dars publiés
+   (lessons) ; le parcours d’apprentissage ne compte que les leçons terminées. */
 var ZLEARN_MATIERES = [
-  { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 35 },
-  { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41 },
-  { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 36 },
-  { id: "sira", name: "مادة السيرة النبوية", book: "السيرة النبوية", file: "sira/index.html", total: 36 },
-  { id: "hadith", name: "مادة الحديث", book: "شرح الأربعين النووية", file: "hadith/index.html", total: 36 },
-  { id: "akhlaq", name: "مادة الأخلاق", book: "تذكرة السامع والمتكلم في أدب العالم والمتعلم", file: "akhlaq/index.html", total: 23 },
-  { id: "nahw", name: "مادة النحو", book: "الدروس النحوية", file: "nahw/index.html", total: 27 }
+  { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 35, lessons: 3 },
+  { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41, lessons: 3 },
+  { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 36, lessons: 3 },
+  { id: "sira", name: "مادة السيرة النبوية", book: "السيرة النبوية", file: "sira/index.html", total: 36, lessons: 3 },
+  { id: "hadith", name: "مادة الحديث", book: "شرح الأربعين النووية", file: "hadith/index.html", total: 36, lessons: 3 },
+  { id: "akhlaq", name: "مادة الأخلاق", book: "تذكرة السامع والمتكلم في أدب العالم والمتعلم", file: "akhlaq/index.html", total: 23, lessons: 3 },
+  { id: "nahw", name: "مادة النحو", book: "الدروس النحوية", file: "nahw/index.html", total: 27, lessons: 3 }
 ];
 
 (function () {
@@ -115,7 +115,13 @@ var ZLEARN_MATIERES = [
       Array.prototype.slice.call(row.querySelectorAll(".tab")).forEach(function (t) { t.setAttribute("aria-selected", on && t.getAttribute("data-lesson") === n ? "true" : "false"); });
     });
     chipRows.forEach(function (c) { c.hidden = !(c.getAttribute("data-subject") === sub && c.getAttribute("data-for") === n); });
-    try { localStorage.setItem("mourshid-tab-" + PAGE, sub + ":" + n); } catch (e) {}
+    try {
+      localStorage.setItem("mourshid-tab-" + PAGE, sub + ":" + n);
+      var learningState = JSON.parse(localStorage.getItem("mourshid-learning-" + sub) || "{}") || {};
+      learningState.lastLesson = n;
+      learningState.lastAt = new Date().getTime();
+      localStorage.setItem("mourshid-learning-" + sub, JSON.stringify(learningState));
+    } catch (e) {}
     if (scroll) {
       var top = document.querySelector("main").getBoundingClientRect().top + window.pageYOffset - toc.offsetHeight;
       if (window.pageYOffset > top) window.scrollTo(0, top);
@@ -126,7 +132,7 @@ var ZLEARN_MATIERES = [
     b.addEventListener("click", function () {
       var sub = b.getAttribute("data-subject");
       var ls = lessonsOf(sub);
-      var last = ls.length ? ls[ls.length - 1].getAttribute("data-lesson") : "1";
+      var last = ls.length ? ls[0].getAttribute("data-lesson") : "1";
       var keep = null;
       try { var saved = localStorage.getItem("mourshid-last-" + sub); if (saved) keep = saved; } catch (e) {}
       show(sub, keep || last, true);
@@ -145,7 +151,7 @@ var ZLEARN_MATIERES = [
 
   var lastSub = subjects[subjects.length - 1].getAttribute("data-subject");
   var ls0 = lessonsOf(lastSub);
-  var sub0 = lastSub, n0 = ls0[ls0.length - 1].getAttribute("data-lesson");
+  var sub0 = lastSub, n0 = ls0[0].getAttribute("data-lesson");
   var h = (location.hash || "").replace("#", "");
   var target = h ? document.getElementById(h) : null;
   var holder = target && target.closest ? target.closest(".lesson") : null;
@@ -157,9 +163,154 @@ var ZLEARN_MATIERES = [
       var st = localStorage.getItem("mourshid-tab-" + PAGE);
       if (st && st.indexOf(":") > 0) { sub0 = st.split(":")[0]; n0 = st.split(":")[1]; }
     } catch (e) {}
-    if (!document.querySelector('.subject[data-subject="' + sub0 + '"]')) { sub0 = lastSub; n0 = ls0[ls0.length - 1].getAttribute("data-lesson"); }
+    if (!document.querySelector('.subject[data-subject="' + sub0 + '"]')) { sub0 = lastSub; n0 = ls0[0].getAttribute("data-lesson"); }
   }
   show(sub0, n0, false);
+})();
+
+/* Parcours d’apprentissage : suivi des leçons terminées et reprise du parcours.
+   Les checklists de mémorisation restent séparées et ne comptent pas comme leçons terminées. */
+(function () {
+  var doc = document;
+  var mats = (typeof ZLEARN_MATIERES !== "undefined") ? ZLEARN_MATIERES : [];
+  function readState(id) {
+    try { return JSON.parse(localStorage.getItem("mourshid-learning-" + id) || "{}") || {}; }
+    catch (e) { return {}; }
+  }
+  function finishedCount(id) {
+    var st = readState(id), n = 0, k;
+    for (k in (st.completed || {})) if (st.completed[k]) n++;
+    return n;
+  }
+  function updateProgress() {
+    var done = 0, total = 0, i;
+    for (i = 0; i < mats.length; i++) {
+      var count = finishedCount(mats[i].id);
+      done += Math.min(count, mats[i].lessons || 0);
+      total += mats[i].lessons || 0;
+      var card = doc.querySelector('[data-matiere-card="' + mats[i].id + '"]');
+      if (card) {
+        var bar = card.querySelector('[data-matiere-learning]');
+        var label = card.querySelector(".mlabel");
+        var max = mats[i].lessons || 0;
+        if (bar) {
+          var fill = bar.querySelector(".pfill");
+          var now = Math.min(count, max);
+          if (fill) fill.style.width = (max ? now / max * 100 : 0) + "%";
+          bar.setAttribute("aria-valuemin", "0");
+          bar.setAttribute("aria-valuemax", String(max));
+          bar.setAttribute("aria-valuenow", String(now));
+          bar.setAttribute("aria-valuetext", now + " من " + max + " دروس مكتملة");
+        }
+        if (label) label.textContent = Math.min(count, max) + " من " + max;
+      }
+    }
+    var labelGlobal = doc.getElementById("gplabel");
+    var fillGlobal = doc.querySelector(".gprog .gfill");
+    if (labelGlobal) labelGlobal.textContent = "أتممت " + done + " من " + total + " درسًا منشورًا";
+    if (fillGlobal) fillGlobal.style.width = (total ? done / total * 100 : 0) + "%";
+
+    var resume = doc.getElementById("continue-learning");
+    var hint = doc.getElementById("continue-hint");
+    if (resume) {
+      var best = null;
+      for (i = 0; i < mats.length; i++) {
+        var st = readState(mats[i].id);
+        if (st.lastLesson && (!best || (st.lastAt || 0) > (best.at || 0))) {
+          best = { id: mats[i].id, name: mats[i].name, lesson: String(st.lastLesson), at: st.lastAt || 0 };
+        }
+      }
+      if (best) {
+        var resumeCard = doc.querySelector('[data-matiere-card="' + best.id + '"]');
+        var resumeLink = resumeCard && resumeCard.querySelector('a[data-lesson="' + best.lesson + '"]');
+        if (resumeLink) {
+          resume.href = resumeLink.href;
+          resume.textContent = "واصل التعلم · " + best.name + " · الدرس " + best.lesson;
+          if (hint) hint.textContent = "افتح آخر درس تابعتَه على هذا الجهاز.";
+        }
+      }
+    }
+  }
+  window.ZLEARN_UPDATE_LEARNING = updateProgress;
+
+  var page = doc.body && doc.body.getAttribute("data-page");
+  var subject = doc.querySelector('.subject[data-subject="' + page + '"]');
+  if (subject) {
+    var lessons = Array.prototype.slice.call(subject.querySelectorAll(".lesson"));
+    var state = readState(page);
+    state.completed = state.completed || {};
+    lessons.forEach(function (lesson, index) {
+      var number = lesson.getAttribute("data-lesson");
+      var footer = doc.createElement("div");
+      footer.className = "lesson-footer";
+      var completion = doc.createElement("div");
+      completion.className = "lesson-completion";
+      var complete = doc.createElement("button");
+      complete.type = "button";
+      complete.className = "btn lesson-complete";
+      complete.setAttribute("aria-pressed", state.completed[number] ? "true" : "false");
+      complete.textContent = state.completed[number] ? "أتممت هذا الدرس ✓" : "أتممت هذا الدرس";
+      var note = doc.createElement("p");
+      note.textContent = "سجّل إتمامه بعد دراسة الشرح ومحاولة التدريبات. يمكنك تغيير حالته في أي وقت.";
+      completion.appendChild(complete);
+      completion.appendChild(note);
+      footer.appendChild(completion);
+
+      var stepper = doc.createElement("nav");
+      stepper.className = "lesson-stepper";
+      stepper.setAttribute("aria-label", "التنقل بين دروس المادة");
+      var count = doc.createElement("span");
+      count.className = "lesson-step-count";
+      count.textContent = "الدرس " + number + " من " + lessons.length;
+      if (index > 0) {
+        var prev = doc.createElement("button");
+        prev.type = "button";
+        prev.className = "btn";
+        prev.textContent = "الدرس السابق";
+        prev.addEventListener("click", function () {
+          var tab = doc.querySelector('.tabs[data-subject="' + page + '"] .tab[data-lesson="' + lessons[index - 1].getAttribute("data-lesson") + '"]');
+          if (tab) tab.click();
+        });
+        stepper.appendChild(prev);
+      } else {
+        var start = doc.createElement("span");
+        start.className = "lesson-step-placeholder";
+        stepper.appendChild(start);
+      }
+      stepper.appendChild(count);
+      if (index < lessons.length - 1) {
+        var next = doc.createElement("button");
+        next.type = "button";
+        next.className = "btn primary";
+        next.textContent = "الدرس التالي ←";
+        next.addEventListener("click", function () {
+          var tab = doc.querySelector('.tabs[data-subject="' + page + '"] .tab[data-lesson="' + lessons[index + 1].getAttribute("data-lesson") + '"]');
+          if (tab) tab.click();
+        });
+        stepper.appendChild(next);
+      } else {
+        var other = doc.createElement("a");
+        other.className = "btn primary";
+        other.href = page === "home" ? "index.html" : "../index.html";
+        other.textContent = "اختر مادة أخرى";
+        stepper.appendChild(other);
+      }
+      footer.appendChild(stepper);
+      lesson.appendChild(footer);
+      complete.addEventListener("click", function () {
+        state = readState(page);
+        state.completed = state.completed || {};
+        state.completed[number] = !state.completed[number];
+        state.lastLesson = number;
+        state.lastAt = new Date().getTime();
+        complete.setAttribute("aria-pressed", state.completed[number] ? "true" : "false");
+        complete.textContent = state.completed[number] ? "أتممت هذا الدرس ✓" : "أتممت هذا الدرس";
+        try { localStorage.setItem("mourshid-learning-" + page, JSON.stringify(state)); } catch (e) {}
+        updateProgress();
+      });
+    });
+  }
+  updateProgress();
 })();
 
 /* Interactions : thème clair/sombre, recherche globale, progression globale,
@@ -253,29 +404,8 @@ var ZLEARN_MATIERES = [
     for (j = 0; j < total; j++) { if (boxes[j].checked) done++; }
     try { localStorage.setItem("mourshid-prog-" + PAGE, JSON.stringify({ done: done, total: total })); } catch (e) {}
   }
-  function pctOf(id) {
-    var t = 0, a = readAgg(id), i;
-    for (i = 0; i < MATS.length; i++) { if (MATS[i].id === id) t = MATS[i].total; }
-    if (!t || !a) return 0;
-    return Math.round((Math.min(a.done, t) / t) * 100);
-  }
   function updateGlobal() {
-    var total = 0, done = 0, i;
-    for (i = 0; i < MATS.length; i++) {
-      total += MATS[i].total;
-      var a = readAgg(MATS[i].id);
-      done += a ? Math.min(a.done, MATS[i].total) : 0;
-    }
-    var pct = total ? Math.round((done / total) * 100) : 0;
-    if (glabel) glabel.textContent = "الحفظ " + pct + "%";
-    if (gfill) gfill.style.width = pct + "%";
-    Array.prototype.forEach.call(doc.querySelectorAll("[data-matiere-progress]"), function (bar) {
-      var p = pctOf(bar.getAttribute("data-matiere-progress"));
-      var fill = bar.querySelector(".pfill");
-      if (fill) fill.style.width = p + "%";
-      var lbl = bar.parentNode ? bar.parentNode.querySelector(".mlabel") : null;
-      if (lbl) lbl.textContent = p + "%";
-    });
+    if (window.ZLEARN_UPDATE_LEARNING) window.ZLEARN_UPDATE_LEARNING();
   }
   Array.prototype.forEach.call(doc.querySelectorAll(".check input[type=checkbox]"), function (b) {
     b.addEventListener("change", function () { storeAgg(); updateGlobal(); });
@@ -475,11 +605,11 @@ var ZLEARN_MATIERES = [
     var filterBtn = doc.createElement("button");
     filterBtn.type = "button";
     filterBtn.className = "btn";
-    filterBtn.textContent = "إظهار ما أراجعه فقط";
+    filterBtn.textContent = "إظهار التدريبات التي أحتاجها";
     var resetBtn = doc.createElement("button");
     resetBtn.type = "button";
     resetBtn.className = "btn";
-    resetBtn.textContent = "أعد الاختبار";
+    resetBtn.textContent = "أعد التدريب";
     bar.appendChild(score);
     bar.appendChild(filterBtn);
     bar.appendChild(resetBtn);
@@ -498,13 +628,13 @@ var ZLEARN_MATIERES = [
       }
       var done = ok + rev;
       score.textContent = done
-        ? "النتيجة: " + ok + " من " + items.length + " · للمراجعة: " + rev + (st.at ? " · آخر محاولة: " + fmt(st.at) : "")
-        : "قيّم نفسك بعد كل جواب: «عرفتها» أو «أحتاج مراجعة».";
+        ? "التقييم الذاتي: " + ok + " من " + items.length + " · أحتاج مراجعة: " + rev + (st.at ? " · آخر تدريب: " + fmt(st.at) : "")
+        : "بعد محاولة الإجابة ومقارنة النموذج، قيّم فهمك: «عرفتها» أو «أحتاج مراجعة».";
       filterBtn.disabled = rev === 0 && !quiz.classList.contains("only-review");
       if (done === items.length) {
         advice.textContent = rev
-          ? "ارجع إلى أقسام الدرس المتعلقة بالأسئلة الموسومة، ثم أعد الاختبار غدًا."
-          : "أحسنت! أعد الاختبار بعد 3 أيام، ثم بعد أسبوع لتثبيت الحفظ.";
+          ? "ارجع إلى أقسام الدرس المرتبطة بالتدريبات الموسومة، ثم أعد التدريب لاحقًا."
+          : "أحسنت! أعد التدريب بعد 3 أيام، ثم بعد أسبوع لتثبيت ما تعلمته.";
       } else {
         advice.textContent = "";
       }
@@ -536,7 +666,7 @@ var ZLEARN_MATIERES = [
 
     filterBtn.addEventListener("click", function () {
       var on = quiz.classList.toggle("only-review");
-      filterBtn.textContent = on ? "إظهار كل الأسئلة" : "إظهار ما أراجعه فقط";
+      filterBtn.textContent = on ? "إظهار كل الأسئلة" : "إظهار التدريبات التي أحتاجها";
       items.forEach(function (d) { if (on && d.getAttribute("data-grade") === "review") d.open = true; });
       refresh();
     });
@@ -544,7 +674,7 @@ var ZLEARN_MATIERES = [
       st = { g: {}, at: 0 };
       save();
       quiz.classList.remove("only-review");
-      filterBtn.textContent = "إظهار ما أراجعه فقط";
+      filterBtn.textContent = "إظهار التدريبات التي أحتاجها";
       items.forEach(function (d) { d.open = false; });
       refresh();
     });

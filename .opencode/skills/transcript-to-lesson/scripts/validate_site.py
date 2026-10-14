@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validateur statique du site de révision Zlearn (multi-pages).
+"""Validateur statique du site d’apprentissage Zlearn (multi-pages).
 
 Le site est découpé en : ``index.html`` (accueil) + un dossier par matière
 (``fiqh/``, ``aqida/``, ``tajwid/``, ``sira/``, ``hadith/``) + ``assets/site.css`` et ``assets/site.js``.
@@ -58,7 +58,7 @@ AUTO_CLOSE = {
 
 ARABIC_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
 SKIP_DIRS = {".git", ".opencode", "backups", "node_modules"}
-EXPECTED_SUBJECTS = ("fiqh", "aqida", "tajwid", "sira", "hadith")
+EXPECTED_SUBJECTS = ("fiqh", "aqida", "tajwid", "sira", "hadith", "akhlaq", "nahw")
 
 
 class SiteParser(HTMLParser):
@@ -74,6 +74,7 @@ class SiteParser(HTMLParser):
         self._capture: dict | None = None  # capture du texte d'un élément
         self.toggle_targets: list[tuple[str, int]] = []
         self.subjects: list[str] = []
+        self.lessons: list[tuple[str, int]] = []
         self.checkbox_total = 0
 
     # -- helpers ---------------------------------------------------------
@@ -106,6 +107,8 @@ class SiteParser(HTMLParser):
 
         if tag == "div" and "subject" in classes and self._get(attrs, "data-subject"):
             self.subjects.append(self._get(attrs, "data-subject"))
+        if tag == "div" and "lesson" in classes and self._get(attrs, "data-lesson"):
+            self.lessons.append((self._get(attrs, "data-lesson"), line))
         if tag == "div" and "group" in classes:
             g = {"key": self._get(attrs, "data-key"), "depth": len(self.open_stack) + 1,
                  "checkboxes": 0, "has_pfill": False, "label": None, "line": line}
@@ -232,11 +235,15 @@ def collect_pages(target: str) -> list[str]:
     return sorted(pages)
 
 
-def manifest_totals(site_js: str) -> dict[str, int]:
-    totals: dict[str, int] = {}
-    for m in re.finditer(r'id:\s*"([^"]+)"[\s\S]*?total:\s*(\d+)', site_js):
-        totals[m.group(1)] = int(m.group(2))
-    return totals
+def manifest_entries(site_js: str) -> dict[str, dict[str, int]]:
+    entries: dict[str, dict[str, int]] = {}
+    for m in re.finditer(r'\{\s*id:\s*"([^"]+)"([^}]+)\}', site_js):
+        entry = {"total": int(re.search(r"total:\s*(\d+)", m.group(2)).group(1))}
+        lessons = re.search(r"lessons:\s*(\d+)", m.group(2))
+        if lessons:
+            entry["lessons"] = int(lessons.group(1))
+        entries[m.group(1)] = entry
+    return entries
 
 
 def main(argv: list[str]) -> int:
@@ -254,12 +261,17 @@ def main(argv: list[str]) -> int:
     all_errors: list[str] = []
     subjects_seen: list[str] = []
     totals_by_page: dict[str, int] = {}
+    lessons_by_page: dict[str, int] = {}
 
     for page in pages:
         parser, errors, warnings = validate_file(page)
         subjects_seen.extend(parser.subjects)
         if parser.subjects:
             totals_by_page[parser.subjects[0]] = parser.checkbox_total
+            lessons_by_page[parser.subjects[0]] = len(parser.lessons)
+            numbers = [n for n, _ in parser.lessons]
+            if len(numbers) != len(set(numbers)):
+                all_errors.append(f"{page} : numéro data-lesson dupliqué")
         print(f"Fichier : {page}")
         print(f"  {len(parser.subjects)} matière(s), {len(parser.groups)} groupe(s) de mémorisation, "
               f"{len(parser.ids)} ids, {len(parser.anchors)} ancre(s) interne(s), "
@@ -289,14 +301,20 @@ def main(argv: list[str]) -> int:
         # manifeste de progression
         site_js = os.path.join(target, "assets", "site.js")
         if os.path.isfile(site_js):
-            declared = manifest_totals(open(site_js, encoding="utf-8").read())
+            declared = manifest_entries(open(site_js, encoding="utf-8").read())
             for sub in EXPECTED_SUBJECTS:
                 if sub not in declared:
                     all_errors.append(f"manifeste assets/site.js : matière « {sub} » absente")
-                elif sub in totals_by_page and declared[sub] != totals_by_page[sub]:
+                    continue
+                if sub in totals_by_page and declared[sub].get("total") != totals_by_page[sub]:
                     all_errors.append(
-                        f"manifeste assets/site.js : total de « {sub} » = {declared[sub]} "
+                        f"manifeste assets/site.js : total de « {sub} » = {declared[sub].get('total')} "
                         f"mais {totals_by_page[sub]} cases dans {sub}/index.html"
+                    )
+                if sub in lessons_by_page and declared[sub].get("lessons") != lessons_by_page[sub]:
+                    all_errors.append(
+                        f"manifeste assets/site.js : nombre de leçons de « {sub} » = "
+                        f"{declared[sub].get('lessons')} mais {lessons_by_page[sub]} dans {sub}/index.html"
                     )
         else:
             all_errors.append("assets/site.js introuvable (manifeste de progression)")

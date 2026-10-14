@@ -1,9 +1,9 @@
 ---
-name: Transformer une transcription en dars
-description: Convertit une transcription de cours (YouTube, audio, PDF recopié) en un bloc de révision (résumé, carte mentale, chapitres, définitions, règles, exemples, checklist, quiz) puis l'intègre proprement au site HTML existant sans casser les dars précédents. À utiliser dès que l'utilisateur fournit une transcription et demande d'ajouter un dars, un chapitre ou une matière.
+name: Transformer une transcription en leçon d’apprentissage
+description: Convertit une transcription de cours (YouTube, audio, PDF recopié) en un parcours de leçon (objectifs, explications, exemples, pratique, feedback et aides de révision) puis l'intègre proprement au site HTML existant sans casser les dars précédents. À utiliser dès que l'utilisateur fournit une transcription et demande d'ajouter un dars, un chapitre ou une matière.
 ---
 
-# Transformer une transcription en dars de révision
+# Transformer une transcription en leçon d’apprentissage
 
 Référence fonctionnelle : `SKILL-general.md` à la racine du projet. **La lire d'abord** et
 appliquer ses règles (fidélité à la transcription, format du bloc, navigation, design).
@@ -16,7 +16,7 @@ d'intégration dans la page de la matière (`<matière>/index.html`).
 
 ## Étape 0 — Établir la certitude
 
-Déterminer : **matière** (`fiqh`, `aqida`, `tajwid`, ou nouvelle), **numéro du dars** et
+Déterminer : **matière** (`fiqh`, `aqida`, `tajwid`, `sira`, `hadith`, `akhlaq`, `nahw`, ou nouvelle), **numéro du dars** et
 **titre**. Si la matière ou le numéro ne peuvent pas être établis avec certitude,
 **poser une question ciblée avant d'intégrer**. Ne jamais deviner un numéro de dars.
 
@@ -32,7 +32,7 @@ Vérifier les doublons : un dars déjà présent ne doit pas être réintégré.
 4. Repérer ce qui peut tomber à l'examen : définitions, règles, classifications,
    énumérations, exemples, dates, noms propres.
 
-## Étape B — Organiser le contenu
+## Étape B — Construire un parcours d’apprentissage
 
 Hiérarchie : **Matière → Dars → Chapitres → Sous-chapitres → Notions essentielles**.
 
@@ -41,25 +41,22 @@ dès que le dars est intégré et validé. Ne jamais le laisser dans le dépôt.
 
 Construire le bloc de dars dans cet ordre (aligné sur `SKILL-general.md`) :
 
-1. En-tête : matière · numéro du dars · titre.
-2. Résumé en **trois phrases**.
-3. **Carte mentale** : ~6 branches, SVG inline, ids de marqueurs uniques.
-4. **Chapitres** : choisir le visuel adapté (arbre pour classifications, tableau pour
-   comparaisons, étapes numérotées pour procédures, cartes pour définitions, encadré
-   « règle » pour les règles). Ne pas créer de chapitre/règle/exemple absent de la source.
-5. **Définitions et terminologie** (glossaire).
-6. **Règles / classifications / tableaux / étapes**.
-7. **Exemples** issus du cours.
-8. **Checklist de révision** (cases à cocher + compteur sauvegardé).
-9. **Quiz** de 10 à 12 questions, réponses masquées + bouton « إظهار كل الأجوبة ».
+1. En-tête et **2 à 4 objectifs observables**.
+2. Orientation courte : intérêt du dars et prérequis seulement s’ils sont connus.
+3. Explications découpées en étapes, avec le visuel adapté au contenu.
+4. Exemple résolu, puis un exercice parallèle à essayer avant de révéler le modèle.
+5. **Pratique avec feedback** : rappel, compréhension et application ; réponses expliquées et renvoi au passage concerné.
+6. Glossaire et synthèse de fin de leçon.
+7. Contrôle d’apprentissage distinct des cases de mémorisation.
+8. Navigation précédent/suivant et marqueur local « leçon terminée ».
+9. Résumé, carte mentale et mémorisation comme aides complémentaires, pas comme cœur du parcours.
 
-## Étape C — Intégrer au site
+## Étape C — Intégrer au parcours du site
 
 Le gabarit est dans `templates/lesson-block.html`. Les conventions de nommage sont dans
 `references/project-conventions.md`. Méthode :
 
-1. Identifier la **page de la matière** (`fiqh/index.html`, `aqida/index.html` ou
-   `tajwid/index.html`) selon la matière du dars.
+1. Identifier la **page de la matière** (`<matière>/index.html`) selon le dars.
 2. Sauvegarder cette page :
    `cp "fiqh/index.html" "backups/fiqh-index.$(date +%Y%m%d-%H%M%S).html"`.
 3. Écrire le bloc du dars dans un fichier séparé `dars-<id>.html` (jamais éditer à la main
@@ -97,14 +94,14 @@ Le gabarit est dans `templates/lesson-block.html`. Les conventions de nommage so
 
 Lancer `scripts/validate_site.py` : il échoue (code ≠ 0) si un contrôle casse.
 
-## Règles de contenu et de droit d'auteur
+## Règles de contenu, de vérification et de droit d'auteur
 
 - Ne jamais recopier un poème, des versets ou de longs passages. Paraphraser ; pour la
   mémorisation d'un texte, fournir une zone vide où l'utilisateur colle son propre texte
   (comme le composant `.verses` déjà présent).
 - Pas de section « notes sur la transcription » dans la page : les corrections vont dans
   la réponse à l'utilisateur.
-- Ton simple, orienté examen.
+- Ton simple, progressif et orienté compréhension et application.
 
 ## Réponse finale à l'utilisateur
 

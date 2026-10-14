@@ -1,7 +1,7 @@
 <!--
-  Gabarit de bloc de dars — Zlearn.
+  Gabarit de leçon d’apprentissage — Zlearn.
   Remplacer <PREFIX> par le préfixe d'id (ex. l4-, aq4-, tj3-), <ID> par la clé du
-  dars (ex. l4), <N> par le numéro, <SUBJECT> par fiqh|aqida|tajwid.
+  dars (ex. l4), <N> par le numéro, <SUBJECT> par une matière du manifeste.
   Conserver les commentaires de garde : le validateur et le script de fusion s'en servent.
 -->
 <div class="lesson" id="lesson-<ID>" data-lesson="<N>">
@@ -10,6 +10,11 @@
   <p>مادة <MATIERE> · الدرس <ORDINAL></p>
   <h2><TITRE></h2>
 </div>
+
+<section id="<PREFIX>outcomes" class="goals">
+  <h2>أهداف الدرس</h2>
+  <ul><li>…</li><li>…</li></ul>
+</section>
 
 <section id="<PREFIX>summary">
   <h2>الخلاصة في ثلاث جمل</h2>
@@ -30,8 +35,10 @@
 </section>
 
 <section id="<PREFIX>parts">
-  <h2>المحاور</h2>
-  <!-- arbre / tableau / étapes / cartes selon le contenu réel -->
+  <h2>شرح الدرس</h2>
+  <!-- découper la notion et choisir arbre/tableau/étapes/cartes selon le contenu -->
+  <div class="rule-box"><h3>مثال محلول</h3><p>شرح الخطوات التي توصل إلى الجواب.</p></div>
+  <div class="rule-box"><h3>جرّب بنفسك</h3><p>سؤال تطبيقي قبل إظهار نموذج الإجابة.</p></div>
 </section>
 
 <section id="<PREFIX>terms">
@@ -42,8 +49,8 @@
 </section>
 
 <section id="<PREFIX>memorize">
-  <h2>ما يجب حفظه</h2>
-  <p class="lede">علّم على كل نقطة تتقنها. يبقى تقدمك محفوظًا في هذا المتصفح.</p>
+  <h2>تحقق من فهمك</h2>
+  <p class="lede">علّم على النقطة بعد أن تستطيع شرحها من ذاكرتك. تحفظ حالتك على هذا الجهاز.</p>
   <div class="group" data-key="<ID>">
     <div class="progress">
       <div class="bar" aria-hidden="true"><span class="pfill"></span></div>
@@ -57,9 +64,9 @@
 </section>
 
 <section id="<PREFIX>quiz">
-  <h2>اختبر نفسك</h2>
+  <h2>تدرّب وتحقق من فهمك</h2>
   <div class="quiz-head">
-    <p class="lede">أجب في ذهنك أولًا، ثم افتح الجواب.</p>
+    <p class="lede">حاول الإجابة قبل فتح النموذج. بعد المقارنة، قيّم فهمك بصدق.</p>
     <button class="btn toggle-all" type="button" data-target="<PREFIX>quiz">إظهار كل الأجوبة</button>
   </div>
   <details><summary>…</summary><p class="ans">…</p></details>
@@ -72,11 +79,11 @@
   Ligne chips à ajouter dans nav.toc (la TOC se complète automatiquement au chargement) :
 
   <div class="wrap chips" data-subject="<SUBJECT>" data-for="<N>">
-    <a href="#<PREFIX>summary">الخلاصة</a>
+    <a href="#<PREFIX>summary">نظرة عامة</a>
     <a href="#<PREFIX>map">الخريطة</a>
     <a href="#<PREFIX>terms">المصطلحات</a>
-    <a href="#<PREFIX>memorize">للحفظ</a>
-    <a href="#<PREFIX>quiz">اختبر نفسك</a>
+    <a href="#<PREFIX>memorize">تحقق من فهمك</a>
+    <a href="#<PREFIX>quiz">تدرّب</a>
   </div>
 
   Onglet à ajouter dans la ligne .tabs de la matière :

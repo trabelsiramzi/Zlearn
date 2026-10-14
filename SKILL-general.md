@@ -1,67 +1,61 @@
 ---
-name: course-revision-document
-description: Turn lesson transcripts (YouTube or any video/audio course) into one cumulative, professional revision document with diagrams, mind maps, key takeaways, glossary, checklist and quiz. Use when the user sends a transcript and asks to add a lesson or chapter, or to start a revision document.
+name: course-learning-document
+description: Turn lesson transcripts into a cumulative, accessible learning course with structured explanations, examples, guided practice, feedback, progress and review. Use when the user sends a transcript and asks to add a lesson or chapter, or to start a subject.
 ---
 
-# Course revision document builder
+# Course learning document builder
 
-The user sends lesson transcripts one at a time. You build and keep growing **one single revision document** organised by subject, then by lesson. Each new transcript is added to the same document, never to a new one.
+Build one cumulative learning site organised by subject and lesson. The goal is for the learner to understand and use the material, not only to revise it. Zlearn is a static multi-page site: the home page lists subjects, each subject has one page, and shared styles and scripts live in `assets/`.
 
-> **Zlearn adaptation**: this project applies the method as a static **multi-page site**
-> (home page + one folder per subject + shared `assets/`). The functional rules below stay
-> unchanged; the target file for a lesson is the subject's page, and styling/scripting are
-> shared in `assets/`. See `AGENTS.md` and `.opencode/skills/transcript-to-lesson/`.
+## Content policy
 
-## Settings to confirm once (then remember)
-- **Document language and direction** (e.g. Arabic RTL, French, English). Write the document in that language. Talk to the user in the language they write to you.
-- **Output format**: a single self-contained HTML page (preferred, supports diagrams and navigation), or the format the user names (docx, pdf, slides). If a published-page tool such as an Artifact is available, publish there and **republish the same file/URL** on every update.
-- **Subjects**: the course may have several subjects (e.g. law, theory, practice). Group lessons by subject.
+1. Read the full transcript and the existing subject page before editing. Never delete or replace a lesson.
+2. Preserve the teacher’s explanation as the main course content. Correct obvious transcription errors only when context makes the correction certain; mention uncertain names, dates, terms or numbering to the user.
+3. When the transcript needs clarification, add a concise supplement only when it can be verified. Label it visibly as **إضافة تعليمية** and cite the source next to it. Keep the teacher’s explanation and the supplement distinct. If verification is not possible, mark the point for teacher review rather than guessing.
+4. Do not silently introduce rulings, doctrinal claims, grammatical rules, dates, or attributions from outside sources. Use primary course material or authoritative sources appropriate to the subject and cite them.
+5. Present disputed or personal positions as “according to the teacher”. Never imply that a self-check score certifies mastery.
+6. Do not reproduce poems, long passages, or copyrighted texts. Paraphrase. For memorisation, provide a blank practice area for text the learner supplies.
 
-## Workflow for every new transcript
-1. **Open the existing document first** (re-read it from its link or file). Edit it; never rebuild from scratch. If none exists, create it with the structure below.
-2. **Read the whole transcript.** Transcripts are often auto-generated: fix obvious errors (names, dates, technical terms) from context. List every doubtful fix and every guess in your chat reply, not inside the document.
-3. **Identify the subject and lesson number.** Follow the order the user sends lessons, even if the teacher numbers them differently; mention any mismatch.
-4. **Write only what the teacher said.** Do not add outside facts silently. If you add a complement, flag it in the reply. Present disputed or personal positions as "according to the teacher".
-5. **Build the lesson block** (see below), merge it into the document, check it, republish.
-6. **Reply briefly**: one sentence on what was added, then a short list of points to verify against the source.
+## Learning sequence for each dars
 
-## Lesson block (in this order)
-1. **Header**: subject · lesson number · title.
-2. **Summary in three sentences.**
-3. **Mind map**: central topic with about six branches (inline SVG).
-4. **Core sections**: choose the visual that fits the content: flowchart for processes, tree for classifications, table for comparisons, timeline for history, nested diagram for set relations, cards for definitions or biographies, numbered steps for procedures, rule boxes for rules.
-5. **Glossary** of the terms used in the lesson.
-6. **Must-remember checklist**: tick boxes with a progress counter saved in the browser.
-7. **Quiz**: 10 to 12 questions, each answer hidden until opened, plus a "show all answers" button.
+Use the material that is actually available; do not invent missing programme details.
 
-Give every section a unique id prefixed by the lesson (e.g. `s2-summary`). Keep checkbox ids and SVG marker ids unique across the whole document.
+1. **Header and outcomes:** subject, dars number, title, and 2–4 observable learning outcomes.
+2. **Orientation:** a short explanation of why the lesson matters and any verified prerequisite. If there is no known prerequisite, do not invent one.
+3. **Explain in steps:** divide the teacher’s content into short, ordered parts. Choose the visual that teaches it best: comparison table, classification tree, worked example, timeline, process, or rule box.
+4. **Worked examples:** show how to apply the idea, then invite the learner to try a parallel example before revealing a model answer.
+5. **Practice and feedback:** include questions that test recall, understanding and application. Give a model answer or explanation; link errors back to the relevant lesson section. Keep self-assessment explicitly labelled as self-assessment.
+6. **Key terms and takeaways:** define only terms used in the lesson and end with a short synthesis.
+7. **Completion and next step:** let the learner record that they completed the lesson after studying and attempting the practice; provide previous/next lesson navigation.
+8. **Review aids:** retain optional checklists, flash recall, maps and spaced review as supporting tools, not as the main learning experience.
 
-## Navigation structure
-- Sticky top bar with three levels: **subjects**, **lesson tabs** for the chosen subject, **section links** for the chosen lesson.
-- Only one lesson visible at a time; all lessons stay visible if scripts fail.
-- Adding a lesson to an existing subject = new tab + new section-links row + new lesson block at the end of that subject.
-- Adding a new subject = new subject button + its tab row + a new subject container, and update the title area that lists the subjects.
-- Remember the last viewed lesson in browser storage (wrapped in try/catch).
+Every new section id is unique and prefixed by the lesson (e.g. `aq4-outcomes`). Checkbox ids and SVG marker ids remain unique within the page.
 
-## Content rules
-- **Copyright**: never reproduce poems, song lyrics, verses or long passages from books. Paraphrase and quote only short terms. For memorisation of verses or texts, provide an empty box where the user pastes their own text and tests themselves from memory.
-- Facts must come from the transcript. Dates, names and numbers that are unclear are marked in the reply for the user to check.
-- No "notes on the transcript" section in the page. Corrections go in the chat reply.
-- Keep wording simple and exam-oriented: definitions, rules, lists, classifications, examples.
+## Navigation and progress
 
-## Design rules for HTML pages
-- Define colours as CSS variables with a dark-mode variant; no hard-coded colours.
-- Use web fonts from a trusted provider only, with a proper font for the document's script (e.g. Arabic).
-- Wide diagrams sit in a horizontally scrollable container; the page must stay readable at 400 px wide.
-- Contrast and focus states must be accessible; do not rely on colour alone.
-- Respect the text direction of the document language (`dir="rtl"` for Arabic, Hebrew, etc.).
+- Keep the three-level subject / dars / section navigation.
+- Make the learning path and “continue where you left off” available across the site.
+- Track lesson completion separately from memorisation checklists and quiz self-assessment.
+- Explain that browser-only progress is stored on the current device.
+- Keep content readable if JavaScript fails; scripts enhance navigation and progress but do not contain the lesson itself.
 
-## Technical method (large files)
-- Write the new lesson in a separate file, then merge by script (e.g. Python string replace) with an assertion that each anchor point occurs exactly once. Avoid exact-match manual edits on the big file.
-- After merging check: duplicate ids, balanced tags, checklist counter equals the number of boxes, links to existing section ids.
-- Republish to the same location so the link never changes.
+## Language and design
 
-## Final reply template
-- Added: subject, lesson N, what it contains.
-- To verify: bullet list of transcript corrections, uncertain dates or names, anything you added yourself, numbering mismatch.
-- Do not paste the link unless asked.
+- Write lesson content in the course language. Zlearn lessons are Arabic (`lang="ar" dir="rtl"`); communicate with the user in their language.
+- Use simple, teachable phrasing. Distinguish definition, example, application and source note.
+- Define colors with CSS variables and light/dark values. Use the shared stylesheet and ES5 vanilla JavaScript.
+- Keep Arabic typography readable, diagrams accessible, focus visible, and layout usable at 400 px.
+- No dead buttons or links.
+
+## Technical workflow
+
+1. Identify subject, dars number and title. Ask if they cannot be established confidently.
+2. Back up the relevant page before a substantial edit.
+3. Build the dars in a separate fragment and merge it with an asserted unique anchor.
+4. Update the subject tabs, section links, homepage links and shared manifest as required.
+5. Preserve existing local progress keys when adjusting a page; update checklist totals only when the number of checkboxes changes.
+6. Run `python3 .opencode/skills/transcript-to-lesson/scripts/validate_site.py .` and report any source uncertainties.
+
+## Reply
+
+Briefly report what changed, what was validated, and any transcript uncertainty or externally sourced supplement that needs review. Do not hide a source attribution or a numbering mismatch.
