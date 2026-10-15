@@ -50,11 +50,11 @@ Every new section id is unique and prefixed by the lesson (e.g. `aq4-outcomes`).
 ## Technical workflow
 
 1. Identify subject, dars number and title. Ask if they cannot be established confidently.
-2. Back up the relevant page before a substantial edit.
+2. Work on a git branch (`lesson/<subject>-<n>`) or after a clean commit before a substantial edit; a local copy in the git-ignored `backups/` folder is optional.
 3. Build the dars in a separate fragment and merge it with an asserted unique anchor.
 4. Update the subject tabs, section links, homepage links and shared manifest as required.
 5. Preserve existing local progress keys when adjusting a page; update checklist totals only when the number of checkboxes changes.
-6. Run `python3 .opencode/skills/transcript-to-lesson/scripts/validate_site.py .` and report any source uncertainties.
+6. Run `python3 scripts/validate_site.py .` and report any source uncertainties.
 
 ## Reply
 

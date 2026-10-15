@@ -1,35 +1,39 @@
 ---
-description: Ajouter un nouveau dars au site à partir d'une transcription
+description: "Ajouter un nouveau dars au site à partir d'une transcription"
 ---
 Tu vas ajouter **un dars** au site Zlearn (multi-pages : `index.html` + un dossier par
-matière) à partir de la transcription fournie par l'utilisateur.
+matière) à partir de la transcription fournie.
 
 Entrée utilisateur : `$ARGUMENTS`
-(une transcription collée, un chemin de fichier `.txt/.md/.pdf.txt`, ou une URL de
-sous-titres). Si l'entrée est vide, demande la transcription.
+(transcription collée ou chemin d'un fichier `.txt`/`.md`). Si l'entrée est vide, demande
+la transcription.
+
+État git actuel :
+!`git status --short`
 
 Déroulé obligatoire :
 
-1. Charge la compétence `transcript-to-lesson` et lis `SKILL-general.md` en entier.
-2. **Certitude d'abord** : matière (`fiqh`|`aqida`|`tajwid`|nouvelle) et numéro du dars.
-   Si l'un des deux est incertain, **pose une question ciblée et arrête-toi**.
-   Vérifie qu'il n'existe pas déjà (doublon) dans la page de la matière.
-3. Lance le sous-agent **pedagogy-organizer** avec la transcription et les métadonnées.
-   Il produit un brouillon temporaire `brouillon-dars-<id>.md` (plan fidèle + quiz +
-   checklist + « À vérifier »).
-4. Lance le sous-agent **frontend-integrator** avec le brouillon et le chemin de la page
-   de la matière (`<matière>/index.html`). Il sauvegarde, écrit le bloc depuis le gabarit,
-   fusionne via `merge_lesson.py`, met à jour onglet + chips (+ nouvelle matière si besoin,
-   soit dossier + carte d'accueil + manifeste `ZLEARN_MATIERES`) et lance le validateur.
-5. Lance le sous-agent **qa-verifier** pour le contrôle final indépendant.
-6. Corrige les éventuels problèmes signalés, puis relance le validateur.
-7. **Supprime le brouillon** (`brouillon-dars-<id>.md`) : c'est un artefact temporaire,
-   il ne doit pas rester dans le dépôt.
-8. Réponse finale (format de `SKILL-general.md`) :
-   - « Ajouté : matière, dars n°, contenu ».
-   - « À vérifier : corrections, dates/noms incertains, ajouts, numérotation ».
-   - fichiers modifiés, chemin de la sauvegarde, résultat du validateur.
+1. Charge la skill `zlearn-ajouter-dars` et lis `SKILL-general.md` en entier.
+2. **Certitude d'abord** : matière (`fiqh`, `aqida`, `tajwid`, `sira`, `hadith`, `akhlaq`,
+   `nahw` ou nouvelle) et numéro du dars. Si l'un des deux est incertain, **pose une
+   question ciblée et arrête-toi**. Vérifie que le dars n'existe pas déjà (doublon).
+3. Filet de sécurité : si l'état git ci-dessus montre des changements sans rapport, demande
+   à l'utilisateur de les commiter ou de choisir une branche. Propose la branche
+   `lesson/<matière>-<n>`.
+4. Lance le sous-agent **pedagogy-organizer** avec la transcription et les métadonnées. Il
+   produit `brouillon-dars-<id>.md` (plan fidèle + questions + checklist + « À vérifier »).
+5. Lance le sous-agent **frontend-integrator** avec le brouillon et la page de la matière. Il
+   écrit le bloc depuis `templates/lesson-block.html`, fusionne via `scripts/merge_lesson.py`,
+   met à jour onglet, chips, accueil, `assets/search-index.js` et manifeste
+   `ZLEARN_MATIERES`, puis lance le validateur.
+6. Lance le sous-agent **qa-verifier** pour le contrôle final indépendant.
+7. Corrige les problèmes signalés, relance `python3 scripts/validate_site.py .`.
+8. **Supprime** `brouillon-dars-<id>.md` et `dars-<id>.html` : artefacts temporaires.
+9. Réponse finale :
+   - « Ajouté » : matière, dars n°, contenu.
+   - « À vérifier » : corrections, dates/noms incertains, ajouts extérieurs, numérotation.
+   - fichiers modifiés, résultat exact du validateur et du QA.
 
-Rappels : ne jamais supprimer/remplacer un dars existant ; interactions réelles ;
-RTL + responsive ; ids uniques par page ; mettre à jour le `total` du manifeste si des
-cases sont ajoutées. Ne prétends jamais qu'un test est passé sans l'avoir exécuté.
+Rappels : ne jamais supprimer/remplacer un dars existant ; interactions réelles ; RTL et
+lisible à 400 px ; ids uniques par page ; manifeste à jour. Ne prétends jamais qu'un test
+est passé sans l'avoir exécuté.

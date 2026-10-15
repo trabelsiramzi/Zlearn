@@ -1,69 +1,94 @@
 # Zlearn — instructions projet
 
-Site d’apprentissage de la première année (enseignement zaytounien) en arabe RTL : un site
-**statique multi-pages** (accueil + un dossier par matière + assets partagés), sans build
-ni dépendance runtime.
+Site d'apprentissage de la première année (enseignement zaytounien) en arabe RTL : un site
+**statique multi-pages** (accueil + un dossier par matière + assets partagés), sans
+dépendance runtime. Objectif : que l'étudiant **comprenne, pratique et retienne**, pas
+seulement qu'il relise (voir `README.md`).
 
-## Fichiers de référence
+> **Chantier en cours** : `RESTRUCTURATION.md` décrit la nouvelle architecture cible
+> (contenu en données, gabarits, moteur de révision espacée). Tant que ce chantier n'est pas
+> terminé, ce fichier décrit l'architecture **actuelle** et ses règles s'appliquent. À la fin
+> du chantier, mettre à jour ce fichier, les skills et `docs/conventions.md`.
 
-- `SKILL-general.md` — **référence fonctionnelle** pour transformer une transcription en leçon qui enseigne, fait pratiquer et permet de vérifier sa compréhension. Les compléments externes doivent être vérifiés et signalés.
-- `index.html` — page d'accueil : liste les matières, leurs dars et leur progression.
-- `fiqh/index.html`, `aqida/index.html`, `tajwid/index.html`, `sira/index.html`,
-  `hadith/index.html`, `akhlaq/index.html`, `nahw/index.html` — **une page par matière**
-  contenant ses dars. C'est **l'unique** document à modifier pour une matière donnée.
-  Ne jamais créer un site parallèle ni réinitialiser les contenus existants.
-- `assets/site.css` — tout le style (variables `--xxx`, thème clair/sombre).
-- `assets/site.js` — script partagé ES5, progression et interactions ;
-- `assets/search-index.js` — titres des sections de toutes les matières pour la recherche globale.
-- `backups/` — sauvegardes horodatées avant toute modification importante.
+## Carte du dépôt
+
+```text
+index.html, <matière>/index.html   pages du site (matières : fiqh aqida tajwid sira hadith akhlaq nahw)
+assets/                            site.css, site.js (+ manifeste ZLEARN_MATIERES), search-index.js
+scripts/                           validate_site.py, merge_lesson.py, dom_test.cjs
+templates/lesson-block.html        gabarit d'un dars
+docs/                              conventions.md (DOM, ids, progression), exemple-transformation.md
+SKILL-general.md                   référence fonctionnelle : transcription → leçon
+.agents/skills/                    skills (source unique, lues par OpenCode et Codex)
+.opencode/agents/, commands/       sous-agents et commandes propres à OpenCode
+```
+
+Une page de matière est **l'unique** document à modifier pour cette matière. Ne jamais créer
+un site parallèle ni réinitialiser des contenus existants.
 
 ## Règles non négociables
 
-1. **Préserver le contenu pédagogique** : ne jamais supprimer ni remplacer un dars/chapitre existant.
-2. Toujours **sauvegarder** la page modifiée avant une modification de masse (`backups/`).
-3. Chaque nouvelle section reçoit un **id unique préfixé par le dars** (ex. `l4-summary`).
-4. Les **checkbox**, les ids SVG et les cibles de quiz restent uniques dans toute la page ;
-   les sections n'ont pas à être uniques **entre** les pages (chaque dars a son préfixe).
-5. Le site doit rester **lisible à 400 px**, RTL, thème clair/sombre cohérent.
+1. **Préserver le contenu pédagogique** : ne jamais supprimer ni remplacer un dars existant.
+2. **Filet de sécurité = git** : travailler sur une branche (`lesson/<matière>-<n>`) ou après
+   un commit propre ; vérifier `git status` avant de commencer. `backups/` est un dossier
+   local optionnel, ignoré par git.
+3. **Fidélité à la source** : rien d'inventé. Un complément extérieur n'est ajouté que s'il est
+   vérifié, étiqueté **إضافة تعليمية** et sourcé ; sinon il est signalé à l'utilisateur. Pas de
+   poème, verset ou long passage recopié : paraphraser.
+4. Chaque section reçoit un **id unique préfixé par le dars** (ex. `nh4-summary`). Cases,
+   ids SVG, `data-key` et cibles de quiz sont uniques dans la page.
+5. Le site reste **lisible à 400 px**, RTL, thème clair/sombre cohérent.
 6. Interactions réelles uniquement : pas de maquette, pas de bouton mort.
-7. Après toute modification, lancer le **validateur** (dossier = toutes les pages +
-   cohérence du manifeste) :
-   `python3 .opencode/skills/transcript-to-lesson/scripts/validate_site.py .`
+7. Après toute modification : `python3 scripts/validate_site.py .` doit passer.
+8. **Honnêteté** : ne jamais affirmer qu'un contrôle a réussi sans l'avoir exécuté ; rapporter
+   la commande et son résultat exact.
+9. Si la matière ou le numéro d'un dars est incertain : **poser une question** avant d'agir.
 
-## Workflow d'ajout d'un dars
+## Commandes
 
-Utiliser `/nouveau-dars` (commande `.opencode/commands/nouveau-dars.md`) qui orchestre :
-`pedagogy-organizer` (analyse) → `frontend-integrator` (intégration) → `qa-verifier` (contrôle).
-La compétence `.opencode/skills/transcript-to-lesson` détaille les étapes et les conventions.
+```sh
+python3 scripts/validate_site.py .        # contrôle obligatoire (toutes les pages + manifeste)
+node --check assets/site.js               # syntaxe JS
+node scripts/dom_test.cjs                 # test DOM optionnel (npm install jsdom au préalable)
+python3 -m http.server 8000               # voir le site sur http://localhost:8000/
+```
 
-### Utilisation avec Codex
+## Workflows
 
-Les workflows adaptés à Codex sont dans `.agents/skills/` (format `SKILL.md`). Les charger
-selon la tâche :
+| Tâche | OpenCode | Codex / autres outils |
+| ----- | -------- | --------------------- |
+| Ajouter un dars depuis une transcription | `/nouveau-dars <transcription>` | skill `zlearn-ajouter-dars` |
+| Améliorer un aspect du site | `/ameliorer-site <axe>` | skill `zlearn-ameliorer-site` |
+| Auditer sans modifier | `/verifier-site` | skill `zlearn-verifier-site` |
+| RTL / arabe / accessibilité | skill `zlearn-rtl-arabe-a11y` | `$zlearn-rtl-arabe-a11y` |
 
-- ajout de leçon depuis une transcription : `$zlearn-ajouter-dars` ;
-- amélioration ciblée : `$zlearn-ameliorer-site` ;
-- audit sans modification : `$zlearn-verifier-site` ;
-- exigences RTL/accessibilité : `$zlearn-rtl-arabe-a11y`.
+L'ajout d'un dars enchaîne trois rôles : `zlearn-pedagogy-organizer` (analyse) →
+`zlearn-frontend-integrator` (intégration) → `zlearn-qa-verifier` (contrôle). Sous OpenCode,
+ce sont des sous-agents (`.opencode/agents/`) ; sous Codex, ce sont des étapes successives du
+même workflow, sans délégation automatique sauf demande explicite de l'utilisateur.
 
-Les compétences `zlearn-pedagogy-organizer`, `zlearn-frontend-integrator` et
-`zlearn-qa-verifier` reprennent les responsabilités des agents OpenCode comme étapes
-distinctes. Elles ne lancent pas automatiquement des sous-agents ; Codex applique ces
-rôles dans le workflow courant, sauf si l'utilisateur demande explicitement une délégation.
-Les fichiers `.opencode/` restent la référence historique pour OpenCode ; ne pas les
-modifier lors d'une adaptation Codex.
+Les skills de `.agents/skills/` sont la **source unique** ; ne pas recréer de copie dans
+`.opencode/skills/` (OpenCode lit aussi `.agents/skills/`).
 
-## Adaptation projet
+## Fichiers temporaires
 
-Le site a été découpé depuis un fichier unique initial vers un site multi-pages pour
-alléger chaque page. La cible d'écriture est la page de la matière. Chaque dars doit d’abord enseigner, puis faire pratiquer et guider l’étudiant vers la suite. Les résumés, listes de mémorisation et quiz de rappel restent des aides complémentaires. Les styles/scripts sont mutualisés dans `assets/`.
+`brouillon-dars-<id>.md` (analyse) et `dars-<id>.html` (fragment) sont supprimés dès que le
+dars est intégré et validé ; ils sont ignorés par git.
 
 ## Style du code
 
-- CSS : variables `--xxx` uniquement, compatibles thème sombre ; pas de couleur en dur.
-- JS : ES5 vanilla (le site cible des navigateurs mobiles anciens), enveloppé dans des IIFE.
-- Arabe : `dir="rtl" lang="ar"`, police `Amiri` (titres) + `IBM Plex Sans Arabic` (texte).
-- Mémorisation : chaque page matière enregistre son agrégat sous `mourshid-prog-<matière>` ;
-  les `total` du manifeste `ZLEARN_MATIERES` (dans `assets/site.js`) doivent correspondre
-  au nombre réel de cases. Le parcours de leçons terminées est stocké séparément sous
-  `mourshid-learning-<matière>` ; `lessons` doit correspondre aux dars publiés.
+- CSS : variables `--xxx` uniquement, compatibles thème sombre ; pas de couleur en dur ni de
+  `style=""` pour la mise en page.
+- JS : ES5 vanilla (navigateurs mobiles anciens), IIFE, `localStorage` sous `try/catch`.
+- Arabe : `dir="rtl" lang="ar"`, `Amiri` (titres) + `IBM Plex Sans Arabic` (texte).
+- Progression : agrégat de page sous `mourshid-prog-<matière>`, dars terminés sous
+  `mourshid-learning-<matière>`. Les `total` et `lessons` du manifeste `ZLEARN_MATIERES`
+  (`assets/site.js`) doivent correspondre aux cases et dars réels. Ne jamais renommer une clé
+  `localStorage` ou un préfixe d'id sans migration des données existantes.
+
+## Définition de « terminé » pour un dars
+
+Le validateur passe ; l'onglet, les chips, la carte d'accueil, l'index de recherche et le
+manifeste sont à jour ; 8 à 12 questions (rappel, compréhension, application) avec réponses
+expliquées ; aucune source extérieure non étiquetée ; fichiers temporaires supprimés ; la
+réponse finale liste matière, numéro, ajouts, « À vérifier » et résultat du validateur.

@@ -6,10 +6,11 @@ Le site est découpé en : ``index.html`` (accueil) + un dossier par matière
 + les scripts et styles partagés dans ``assets/``.
 
 Usage :
-    python3 validate_site.py [chemin]
+    python3 scripts/validate_site.py [chemin]
 
 ``chemin`` peut être un fichier HTML (contrôle isolé) ou un dossier (contrôle de
-toutes les pages ``*.html`` + cohérence inter-pages). Sans argument : racine du dépôt.
+toutes les pages ``*.html`` + cohérence inter-pages). Sans argument : racine du dépôt
+(le dossier parent de ``scripts/``), quel que soit le dossier courant.
 
 Contrôles par page :
   - ids dupliqués ;
@@ -60,7 +61,7 @@ AUTO_CLOSE = {
 }
 
 ARABIC_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
-SKIP_DIRS = {".git", ".opencode", "backups", "node_modules"}
+SKIP_DIRS = {".git", ".agents", ".opencode", "backups", "docs", "templates", "node_modules"}
 EXPECTED_SUBJECTS = ("fiqh", "aqida", "tajwid", "sira", "hadith", "akhlaq", "nahw")
 
 
@@ -291,7 +292,7 @@ def manifest_entries(site_js: str) -> dict[str, dict[str, int]]:
 
 
 def main(argv: list[str]) -> int:
-    target = argv[1] if len(argv) > 1 else "."
+    target = argv[1] if len(argv) > 1 else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if not os.path.exists(target):
         print(f"[ERREUR] introuvable : {target}", file=sys.stderr)
         return 2

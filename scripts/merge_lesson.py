@@ -2,7 +2,8 @@
 """Fusionne un bloc de dars (fichier HTML séparé) dans une page matière du site.
 
 Le site est multi-pages : chaque matière vit dans son dossier (``fiqh/index.html``,
-``aqida/index.html``, ``tajwid/index.html``, ``sira/index.html``, ``hadith/index.html``). Un nouveau dars s'ajoute donc dans la page
+``aqida/index.html``, ``tajwid/index.html``, ``sira/index.html``, ``hadith/index.html``,
+``akhlaq/index.html``, ``nahw/index.html``). Un nouveau dars s'ajoute donc dans la page
 de sa matière.
 
 Méthode recommandée par SKILL-general.md (§Technique, gros fichiers) : écrire la
@@ -10,14 +11,14 @@ nouvelle leçon dans un fichier à part, puis fusionner par remplacement de cha�
 **avec vérification que l'ancre apparaît exactement une fois**.
 
 Usage :
-    python3 merge_lesson.py \
-        --site "../../fiqh/index.html" \
+    python3 scripts/merge_lesson.py \
+        --site fiqh/index.html \
         --fragment dars-l4.html
 
 Options :
     --anchor TEXTE   marqueur d'insertion (défaut : fermeture du .subject avant </main>, détectée par regex)
     --after          insérer après l'ancre (défaut : avant)
-    --backups DIR    dossier des sauvegardes (défaut : backups/ à la racine)
+    --backups DIR    dossier des sauvegardes locales (défaut : backups/ à la racine, ignoré par git)
     --dry-run        afficher ce qui serait fait sans écrire
     --no-backup      ne pas créer de sauvegarde (déconseillé)
 

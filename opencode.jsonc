@@ -1,8 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  // Projet Zlearn : site de révision multi-pages (index.html + un dossier par matière
-  // + assets partagés), arabe RTL.
-  // Skills et agents vivent dans .opencode/ (découverte automatique).
-  // Le fichier de référence fonctionnel reste SKILL-general.md à la racine.
-  "formatter": false
+  // Projet Zlearn : site d'apprentissage multi-pages en arabe RTL.
+  // Règles : AGENTS.md. Skills : .agents/skills/. Sous-agents et commandes : .opencode/.
+  "formatter": false,
+  "permission": {
+    "bash": {
+      // La dernière règle qui correspond l'emporte : le joker d'abord, les exceptions ensuite.
+      "*": "ask",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "python3 scripts/validate_site.py*": "allow",
+      "node --check*": "allow"
+    }
+  }
 }

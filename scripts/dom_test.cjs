@@ -9,7 +9,7 @@
  *
  * Dépendance : jsdom (facultative, non incluse dans le projet).
  *   npm install jsdom        # une seule fois, dans un répertoire de travail
- *   node .opencode/skills/transcript-to-lesson/scripts/dom_test.cjs [fichier|dossier]
+ *   node scripts/dom_test.cjs [fichier|dossier]
  *
  * Le validateur statique `validate_site.py` reste le contrôle obligatoire ; ce test-ci
  * ne s'exécute que si jsdom est disponible sur la machine.
@@ -27,9 +27,9 @@ try {
   process.exit(2);
 }
 
-const REPO = path.resolve(__dirname, "../../../..");
+const REPO = path.resolve(__dirname, "..");
 const TARGET = process.argv[2] ? path.resolve(process.argv[2]) : REPO;
-const SKIP_DIRS = new Set([".git", ".opencode", "backups", "node_modules"]);
+const SKIP_DIRS = new Set([".git", ".agents", ".opencode", "backups", "docs", "templates", "node_modules"]);
 
 function collectPages(target) {
   const st = fs.statSync(target);
