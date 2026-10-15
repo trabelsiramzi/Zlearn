@@ -76,7 +76,7 @@
           }
         ],
         "checkboxes": 10,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "l1"
         ]
@@ -145,7 +145,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "l2"
         ]
@@ -220,7 +220,7 @@
           }
         ],
         "checkboxes": 13,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "l3"
         ]
@@ -331,7 +331,7 @@
           }
         ],
         "checkboxes": 11,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "aq1"
         ]
@@ -424,7 +424,7 @@
           }
         ],
         "checkboxes": 15,
-        "questionCount": 13,
+        "questionCount": 12,
         "dataKeys": [
           "aq2"
         ]
@@ -505,7 +505,7 @@
           }
         ],
         "checkboxes": 15,
-        "questionCount": 13,
+        "questionCount": 12,
         "dataKeys": [
           "aq3"
         ]
@@ -721,7 +721,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "tj2"
         ]
@@ -790,7 +790,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "tj3"
         ]
@@ -907,7 +907,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "h1",
           "h1"
@@ -977,7 +977,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "s2",
           "s2"
@@ -1059,7 +1059,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "s3",
           "s3"
@@ -1171,7 +1171,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "hd1",
           "hd1"
@@ -1265,7 +1265,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "hd2",
           "hd2"
@@ -1383,7 +1383,7 @@
           }
         ],
         "checkboxes": 12,
-        "questionCount": 13,
+        "questionCount": 12,
         "dataKeys": [
           "hd3",
           "hd3"
@@ -1477,7 +1477,7 @@
           }
         ],
         "checkboxes": 6,
-        "questionCount": 11,
+        "questionCount": 12,
         "dataKeys": [
           "ak1"
         ]
@@ -1546,7 +1546,7 @@
           }
         ],
         "checkboxes": 8,
-        "questionCount": 13,
+        "questionCount": 12,
         "dataKeys": [
           "ak2"
         ]
