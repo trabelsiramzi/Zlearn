@@ -20,5 +20,6 @@ python3 scripts/validate.py
 python3 scripts/build.py --check
 ```
 
-La CI suit le même flux et publie le dossier `site/` depuis la branche `restructuration`.
+La CI suit le même flux à chaque push et pull request ; elle republie le dossier `site/`
+(artefact de `build.py`) quand un push arrive sur `main`.
 Voir `docs/CONVENTIONS.md` pour les contrats détaillés.
