@@ -1,0 +1,12 @@
+{
+  "id": "hd2",
+  "subject": "hadith",
+  "number": 2,
+  "slug": "lesson",
+  "title": "حديث النية — إنما الأعمال بالنيات",
+  "shortTitle": "حديث النية — إنما الأعمال بالنيات",
+  "prefix": "hd2",
+  "legacyLessonId": "lesson-hd2",
+  "homeLabel": "الدرس الثاني — حديث النية",
+  "sourceFile": "source.md"
+}

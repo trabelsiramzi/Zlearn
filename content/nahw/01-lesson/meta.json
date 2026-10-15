@@ -1,0 +1,12 @@
+{
+  "id": "nh1",
+  "subject": "nahw",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مدخل إلى علم النحو وبرنامج المادة",
+  "shortTitle": "مدخل إلى علم النحو وبرنامج المادة",
+  "prefix": "nh1",
+  "legacyLessonId": "lesson-nh1",
+  "homeLabel": "الدرس الأول — مدخل إلى علم النحو وبرنامج المادة",
+  "sourceFile": "source.md"
+}

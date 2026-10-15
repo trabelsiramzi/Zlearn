@@ -1,6 +1,15 @@
-# Sauvegardes horodatées du site (générées par merge_lesson.py et les agents)
+# Copies locales optionnelles (le filet de sécurité principal est git)
 backups/
+# Fichiers de travail temporaires des workflows IA (supprimés après intégration d'un dars)
+brouillon-dars-*.md
+dars-*.html
 # Dépendances locales éventuelles (test DOM jsdom)
 node_modules/
 package.json
 package-lock.json
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/

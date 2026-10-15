@@ -1,0 +1,75 @@
+<!--
+  Gabarit de leçon d'apprentissage — Zlearn (structure identique aux leçons publiées).
+
+  Placeholders à remplacer (aucun ne doit rester dans le fichier final) :
+    <SUBJECT>   id de la matière : fiqh | aqida | tajwid | sira | hadith | akhlaq | nahw
+    <ID>        clé du dars, ex. nh4 (sert pour lesson-<ID>, data-key et les ids de cases)
+    <PREFIX>    préfixe des ids de sections, ex. nh4-  (toujours <ID>-)
+    <N>         numéro du dars dans la matière (1, 2, 3 …)
+    <ORDINAL>   « الأول » « الثاني » « الثالث » …
+    <MATIERE>   nom arabe de la matière, ex. النحو
+    <TITRE>     titre du dars
+    <COUNT>     nombre de cases de mémorisation (doit égaler le nombre de <input type="checkbox">)
+
+  Ne pas ajouter ici : boutons « leçon terminée » et précédent/suivant (générés par
+  assets/site.js), champ de réponse de l'activité (généré dans .application).
+  Le bloc est un enfant direct de .subject : ne jamais l'imbriquer dans le dars précédent.
+-->
+<div class="lesson" id="lesson-<ID>" data-lesson="<N>" role="tabpanel" aria-labelledby="tab-<SUBJECT>-<N>" tabindex="0">
+<div class="part-head"><p>مادة <MATIERE> · الدرس <ORDINAL></p><h2><TITRE></h2></div>
+<div class="goals"><h3>أهداف الدرس</h3><ul><li>…</li><li>…</li></ul></div>
+
+<section id="<PREFIX>summary"><h2>الخلاصة في ثلاث جمل</h2><div class="sum-box"><p>…</p><p>…</p><p>…</p></div></section>
+
+<section id="<PREFIX>map"><h2>الخريطة الذهنية</h2>
+<p class="lede">وصف مختصر للخريطة.</p>
+<div class="scroll"><svg viewBox="0 0 960 600" role="img" aria-label="خريطة ذهنية: …">
+<!-- ~6 branches ; ids de marqueurs SVG uniques dans la page (ex. <PREFIX>arrow) -->
+</svg></div>
+<p class="hint">مرّر الخريطة أفقيًا على الشاشات الصغيرة.</p></section>
+
+<!-- Une section par notion (ids <PREFIX>slug). Choisir tableau, arbre, étapes ou cartes selon le contenu. -->
+<section id="<PREFIX>part1"><h2>أولًا: …</h2>
+<p>شرح قصير بحسب تفريغ الأستاذ.</p>
+<div class="rule-box"><h3>مثال محلول</h3><p>الخطوات التي توصل إلى الجواب.</p></div>
+<div class="rule-box"><h3>جرّب بنفسك</h3><p>سؤال مواز قبل إظهار النموذج.</p></div>
+</section>
+
+<section id="<PREFIX>terms"><h2>المصطلحات</h2><dl class="terms"><div><dt>مصطلح</dt><dd>تعريف</dd></div></dl></section>
+
+<section id="<PREFIX>memorize"><h2>تحقق من فهمك</h2>
+<p class="lede">علّم على النقطة بعد أن تستطيع شرحها من ذاكرتك. تحفظ حالتك على هذا الجهاز.</p>
+<div class="group" data-key="<ID>"><div class="progress"><div class="bar" aria-hidden="true"><span class="pfill"></span></div><span class="plabel">0 من <COUNT></span></div><ul class="checks">
+<li><label class="check"><input type="checkbox" id="<ID>-k1"><span>…</span></label></li>
+<!-- ids <ID>-k1 … <ID>-k<COUNT> ; « من <COUNT> » doit égaler le nombre de cases -->
+</ul></div></section>
+
+<section id="<PREFIX>quiz"><h2>تدرّب وتحقق من فهمك</h2>
+<div class="quiz-head"><p class="lede">حاول الإجابة قبل فتح النموذج. بعد المقارنة، قيّم فهمك بصدق.</p><button class="btn toggle-all" type="button" data-target="<PREFIX>quiz">إظهار كل الأجوبة</button></div>
+<details><summary>سؤال</summary><p class="ans">جواب مع شرح موجز.</p></details>
+<!-- 8 à 12 questions : rappel, compréhension, application -->
+<div class="application" id="<SUBJECT><N>-activity"><h3>نشاط تطبيقي من محتوى الدرس: …</h3><p>تعليمة تطلب من الطالب أن يطبق ما تعلمه.</p><details><summary>اعرض معيار الإجابة بعد المحاولة</summary><p class="ans">معيار تصحيح مبني على الدرس.</p></details></div>
+</section>
+
+</div>
+
+<!--
+  À ajouter AUSSI dans la page de la matière (à la main, hors du fragment) :
+
+  1) Onglet, dans <div class="wrap tabs" data-subject="<SUBJECT>"> :
+  <button class="tab" type="button" role="tab" id="tab-<SUBJECT>-<N>" aria-controls="lesson-<ID>" data-lesson="<N>" aria-selected="false">الدرس <ORDINAL><small><TITRE court></small></button>
+
+  2) Ligne de liens rapides, dans nav.toc après les .chips existants :
+  <div class="wrap chips" data-subject="<SUBJECT>" data-for="<N>">
+    <a href="#<PREFIX>summary">نظرة عامة</a><a href="#<PREFIX>map">الخريطة</a>
+    <a href="#<PREFIX>terms">المصطلحات</a><a href="#<PREFIX>memorize">تحقق من فهمك</a><a href="#<PREFIX>quiz">تدرّب</a>
+  </div>
+
+  3) Carte de la matière dans index.html (liste .dars) :
+  <li><a href="<SUBJECT>/index.html#lesson-<ID>" data-lesson="<N>">الدرس <ORDINAL> — <TITRE></a></li>
+  puis aria-valuemax et libellé « 0 من N » de la carte.
+
+  4) assets/site.js : manifeste ZLEARN_MATIERES → total (cases) et lessons (dars) de la matière.
+  5) assets/search-index.js : une entrée par section du nouveau dars.
+  6) index.html : aria-valuemax et texte « أتممت 0 من N درسًا » de la progression globale.
+-->

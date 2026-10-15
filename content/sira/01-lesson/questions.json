@@ -1,0 +1,112 @@
+[
+  {
+    "id": "sr1-q01",
+    "type": "recall",
+    "phase": "pretest",
+    "prompt": "ما تعريف السيرة النبوية؟",
+    "answer": "كل ما يتصل بحياة النبي ﷺ منذ مولده حتى وفاته",
+    "explain": "كل ما يتصل بحياة النبي ﷺ منذ مولده حتى وفاته",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q02",
+    "type": "recall",
+    "phase": "pretest",
+    "prompt": "ما الفرق بين السيرة والمغازي؟",
+    "answer": "السيرة تشمل كل حياة النبي ﷺ، والمغازي مختصة بأخبار الغزو والصرايا والبعوث بعد الهجرة",
+    "explain": "السيرة تشمل كل حياة النبي ﷺ، والمغازي مختصة بأخبار الغزو والصرايا والبعوث بعد الهجرة",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q03",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هو مؤلف السيرة النبوية المشهورة؟",
+    "answer": "أبو محمد عبد الملك بن هشام المعافري (ت 218هـ)",
+    "explain": "أبو محمد عبد الملك بن هشام المعافري (ت 218هـ)",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q04",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هو الذي شرح كتاب ابن هشام؟",
+    "answer": "أبو القاسم عبد الرحمن السهيلي الأندلسي (ت 581هـ) في الروض الأنف",
+    "explain": "أبو القاسم عبد الرحمن السهيلي الأندلسي (ت 581هـ) في الروض الأنف",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q05",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هو أول من صنف في المغازي؟",
+    "answer": "عروة بن الزبير رضي الله عنه",
+    "explain": "عروة بن الزبير رضي الله عنه",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q06",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هو أول من دوّن المغازي بترتيب واضح؟",
+    "answer": "ابن شهاب الزهري",
+    "explain": "ابن شهاب الزهري",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q07",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هو أول من ألف مفرداً وأخرجه للناس في المغازي؟",
+    "answer": "موسى بن عقبة",
+    "explain": "موسى بن عقبة",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q08",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "إلى من ينتهي النسب الشريف باتفاق الأمة؟",
+    "answer": "عدنان",
+    "explain": "عدنان",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q09",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هو أول من جمع قريش وسكنها مكة؟",
+    "answer": "قصي بن كلاب",
+    "explain": "قصي بن كلاب",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q10",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "كم اسماً للنبي ﷺ ذكر الجزولي في دلائل الخيرات؟",
+    "answer": "200 اسم",
+    "explain": "200 اسم",
+    "section": "h1-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr1-q11",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "اعرض معيار الإجابة بعد المحاولة",
+    "answer": "تحقق من كل خانة في موضعها من الدرس قبل اعتمادها.",
+    "explain": "تحقق من كل خانة في موضعها من الدرس قبل اعتمادها.",
+    "section": "h1-quiz",
+    "difficulty": 1
+  }
+]

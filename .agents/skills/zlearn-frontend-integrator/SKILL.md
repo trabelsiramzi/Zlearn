@@ -1,27 +1,22 @@
 ---
 name: zlearn-frontend-integrator
-description: Intégrer une leçon préparée dans la page matière Zlearn en préservant le contenu existant, la navigation, la progression, le RTL et le responsive.
+description: "Intégrer un dars préparé dans les données de Zlearn et générer les pages statiques."
 ---
 
-# Intégration frontend Zlearn
+# Intégration des données d’un dars
 
-Utilise le fragment pédagogique validé et lis les conventions de
-`.opencode/skills/transcript-to-lesson/references/project-conventions.md` ainsi que
-`.opencode/skills/rtl-arabic-a11y/SKILL.md`.
+Lis `docs/CONVENTIONS.md` et applique `zlearn-rtl-arabe-a11y` pour le HTML/CSS/JS.
+Vérifie l’état Git et protège le contenu publié.
 
-- Sauvegarder la page matière sous `backups/<matiere>-index.<horodatage>.html` avant toute
-  modification importante ; ne jamais supprimer ni remplacer une leçon existante.
-- Construire le dars dans un fragment séparé basé sur `templates/lesson-block.html`.
-  Fusionner avec `scripts/merge_lesson.py`, qui doit confirmer l'unicité de l'ancre. Insérer
-  avant la fermeture de `.subject`, jamais à l'intérieur du dars précédent.
-- Garder chaque nouvelle section id préfixée par le dars et unique dans la page. Vérifier
-  aussi les ids de cases, marqueurs SVG, clés `data-key` et cibles de quiz.
-- Mettre à jour les onglets et les liens de sections dans la page matière ; mettre à jour
-  `assets/search-index.js` et l'accueil/manifeste si le périmètre l'exige.
-- CSS partagé dans `assets/site.css` : variables de couleur, thèmes clair/sombre,
-  propriétés logiques RTL, lisible à 400 px. Pas de styles locaux superflus.
-- JavaScript partagé dans `assets/site.js` : ES5, vanilla, IIFE ; protéger l'accès
-  `localStorage` par `try/catch`. Pas de contrôle interactif sans action réelle.
-- Distinguer progression de leçon, checklist de mémorisation et autoévaluation. Les totaux
-  du manifeste doivent correspondre aux cases réelles.
-- Lancer le validateur du projet après l'intégration et rapporter exactement son résultat.
+- Source du dars : `content/<matière>/<NN>-<slug>/`; sortie générée : `site/`.
+- Compléter `meta.json`, `lesson.html`, `questions.json`, `source.md` et l’entrée
+  correspondante de `content/subjects.json`.
+- Utiliser les ids stables `<id>-q<NN>` et les références de sections réellement présentes.
+- Écrire le fragment en arabe RTL ; CSS partagé dans les sources, aucune mise en page inline.
+- Ne pas éditer les HTML, index ou scripts générés de `site/`.
+- Générer avec `python3 scripts/build.py`, puis exécuter `python3 scripts/validate.py` et
+  `python3 scripts/build.py --check`. Corriger les erreurs avant livraison.
+- Préserver toutes les leçons existantes et comparer les 21 leçons migrées au golden master.
+
+Rapporte fichiers sources, sorties, commandes exécutées et résultat exact. Toute incertitude
+sur la matière ou le numéro exige une question avant modification.

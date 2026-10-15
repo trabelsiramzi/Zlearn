@@ -1,0 +1,12 @@
+{
+  "id": "aq3",
+  "subject": "aqida",
+  "number": 3,
+  "slug": "lesson",
+  "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
+  "shortTitle": "التراجم وقراءة مقدمة الشذرات الذهبية",
+  "prefix": "aq3",
+  "legacyLessonId": "lesson-aq3",
+  "homeLabel": "الدرس الثالث — التراجم وقراءة المقدمة",
+  "sourceFile": "source.md"
+}

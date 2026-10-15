@@ -1,0 +1,12 @@
+{
+  "id": "ak1",
+  "subject": "akhlaq",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مدخل إلى علم الأخلاق وآداب العلم",
+  "shortTitle": "مدخل إلى علم الأخلاق وآداب العلم",
+  "prefix": "ak1",
+  "legacyLessonId": "lesson-ak1",
+  "homeLabel": "الدرس الأول — مدخل إلى علم الأخلاق وآداب العلم",
+  "sourceFile": "source.md"
+}

@@ -1,29 +1,28 @@
 ---
 name: zlearn-ajouter-dars
-description: Ajouter au site Zlearn une leçon depuis une transcription, en analysant son contenu, en l'intégrant à la bonne matière et en vérifiant le résultat. À utiliser pour toute demande d'ajout de dars ou chapitre.
+description: "Créer un dars Zlearn depuis sa transcription dans content/, générer le site et valider la livraison."
 ---
 
 # Ajouter un dars à Zlearn
 
-Suis les procédures `zlearn-pedagogy-organizer`, `zlearn-frontend-integrator` et
-`zlearn-qa-verifier`, dans cet ordre. Lis `SKILL-general.md` et les conventions du projet
-avant de rédiger. Le site est statique et multi-pages ; la page de la matière est la cible.
+Références : `SKILL-general.md`, `docs/CONVENTIONS.md`, `docs/ARCHITECTURE.md`.
 
-1. Lire toute la transcription et identifier matière, numéro et titre. Si la matière ou le
-   numéro ne sont pas établis avec confiance, poser une question ciblée avant l'intégration.
-2. Vérifier dans la page matière que le dars n'existe pas déjà.
-3. Produire un plan fidèle à la source, puis construire une leçon qui enseigne, fait
-   pratiquer avec feedback, et guide vers la suite. Ne pas inventer de contenu.
-4. Sauvegarder la page matière avant une modification importante. Créer un fragment séparé
-   à partir de `templates/lesson-block.html`, puis utiliser
-   `.opencode/skills/transcript-to-lesson/scripts/merge_lesson.py` avec une ancre unique.
-   Le bloc doit être enfant direct de `.subject`.
-5. Mettre à jour les onglets, liens de sections, index de recherche et manifeste selon les
-   changements. Garder les clés de progression existantes.
-6. Exécuter `python3 .opencode/skills/transcript-to-lesson/scripts/validate_site.py .` et
-   corriger les erreurs causées par l'ajout.
-7. Supprimer les fragments et brouillons temporaires après intégration.
+1. Confirmer matière, numéro, titre et absence de doublon. Si matière ou numéro sont
+   incertains, poser une question avant toute modification.
+2. Vérifier `git status` et travailler sur `lesson/<matière>-<NN>` (ou la branche propre
+   demandée par l’utilisateur). Ne jamais supprimer ni remplacer un dars existant.
+3. Lire la transcription en entier et bâtir le parcours selon `SKILL-general.md`.
+4. Créer le dossier avec `python3 scripts/new_lesson.py <matière> <NN> <slug> <titre>
+   <titre-court>`, puis compléter `meta.json`, `lesson.html`, `questions.json` et `source.md`.
+   Ajouter la même métadonnée dans `content/subjects.json` ; maintenir sections, compteurs,
+   liens précédent/suivant, index de recherche et catalogue cohérents au build.
+5. Préserver les ids stables existants. Les questions suivent `<id>-q<NN>`, référencent une
+   section réelle, contiennent réponse et explication, et couvrent rappel, compréhension et
+   application. N’inventer aucune information ; marquer les incertitudes.
+6. Exécuter `python3 scripts/build.py`, `python3 scripts/validate.py` et
+   `python3 scripts/build.py --check`. Exécuter les tests pertinents du moteur si celui-ci a
+   été touché. Comparer les contenus migrés à `tests/baseline.json`.
+7. Ne jamais éditer `site/` directement. Ne pas supprimer `tests/baseline.json` ni
+   `scripts/migrate_v1.py` sans confirmation explicite.
 
-Ne pas prétendre qu'une vérification a réussi sans l'avoir exécutée. En réponse, indiquer
-la matière et le numéro, les changements, les incertitudes de transcription, les fichiers,
-la sauvegarde et le résultat exact du validateur.
+Réponse : matière, numéro, ajouts, fichiers, commandes/résultats exacts et « À vérifier ».

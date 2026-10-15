@@ -1,0 +1,112 @@
+[
+  {
+    "id": "sr2-q01",
+    "type": "recall",
+    "phase": "pretest",
+    "prompt": "متى مات عبد الله بن عبد المطلب؟",
+    "answer": "قبل مولد النبي ﷺ، وكان جنينًا في بطن أمه",
+    "explain": "قبل مولد النبي ﷺ، وكان جنينًا في بطن أمه",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q02",
+    "type": "recall",
+    "phase": "pretest",
+    "prompt": "كم كان عمر عبد الله عند وفاته؟",
+    "answer": "25 سنة",
+    "explain": "25 سنة",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q03",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "أين توفي عبد الله؟",
+    "answer": "بالمدينة، في دار النابغة من بني عدي بن النجار",
+    "explain": "بالمدينة، في دار النابغة من بني عدي بن النجار",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q04",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من هي أمة بنت وهب؟",
+    "answer": "أم النبي ﷺ، بنت وهب بن عبد مناف",
+    "explain": "أم النبي ﷺ، بنت وهب بن عبد مناف",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q05",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "أين تربّت أمة بنت وهب؟",
+    "answer": "في بيت عمها وهيب بن عبد مناف",
+    "explain": "في بيت عمها وهيب بن عبد مناف",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q06",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "كم كان عمر النبي ﷺ عندما زار قبر أبيه؟",
+    "answer": "6 سنوات",
+    "explain": "6 سنوات",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q07",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "أين توفيت أمة بنت وهب؟",
+    "answer": "بالأبواء، بين مكة والمدينة",
+    "explain": "بالأبواء، بين مكة والمدينة",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q08",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من الذي حفر قبر أم النبي ﷺ؟",
+    "answer": "النبي ﷺ نفسه بيديه الصغيرتين، مع أم أيمن",
+    "explain": "النبي ﷺ نفسه بيديه الصغيرتين، مع أم أيمن",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q09",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "من الذي كفله بعد وفاة أمه؟",
+    "answer": "جده عبد المطلب بن هاشم",
+    "explain": "جده عبد المطلب بن هاشم",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q10",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "ما حديث الابتلاء؟",
+    "answer": "«أي الناس أشد بلاء؟ الأنبياء ثم الصالحون ثم الأمثل فالأمثل»",
+    "explain": "«أي الناس أشد بلاء؟ الأنبياء ثم الصالحون ثم الأمثل فالأمثل»",
+    "section": "s2-quiz",
+    "difficulty": 1
+  },
+  {
+    "id": "sr2-q11",
+    "type": "recall",
+    "phase": "practice",
+    "prompt": "اعرض معيار الإجابة بعد المحاولة",
+    "answer": "يُقاس الترتيب وفق التسلسل الذي عرضه الأستاذ، وتجد التواريخ والأسماء في فقرة الأحداث.",
+    "explain": "يُقاس الترتيب وفق التسلسل الذي عرضه الأستاذ، وتجد التواريخ والأسماء في فقرة الأحداث.",
+    "section": "s2-quiz",
+    "difficulty": 1
+  }
+]

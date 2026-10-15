@@ -1,35 +1,23 @@
 ---
-description: Ajouter un nouveau dars au site à partir d'une transcription
+description: "Ajouter un dars depuis une transcription au modèle de contenu Zlearn"
 ---
-Tu vas ajouter **un dars** au site Zlearn (multi-pages : `index.html` + un dossier par
-matière) à partir de la transcription fournie par l'utilisateur.
 
-Entrée utilisateur : `$ARGUMENTS`
-(une transcription collée, un chemin de fichier `.txt/.md/.pdf.txt`, ou une URL de
-sous-titres). Si l'entrée est vide, demande la transcription.
+Ajoute un dars à Zlearn à partir de `$ARGUMENTS` (transcription ou chemin). Si l'entrée est
+vide, demande la transcription.
 
-Déroulé obligatoire :
+État git : !`git status --short --branch`
 
-1. Charge la compétence `transcript-to-lesson` et lis `SKILL-general.md` en entier.
-2. **Certitude d'abord** : matière (`fiqh`|`aqida`|`tajwid`|nouvelle) et numéro du dars.
-   Si l'un des deux est incertain, **pose une question ciblée et arrête-toi**.
-   Vérifie qu'il n'existe pas déjà (doublon) dans la page de la matière.
-3. Lance le sous-agent **pedagogy-organizer** avec la transcription et les métadonnées.
-   Il produit un brouillon temporaire `brouillon-dars-<id>.md` (plan fidèle + quiz +
-   checklist + « À vérifier »).
-4. Lance le sous-agent **frontend-integrator** avec le brouillon et le chemin de la page
-   de la matière (`<matière>/index.html`). Il sauvegarde, écrit le bloc depuis le gabarit,
-   fusionne via `merge_lesson.py`, met à jour onglet + chips (+ nouvelle matière si besoin,
-   soit dossier + carte d'accueil + manifeste `ZLEARN_MATIERES`) et lance le validateur.
-5. Lance le sous-agent **qa-verifier** pour le contrôle final indépendant.
-6. Corrige les éventuels problèmes signalés, puis relance le validateur.
-7. **Supprime le brouillon** (`brouillon-dars-<id>.md`) : c'est un artefact temporaire,
-   il ne doit pas rester dans le dépôt.
-8. Réponse finale (format de `SKILL-general.md`) :
-   - « Ajouté : matière, dars n°, contenu ».
-   - « À vérifier : corrections, dates/noms incertains, ajouts, numérotation ».
-   - fichiers modifiés, chemin de la sauvegarde, résultat du validateur.
+1. Lire les skills Zlearn concernés, `SKILL-general.md` et `docs/CONVENTIONS.md`.
+2. Confirmer matière, numéro, titre, transcription complète et absence de doublon. Si matière
+   ou numéro incertain, demander avant tout changement.
+3. Travailler sur `lesson/<matière>-<NN>` après vérification du statut Git. Ne jamais
+   supprimer ou remplacer une leçon publiée.
+4. Faire successivement l'analyse pédagogique, l'intégration de `content/` et le contrôle QA.
+   Sous OpenCode, utiliser les agents définis dans `.opencode/agents/`.
+5. Créer le dossier avec `python3 scripts/new_lesson.py`, compléter `meta.json`,
+   `lesson.html`, `questions.json`, `source.md` et `content/subjects.json`.
+6. Générer puis valider : `python3 scripts/build.py`, `python3 scripts/validate.py`,
+   `python3 scripts/build.py --check`. Lancer les tests moteur concernés.
+7. Ne jamais éditer `site/` à la main. Les questions et ids publiés restent stables.
 
-Rappels : ne jamais supprimer/remplacer un dars existant ; interactions réelles ;
-RTL + responsive ; ids uniques par page ; mettre à jour le `total` du manifeste si des
-cases sont ajoutées. Ne prétends jamais qu'un test est passé sans l'avoir exécuté.
+Réponse finale : matière, numéro, contenu ajouté, fichiers, résultats exacts et « À vérifier ».

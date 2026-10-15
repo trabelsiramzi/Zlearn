@@ -1,0 +1,12 @@
+{
+  "id": "hd1",
+  "subject": "hadith",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مدخل إلى شرح الأربعين النووية",
+  "shortTitle": "مدخل إلى شرح الأربعين النووية",
+  "prefix": "hd1",
+  "legacyLessonId": "lesson-hd1",
+  "homeLabel": "الدرس الأول — مدخل إلى الأربعين النووية",
+  "sourceFile": "source.md"
+}

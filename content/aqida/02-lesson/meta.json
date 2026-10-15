@@ -1,0 +1,12 @@
+{
+  "id": "aq2",
+  "subject": "aqida",
+  "number": 2,
+  "slug": "lesson",
+  "title": "المبادئ العشرة لعلم العقيدة",
+  "shortTitle": "المبادئ العشرة لعلم العقيدة",
+  "prefix": "aq2",
+  "legacyLessonId": "lesson-aq2",
+  "homeLabel": "الدرس الثاني — المبادئ العشرة",
+  "sourceFile": "source.md"
+}

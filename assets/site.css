@@ -14,7 +14,7 @@
   --hero: #0F4C3A;
   --hero-ink: #F8F2E2;
   --hero-muted: #BFD3C6;
-  --gold: #B8964A;
+  --gold: #76520D;
   --accent: #0F6B4F;
   --accent-tint: #E0EDDD;
   --blue: #1D6A7A;
@@ -29,7 +29,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0B1912; --surface: #12261C; --panel: #193426; --ink: #EDF1E3; --muted: #A7BAA6; --line: #2A4A39;
-    --hero: #061F16; --hero-ink: #F4EFDF; --hero-muted: #A9C2B2; --gold: #D5B66B;
+    --hero: #061F16; --hero-ink: #F4EFDF; --hero-muted: #A9C2B2; --gold: #D8B866;
     --accent: #6FCF9F; --accent-tint: #14382A;
     --blue: #6BC3D0; --blue-tint: #12333A; --green: #7BD39A; --green-tint: #143A27; --amber: #E6B85C; --amber-tint: #3B2C0E;
     --red: #F08A7A; --red-tint: #40201B;
@@ -38,7 +38,7 @@
 }
 :root[data-theme="dark"] {
   --bg: #0B1912; --surface: #12261C; --panel: #193426; --ink: #EDF1E3; --muted: #A7BAA6; --line: #2A4A39;
-  --hero: #061F16; --hero-ink: #F4EFDF; --hero-muted: #A9C2B2; --gold: #D5B66B;
+  --hero: #061F16; --hero-ink: #F4EFDF; --hero-muted: #A9C2B2; --gold: #D8B866;
   --accent: #6FCF9F; --accent-tint: #14382A;
   --blue: #6BC3D0; --blue-tint: #12333A; --green: #7BD39A; --green-tint: #143A27; --amber: #E6B85C; --amber-tint: #3B2C0E;
   --red: #F08A7A; --red-tint: #40201B;
@@ -50,6 +50,12 @@ body { background: var(--bg); color: var(--ink); font-family: var(--body); font-
 .wrap { max-width: 1000px; margin-inline: auto; padding-inline: 16px; }
 .sal { font-family: var(--display), serif; }
 a:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+@font-face { font-family: "Amiri"; src: url("fonts/Amiri-Regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Amiri"; src: url("fonts/Amiri-Bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Arabic"; src: url("fonts/IBMPlexSansArabic-Regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Arabic"; src: url("fonts/IBMPlexSansArabic-Medium.woff2") format("woff2"); font-style: normal; font-weight: 500; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Arabic"; src: url("fonts/IBMPlexSansArabic-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: swap; }
 
 .blue { --c: var(--blue); --t: var(--blue-tint); }
 .green { --c: var(--green); --t: var(--green-tint); }
@@ -291,6 +297,66 @@ section { scroll-margin-top: 230px; }
 .progress-tools > .btn, .progress-import-label { min-height: 44px; display: inline-flex; align-items: center; }
 .progress-import { max-width: 100%; font: inherit; }
 .progress-transfer-note, .progress-transfer-status { flex-basis: 100%; margin: 0; color: var(--muted); font-size: .88rem; }
+
+/* Rappel actif et révision espacée */
+.active-recall, .review-summary, .review-item { margin-block: 22px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); border-radius: 14px; }
+.active-recall h2, .review-summary h2 { margin: 0 0 6px; }
+.active-recall > p, .review-summary > p { margin: 4px 0 12px; color: var(--muted); }
+.study-card { padding-block: 14px; border-top: 1px solid var(--line); }
+.study-card:first-of-type { border-top: 0; }
+.study-card h3 { margin: 0 0 8px; font-family: var(--display); font-size: 1.2rem; }
+.study-answer { display: block; width: 100%; min-height: 88px; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font: inherit; resize: vertical; }
+.study-stage { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-block: 10px; }
+.study-label, .study-model, .study-explain, .study-result { flex-basis: 100%; margin: 4px 0; }
+.study-model { padding: 12px; background: var(--accent-tint); border-radius: 10px; }
+.study-explain { color: var(--muted); }
+.study-revisit { display: inline-flex; align-items: center; min-height: 44px; }
+.review-item > a { font-weight: 600; }
+.review-empty { margin-block: 24px; padding: 18px; background: var(--surface); border-radius: 12px; }
+
+/* Classes qui remplacent les anciens styles locaux des schémas et contenus. */
+.diagram-color { fill: var(--c); }
+.diagram-muted { fill: var(--muted); }
+.diagram-ink { fill: var(--ink); }
+.diagram-amber { fill: var(--amber); }
+.diagram-hero-muted { fill: var(--hero-muted); }
+.diagram-surface { fill: var(--surface); }
+.diagram-stroke-blue { stroke: var(--blue); }
+.diagram-stroke-green { stroke: var(--green); }
+.diagram-stroke-amber { stroke: var(--amber); }
+.diagram-text-small { font-size: 17px; }
+.diagram-text-medium { font-size: 18px; }
+.diagram-text-large { font-size: 22px; }
+.diagram-text-xlarge { font-size: 23px; }
+.check-static { grid-template-columns: 1fr; cursor: default; }
+.content-heading, .content-heading-compact, .content-heading-before, .content-heading-after { font-family: var(--display); font-size: 1.4rem; }
+.content-heading { margin: 22px 0 4px; }
+.content-heading-compact { margin: 6px 0 4px; }
+.content-heading-before { margin: 26px 0 8px; }
+.content-heading-after { margin: 22px 0 8px; }
+.space-before-medium { margin-top: 14px; }
+.space-block-start { margin-top: 0; margin-bottom: 14px; }
+.space-after-small { margin: 0 0 8px; }
+.space-after-large { margin-bottom: 22px; }
+.space-after-medium { margin: 0 0 12px; }
+.space-before-small { margin-top: 6px; }
+.space-before-none { margin-top: 0; }
+.space-after-regular { margin: 0 0 10px; }
+.measure-copy-short { margin: 0 0 8px; max-width: 65ch; }
+.measure-copy-medium { margin: 0 0 12px; max-width: 65ch; }
+.measure-copy-regular { margin: 0 0 10px; max-width: 65ch; }
+
+@media print {
+  :root { --bg: #FFFFFF; --surface: #FFFFFF; --panel: #F2F2F2; --ink: #111111; --muted: #333333; --line: #BBBBBB; --hero: #FFFFFF; --hero-ink: #111111; --hero-muted: #333333; }
+  body { background: var(--bg); color: var(--ink); font-size: 12pt; }
+  .toc, .skip, .toTop, .progress-tools, .lesson-stepper, .review-summary, [data-pretest], [data-practice], .study-card, .search { display: none !important; }
+  .hero { padding: 0 0 10pt; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .hero h1 { font-size: 24pt; }
+  .hero-sub, .eyebrow { color: var(--muted); }
+  .wrap { max-width: none; padding-inline: 0; }
+  .lesson, section, .rule-box, .application, table { break-inside: avoid; }
+  a { color: var(--ink); text-decoration: none; }
+}
 
 /* Glossaires : sous-titres par nature d'entrée (termes, personnes, lieux) */
 .terms-sub { margin: 22px 0 8px; font-family: var(--display); font-size: 1.3rem; line-height: 1.5; color: var(--muted); }

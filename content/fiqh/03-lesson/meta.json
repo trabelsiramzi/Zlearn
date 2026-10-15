@@ -1,0 +1,12 @@
+{
+  "id": "fq3",
+  "subject": "fiqh",
+  "number": 3,
+  "slug": "lesson",
+  "title": "كتاب الطهارة",
+  "shortTitle": "كتاب الطهارة",
+  "prefix": "fq3",
+  "legacyLessonId": "lesson-3",
+  "homeLabel": "الدرس الثالث — كتاب الطهارة",
+  "sourceFile": "source.md"
+}
