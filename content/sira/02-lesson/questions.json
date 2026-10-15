@@ -2,7 +2,7 @@
   {
     "id": "sr2-q01",
     "type": "recall",
-    "phase": "practice",
+    "phase": "pretest",
     "prompt": "متى مات عبد الله بن عبد المطلب؟",
     "answer": "قبل مولد النبي ﷺ، وكان جنينًا في بطن أمه",
     "explain": "قبل مولد النبي ﷺ، وكان جنينًا في بطن أمه",
@@ -12,7 +12,7 @@
   {
     "id": "sr2-q02",
     "type": "recall",
-    "phase": "practice",
+    "phase": "pretest",
     "prompt": "كم كان عمر عبد الله عند وفاته؟",
     "answer": "25 سنة",
     "explain": "25 سنة",

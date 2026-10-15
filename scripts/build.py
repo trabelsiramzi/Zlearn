@@ -168,6 +168,7 @@ def render_lesson_page(subject, lesson, index, subjects):
             continue
         chips.append('<a href="#%s">%s</a>' % (section["id"], section["heading"]))
     fragment = (ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"])) / "lesson.html").read_text(encoding="utf-8")
+    questions = json.dumps(read_json(ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"])) / "questions.json"), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     previous_label = "الدرس السابق"
     next_label = "الدرس التالي ←"
     stepper_parts = ['<nav class="lesson-stepper" aria-label="التنقل بين دروس المادة">']
@@ -187,7 +188,7 @@ def render_lesson_page(subject, lesson, index, subjects):
         "LESSON_URL": url, "LESSON_NUMBER": meta["number"], "LESSON_COUNT": len(subject["lessons"]),
         "PREVIOUS_URL": previous, "NEXT_URL": following, "LESSON_LABEL": label,
         "LEGACY_ID": meta["legacyLessonId"], "SITE_PREFIX": "../../", "TOTAL_LESSONS": sum(s["lessonsCount"] for s in subjects),
-        "CHIPS": "".join(chips), "LESSON_HTML": fragment, "STEPPER": "".join(stepper_parts),
+        "CHIPS": "".join(chips), "LESSON_HTML": fragment, "QUESTION_DATA": questions, "STEPPER": "".join(stepper_parts),
     }
     return replace_tokens(template, values)
 
@@ -195,18 +196,30 @@ def render_lesson_page(subject, lesson, index, subjects):
 def build():
     subjects = read_json(ROOT / "content/subjects.json")
     html_paths = {"index.html": render_home(subjects)}
+    html_paths["review/index.html"] = (ROOT / "templates/review.html").read_text(encoding="utf-8")
     for subject in subjects:
         html_paths[subject["file"]] = render_summary(subject)
         for i, lesson in enumerate(subject["lessons"]):
             html_paths[lesson_url(subject, lesson)] = render_lesson_page(subject, lesson, i, subjects)
     js = (ROOT / "templates/current/site.js").read_text(encoding="utf-8")
     js = re.sub(r"var ZLEARN_MATIERES = \[[\s\S]*?\n\];", manifest_js(subjects), js, count=1)
+    js = "\n".join([(ROOT / "src/js/storage.js").read_text(encoding="utf-8"), js,
+                     (ROOT / "src/js/srs.js").read_text(encoding="utf-8"),
+                     (ROOT / "src/js/quiz.js").read_text(encoding="utf-8"),
+                     (ROOT / "src/js/review.js").read_text(encoding="utf-8")])
     output = {OUT / name: text for name, text in html_paths.items()}
     output[OUT / "assets/site.css"] = (ROOT / "assets/site.css").read_text(encoding="utf-8")
     output[OUT / "assets/site.js"] = js
     output[OUT / "assets/search-index.js"] = render_search_index(search_sections(subjects))
-    output[OUT / "assets/storage.js"] = (ROOT / "src/js/storage.js").read_text(encoding="utf-8")
     output[OUT / "assets/storage-catalog.js"] = "var ZLEARN_STORAGE_CATALOG = " + json.dumps(storage_catalog(subjects), ensure_ascii=False, separators=(",", ":")) + ";\n"
+    question_catalog = []
+    for subject in subjects:
+        for lesson in subject["lessons"]:
+            meta = lesson["meta"]
+            folder = ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"]))
+            for question in read_json(folder / "questions.json"):
+                question_catalog.append({"question": question, "subject": subject["id"], "subjectName": subject["name"], "lessonTitle": meta["title"], "url": lesson_url(subject, lesson)})
+    output[OUT / "assets/question-catalog.js"] = "var ZLEARN_QUESTION_CATALOG = " + json.dumps(question_catalog, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + ";\n"
     mismatches = []
     for path, text in output.items():
         if "--check" in sys.argv:

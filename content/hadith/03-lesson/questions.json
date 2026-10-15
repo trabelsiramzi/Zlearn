@@ -2,7 +2,7 @@
   {
     "id": "hd3-q01",
     "type": "recall",
-    "phase": "practice",
+    "phase": "pretest",
     "prompt": "ما اسم الحديث الثاني في الأربعين النووية؟",
     "answer": "حديث جبريل",
     "explain": "حديث جبريل",
@@ -12,7 +12,7 @@
   {
     "id": "hd3-q02",
     "type": "recall",
-    "phase": "practice",
+    "phase": "pretest",
     "prompt": "من رواه وعن من؟",
     "answer": "رواه مسلم عن عمر بن الخطاب رضي الله عنه",
     "explain": "رواه مسلم عن عمر بن الخطاب رضي الله عنه",

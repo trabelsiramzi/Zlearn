@@ -1,3 +1,73 @@
+/* Stockage versionné Zlearn. Les anciennes clés sont conservées pour permettre un retour arrière. */
+(function (root, factory) {
+  var api = factory(root);
+  if (typeof module !== "undefined" && module.exports) module.exports = api;
+  root.ZLEARN_STORAGE = api;
+}(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : this), function (root) {
+  "use strict";
+  var KEY = "zlearn:v2", memory = {}, nativeStore = null;
+  try { nativeStore = root.localStorage; if (nativeStore) { var probe = "__zlearn_probe"; nativeStore.setItem(probe, "1"); nativeStore.removeItem(probe); } } catch (e) { nativeStore = null; }
+  function rawGet(k) { try { return nativeStore ? nativeStore.getItem(k) : (Object.prototype.hasOwnProperty.call(memory, k) ? memory[k] : null); } catch (e) { return Object.prototype.hasOwnProperty.call(memory, k) ? memory[k] : null; } }
+  function rawSet(k, v) { v = String(v); memory[k] = v; try { if (nativeStore) nativeStore.setItem(k, v); } catch (e) {} }
+  function state() { var s; try { s = JSON.parse(rawGet(KEY) || "null"); } catch (e) { s = null; } return validState(s) ? s : empty(); }
+  function empty() { return {schema:2, lessons:{}, checks:{}, cards:{}, answers:{}, prefs:{}}; }
+  function validState(s) { return !!s && s.schema === 2 && obj(s.lessons) && obj(s.checks) && obj(s.cards) && obj(s.answers) && obj(s.prefs); }
+  function obj(x) { return !!x && typeof x === "object" && !Array.isArray(x); }
+  function save(s) { if (!validState(s)) return false; rawSet(KEY, JSON.stringify(s)); return true; }
+  function today() { var d = new Date(); return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2); }
+  function dateOf(v) { var d = new Date(v); return isNaN(d.getTime()) ? today() : d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2); }
+  function catalog() { return root.ZLEARN_STORAGE_CATALOG || {keys:[], lessonKeys:{}, checkIds:{}, groupIds:{}, answerIds:{}, quizIds:{}}; }
+  function allowed(k) { var a = catalog().keys || []; return a.indexOf(k) !== -1; }
+  function migrateValue(s, k, value) {
+    var c = catalog(), m, parsed, name, i, mapped;
+    if (k === "mourshid-theme") { if (value === "dark" || value === "light") s.prefs.theme = value; return; }
+    if (k.indexOf("zlearn-answer-") === 0) { name=k.slice(14); if (c.answerIds[name]) s.answers[c.answerIds[name]]=value; return; }
+    if (k.indexOf("mourshid-learning-") === 0) {
+      name=k.slice(18); try { parsed=JSON.parse(value); } catch(e) { return; }
+      if (!obj(parsed)) return;
+      if (obj(parsed.completed)) Object.keys(parsed.completed).forEach(function(n){ mapped=c.lessonKeys[name+":"+n]; if(mapped && parsed.completed[n]) { s.lessons[mapped]=s.lessons[mapped]||{}; if(!s.lessons[mapped].completedAt) s.lessons[mapped].completedAt=today(); }});
+      if (parsed.lastLesson != null) { mapped=c.lessonKeys[name+":"+parsed.lastLesson]; if(mapped) { s.lessons[mapped]=s.lessons[mapped]||{}; if(parsed.lastAt) s.lessons[mapped].lastOpened=dateOf(parsed.lastAt); } }
+      return;
+    }
+    if (k.indexOf("mourshid-") === 0 && /-verses$/.test(k)) { name=k.slice(9,-7); mapped=c.answerIds[name+"-verses"]; if(mapped) s.answers[mapped]=value; return; }
+    if (k.indexOf("mourshid-quiz-") === 0) {
+      name=k.slice(14); try { parsed=JSON.parse(value); } catch(e) { return; }
+      if (!obj(parsed) || !obj(parsed.g) || !c.quizIds[name]) return;
+      Object.keys(parsed.g).forEach(function(ix){ i=Number(ix); mapped=c.quizIds[name][i]; if(mapped && (parsed.g[ix]==="ok" || parsed.g[ix]==="review")) s.cards[mapped]={box:1,due:today(),history:[parsed.g[ix]==="ok"?1:0]}; }); return;
+    }
+    if (k.indexOf("mourshid-") === 0) {
+      name=k.slice(9); mapped=c.groupIds[name]; if (!mapped) return;
+      try { parsed=JSON.parse(value); } catch(e) { return; }
+      if (!obj(parsed)) return;
+      Object.keys(parsed).forEach(function(id){ var cid=c.checkIds[id]; if(cid) s.checks[cid]=parsed[id] === true; });
+    }
+  }
+  function migrate() {
+    var s=state(), c=catalog(), i,k,v,marker="_legacyMigrated";
+    if (s.prefs[marker]) return s;
+    for(i=0;i<(c.keys||[]).length;i++){ k=c.keys[i]; v=rawGet(k); if(v!==null) migrateValue(s,k,v); }
+    s.prefs[marker]=true; save(s); return s;
+  }
+  function syncLegacy(s) {
+    var c=catalog(), reverse={}, groups={}, lessons={}, answers={}, k, old, raw, subject, number;
+    Object.keys(c.checkIds||{}).forEach(function(id){reverse[c.checkIds[id]]=id;});
+    Object.keys(c.groupIds||{}).forEach(function(id){groups[id]={};});
+    Object.keys(s.checks).forEach(function(id){old=reverse[id]; if(old){ Object.keys(c.groupIds||{}).forEach(function(g){if(old.indexOf(g+"-")===0) groups[g][old]=s.checks[id];}); }});
+    Object.keys(groups).forEach(function(g){raw="mourshid-"+g; if(allowed(raw)) rawSet(raw,JSON.stringify(groups[g]));});
+    Object.keys(c.lessonKeys||{}).forEach(function(pair){var p=pair.split(":"); subject=p[0]; number=p[1]; lessons[subject]=lessons[subject]||{completed:{}}; if(s.lessons[c.lessonKeys[pair]] && s.lessons[c.lessonKeys[pair]].completedAt) lessons[subject].completed[number]=true;});
+    Object.keys(lessons).forEach(function(sub){raw="mourshid-learning-"+sub; if(allowed(raw)) rawSet(raw,JSON.stringify(lessons[sub]));});
+    Object.keys(c.answerIds||{}).forEach(function(oldId){var target=c.answerIds[oldId]; if(Object.prototype.hasOwnProperty.call(s.answers,target)){raw=oldId.slice(-7)==="-verses"?"mourshid-"+oldId:"zlearn-answer-"+oldId; if(allowed(raw)) rawSet(raw,s.answers[target]);}});
+    if(s.prefs.theme) rawSet("mourshid-theme",s.prefs.theme);
+  }
+  function getItem(k) { var v=rawGet(k); if(v!==null) return v; return null; }
+  function setItem(k,v) { rawSet(k,v); var s=state(); if(allowed(k)) { migrateValue(s,k,String(v)); save(s); } }
+  function removeItem(k) { /* Anciennes clés restent présentes pour permettre le rollback. */ setItem(k, ""); }
+  function importV1(data) { if(!obj(data)) return false; var s=state(); Object.keys(data).forEach(function(k){ if(allowed(k) && typeof data[k]==="string") { rawSet(k,data[k]); migrateValue(s,k,data[k]); } }); save(s); return true; }
+  function importV2(input) { var s=input && input.data ? input.data : input; if(!validState(s)) return false; var clean=empty(); Object.keys(s.lessons).forEach(function(k){ if(/^[a-z0-9-]+$/.test(k) && obj(s.lessons[k])) clean.lessons[k]=s.lessons[k]; }); Object.keys(s.checks).forEach(function(k){ if(/^[a-z0-9-]+$/.test(k) && typeof s.checks[k]==="boolean") clean.checks[k]=s.checks[k]; }); Object.keys(s.cards).forEach(function(k){ var c=s.cards[k]; if(/^[a-z0-9-]+$/.test(k) && obj(c) && c.box>=1 && c.box<=5 && /^\d{4}-\d\d-\d\d$/.test(c.due) && Array.isArray(c.history)) clean.cards[k]=c; }); Object.keys(s.answers).forEach(function(k){ if(/^[a-z0-9-]+$/.test(k) && typeof s.answers[k]==="string") clean.answers[k]=s.answers[k]; }); if(s.prefs.theme==="dark" || s.prefs.theme==="light") clean.prefs.theme=s.prefs.theme; save(clean); syncLegacy(clean); return true; }
+  migrate();
+  return {getItem:getItem,setItem:setItem,removeItem:removeItem,getState:state,setState:save,migrate:migrate,allowedKey:allowed,importV1:importV1,importV2:importV2,exportV2:function(){return {format:"zlearn-progress",version:2,exportedAt:new Date().toISOString(),data:state()};}};
+}));
+
 /* Zlearn — script partagé par toutes les pages (ES5, sans dépendance).
    Le manifeste suit séparément les cases de mémorisation (total) et les dars publiés
    (lessons) ; le parcours d’apprentissage ne compte que les leçons terminées. */
@@ -923,3 +993,73 @@ var ZLEARN_MATIERES = [
     box.parentNode.insertBefore(wrap, box.nextSibling);
   });
 })();
+
+/* Fonctions pures du calendrier de révision. Dates locales YYYY-MM-DD. */
+(function(root, factory) {
+  var api=factory();
+  if(typeof module!=="undefined"&&module.exports) module.exports=api;
+  root.ZLEARN_SRS=api;
+}(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:this),function(){
+  "use strict";
+  var intervals=[1,3,7,14,30];
+  function shift(day,n){var d=new Date(day+"T12:00:00"); d.setDate(d.getDate()+n); return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);}
+  function grade(card,correct,confidence,day){
+    var old=card||{}, box=old.box||1, next;
+    if(!correct||confidence==="guessed") next=1;
+    else if(confidence==="sure") next=Math.min(5,box+1);
+    else next=box;
+    var days=(!correct||confidence==="guessed")?1:intervals[next-1];
+    var history=Array.isArray(old.history)?old.history.slice():[]; history.push(correct?1:0);
+    return {box:next,due:shift(day,days),history:history};
+  }
+  function dueCards(catalog,state,day,max){
+    var eligible=[]; (catalog||[]).forEach(function(item){var c=state.cards[item.question.id]; if(c&&c.due<=day) eligible.push({item:item,due:c.due,subject:item.subject});});
+    eligible.sort(function(a,b){return a.due<b.due?-1:a.due>b.due?1:0;});
+    var groups={}, order=[], result=[];
+    eligible.forEach(function(x){if(!groups[x.subject]){groups[x.subject]=[];order.push(x.subject);}groups[x.subject].push(x);});
+    while(order.length&&result.length<(max||20)){var next=[];order.forEach(function(s){if(groups[s].length){result.push(groups[s].shift());if(groups[s].length)next.push(s);}});order=next;}
+    return result.map(function(x){return x.item;});
+  }
+  return {intervals:intervals.slice(),shiftDate:shift,grade:grade,dueCards:dueCards};
+}));
+
+/* Interface de rappel actif : réponse, confiance, correction expliquée, auto-évaluation. */
+(function(root){
+  "use strict";
+  function el(tag,cls,text){var n=document.createElement(tag); if(cls)n.className=cls; if(text)n.textContent=text; return n;}
+  function save(q,correct,confidence){var st=root.ZLEARN_STORAGE.getState(); st.cards[q.id]=root.ZLEARN_SRS.grade(st.cards[q.id],correct,confidence,root.ZLEARN_SRS.shiftDate((function(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);}()),0)); root.ZLEARN_STORAGE.setState(st);}
+  function renderOne(host,q,onDone){
+    var card=el("article","study-card"); card.appendChild(el("h3","",q.prompt));
+    var answer=el("textarea","study-answer"); answer.rows=3; answer.setAttribute("aria-label","اكتب إجابتك قبل عرض الإجابة النموذجية"); answer.placeholder="اكتب إجابتك من الذاكرة…"; card.appendChild(answer);
+    var stage=el("div","study-stage"); stage.setAttribute("aria-live","polite"); card.appendChild(stage);
+    var attempt=el("button","btn primary","سجّلت محاولتي"); attempt.type="button"; attempt.disabled=true; card.appendChild(attempt);
+    answer.addEventListener("input",function(){attempt.disabled=!answer.value.trim();});
+    attempt.addEventListener("click",function(){ if(!answer.value.trim())return; answer.disabled=true; attempt.disabled=true; attempt.hidden=true; stage.appendChild(el("p","study-label","ما مستوى ثقتك قبل رؤية الإجابة؟")); [ ["sure","واثق"],["hesitant","متردد"],["guessed","خمّنت"] ].forEach(function(pair){var b=el("button","btn",pair[1]); b.type="button"; b.addEventListener("click",function(){
+      stage.innerHTML=""; stage.appendChild(el("p","study-label","الإجابة النموذجية")); stage.appendChild(el("p","study-model",q.answer)); stage.appendChild(el("p","study-explain",q.explain)); var revisit=el("a","study-revisit","راجع موضع الشرح في الدرس"); revisit.href=q.sectionUrl||("#"+q.section); stage.appendChild(revisit); stage.appendChild(el("p","study-label","هل كانت إجابتك صحيحة؟"));
+      [[true,"نعم، إجابتي صحيحة"],[false,"أحتاج إلى مراجعة"]].forEach(function(choice){var rate=el("button","btn",choice[1]); rate.type="button"; rate.addEventListener("click",function(){save(q,choice[0],pair[0]); stage.innerHTML=""; stage.appendChild(el("p","study-result",choice[0]?"سُجلت للمراجعة اللاحقة." : "ستعود هذه البطاقة غدًا.")); if(onDone)onDone(choice[0],pair[0]);}); stage.appendChild(rate);});
+    });stage.appendChild(b);}); });
+    host.appendChild(card); return card;
+  }
+  function initLesson(){var data=document.getElementById("lesson-question-data");if(!data)return;var q;try{q=JSON.parse(data.textContent);}catch(e){return;}
+    var pre=document.querySelector("[data-pretest]");var practice=document.querySelector("[data-practice]");
+    function queue(host,items){var pending=items.length,retries=[];function render(item){renderOne(host,item,function(correct,confidence){if(!correct&&confidence==="sure"&&!item._retried){var retry={};Object.keys(item).forEach(function(k){retry[k]=item[k];});retry._retried=true;retries.push(retry);}pending--;if(!pending&&retries.length){var next=retries.shift();pending=1;render(next);}});}items.forEach(render);}
+    if(pre)queue(pre,q.filter(function(x){return x.phase==="pretest";}));
+    if(practice)queue(practice,q.filter(function(x){return x.phase!=="pretest";}));
+  }
+  root.ZLEARN_QUIZ={renderOne:renderOne,initLesson:initLesson};
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initLesson);else initLesson();
+}(window));
+
+(function(root){
+  "use strict";
+  function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);}
+  function init(){
+    var st=root.ZLEARN_STORAGE.getState(), catalog=root.ZLEARN_QUESTION_CATALOG||[], due=root.ZLEARN_SRS.dueCards(catalog,st,today(),20), count=document.querySelector("[data-review-count]"), list=document.querySelector("[data-review-list]");
+    if(count){var dueCount=due.length;if(!list){dueCount=0;Object.keys(st.cards).forEach(function(id){if(st.cards[id].due<=today())dueCount++;});dueCount=Math.min(20,dueCount);}count.textContent=String(dueCount);}
+    if(!list)return;
+    if(!due.length){var empty=document.createElement("p");empty.className="review-empty";empty.textContent="لا توجد بطاقات مستحقة اليوم. واصل دراسة درس جديد.";list.appendChild(empty);return;}
+    var retries=[];function add(item){var section=document.createElement("section");section.className="review-item";var link=document.createElement("a");link.href="../"+item.url+"#"+item.question.section;link.textContent=item.subjectName+" · "+item.lessonTitle;section.appendChild(link);var question={};Object.keys(item.question).forEach(function(k){question[k]=item.question[k];});question.sectionUrl=link.href;root.ZLEARN_QUIZ.renderOne(section,question,function(correct,confidence){if(!correct&&confidence==="sure"&&!item._retried){var retry={};Object.keys(item).forEach(function(k){retry[k]=item[k];});retry._retried=true;retries.push(retry);}if(!retries.length)return;var next=retries.shift();window.setTimeout(function(){add(next);},0);});list.appendChild(section);}
+    due.forEach(add);
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+}(window));

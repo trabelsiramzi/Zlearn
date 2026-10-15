@@ -2,7 +2,7 @@
   {
     "id": "hd2-q01",
     "type": "recall",
-    "phase": "practice",
+    "phase": "pretest",
     "prompt": "ما أول حديث في الأربعين النووية؟",
     "answer": "«إنما الأعمال بالنيات»",
     "explain": "«إنما الأعمال بالنيات»",
@@ -12,7 +12,7 @@
   {
     "id": "hd2-q02",
     "type": "recall",
-    "phase": "practice",
+    "phase": "pretest",
     "prompt": "من رواه هذا الحديث؟",
     "answer": "البخاري ومسلم عن عمر بن الخطاب",
     "explain": "البخاري ومسلم عن عمر بن الخطاب",
