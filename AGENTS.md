@@ -36,6 +36,23 @@ Utiliser `/nouveau-dars` (commande `.opencode/commands/nouveau-dars.md`) qui orc
 `pedagogy-organizer` (analyse) → `frontend-integrator` (intégration) → `qa-verifier` (contrôle).
 La compétence `.opencode/skills/transcript-to-lesson` détaille les étapes et les conventions.
 
+### Utilisation avec Codex
+
+Les workflows adaptés à Codex sont dans `.agents/skills/` (format `SKILL.md`). Les charger
+selon la tâche :
+
+- ajout de leçon depuis une transcription : `$zlearn-ajouter-dars` ;
+- amélioration ciblée : `$zlearn-ameliorer-site` ;
+- audit sans modification : `$zlearn-verifier-site` ;
+- exigences RTL/accessibilité : `$zlearn-rtl-arabe-a11y`.
+
+Les compétences `zlearn-pedagogy-organizer`, `zlearn-frontend-integrator` et
+`zlearn-qa-verifier` reprennent les responsabilités des agents OpenCode comme étapes
+distinctes. Elles ne lancent pas automatiquement des sous-agents ; Codex applique ces
+rôles dans le workflow courant, sauf si l'utilisateur demande explicitement une délégation.
+Les fichiers `.opencode/` restent la référence historique pour OpenCode ; ne pas les
+modifier lors d'une adaptation Codex.
+
 ## Adaptation projet
 
 Le site a été découpé depuis un fichier unique initial vers un site multi-pages pour
