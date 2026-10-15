@@ -14,8 +14,10 @@ Contraintes :
 - Ne rien supprimer : préserver le contenu pédagogique et la progression (`localStorage`).
 - Toute interaction ajoutée doit réellement fonctionner (pas de maquette).
 - CSS par variables, thème clair/sombre, propriétés logiques RTL, lisible à 400 px.
-- Styles et scripts partagés dans `assets/` ; aucun gros bloc dupliqué dans une page.
-- Si le nombre de cases ou de dars change, mettre à jour `ZLEARN_MATIERES`.
-- Après modification : `python3 scripts/validate_site.py .`, puis sous-agent `qa-verifier`.
+- Données dans `content/`, sources dans `assets/`, `src/` et `templates/` ; `site/` généré,
+  jamais édité à la main.
+- Si les données d'un dars changent, mettre à jour `content/subjects.json`.
+- Après modification : build, `python3 scripts/validate.py`, `build.py --check`, puis
+  sous-agent `qa-verifier`.
 
 Rends compte : modifications, fichiers, résultat exact des contrôles exécutés.

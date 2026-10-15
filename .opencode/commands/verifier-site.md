@@ -8,10 +8,10 @@ Cible : `$ARGUMENTS` (par défaut, la racine du site).
 État git actuel :
 !`git status --short`
 
-1. Exécute le validateur statique (toutes les pages + manifeste) :
-   `python3 scripts/validate_site.py .`
+1. Exécute le build de contrôle et le validateur des sources + site généré :
+   `python3 scripts/build.py --check`, puis `python3 scripts/validate.py`.
 2. Lance le sous-agent **qa-verifier** pour la revue complète (ids, ancres, balises,
-   navigation, quiz, progression, RTL/mobile, JS, régressions, dépendances/sécurité).
+   navigation par page, quiz, progression, RTL/mobile, JS, régressions, dépendances/sécurité).
 3. Rapporte : commandes exécutées, résultat exact, problèmes par sévérité (bloquant /
    majeur / mineur) avec fichier et ligne, puis un verdict « conforme » ou « non conforme ».
 

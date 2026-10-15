@@ -84,24 +84,28 @@ def main():
     subject_data = {item["id"]: item for item in subjects}
     for subject, expected_lessons in baseline["subjects"].items():
         rows = subject_data[subject]["lessons"]
-        if len(rows) != len(expected_lessons):
+        if len(rows) < len(expected_lessons):
             failures.append("%s: %d dars, baseline %d" % (subject, len(rows), len(expected_lessons)))
             continue
-        for i, lesson in enumerate(rows):
+        for expected_lesson in expected_lessons:
+            lesson = next((row for row in rows if row["meta"].get("legacyLessonId", row["meta"].get("id")) == expected_lesson["id"]), None)
+            if lesson is None:
+                failures.append("%s: dars baseline absent (%s)" % (subject, expected_lesson["id"]))
+                continue
             meta = lesson["meta"]
             page_path = ROOT / "site" / subject / ("%02d-%s" % (meta["number"], meta["slug"])) / "index.html"
             page = page_path.read_text(encoding="utf-8")
             from migrate_v1 import blocks_with_class
             actual_ranges = blocks_with_class(page, "div", "lesson")
             if len(actual_ranges) != 1:
-                failures.append("%s dars %d: page avec %d leçon(s)" % (subject, i + 1, len(actual_ranges)))
+                failures.append("%s/%s: page avec %d leçon(s)" % (subject, expected_lesson["id"], len(actual_ranges)))
                 continue
             start, end, _opening = actual_ranges[0]
             parser = VisibleLesson(); parser.feed(page[start:end])
             actual = parser.record()
-            expected = {key: expected_lessons[i][key] for key in ("id", "sections", "checkboxes", "questions", "data_keys", "text_sha256")}
+            expected = {key: expected_lesson[key] for key in ("id", "sections", "checkboxes", "questions", "data_keys", "text_sha256")}
             if actual != expected:
-                failures.append("%s dars %d: différence avec la baseline" % (subject, i + 1))
+                failures.append("%s/%s: différence avec la baseline" % (subject, expected_lesson["id"]))
             total += 1
     if failures:
         print("ÉCHEC — %d différence(s):" % len(failures))

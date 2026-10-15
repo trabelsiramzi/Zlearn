@@ -6,7 +6,8 @@ permission:
   edit: deny
   bash:
     "*": deny
-    "python3 scripts/validate_site.py*": allow
+    "python3 scripts/validate.py*": allow
+    "python3 scripts/build.py*": allow
     "node --check*": allow
     "node scripts/dom_test.cjs*": allow
     "git status*": allow
@@ -24,15 +25,15 @@ Charge la skill `zlearn-qa-verifier` (outil `skill`) et applique-la.
 
 ## Contrôles obligatoires
 
-1. `python3 scripts/validate_site.py .` : ids dupliqués, ancres cassées, balises,
-   `lang/dir`, compteurs de progression, cibles de quiz, présence des sept matières,
-   cohérence du manifeste `ZLEARN_MATIERES` avec les cases et dars réels.
-2. Syntaxe JS : `node --check assets/site.js` et `node --check assets/search-index.js`.
+1. `python3 scripts/validate.py` : contenu, métadonnées, questions, sections, site généré,
+   navigation, index et golden master.
+2. `python3 scripts/build.py --check` : sortie générée à jour et déterministe.
+3. Syntaxe JS : `node --check site/assets/site.js`.
 3. Régressions (`git diff --stat`, `git show HEAD:<fichier>`) : nombre de dars, de sections,
    de cases ; aucun contenu supprimé.
-4. Navigation : chaque page matière a un `.subject[data-subject]` avec ses `.tabs` et
-   `.chips` ; chaque `.tab` pointe une `.lesson` existante (`aria-controls`) ; chaque lien
-   `.chips` pointe un id existant ; l'accueil liste les matières et leurs dars.
+4. Navigation : chaque matière possède un sommaire généré, chaque dars sa page, ses liens
+   précédent/suivant et ses liens de sections ; les routes de recherche et redirections
+   anciennes pointent vers des pages et ancres présentes.
 5. Progression : nombre de cases = compteur affiché ; `data-key` uniques ; totaux de
    l'accueil et du manifeste à jour.
 6. Quiz : chaque `data-target` existe ; chaque `.application` a un `id` unique.

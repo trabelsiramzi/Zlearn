@@ -1,61 +1,51 @@
 ---
 name: course-learning-document
-description: Turn lesson transcripts into a cumulative, accessible learning course with structured explanations, examples, guided practice, feedback, progress and review. Use when the user sends a transcript and asks to add a lesson or chapter, or to start a subject.
+description: Build a cumulative Zlearn lesson from a transcript, preserving source fidelity and producing the content data consumed by the static site builder.
 ---
 
-# Course learning document builder
+# Zlearn — méthode de création pédagogique
 
-Build one cumulative learning site organised by subject and lesson. The goal is for the learner to understand and use the material, not only to revise it. Zlearn is a static multi-page site: the home page lists subjects, each subject has one page, and shared styles and scripts live in `assets/`.
+## Fidélité
 
-## Content policy
+1. Lire intégralement la transcription et vérifier le contenu publié de la matière.
+2. Garder l’explication de l’enseignant comme cours principal. Corriger une erreur de
+   transcription uniquement si le contexte la rend certaine, et le signaler à l’utilisateur.
+3. Séparer tout complément vérifié du cours, l’étiqueter **إضافة تعليمية** et citer sa
+   source. Sinon, noter « à confirmer avec l’enseignant ».
+4. Présenter les avis propres à l’enseignant comme tels. Paraphraser poèmes, versets et longs
+   passages protégés ; proposer une zone blanche de mémorisation.
+5. Ne pas supprimer ni remplacer une leçon publiée.
 
-1. Read the full transcript and the existing subject page before editing. Never delete or replace a lesson.
-2. Preserve the teacher’s explanation as the main course content. Correct obvious transcription errors only when context makes the correction certain; mention uncertain names, dates, terms or numbering to the user.
-3. When the transcript needs clarification, add a concise supplement only when it can be verified. Label it visibly as **إضافة تعليمية** and cite the source next to it. Keep the teacher’s explanation and the supplement distinct. If verification is not possible, mark the point for teacher review rather than guessing.
-4. Do not silently introduce rulings, doctrinal claims, grammatical rules, dates, or attributions from outside sources. Use primary course material or authoritative sources appropriate to the subject and cite them.
-5. Present disputed or personal positions as “according to the teacher”. Never imply that a self-check score certifies mastery.
-6. Do not reproduce poems, long passages, or copyrighted texts. Paraphrase. For memorisation, provide a blank practice area for text the learner supplies.
+## Parcours d’apprentissage
 
-## Learning sequence for each dars
+Ordre conseillé : 2 à 4 objectifs observables, pré-test de 2 questions sans note,
+explications courtes et ordonnées, exemples résolus suivis d’exemples parallèles, pratique
+avec retour expliqué, synthèse et lien vers la suite. Viser 8 à 12 questions de rappel,
+compréhension et application. Chaque question a une réponse expliquée, une section de retour
+et un id stable `<id>-q<NN>`. Les questions deviennent révisables après une première
+tentative. Une checklist est une aide d’autoévaluation, pas une preuve de maîtrise.
 
-Use the material that is actually available; do not invent missing programme details.
+## Données de leçon
 
-1. **Header and outcomes:** subject, dars number, title, and 2–4 observable learning outcomes.
-2. **Orientation:** a short explanation of why the lesson matters and any verified prerequisite. If there is no known prerequisite, do not invent one.
-3. **Explain in steps:** divide the teacher’s content into short, ordered parts. Choose the visual that teaches it best: comparison table, classification tree, worked example, timeline, process, or rule box.
-4. **Worked examples:** show how to apply the idea, then invite the learner to try a parallel example before revealing a model answer.
-5. **Practice and feedback:** include questions that test recall, understanding and application. Give a model answer or explanation; link errors back to the relevant lesson section. Keep self-assessment explicitly labelled as self-assessment.
-6. **Key terms and takeaways:** define only terms used in the lesson and end with a short synthesis.
-7. **Completion and next step:** let the learner record that they completed the lesson after studying and attempting the practice; provide previous/next lesson navigation.
-8. **Review aids:** retain optional checklists, flash recall, maps and spaced review as supporting tools, not as the main learning experience.
+Créer `content/<matière>/<NN>-<slug>/` avec :
 
-Every new section id is unique and prefixed by the lesson (e.g. `aq4-outcomes`). Checkbox ids and SVG marker ids remain unique within the page.
+- `meta.json` correspondant à l’entrée ajoutée dans `content/subjects.json` ;
+- `lesson.html`, fragment HTML du cours, arabe RTL ;
+- `questions.json`, banque structurée avec ids stables ;
+- `source.md`, transcription originale (ou mention honnête si elle n’a pas été conservée).
 
-## Navigation and progress
+Créer le squelette avec `python3 scripts/new_lesson.py <matière> <NN> <slug> <titre>
+<titre-court>`. Vérifier matière, numéro et titre avant de créer ; demander si incertain.
+Mettre ensuite à jour `content/subjects.json` sans modifier les ids déjà publiés.
 
-- Keep the three-level subject / dars / section navigation.
-- Make the learning path and “continue where you left off” available across the site.
-- Track lesson completion separately from memorisation checklists and quiz self-assessment.
-- Explain that browser-only progress is stored on the current device.
-- Keep content readable if JavaScript fails; scripts enhance navigation and progress but do not contain the lesson itself.
+Construire et valider :
 
-## Language and design
+```sh
+python3 scripts/build.py
+python3 scripts/validate.py
+python3 scripts/build.py --check
+```
 
-- Write lesson content in the course language. Zlearn lessons are Arabic (`lang="ar" dir="rtl"`); communicate with the user in their language.
-- Use simple, teachable phrasing. Distinguish definition, example, application and source note.
-- Define colors with CSS variables and light/dark values. Use the shared stylesheet and ES5 vanilla JavaScript.
-- Keep Arabic typography readable, diagrams accessible, focus visible, and layout usable at 400 px.
-- No dead buttons or links.
-
-## Technical workflow
-
-1. Identify subject, dars number and title. Ask if they cannot be established confidently.
-2. Work on a git branch (`lesson/<subject>-<n>`) or after a clean commit before a substantial edit; a local copy in the git-ignored `backups/` folder is optional.
-3. Build the dars in a separate fragment and merge it with an asserted unique anchor.
-4. Update the subject tabs, section links, homepage links and shared manifest as required.
-5. Preserve existing local progress keys when adjusting a page; update checklist totals only when the number of checkboxes changes.
-6. Run `python3 scripts/validate_site.py .` and report any source uncertainties.
-
-## Reply
-
-Briefly report what changed, what was validated, and any transcript uncertainty or externally sourced supplement that needs review. Do not hide a source attribution or a numbering mismatch.
+Le texte reste lisible sans JavaScript. Respecter `docs/CONVENTIONS.md`, les règles RTL et
+les clés v2 de progression. Répondre dans la langue de l’utilisateur en indiquant les
+modifications, validations exécutées et points « À vérifier ».

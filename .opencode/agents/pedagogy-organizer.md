@@ -20,7 +20,7 @@ Ta mission : à partir d'une transcription, produire un **plan structuré et fid
 ## Avant de commencer
 
 Charge la skill `zlearn-pedagogy-organizer` (outil `skill`), puis lis `SKILL-general.md`
-(référence fonctionnelle) et `docs/conventions.md` (conventions DOM et préfixes d'id).
+(référence fonctionnelle) et `docs/CONVENTIONS.md`.
 
 ## Procédure
 
@@ -36,7 +36,7 @@ Charge la skill `zlearn-pedagogy-organizer` (outil `skill`), puis lis `SKILL-gen
 
 ## Livrable : `brouillon-dars-<id>.md` (à la racine, temporaire)
 
-- Métadonnées : matière, dars n°, titre, préfixe d'id, clé du groupe de progression.
+- Métadonnées : matière, dars n°, titre, slug et préfixe d'id.
 - 2 à 4 objectifs observables (verbes d'action : distinguer, classer, expliquer, appliquer).
 - Résumé en trois phrases.
 - Plan des chapitres : contenu en puces + visuel retenu.
@@ -49,7 +49,8 @@ Charge la skill `zlearn-pedagogy-organizer` (outil `skill`), puis lis `SKILL-gen
 - Section « À vérifier » : corrections apportées, dates/noms incertains, ajouts personnels,
   décalage de numérotation éventuel.
 
-Le brouillon est **temporaire** : il est supprimé dès que le dars est intégré et validé.
+Les fichiers finaux vont dans `content/<matière>/<NN>-<slug>/` et dans
+`content/subjects.json`. Le brouillon est **temporaire** : il est supprimé après validation.
 
 ## Règles
 

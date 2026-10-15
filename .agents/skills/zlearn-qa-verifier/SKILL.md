@@ -8,8 +8,9 @@ description: "Vérifier sans modifier une livraison Zlearn : validateur, identif
 Ne modifie aucun fichier dans cette étape. Exécute le contrôle obligatoire :
 
 ```sh
-python3 scripts/validate_site.py .
-node --check assets/site.js
+python3 scripts/validate.py
+python3 scripts/build.py --check
+node --check site/assets/site.js
 ```
 
 Vérifie aussi le diff par rapport au contenu existant (`git diff --stat`) et, selon les
@@ -24,7 +25,8 @@ fichiers touchés :
 - absence de scripts tiers, `eval`, secrets ou dépendances ajoutées sans raison ;
 - aucun ajout de contenu extérieur à la source sans étiquette **إضافة تعليمية** et source.
 
-Test DOM optionnel si `jsdom` est installé : `node scripts/dom_test.cjs`.
+Tests du moteur selon les fichiers touchés : `node tests/srs.cjs`, `node tests/storage.cjs`,
+`node tests/quiz-dom.cjs` et `node tests/offline.cjs`.
 
 Ne déclare que les contrôles effectivement exécutés. Rapporte les constats par gravité
 (bloquant, majeur, mineur), avec fichier et ligne quand c'est possible, la commande exacte et

@@ -1,7 +1,11 @@
 # RESTRUCTURATION.md — brief de restructuration du projet Zlearn
 
+> **État au 15 octobre 2026 : phases 0 à 6 terminées.** Le chantier a été réalisé phase par
+> phase sur la branche `restructuration`. La procédure ci-dessous est conservée comme journal
+> de référence ; pour le fonctionnement courant, suivre `AGENTS.md` et `docs/ARCHITECTURE.md`.
+
 > **Pour l'IA qui exécute ce chantier.** Ce document est autonome : lis-le en entier avant
-> d'agir. Lis ensuite `AGENTS.md`, `docs/conventions.md` et `SKILL-general.md`. Travaille par
+> d'agir. Lis ensuite `AGENTS.md`, `docs/CONVENTIONS.md` et `SKILL-general.md`. Travaille par
 > phases, dans l'ordre, et **arrête-toi à la fin de chaque phase** pour rapporter à
 > l'utilisateur. Ne saute aucune phase.
 
@@ -246,7 +250,7 @@ anciennes ; elle mélange les matières (entrelacement) et plafonne à 20 cartes
 - **Critère de sortie** : plus aucun `style=""` ni contraste sous 4,5:1 pour le texte ; le site
   s'ouvre hors ligne après une première visite.
 
-### Phase 6 — Outillage IA, documentation, CI
+### Phase 6 — Outillage IA, documentation, CI (terminée)
 - `validate.py` complet (§8), `new_lesson.py`, workflow GitHub Actions (`validate` + `build --check`).
 - Mettre à jour **tout** ce que cette restructuration périme : `AGENTS.md`, `README.md`,
   `docs/conventions.md` → `docs/CONVENTIONS.md`, `docs/ARCHITECTURE.md`, les skills de

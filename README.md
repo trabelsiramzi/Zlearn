@@ -23,18 +23,17 @@ Le site reste fidèle à la source : tout ce qui n'est pas dans le cours est sig
 الفقه · العقيدة · التجويد · السيرة النبوية · الحديث · الأخلاق · النحو
 (7 matières, 3 dars publiés chacune, soit 21 dars).
 
-### Ce que fait le site aujourd'hui
+### Ce que fait le site
 
 - navigation par matière et par dars, recherche en arabe (insensible aux voyelles brèves) ;
 - progression enregistrée **sur l'appareil** (cases de mémorisation, dars terminés, réponses
   aux activités) avec export et import en JSON ;
 - thème clair/sombre, lisible à partir de 400 px, utilisable au clavier ;
-- aucune dépendance : un site statique, sans compte ni serveur.
+- progression stockée sur l’appareil avec migration des anciennes données ;
+- révision espacée et mélangée entre matières ;
+- usage hors ligne après une première visite ; site statique, sans compte ni serveur.
 
-### Prévu (voir `RESTRUCTURATION.md`)
-
-Contenu en données et une page par dars, réponse avant correction avec niveau de confiance,
-révision espacée (rappel aux bons moments), révision mélangée entre matières, usage hors ligne.
+Le contenu est stocké dans `content/` et le site publié est généré dans `site/`.
 
 ## Voir le site
 
@@ -84,19 +83,19 @@ Les mêmes workflows existent sous forme de skills dans `.agents/skills/` :
 
 Exemple (Codex) : `$zlearn-ajouter-dars` suivi de la transcription et de la matière.
 
-### Lancer la restructuration du projet
+### Ajouter un dars
 
-Donne `RESTRUCTURATION.md` à l'IA avec la consigne :
-« Lis `RESTRUCTURATION.md`, `AGENTS.md` et `docs/conventions.md`, pose les questions de la
-section 3, puis exécute la phase 0 et arrête-toi pour me faire un rapport. »
-Elle avance **phase par phase**, avec ton accord à chaque étape.
+Le workflow conserve la transcription dans `content/`, crée le dossier de données du dars,
+met à jour le manifeste, puis génère et valide le site. La restructuration est suivie dans
+`RESTRUCTURATION.md`.
 
 ## Vérifier le site soi-même
 
 ```sh
-python3 scripts/validate_site.py .   # contrôle obligatoire (ids, ancres, progression, manifeste)
-node --check assets/site.js          # syntaxe JavaScript
-npm install jsdom && node scripts/dom_test.cjs   # test DOM optionnel
+python3 scripts/build.py
+python3 scripts/validate.py
+python3 scripts/build.py --check
+node --check site/assets/site.js
 ```
 
 Le validateur doit afficher « Tous les contrôles passent » avant tout commit.
@@ -104,27 +103,25 @@ Le validateur doit afficher « Tous les contrôles passent » avant tout commit.
 ## Structure du projet
 
 ```text
-index.html, <matière>/index.html   pages du site (une page par matière aujourd'hui)
-assets/                            style, script partagé, index de recherche
-scripts/                           validateur, fusion d'un dars, test DOM
-templates/lesson-block.html        gabarit d'un dars
-docs/                              conventions techniques et exemple de transformation
-SKILL-general.md                   règles de fond : transcription → leçon
-AGENTS.md                          règles pour l'IA (lues automatiquement)
-RESTRUCTURATION.md                 brief du chantier de restructuration
-.agents/skills/                    skills de l'IA (OpenCode et Codex)
-.opencode/                         sous-agents et commandes OpenCode
+content/                            source des leçons et manifeste des matières
+templates/, src/, assets/           gabarits, JavaScript et ressources partagées
+scripts/build.py                    génère le site dans site/
+scripts/validate.py                 valide les données, la sortie et la baseline
+site/                               sortie générée, jamais éditée à la main
+tests/baseline.json                 golden master des 21 leçons migrées
+docs/ARCHITECTURE.md                architecture et flux de génération
+docs/CONVENTIONS.md                 contrats du contenu et règles techniques
+.agents/skills/, .opencode/         workflows Codex/OpenCode
 ```
 
 ## Règles à retenir
 
 - Ne jamais supprimer ni remplacer un dars existant ; travailler sur une **branche git**
-  (`lesson/<matière>-<n>`) et commiter une fois le validateur au vert.
+  (`lesson/<matière>-<NN>`) et commiter une fois le validateur au vert.
 - La progression des étudiants est précieuse : ne jamais renommer une clé `localStorage` ni un
   préfixe d'id sans migration.
 - Pas de poème, de verset ou de long passage recopié : paraphraser.
-- Les fichiers temporaires `brouillon-dars-*.md` et `dars-*.html` sont supprimés après chaque
-  ajout (et ignorés par git).
+- Les ids de questions sont stables et les fichiers source du dars vivent dans `content/`.
 
 ## Questions fréquentes
 

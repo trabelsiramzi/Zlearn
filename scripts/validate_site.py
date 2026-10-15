@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Validateur statique du site d’apprentissage Zlearn (multi-pages).
+"""Validateur HTML inter-pages conservé comme sous-contrôle de scripts/validate.py.
 
-Le site est découpé en : ``index.html`` (accueil) + un dossier par matière
-(``fiqh/``, ``aqida/``, ``tajwid/``, ``sira/``, ``hadith/``, ``akhlaq/``, ``nahw/``)
-+ les scripts et styles partagés dans ``assets/``.
+Il contrôle les ids, ancres, balises, direction, progression et index de recherche d'une
+collection de pages statiques. Pour valider l'architecture complète, utiliser validate.py.
 
 Usage :
     python3 scripts/validate_site.py [chemin]

@@ -1,20 +1,18 @@
 ---
 name: zlearn-ameliorer-site
-description: "Améliorer un aspect demandé du site Zlearn (UX, interface, RTL, accessibilité, performance, moteur d'apprentissage) sans casser les leçons, la progression, le RTL ou les interactions. À utiliser pour toute modification qui n'est pas l'ajout d'un dars."
+description: "Améliorer le site Zlearn sans casser les leçons, la progression, le RTL ou les interactions."
 ---
 
-# Améliorer le site
+# Améliorer Zlearn
 
-Traite l'axe demandé par l'utilisateur (par défaut : audit UX, UI, RTL et accessibilité, avec
-propositions avant modification). Lis `docs/conventions.md` et applique
-`zlearn-rtl-arabe-a11y` si l'interface est concernée.
+Lis `docs/CONVENTIONS.md` et applique `zlearn-rtl-arabe-a11y` si une interface est concernée.
+Avant une modification importante, vérifie la branche et `git status`.
 
-Avant une modification importante : branche git ou commit propre. Préserve toutes les leçons
-et les clés de progression `localStorage` (toute migration de clés doit conserver les données
-existantes). Les styles et scripts partagés restent dans `assets/site.css` et
-`assets/site.js`. Toute nouvelle interaction doit fonctionner. Respecte les variables CSS, les
-thèmes clair/sombre, les propriétés logiques, le RTL et la lisibilité à 400 px. Si le nombre
-de cases ou de dars change, ajuste le manifeste `ZLEARN_MATIERES`.
+Préserve toutes les leçons et clés de progression. Les données éditoriales vivent sous
+`content/`; styles et scripts source dans `assets/` et `src/`; gabarits dans `templates/`.
+`site/` est généré et ne se modifie jamais à la main. Les interactions doivent fonctionner.
+Respecte RTL, variables CSS, thèmes, propriétés logiques, accessibilité et largeur 400 px.
+Si les données de leçons changent, mets à jour `content/subjects.json`.
 
-Lance `python3 scripts/validate_site.py .` après modification et rapporte les fichiers
-modifiés et le résultat exact.
+Après modification, exécute `python3 scripts/build.py`, `python3 scripts/validate.py` et
+`python3 scripts/build.py --check`. Rapporte fichiers et résultats exacts.

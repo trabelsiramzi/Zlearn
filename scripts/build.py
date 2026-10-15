@@ -231,6 +231,14 @@ def build():
     sw_template = (ROOT / "templates/sw.js").read_text(encoding="utf-8")
     output[OUT / "sw.js"] = sw_template.replace("{{PRECACHE_URLS}}", json.dumps(precache, separators=(",", ":")))
     mismatches = []
+    expected_paths = set(output)
+    if OUT.exists():
+        for path in OUT.rglob("*"):
+            if path.is_file() and path not in expected_paths:
+                if "--check" in sys.argv:
+                    mismatches.append(str(path.relative_to(ROOT)) + " (obsolète)")
+                else:
+                    path.unlink()
     for path, data in output.items():
         expected = data if isinstance(data, bytes) else data.encode("utf-8")
         if "--check" in sys.argv:

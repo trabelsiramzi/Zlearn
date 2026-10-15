@@ -1,94 +1,57 @@
-# Zlearn — instructions projet
+# Zlearn — consignes du dépôt
 
-Site d'apprentissage de la première année (enseignement zaytounien) en arabe RTL : un site
-**statique multi-pages** (accueil + un dossier par matière + assets partagés), sans
-dépendance runtime. Objectif : que l'étudiant **comprenne, pratique et retienne**, pas
-seulement qu'il relise (voir `README.md`).
+Zlearn est un site statique arabe RTL, généré depuis `content/` par `scripts/build.py`.
+Les sources font foi ; `site/` est une sortie générée et ne se modifie jamais à la main.
+L’architecture et les contrats sont décrits dans `docs/ARCHITECTURE.md` et
+`docs/CONVENTIONS.md`.
 
-> **Chantier en cours** : `RESTRUCTURATION.md` décrit la nouvelle architecture cible
-> (contenu en données, gabarits, moteur de révision espacée). Tant que ce chantier n'est pas
-> terminé, ce fichier décrit l'architecture **actuelle** et ses règles s'appliquent. À la fin
-> du chantier, mettre à jour ce fichier, les skills et `docs/conventions.md`.
+## Règles impératives
 
-## Carte du dépôt
+1. Ne jamais supprimer, remplacer ou réécrire un dars publié. Préserver le texte arabe, les
+   SVG, tableaux, questions et clés de progression. Les corrections se font par ajouts.
+2. Travailler sur `restructuration` pour ce chantier, ou sur `lesson/<matière>-<NN>` pour un
+   nouveau dars. Vérifier `git status` avant toute modification. Ne jamais pousser sur la
+   branche principale.
+3. La transcription est la source. Un complément extérieur vérifié porte l’étiquette
+   **إضافة تعليمية** et sa référence ; un point incertain est « à confirmer avec l’enseignant ».
+   Paraphraser les textes protégés, poèmes et longs passages.
+4. Les ids de leçon et de question sont stables. Ne jamais renommer un id de question ou une
+   clé `localStorage` sans migration qui conserve l’ancienne donnée.
+5. L’interface reste RTL, lisible à 400 px, accessible au clavier, cohérente en clair/sombre.
+   Aucun `style=""`, bouton mort, CDN ou dépendance runtime.
+6. Après modification de `content/`, lancer `python3 scripts/build.py`, puis
+   `python3 scripts/validate.py`. Pour vérifier seulement les sources :
+   `python3 scripts/validate.py --content-only`.
+7. Après modification, rapporter les commandes et sorties réellement obtenues ; ne jamais
+   déclarer un contrôle réussi sans l’avoir exécuté.
 
-```text
-index.html, <matière>/index.html   pages du site (matières : fiqh aqida tajwid sira hadith akhlaq nahw)
-assets/                            site.css, site.js (+ manifeste ZLEARN_MATIERES), search-index.js
-scripts/                           validate_site.py, merge_lesson.py, dom_test.cjs
-templates/lesson-block.html        gabarit d'un dars
-docs/                              conventions.md (DOM, ids, progression), exemple-transformation.md
-SKILL-general.md                   référence fonctionnelle : transcription → leçon
-.agents/skills/                    skills (source unique, lues par OpenCode et Codex)
-.opencode/agents/, commands/       sous-agents et commandes propres à OpenCode
-```
+## Architecture et outils
 
-Une page de matière est **l'unique** document à modifier pour cette matière. Ne jamais créer
-un site parallèle ni réinitialiser des contenus existants.
+- `content/subjects.json` : manifeste des matières et métadonnées de dars.
+- `content/<matière>/<NN>-<slug>/` : `meta.json`, `lesson.html`, `questions.json`, `source.md`.
+- `templates/`, `src/`, `assets/` : gabarits et sources partagées.
+- `scripts/build.py` : génération déterministe de `site/` ; `--check` vérifie sa fraîcheur.
+- `scripts/validate.py` : contrôle du contenu, du site généré et de la baseline.
+- `scripts/new_lesson.py` : crée le squelette d’un dars dans `content/`.
+- `tests/baseline.json` : golden master de migration ; ne pas supprimer sans confirmation.
 
-## Règles non négociables
+## Flux de livraison
 
-1. **Préserver le contenu pédagogique** : ne jamais supprimer ni remplacer un dars existant.
-2. **Filet de sécurité = git** : travailler sur une branche (`lesson/<matière>-<n>`) ou après
-   un commit propre ; vérifier `git status` avant de commencer. `backups/` est un dossier
-   local optionnel, ignoré par git.
-3. **Fidélité à la source** : rien d'inventé. Un complément extérieur n'est ajouté que s'il est
-   vérifié, étiqueté **إضافة تعليمية** et sourcé ; sinon il est signalé à l'utilisateur. Pas de
-   poème, verset ou long passage recopié : paraphraser.
-4. Chaque section reçoit un **id unique préfixé par le dars** (ex. `nh4-summary`). Cases,
-   ids SVG, `data-key` et cibles de quiz sont uniques dans la page.
-5. Le site reste **lisible à 400 px**, RTL, thème clair/sombre cohérent.
-6. Interactions réelles uniquement : pas de maquette, pas de bouton mort.
-7. Après toute modification : `python3 scripts/validate_site.py .` doit passer.
-8. **Honnêteté** : ne jamais affirmer qu'un contrôle a réussi sans l'avoir exécuté ; rapporter
-   la commande et son résultat exact.
-9. Si la matière ou le numéro d'un dars est incertain : **poser une question** avant d'agir.
+Pour un dars, lire les skills `zlearn-ajouter-dars`, `zlearn-pedagogy-organizer`,
+`zlearn-frontend-integrator` et `zlearn-qa-verifier`. Préparer les fichiers sources,
+mettre à jour `content/subjects.json`, construire, valider, comparer à la baseline, puis
+commiter. Sous Codex, suivre les rôles successivement sans délégation automatique.
 
-## Commandes
+Commandes principales :
 
 ```sh
-python3 scripts/validate_site.py .        # contrôle obligatoire (toutes les pages + manifeste)
-node --check assets/site.js               # syntaxe JS
-node scripts/dom_test.cjs                 # test DOM optionnel (npm install jsdom au préalable)
-python3 -m http.server 8000               # voir le site sur http://localhost:8000/
+python3 scripts/build.py
+python3 scripts/build.py --check
+python3 scripts/validate.py
+node --check site/assets/site.js
+node tests/srs.cjs
+node tests/storage.cjs
 ```
 
-## Workflows
-
-| Tâche | OpenCode | Codex / autres outils |
-| ----- | -------- | --------------------- |
-| Ajouter un dars depuis une transcription | `/nouveau-dars <transcription>` | skill `zlearn-ajouter-dars` |
-| Améliorer un aspect du site | `/ameliorer-site <axe>` | skill `zlearn-ameliorer-site` |
-| Auditer sans modifier | `/verifier-site` | skill `zlearn-verifier-site` |
-| RTL / arabe / accessibilité | skill `zlearn-rtl-arabe-a11y` | `$zlearn-rtl-arabe-a11y` |
-
-L'ajout d'un dars enchaîne trois rôles : `zlearn-pedagogy-organizer` (analyse) →
-`zlearn-frontend-integrator` (intégration) → `zlearn-qa-verifier` (contrôle). Sous OpenCode,
-ce sont des sous-agents (`.opencode/agents/`) ; sous Codex, ce sont des étapes successives du
-même workflow, sans délégation automatique sauf demande explicite de l'utilisateur.
-
-Les skills de `.agents/skills/` sont la **source unique** ; ne pas recréer de copie dans
-`.opencode/skills/` (OpenCode lit aussi `.agents/skills/`).
-
-## Fichiers temporaires
-
-`brouillon-dars-<id>.md` (analyse) et `dars-<id>.html` (fragment) sont supprimés dès que le
-dars est intégré et validé ; ils sont ignorés par git.
-
-## Style du code
-
-- CSS : variables `--xxx` uniquement, compatibles thème sombre ; pas de couleur en dur ni de
-  `style=""` pour la mise en page.
-- JS : ES5 vanilla (navigateurs mobiles anciens), IIFE, `localStorage` sous `try/catch`.
-- Arabe : `dir="rtl" lang="ar"`, `Amiri` (titres) + `IBM Plex Sans Arabic` (texte).
-- Progression : agrégat de page sous `mourshid-prog-<matière>`, dars terminés sous
-  `mourshid-learning-<matière>`. Les `total` et `lessons` du manifeste `ZLEARN_MATIERES`
-  (`assets/site.js`) doivent correspondre aux cases et dars réels. Ne jamais renommer une clé
-  `localStorage` ou un préfixe d'id sans migration des données existantes.
-
-## Définition de « terminé » pour un dars
-
-Le validateur passe ; l'onglet, les chips, la carte d'accueil, l'index de recherche et le
-manifeste sont à jour ; 8 à 12 questions (rappel, compréhension, application) avec réponses
-expliquées ; aucune source extérieure non étiquetée ; fichiers temporaires supprimés ; la
-réponse finale liste matière, numéro, ajouts, « À vérifier » et résultat du validateur.
+La publication est produite dans `site/` par GitHub Actions. Les choix de restructuration
+confirmés sont consignés dans `docs/restructuration-decisions.md`.

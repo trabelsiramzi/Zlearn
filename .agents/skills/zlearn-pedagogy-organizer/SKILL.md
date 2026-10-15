@@ -5,7 +5,7 @@ description: "Analyser une transcription de cours Zlearn et en faire un plan de 
 
 # Analyse pédagogique d'une transcription
 
-Lis `SKILL-general.md` en entier et `docs/conventions.md`. Lis la transcription entière.
+Lis `SKILL-general.md` en entier et `docs/CONVENTIONS.md`. Lis la transcription entière.
 Ne modifie aucun fichier du site pendant cette étape.
 
 Établis matière, numéro et titre. Si une donnée structurante reste incertaine, expose
@@ -22,7 +22,9 @@ restent secondaires. Propose un tableau, arbre, étapes ou autre visuel seulemen
 aide la compréhension. N'ajoute aucun fait absent de la source sans vérification et
 attribution explicite (étiquette **إضافة تعليمية** et source).
 
-Livrable de travail : métadonnées (matière, numéro, titre, préfixe d'id, clé de progression),
+Livrable de travail : métadonnées (matière, numéro, titre, préfixe d'id, slug),
 plan détaillé, glossaire, questions avec réponses, checklist, section « À vérifier ». Si un
 fichier est nécessaire, le nommer `brouillon-dars-<id>.md` à la racine et le supprimer après
-intégration et validation. Répondre dans la langue de l'utilisateur.
+intégration et validation. Le contenu final va dans `content/<matière>/<NN>-<slug>/` avec
+`meta.json`, `lesson.html`, `questions.json`, `source.md`, puis le manifeste est mis à jour.
+Répondre dans la langue de l'utilisateur.
