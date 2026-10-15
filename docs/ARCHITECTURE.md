@@ -22,4 +22,7 @@ python3 scripts/build.py --check
 
 La CI suit le même flux à chaque push et pull request ; elle republie le dossier `site/`
 (artefact de `build.py`) quand un push arrive sur `main`.
+La publication suppose que **GitHub Pages soit réglé sur « GitHub Actions »** (Settings → Pages →
+Build and deployment → Source) et non sur une branche : sinon le job `deploy` est ignoré et le
+build de branche sert la racine du dépôt.
 Voir `docs/CONVENTIONS.md` pour les contrats détaillés.
