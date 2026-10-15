@@ -150,6 +150,7 @@ def render_summary(subject):
     content = replace_tokens(template, {
         "SUBJECT_TITLE": subject["title"], "SUBJECT_NAME": subject["name"], "SUBJECT_ID": subject["id"],
         "BOOK": subject["book"], "TOTAL_LESSONS": sum(s["lessonsCount"] for s in read_json(ROOT / "content/subjects.json")),
+        "SITE_PREFIX": "../",
         "LESSON_CARDS": "\n".join(cards),
         "LEGACY_REDIRECTS": json.dumps(redirects, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")})
     return content
@@ -197,6 +198,7 @@ def build():
     subjects = read_json(ROOT / "content/subjects.json")
     html_paths = {"index.html": render_home(subjects)}
     html_paths["review/index.html"] = (ROOT / "templates/review.html").read_text(encoding="utf-8")
+    html_paths["404.html"] = (ROOT / "templates/404.html").read_text(encoding="utf-8")
     for subject in subjects:
         html_paths[subject["file"]] = render_summary(subject)
         for i, lesson in enumerate(subject["lessons"]):
@@ -220,14 +222,23 @@ def build():
             for question in read_json(folder / "questions.json"):
                 question_catalog.append({"question": question, "subject": subject["id"], "subjectName": subject["name"], "lessonTitle": meta["title"], "url": lesson_url(subject, lesson)})
     output[OUT / "assets/question-catalog.js"] = "var ZLEARN_QUESTION_CATALOG = " + json.dumps(question_catalog, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + ";\n"
+    output[OUT / "assets/favicon.svg"] = (ROOT / "assets/favicon.svg").read_text(encoding="utf-8")
+    output[OUT / "manifest.webmanifest"] = (ROOT / "templates/manifest.webmanifest").read_text(encoding="utf-8")
+    for font in sorted((ROOT / "assets/fonts").iterdir()):
+        if font.is_file():
+            output[OUT / "assets/fonts" / font.name] = font.read_bytes()
+    precache = ["./" + str(path.relative_to(OUT)).replace("\\", "/") for path in sorted(output, key=lambda p: str(p))]
+    sw_template = (ROOT / "templates/sw.js").read_text(encoding="utf-8")
+    output[OUT / "sw.js"] = sw_template.replace("{{PRECACHE_URLS}}", json.dumps(precache, separators=(",", ":")))
     mismatches = []
-    for path, text in output.items():
+    for path, data in output.items():
+        expected = data if isinstance(data, bytes) else data.encode("utf-8")
         if "--check" in sys.argv:
-            if not path.exists() or path.read_text(encoding="utf-8") != text:
+            if not path.exists() or path.read_bytes() != expected:
                 mismatches.append(str(path.relative_to(ROOT)))
         else:
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(text, encoding="utf-8")
+            path.write_bytes(expected)
     if mismatches:
         print("Sortie absente ou périmée : " + ", ".join(mismatches), file=sys.stderr)
         return 1

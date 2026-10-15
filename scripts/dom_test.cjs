@@ -91,7 +91,7 @@ async function runPage(pagePath) {
   console.log("[1] Structure & en-tête");
   check("<html lang=ar dir=rtl>", doc.documentElement.lang === "ar" && doc.documentElement.dir === "rtl");
   check("title dans <head>", !!doc.head.querySelector("title"));
-  check("liens de police dans <head>", !!doc.head.querySelector('link[href*="fonts.googleapis"]'));
+  check("feuille locale sans liens de police externes", !!doc.head.querySelector('link[href*="site.css"]') && !doc.head.querySelector('link[href^="https:"]'));
   check("alertes/outil : feuille partagée", !!doc.head.querySelector('link[href*="site.css"]'));
   check("skip link vers #main", !!doc.querySelector('a.skip[href="#main"]'));
   check("<main id=main>", !!doc.getElementById("main"));
