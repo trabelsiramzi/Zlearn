@@ -1,0 +1,12 @@
+{
+  "id": "aq1",
+  "subject": "aqida",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مدخل إلى علم العقيدة",
+  "shortTitle": "مدخل إلى علم العقيدة",
+  "prefix": "aq1",
+  "legacyLessonId": "lesson-aq1",
+  "homeLabel": "الدرس الأول — مدخل إلى علم العقيدة",
+  "sourceFile": "source.md"
+}

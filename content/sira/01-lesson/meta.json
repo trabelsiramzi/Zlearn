@@ -1,0 +1,12 @@
+{
+  "id": "sr1",
+  "subject": "sira",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
+  "shortTitle": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
+  "prefix": "sr1",
+  "legacyLessonId": "lesson-h1",
+  "homeLabel": "الدرس الأول — مدخل إلى السيرة والنسب",
+  "sourceFile": "source.md"
+}

@@ -1,0 +1,1865 @@
+[
+  {
+    "id": "fiqh",
+    "name": "مادة الفقه",
+    "book": "المرشد المعين على الضروري من علوم الدين",
+    "file": "fiqh/index.html",
+    "total": 35,
+    "lessons": [
+      {
+        "meta": {
+          "id": "fq1",
+          "subject": "fiqh",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مقدمة المنظومة",
+          "shortTitle": "مقدمة المنظومة",
+          "prefix": "fq1",
+          "legacyLessonId": "lesson-1",
+          "homeLabel": "الدرس الأول — مقدمة المنظومة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 0,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "l1-source",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 194,
+            "searchLabel": "الأبيات التي سنبني عليها الدرس"
+          },
+          {
+            "id": "identity",
+            "heading": "بطاقة التعريف",
+            "searchOrder": 1,
+            "searchLabel": "بطاقة التعريف"
+          },
+          {
+            "id": "mindmap",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 2,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "parts",
+            "heading": "الأقسام الثلاثة وحديث جبريل",
+            "searchOrder": 3,
+            "searchLabel": "الأقسام الثلاثة وحديث جبريل"
+          },
+          {
+            "id": "khutba",
+            "heading": "خطبة المنظومة: ترتيب الابتداء",
+            "searchOrder": 4,
+            "searchLabel": "خطبة المنظومة: ترتيب الابتداء"
+          },
+          {
+            "id": "terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 5,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 6,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 7,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 10,
+        "questionCount": 11,
+        "dataKeys": [
+          "l1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "fq2",
+          "subject": "fiqh",
+          "number": 2,
+          "slug": "lesson",
+          "title": "أقسام الحكم الشرعي",
+          "shortTitle": "أقسام الحكم الشرعي",
+          "prefix": "fq2",
+          "legacyLessonId": "lesson-2",
+          "homeLabel": "الدرس الثاني — أقسام الحكم الشرعي",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "l2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 8,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "l2-source",
+            "heading": "الأبيات التي سنشرح بها أقسام الحكم الشرعي",
+            "searchOrder": 195,
+            "searchLabel": "الأبيات التي سنشرح بها أقسام الحكم الشرعي"
+          },
+          {
+            "id": "l2-tree",
+            "heading": "الأحكام الخمسة في مخطط واحد",
+            "searchOrder": 9,
+            "searchLabel": "الأحكام الخمسة في مخطط واحد"
+          },
+          {
+            "id": "l2-table",
+            "heading": "الجدول الملخص",
+            "searchOrder": 10,
+            "searchLabel": "الجدول الملخص"
+          },
+          {
+            "id": "l2-kifaya",
+            "heading": "العين والكفاية",
+            "searchOrder": 11,
+            "searchLabel": "العين والكفاية"
+          },
+          {
+            "id": "l2-terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 12,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "l2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 13,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "l2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 14,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "l2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "fq3",
+          "subject": "fiqh",
+          "number": 3,
+          "slug": "lesson",
+          "title": "كتاب الطهارة",
+          "shortTitle": "كتاب الطهارة",
+          "prefix": "fq3",
+          "legacyLessonId": "lesson-3",
+          "homeLabel": "الدرس الثالث — كتاب الطهارة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "l3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 15,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "l3-source",
+            "heading": "الأبيات التي سنحلل بها أحكام الماء",
+            "searchOrder": 196,
+            "searchLabel": "البيت الذي سنحلل به أحكام الماء"
+          },
+          {
+            "id": "l3-terms",
+            "heading": "المحور الأول: المصطلحات",
+            "searchOrder": 16,
+            "searchLabel": "المحور الأول: المصطلحات"
+          },
+          {
+            "id": "l3-tahara",
+            "heading": "المحور الثاني: أقسام الطهارة",
+            "searchOrder": 17,
+            "searchLabel": "المحور الثاني: أقسام الطهارة"
+          },
+          {
+            "id": "l3-water",
+            "heading": "المحور الثالث: أقسام المياه",
+            "searchOrder": 18,
+            "searchLabel": "المحور الثالث: أقسام المياه"
+          },
+          {
+            "id": "l3-table",
+            "heading": "جدول أقسام المياه",
+            "searchOrder": 19,
+            "searchLabel": "جدول أقسام المياه"
+          },
+          {
+            "id": "l3-verse",
+            "heading": "شرح ألفاظ البيت",
+            "searchOrder": 20,
+            "searchLabel": "شرح ألفاظ البيت"
+          },
+          {
+            "id": "l3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 21,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "l3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 22,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 13,
+        "questionCount": 11,
+        "dataKeys": [
+          "l3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة الأولى",
+    "title": "مادة الفقه",
+    "cardTheme": "blue",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-1",
+        "number": 1,
+        "label": "الدرس الأول — مقدمة المنظومة"
+      },
+      {
+        "lessonId": "lesson-2",
+        "number": 2,
+        "label": "الدرس الثاني — أقسام الحكم الشرعي"
+      },
+      {
+        "lessonId": "lesson-3",
+        "number": 3,
+        "label": "الدرس الثالث — كتاب الطهارة"
+      }
+    ]
+  },
+  {
+    "id": "aqida",
+    "name": "مادة العقيدة",
+    "book": "الشذرات الذهبية",
+    "file": "aqida/index.html",
+    "total": 41,
+    "lessons": [
+      {
+        "meta": {
+          "id": "aq1",
+          "subject": "aqida",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مدخل إلى علم العقيدة",
+          "shortTitle": "مدخل إلى علم العقيدة",
+          "prefix": "aq1",
+          "legacyLessonId": "lesson-aq1",
+          "homeLabel": "الدرس الأول — مدخل إلى علم العقيدة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "aq1-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 23,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "aq1-source",
+            "heading": "الآية التي سنبني عليها المدخل",
+            "searchOrder": 197,
+            "searchLabel": "الآية التي سنبني عليها المدخل"
+          },
+          {
+            "id": "aq1-card",
+            "heading": "بطاقة التعريف",
+            "searchOrder": 24,
+            "searchLabel": "بطاقة التعريف"
+          },
+          {
+            "id": "aq1-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 25,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "aq1-why",
+            "heading": "لماذا هو أهم العلوم؟",
+            "searchOrder": 26,
+            "searchLabel": "لماذا هو أهم العلوم؟"
+          },
+          {
+            "id": "aq1-parts",
+            "heading": "المباحث الثلاثة",
+            "searchOrder": 27,
+            "searchLabel": "المباحث الثلاثة"
+          },
+          {
+            "id": "aq1-plan",
+            "heading": "مقرر السنة",
+            "searchOrder": 28,
+            "searchLabel": "مقرر السنة"
+          },
+          {
+            "id": "aq1-terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 29,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "aq1-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 30,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "aq1-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 31,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 11,
+        "questionCount": 11,
+        "dataKeys": [
+          "aq1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "aq2",
+          "subject": "aqida",
+          "number": 2,
+          "slug": "lesson",
+          "title": "المبادئ العشرة لعلم العقيدة",
+          "shortTitle": "المبادئ العشرة لعلم العقيدة",
+          "prefix": "aq2",
+          "legacyLessonId": "lesson-aq2",
+          "homeLabel": "الدرس الثاني — المبادئ العشرة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "aq2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 32,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "aq2-source",
+            "heading": "الأبيات التي سنستخدمها للتعرّف إلى المبادئ العشرة",
+            "searchOrder": 198,
+            "searchLabel": "الأبيات التي سنستخدمها للتعرّف إلى المبادئ العشرة"
+          },
+          {
+            "id": "aq2-ten",
+            "heading": "المبادئ العشرة في جدول",
+            "searchOrder": 33,
+            "searchLabel": "المبادئ العشرة في جدول"
+          },
+          {
+            "id": "aq2-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 34,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "aq2-hadd",
+            "heading": "المبدأ الأول: الحد",
+            "searchOrder": 35,
+            "searchLabel": "المبدأ الأول: الحد"
+          },
+          {
+            "id": "aq2-mawdu3",
+            "heading": "المبدأ الثاني: الموضوع",
+            "searchOrder": 36,
+            "searchLabel": "المبدأ الثاني: الموضوع"
+          },
+          {
+            "id": "aq2-fadl",
+            "heading": "الثمرة والفضل والنسبة",
+            "searchOrder": 37,
+            "searchLabel": "الثمرة والفضل والنسبة"
+          },
+          {
+            "id": "aq2-origin",
+            "heading": "الواضع والاسم والاستمداد",
+            "searchOrder": 38,
+            "searchLabel": "الواضع والاسم والاستمداد"
+          },
+          {
+            "id": "aq2-hukm",
+            "heading": "حكم تعلمه والمسائل",
+            "searchOrder": 39,
+            "searchLabel": "حكم تعلمه والمسائل"
+          },
+          {
+            "id": "aq2-terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 40,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "aq2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 41,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "aq2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 42,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 15,
+        "questionCount": 13,
+        "dataKeys": [
+          "aq2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "aq3",
+          "subject": "aqida",
+          "number": 3,
+          "slug": "lesson",
+          "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
+          "shortTitle": "التراجم وقراءة مقدمة الشذرات الذهبية",
+          "prefix": "aq3",
+          "legacyLessonId": "lesson-aq3",
+          "homeLabel": "الدرس الثالث — التراجم وقراءة المقدمة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "aq3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 43,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "aq3-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 44,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "aq3-isnad",
+            "heading": "لماذا نبدأ بالتراجم؟",
+            "searchOrder": 45,
+            "searchLabel": "لماذا نبدأ بالتراجم؟"
+          },
+          {
+            "id": "aq3-sharih",
+            "heading": "ترجمة الشارح: إبراهيم المارغني",
+            "searchOrder": 46,
+            "searchLabel": "ترجمة الشارح: إبراهيم المارغني"
+          },
+          {
+            "id": "aq3-nathim",
+            "heading": "ترجمة الناظم: عبد المجيد الشرنوبي",
+            "searchOrder": 47,
+            "searchLabel": "ترجمة الناظم: عبد المجيد الشرنوبي"
+          },
+          {
+            "id": "aq3-read",
+            "heading": "قراءة مقدمة الشارح",
+            "searchOrder": 48,
+            "searchLabel": "قراءة مقدمة الشارح"
+          },
+          {
+            "id": "aq3-tawassul",
+            "heading": "فائدة: التوسل بجاه النبي ﷺ",
+            "searchOrder": 49,
+            "searchLabel": "فائدة: التوسل بجاه النبي ﷺ"
+          },
+          {
+            "id": "aq3-terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 50,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "aq3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 51,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "aq3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 52,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 15,
+        "questionCount": 13,
+        "dataKeys": [
+          "aq3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة الثانية",
+    "title": "مادة العقيدة",
+    "cardTheme": "green",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-aq1",
+        "number": 1,
+        "label": "الدرس الأول — مدخل إلى علم العقيدة"
+      },
+      {
+        "lessonId": "lesson-aq2",
+        "number": 2,
+        "label": "الدرس الثاني — المبادئ العشرة"
+      },
+      {
+        "lessonId": "lesson-aq3",
+        "number": 3,
+        "label": "الدرس الثالث — التراجم وقراءة المقدمة"
+      }
+    ]
+  },
+  {
+    "id": "tajwid",
+    "name": "مادة التجويد",
+    "book": "علم التجويد",
+    "file": "tajwid/index.html",
+    "total": 36,
+    "lessons": [
+      {
+        "meta": {
+          "id": "tj1",
+          "subject": "tajwid",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مقدمة علم التجويد وتعريفه",
+          "shortTitle": "مقدمة علم التجويد وتعريفه",
+          "prefix": "tj1",
+          "legacyLessonId": "lesson-tj1",
+          "homeLabel": "الدرس الأول — مقدمة علم التجويد",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "tj1-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 53,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "tj1-source",
+            "heading": "الأبيات التي سنستخدمها للتعرّف إلى مبادئ العلم",
+            "searchOrder": 199,
+            "searchLabel": "الأبيات التي سنستخدمها للتعرّف إلى مبادئ العلم"
+          },
+          {
+            "id": "tj1-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 55,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "tj1-why",
+            "heading": "لماذا نتعلم التجويد؟",
+            "searchOrder": 56,
+            "searchLabel": "لماذا نتعلم التجويد؟"
+          },
+          {
+            "id": "tj1-ten",
+            "heading": "المبادئ العشرة",
+            "searchOrder": 57,
+            "searchLabel": "المبادئ العشرة"
+          },
+          {
+            "id": "tj1-hadd",
+            "heading": "المبدأ الأول: الحد (التعريف)",
+            "searchOrder": 58,
+            "searchLabel": "المبدأ الأول: الحد (التعريف)"
+          },
+          {
+            "id": "tj1-sad",
+            "heading": "مثال تطبيقي: حرف الصاد",
+            "searchOrder": 59,
+            "searchLabel": "مثال تطبيقي: حرف الصاد"
+          },
+          {
+            "id": "tj1-itbaq",
+            "heading": "الاستعلاء والإطباق",
+            "searchOrder": 60,
+            "searchLabel": "الاستعلاء والإطباق"
+          },
+          {
+            "id": "tj1-arid",
+            "heading": "الحركة الأصلية والحركة العارضة",
+            "searchOrder": 61,
+            "searchLabel": "الحركة الأصلية والحركة العارضة"
+          },
+          {
+            "id": "tj1-terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 62,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "tj1-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 63,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "tj1-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 64,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 12,
+        "dataKeys": [
+          "tj1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "tj2",
+          "subject": "tajwid",
+          "number": 2,
+          "slug": "lesson",
+          "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
+          "shortTitle": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
+          "prefix": "tj2",
+          "legacyLessonId": "lesson-tj2",
+          "homeLabel": "الدرس الثاني — مبادئ علم التجويد",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "tj2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 65,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "tj2-source",
+            "heading": "الآية التي سنقرأها في هذا الدرس",
+            "searchOrder": 200,
+            "searchLabel": "الآية التي سنقرأها في هذا الدرس"
+          },
+          {
+            "id": "tj2-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 66,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "tj2-table",
+            "heading": "المبادئ في جدول",
+            "searchOrder": 67,
+            "searchLabel": "المبادئ في جدول"
+          },
+          {
+            "id": "tj2-nisba",
+            "heading": "الموضوع والنسبة والواضع",
+            "searchOrder": 68,
+            "searchLabel": "الموضوع والنسبة والواضع"
+          },
+          {
+            "id": "tj2-sanad",
+            "heading": "سلسلة نقل العلم: الاستمداد",
+            "searchOrder": 69,
+            "searchLabel": "سلسلة نقل العلم: الاستمداد"
+          },
+          {
+            "id": "tj2-hukm",
+            "heading": "الحكم: فرض كفاية وفرض عين",
+            "searchOrder": 70,
+            "searchLabel": "الحكم: فرض كفاية وفرض عين"
+          },
+          {
+            "id": "tj2-adilla",
+            "heading": "أدلة وجوب التجويد",
+            "searchOrder": 71,
+            "searchLabel": "أدلة وجوب التجويد"
+          },
+          {
+            "id": "tj2-tuhfa",
+            "heading": "التعريف بمتن «تحفة الأطفال»",
+            "searchOrder": 72,
+            "searchLabel": "التعريف بمتن «تحفة الأطفال»"
+          },
+          {
+            "id": "tj2-terms",
+            "heading": "مصطلحات الدرس",
+            "searchOrder": 73,
+            "searchLabel": "مصطلحات الدرس"
+          },
+          {
+            "id": "tj2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 74,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "tj2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 75,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "tj2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "tj3",
+          "subject": "tajwid",
+          "number": 3,
+          "slug": "lesson",
+          "title": "نظم المقدمة — مقدمة تحفة الأطفال",
+          "shortTitle": "نظم المقدمة — مقدمة تحفة الأطفال",
+          "prefix": "tj3",
+          "legacyLessonId": "lesson-tj3",
+          "homeLabel": "الدرس الثالث — نظم المقدمة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "tj3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 76,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "tj3-text",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 54,
+            "searchLabel": "نص مقدمة تحفة الأطفال"
+          },
+          {
+            "id": "tj3-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 77,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "tj3-basmala",
+            "heading": "البسملة والحمدلة",
+            "searchOrder": 78,
+            "searchLabel": "البسملة والحمدلة"
+          },
+          {
+            "id": "tj3-cause",
+            "heading": "سبب النظم وتسمية الشرح",
+            "searchOrder": 79,
+            "searchLabel": "سبب النظم وتسمية الشرح"
+          },
+          {
+            "id": "tj3-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 80,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "tj3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 81,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "tj3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 82,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "tj3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة الثالثة",
+    "title": "مادة التجويد",
+    "cardTheme": "amber",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-tj1",
+        "number": 1,
+        "label": "الدرس الأول — مقدمة علم التجويد"
+      },
+      {
+        "lessonId": "lesson-tj2",
+        "number": 2,
+        "label": "الدرس الثاني — مبادئ علم التجويد"
+      },
+      {
+        "lessonId": "lesson-tj3",
+        "number": 3,
+        "label": "الدرس الثالث — نظم المقدمة"
+      }
+    ]
+  },
+  {
+    "id": "sira",
+    "name": "مادة السيرة النبوية",
+    "book": "السيرة النبوية منذ المولد إلى الوفاة",
+    "file": "sira/index.html",
+    "total": 36,
+    "lessons": [
+      {
+        "meta": {
+          "id": "sr1",
+          "subject": "sira",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
+          "shortTitle": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
+          "prefix": "sr1",
+          "legacyLessonId": "lesson-h1",
+          "homeLabel": "الدرس الأول — مدخل إلى السيرة والنسب",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "h1-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 83,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "h1-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 84,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "h1-def",
+            "heading": "تعريف السيرة والمغازي",
+            "searchOrder": 85,
+            "searchLabel": "تعريف السيرة والمغازي"
+          },
+          {
+            "id": "h1-books",
+            "heading": "كتب السيرة",
+            "searchOrder": 86,
+            "searchLabel": "كتب السيرة"
+          },
+          {
+            "id": "h1-virtues",
+            "heading": "فضائل طلب العلم",
+            "searchOrder": 87,
+            "searchLabel": "فضائل طلب العلم"
+          },
+          {
+            "id": "h1-names",
+            "heading": "أسماء النبي ﷺ",
+            "searchOrder": 88,
+            "searchLabel": "أسماء النبي ﷺ"
+          },
+          {
+            "id": "h1-lineage",
+            "heading": "النسب الشريف",
+            "searchOrder": 89,
+            "searchLabel": "النسب الشريف"
+          },
+          {
+            "id": "h1-months",
+            "heading": "الأشهر وأيام الأسبوع",
+            "searchOrder": 90,
+            "searchLabel": "الأشهر وأيام الأسبوع"
+          },
+          {
+            "id": "h1-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 91,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "h1-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 92,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "h1-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 93,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "h1",
+          "h1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "sr2",
+          "subject": "sira",
+          "number": 2,
+          "slug": "lesson",
+          "title": "مولده ﷺ ويتمه ووفاة أمه",
+          "shortTitle": "مولده ﷺ ويتمه ووفاة أمه",
+          "prefix": "sr2",
+          "legacyLessonId": "lesson-s2",
+          "homeLabel": "الدرس الثاني — مولده ﷺ ويتمه",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "s2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 94,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "s2-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 95,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "s2-father",
+            "heading": "وفاة عبد الله بن عبد المطلب",
+            "searchOrder": 96,
+            "searchLabel": "وفاة عبد الله بن عبد المطلب"
+          },
+          {
+            "id": "s2-mother",
+            "heading": "أمة بنت وهب وزيارة القبر",
+            "searchOrder": 97,
+            "searchLabel": "أمة بنت وهب وزيارة القبر"
+          },
+          {
+            "id": "s2-death",
+            "heading": "وفاة أمه بالأبواء",
+            "searchOrder": 98,
+            "searchLabel": "وفاة أمه بالأبواء"
+          },
+          {
+            "id": "s2-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 99,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "s2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 100,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "s2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 101,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "s2",
+          "s2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "sr3",
+          "subject": "sira",
+          "number": 3,
+          "slug": "lesson",
+          "title": "زمزم والإيلاف — هاشم بن عبد مناف",
+          "shortTitle": "زمزم والإيلاف — هاشم بن عبد مناف",
+          "prefix": "sr3",
+          "legacyLessonId": "lesson-s3",
+          "homeLabel": "الدرس الثالث — زمزم والإيلاف",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "s3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 102,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "s3-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 103,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "s3-zamzam",
+            "heading": "حفر زمزم",
+            "searchOrder": 104,
+            "searchLabel": "حفر زمزم"
+          },
+          {
+            "id": "s3-nadhr",
+            "heading": "النذر والفداء",
+            "searchOrder": 105,
+            "searchLabel": "النذر والفداء"
+          },
+          {
+            "id": "s3-hisham",
+            "heading": "هاشم بن عبد مناف",
+            "searchOrder": 106,
+            "searchLabel": "هاشم بن عبد مناف"
+          },
+          {
+            "id": "s3-ilaf",
+            "heading": "الإيلاف",
+            "searchOrder": 107,
+            "searchLabel": "الإيلاف"
+          },
+          {
+            "id": "s3-markets",
+            "heading": "الأسواق وسورة قريش",
+            "searchOrder": 108,
+            "searchLabel": "الأسواق وسورة قريش"
+          },
+          {
+            "id": "s3-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 109,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "s3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 110,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "s3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 111,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "s3",
+          "s3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة الرابعة",
+    "title": "مادة السيرة النبوية",
+    "cardTheme": "blue",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-h1",
+        "number": 1,
+        "label": "الدرس الأول — مدخل إلى السيرة والنسب"
+      },
+      {
+        "lessonId": "lesson-s2",
+        "number": 2,
+        "label": "الدرس الثاني — مولده ﷺ ويتمه"
+      },
+      {
+        "lessonId": "lesson-s3",
+        "number": 3,
+        "label": "الدرس الثالث — زمزم والإيلاف"
+      }
+    ]
+  },
+  {
+    "id": "hadith",
+    "name": "مادة الحديث",
+    "book": "شرح الأربعين النووية",
+    "file": "hadith/index.html",
+    "total": 36,
+    "lessons": [
+      {
+        "meta": {
+          "id": "hd1",
+          "subject": "hadith",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مدخل إلى شرح الأربعين النووية",
+          "shortTitle": "مدخل إلى شرح الأربعين النووية",
+          "prefix": "hd1",
+          "legacyLessonId": "lesson-hd1",
+          "homeLabel": "الدرس الأول — مدخل إلى الأربعين النووية",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "hd1-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 112,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "hd1-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 113,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "hd1-book",
+            "heading": "الكتاب والمؤلف",
+            "searchOrder": 114,
+            "searchLabel": "الكتاب والمؤلف"
+          },
+          {
+            "id": "hd1-virtues",
+            "heading": "فضائل طلب العلم",
+            "searchOrder": 115,
+            "searchLabel": "فضائل طلب العلم"
+          },
+          {
+            "id": "hd1-path",
+            "heading": "المحجة البيضاء",
+            "searchOrder": 116,
+            "searchLabel": "المحجة البيضاء"
+          },
+          {
+            "id": "hd1-salawat",
+            "heading": "فضل الصلاة على النبي ﷺ",
+            "searchOrder": 117,
+            "searchLabel": "فضل الصلاة على النبي ﷺ"
+          },
+          {
+            "id": "hd1-method",
+            "heading": "منهج النووي في الأربعين",
+            "searchOrder": 118,
+            "searchLabel": "منهج النووي في الأربعين"
+          },
+          {
+            "id": "hd1-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 119,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "hd1-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 120,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "hd1-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 121,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "hd1",
+          "hd1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "hd2",
+          "subject": "hadith",
+          "number": 2,
+          "slug": "lesson",
+          "title": "حديث النية — إنما الأعمال بالنيات",
+          "shortTitle": "حديث النية — إنما الأعمال بالنيات",
+          "prefix": "hd2",
+          "legacyLessonId": "lesson-hd2",
+          "homeLabel": "الدرس الثاني — حديث النية",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "hd2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 122,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "hd2-hadith-text",
+            "heading": "نص الحديث",
+            "searchOrder": 123,
+            "searchLabel": "نص الحديث"
+          },
+          {
+            "id": "hd2-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 124,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "hd2-hadith",
+            "heading": "الحديث والراوي",
+            "searchOrder": 125,
+            "searchLabel": "الحديث والراوي"
+          },
+          {
+            "id": "hd2-omar",
+            "heading": "ترجمة عمر بن الخطاب",
+            "searchOrder": 126,
+            "searchLabel": "ترجمة عمر بن الخطاب"
+          },
+          {
+            "id": "hd2-meaning",
+            "heading": "شرح الحديث",
+            "searchOrder": 127,
+            "searchLabel": "شرح الحديث"
+          },
+          {
+            "id": "hd2-ranks",
+            "heading": "مراتب النية",
+            "searchOrder": 128,
+            "searchLabel": "مراتب النية"
+          },
+          {
+            "id": "hd2-intersect",
+            "heading": "تداخل العبادات بالنية",
+            "searchOrder": 129,
+            "searchLabel": "تداخل العبادات بالنية"
+          },
+          {
+            "id": "hd2-cause",
+            "heading": "سبب ورود الحديث",
+            "searchOrder": 130,
+            "searchLabel": "سبب ورود الحديث"
+          },
+          {
+            "id": "hd2-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 131,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "hd2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 132,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "hd2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 133,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 11,
+        "dataKeys": [
+          "hd2",
+          "hd2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "hd3",
+          "subject": "hadith",
+          "number": 3,
+          "slug": "lesson",
+          "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
+          "shortTitle": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
+          "prefix": "hd3",
+          "legacyLessonId": "lesson-hd3",
+          "homeLabel": "الدرس الثالث — حديث جبريل مراتب الدين",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "hd3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 134,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "hd3-hadith-text",
+            "heading": "نص الحديث",
+            "searchOrder": 135,
+            "searchLabel": "نص الحديث"
+          },
+          {
+            "id": "hd3-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 136,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "hd3-hadith",
+            "heading": "الحديث والراوي",
+            "searchOrder": 137,
+            "searchLabel": "الحديث والراوي"
+          },
+          {
+            "id": "hd3-ranks",
+            "heading": "مراتب الدين الثلاث",
+            "searchOrder": 138,
+            "searchLabel": "مراتب الدين الثلاث"
+          },
+          {
+            "id": "hd3-islam",
+            "heading": "أركان الإسلام الخمسة",
+            "searchOrder": 139,
+            "searchLabel": "أركان الإسلام الخمسة"
+          },
+          {
+            "id": "hd3-worship",
+            "heading": "الزكاة والصيام والحج",
+            "searchOrder": 140,
+            "searchLabel": "الزكاة والصيام والحج"
+          },
+          {
+            "id": "hd3-iman",
+            "heading": "أركان الإيمان الستة",
+            "searchOrder": 141,
+            "searchLabel": "أركان الإيمان الستة"
+          },
+          {
+            "id": "hd3-ihsan",
+            "heading": "الإحسان والمراقبة",
+            "searchOrder": 142,
+            "searchLabel": "الإحسان والمراقبة"
+          },
+          {
+            "id": "hd3-hour",
+            "heading": "الساعة وأشراطها",
+            "searchOrder": 143,
+            "searchLabel": "الساعة وأشراطها"
+          },
+          {
+            "id": "hd3-strange",
+            "heading": "غريب الحديث",
+            "searchOrder": 144,
+            "searchLabel": "غريب الحديث"
+          },
+          {
+            "id": "hd3-adab",
+            "heading": "آداب طلب العلم من هيئة جبريل",
+            "searchOrder": 145,
+            "searchLabel": "آداب طلب العلم من هيئة جبريل"
+          },
+          {
+            "id": "hd3-scholars",
+            "heading": "أقوال العلماء في الحديث",
+            "searchOrder": 146,
+            "searchLabel": "أقوال العلماء في الحديث"
+          },
+          {
+            "id": "hd3-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 147,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "hd3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 148,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "hd3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 149,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 13,
+        "dataKeys": [
+          "hd3",
+          "hd3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة الخامسة",
+    "title": "مادة الحديث",
+    "cardTheme": "green",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-hd1",
+        "number": 1,
+        "label": "الدرس الأول — مدخل إلى الأربعين النووية"
+      },
+      {
+        "lessonId": "lesson-hd2",
+        "number": 2,
+        "label": "الدرس الثاني — حديث النية"
+      },
+      {
+        "lessonId": "lesson-hd3",
+        "number": 3,
+        "label": "الدرس الثالث — حديث جبريل مراتب الدين"
+      }
+    ]
+  },
+  {
+    "id": "akhlaq",
+    "name": "مادة الأخلاق",
+    "book": "تذكرة السامع والمتكلم في أدب العالم والمتعلم",
+    "file": "akhlaq/index.html",
+    "total": 23,
+    "lessons": [
+      {
+        "meta": {
+          "id": "ak1",
+          "subject": "akhlaq",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مدخل إلى علم الأخلاق وآداب العلم",
+          "shortTitle": "مدخل إلى علم الأخلاق وآداب العلم",
+          "prefix": "ak1",
+          "legacyLessonId": "lesson-ak1",
+          "homeLabel": "الدرس الأول — مدخل إلى علم الأخلاق وآداب العلم",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "ak1-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 150,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "ak1-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 151,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "ak1-context",
+            "heading": "المادة والكتاب",
+            "searchOrder": 152,
+            "searchLabel": "المادة والكتاب"
+          },
+          {
+            "id": "ak1-adab",
+            "heading": "العلم والأدب",
+            "searchOrder": 153,
+            "searchLabel": "العلم والأدب"
+          },
+          {
+            "id": "ak1-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 154,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "ak1-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 155,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "ak1-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 156,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 6,
+        "questionCount": 11,
+        "dataKeys": [
+          "ak1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "ak2",
+          "subject": "akhlaq",
+          "number": 2,
+          "slug": "lesson",
+          "title": "مقدمة الكتاب وفضل العلم والعلماء",
+          "shortTitle": "مقدمة الكتاب وفضل العلم والعلماء",
+          "prefix": "ak2",
+          "legacyLessonId": "lesson-ak2",
+          "homeLabel": "الدرس الثاني — مقدمة الكتاب وفضل العلم",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "ak2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 157,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "ak2-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 158,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "ak2-intro",
+            "heading": "مقدمة الكتاب",
+            "searchOrder": 159,
+            "searchLabel": "مقدمة الكتاب"
+          },
+          {
+            "id": "ak2-plan",
+            "heading": "أبواب الكتاب",
+            "searchOrder": 160,
+            "searchLabel": "أبواب الكتاب"
+          },
+          {
+            "id": "ak2-merit",
+            "heading": "الباب الأول: فضل العلم وأهله",
+            "searchOrder": 161,
+            "searchLabel": "الباب الأول: فضل العلم وأهله"
+          },
+          {
+            "id": "ak2-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 162,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "ak2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 163,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "ak2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 164,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 8,
+        "questionCount": 13,
+        "dataKeys": [
+          "ak2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "ak3",
+          "subject": "akhlaq",
+          "number": 3,
+          "slug": "lesson",
+          "title": "إخلاص النية وآداب العالم في نفسه",
+          "shortTitle": "إخلاص النية وآداب العالم في نفسه",
+          "prefix": "ak3",
+          "legacyLessonId": "lesson-ak3",
+          "homeLabel": "الدرس الثالث — إخلاص النية وآداب العالم",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "ak3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 165,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "ak3-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 166,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "ak3-intention",
+            "heading": "إخلاص النية في طلب العلم",
+            "searchOrder": 167,
+            "searchLabel": "إخلاص النية في طلب العلم"
+          },
+          {
+            "id": "ak3-conduct",
+            "heading": "سبعة من آداب العالم في نفسه",
+            "searchOrder": 168,
+            "searchLabel": "سبعة من آداب العالم في نفسه"
+          },
+          {
+            "id": "ak3-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 169,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "ak3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 170,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "ak3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 171,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 9,
+        "questionCount": 12,
+        "dataKeys": [
+          "ak3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة السادسة",
+    "title": "مادة الأخلاق",
+    "cardTheme": "amber",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-ak1",
+        "number": 1,
+        "label": "الدرس الأول — مدخل إلى علم الأخلاق وآداب العلم"
+      },
+      {
+        "lessonId": "lesson-ak2",
+        "number": 2,
+        "label": "الدرس الثاني — مقدمة الكتاب وفضل العلم"
+      },
+      {
+        "lessonId": "lesson-ak3",
+        "number": 3,
+        "label": "الدرس الثالث — إخلاص النية وآداب العالم"
+      }
+    ]
+  },
+  {
+    "id": "nahw",
+    "name": "مادة النحو",
+    "book": "الدروس النحوية",
+    "file": "nahw/index.html",
+    "total": 27,
+    "lessons": [
+      {
+        "meta": {
+          "id": "nh1",
+          "subject": "nahw",
+          "number": 1,
+          "slug": "lesson",
+          "title": "مدخل إلى علم النحو وبرنامج المادة",
+          "shortTitle": "مدخل إلى علم النحو وبرنامج المادة",
+          "prefix": "nh1",
+          "legacyLessonId": "lesson-nh1",
+          "homeLabel": "الدرس الأول — مدخل إلى علم النحو وبرنامج المادة",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "nh1-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 172,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "nh1-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 173,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "nh1-intro",
+            "heading": "المادة والكتاب",
+            "searchOrder": 174,
+            "searchLabel": "المادة والكتاب"
+          },
+          {
+            "id": "nh1-plan",
+            "heading": "خريطة المقرر كما عرضها الأستاذ",
+            "searchOrder": 175,
+            "searchLabel": "خريطة المقرر كما عرضها الأستاذ"
+          },
+          {
+            "id": "nh1-purpose",
+            "heading": "غاية علم النحو",
+            "searchOrder": 176,
+            "searchLabel": "غاية علم النحو"
+          },
+          {
+            "id": "nh1-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 177,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "nh1-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 178,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "nh1-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 179,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 8,
+        "questionCount": 12,
+        "dataKeys": [
+          "nh1"
+        ]
+      },
+      {
+        "meta": {
+          "id": "nh2",
+          "subject": "nahw",
+          "number": 2,
+          "slug": "lesson",
+          "title": "أقسام الكلمة: اسم وفعل وحرف",
+          "shortTitle": "أقسام الكلمة: اسم وفعل وحرف",
+          "prefix": "nh2",
+          "legacyLessonId": "lesson-nh2",
+          "homeLabel": "الدرس الثاني — أقسام الكلمة: اسم وفعل وحرف",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "nh2-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 180,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "nh2-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 181,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "nh2-word",
+            "heading": "أولًا: ما الذي يدرسه النحو هنا؟",
+            "searchOrder": 182,
+            "searchLabel": "أولًا: ما الذي يدرسه النحو هنا؟"
+          },
+          {
+            "id": "nh2-classes",
+            "heading": "ثانيًا: الأقسام الثلاثة وكيف أميزها",
+            "searchOrder": 183,
+            "searchLabel": "ثانيًا: الأقسام الثلاثة وكيف أميزها"
+          },
+          {
+            "id": "nh2-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 184,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "nh2-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 185,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "nh2-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 186,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 9,
+        "questionCount": 12,
+        "dataKeys": [
+          "nh2"
+        ]
+      },
+      {
+        "meta": {
+          "id": "nh3",
+          "subject": "nahw",
+          "number": 3,
+          "slug": "lesson",
+          "title": "حروف المباني وحروف المعاني",
+          "shortTitle": "حروف المباني وحروف المعاني",
+          "prefix": "nh3",
+          "legacyLessonId": "lesson-nh3",
+          "homeLabel": "الدرس الثالث — حروف المباني وحروف المعاني",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "nh3-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 187,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "nh3-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 188,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "nh3-distinction",
+            "heading": "أولًا: لا تخلط بين نوعين من الحروف",
+            "searchOrder": 189,
+            "searchLabel": "أولًا: لا تخلط بين نوعين من الحروف"
+          },
+          {
+            "id": "nh3-groups",
+            "heading": "ثانيًا: أمثلة حروف المعاني مرتبة للمراجعة",
+            "searchOrder": 190,
+            "searchLabel": "ثانيًا: أمثلة حروف المعاني مرتبة للمراجعة"
+          },
+          {
+            "id": "nh3-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 191,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "nh3-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 192,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "nh3-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 193,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 10,
+        "questionCount": 12,
+        "dataKeys": [
+          "nh3"
+        ]
+      }
+    ],
+    "lessonsCount": 3,
+    "tag": "المادة السابعة",
+    "title": "مادة النحو",
+    "cardTheme": "green",
+    "homeLessons": [
+      {
+        "lessonId": "lesson-nh1",
+        "number": 1,
+        "label": "الدرس الأول — مدخل إلى علم النحو وبرنامج المادة"
+      },
+      {
+        "lessonId": "lesson-nh2",
+        "number": 2,
+        "label": "الدرس الثاني — أقسام الكلمة: اسم وفعل وحرف"
+      },
+      {
+        "lessonId": "lesson-nh3",
+        "number": 3,
+        "label": "الدرس الثالث — حروف المباني وحروف المعاني"
+      }
+    ]
+  }
+]

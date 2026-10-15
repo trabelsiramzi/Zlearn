@@ -1,0 +1,12 @@
+{
+  "id": "sr2",
+  "subject": "sira",
+  "number": 2,
+  "slug": "lesson",
+  "title": "مولده ﷺ ويتمه ووفاة أمه",
+  "shortTitle": "مولده ﷺ ويتمه ووفاة أمه",
+  "prefix": "sr2",
+  "legacyLessonId": "lesson-s2",
+  "homeLabel": "الدرس الثاني — مولده ﷺ ويتمه",
+  "sourceFile": "source.md"
+}

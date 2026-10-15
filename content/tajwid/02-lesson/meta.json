@@ -1,0 +1,12 @@
+{
+  "id": "tj2",
+  "subject": "tajwid",
+  "number": 2,
+  "slug": "lesson",
+  "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
+  "shortTitle": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
+  "prefix": "tj2",
+  "legacyLessonId": "lesson-tj2",
+  "homeLabel": "الدرس الثاني — مبادئ علم التجويد",
+  "sourceFile": "source.md"
+}

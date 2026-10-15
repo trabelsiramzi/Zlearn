@@ -1,0 +1,12 @@
+{
+  "id": "ak2",
+  "subject": "akhlaq",
+  "number": 2,
+  "slug": "lesson",
+  "title": "مقدمة الكتاب وفضل العلم والعلماء",
+  "shortTitle": "مقدمة الكتاب وفضل العلم والعلماء",
+  "prefix": "ak2",
+  "legacyLessonId": "lesson-ak2",
+  "homeLabel": "الدرس الثاني — مقدمة الكتاب وفضل العلم",
+  "sourceFile": "source.md"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "tj3",
+  "subject": "tajwid",
+  "number": 3,
+  "slug": "lesson",
+  "title": "نظم المقدمة — مقدمة تحفة الأطفال",
+  "shortTitle": "نظم المقدمة — مقدمة تحفة الأطفال",
+  "prefix": "tj3",
+  "legacyLessonId": "lesson-tj3",
+  "homeLabel": "الدرس الثالث — نظم المقدمة",
+  "sourceFile": "source.md"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "tj1",
+  "subject": "tajwid",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مقدمة علم التجويد وتعريفه",
+  "shortTitle": "مقدمة علم التجويد وتعريفه",
+  "prefix": "tj1",
+  "legacyLessonId": "lesson-tj1",
+  "homeLabel": "الدرس الأول — مقدمة علم التجويد",
+  "sourceFile": "source.md"
+}

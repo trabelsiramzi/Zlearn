@@ -1,0 +1,12 @@
+{
+  "id": "sr3",
+  "subject": "sira",
+  "number": 3,
+  "slug": "lesson",
+  "title": "زمزم والإيلاف — هاشم بن عبد مناف",
+  "shortTitle": "زمزم والإيلاف — هاشم بن عبد مناف",
+  "prefix": "sr3",
+  "legacyLessonId": "lesson-s3",
+  "homeLabel": "الدرس الثالث — زمزم والإيلاف",
+  "sourceFile": "source.md"
+}

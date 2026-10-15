@@ -1,0 +1,12 @@
+{
+  "id": "fq2",
+  "subject": "fiqh",
+  "number": 2,
+  "slug": "lesson",
+  "title": "أقسام الحكم الشرعي",
+  "shortTitle": "أقسام الحكم الشرعي",
+  "prefix": "fq2",
+  "legacyLessonId": "lesson-2",
+  "homeLabel": "الدرس الثاني — أقسام الحكم الشرعي",
+  "sourceFile": "source.md"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "fq1",
+  "subject": "fiqh",
+  "number": 1,
+  "slug": "lesson",
+  "title": "مقدمة المنظومة",
+  "shortTitle": "مقدمة المنظومة",
+  "prefix": "fq1",
+  "legacyLessonId": "lesson-1",
+  "homeLabel": "الدرس الأول — مقدمة المنظومة",
+  "sourceFile": "source.md"
+}

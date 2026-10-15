@@ -61,7 +61,7 @@ AUTO_CLOSE = {
 }
 
 ARABIC_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
-SKIP_DIRS = {".git", ".agents", ".opencode", "backups", "docs", "templates", "node_modules"}
+SKIP_DIRS = {".git", ".agents", ".opencode", "backups", "docs", "templates", "node_modules", "content", "site"}
 EXPECTED_SUBJECTS = ("fiqh", "aqida", "tajwid", "sira", "hadith", "akhlaq", "nahw")
 
 
