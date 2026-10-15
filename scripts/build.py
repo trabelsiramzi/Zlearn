@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Build the legacy multi-page site from content/ and current-layout templates."""
-import argparse
+"""Build the static multi-page site from content/ and templates/ (stdlib only)."""
 import json
 import re
 import sys
@@ -12,6 +11,10 @@ OUT = ROOT / "site"
 
 def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def lesson_url(subject, lesson):
+    return "%s/%02d-%s/index.html" % (subject["id"], lesson["meta"]["number"], lesson["meta"]["slug"])
 
 
 def manifest_js(subjects):
@@ -26,7 +29,7 @@ def manifest_js(subjects):
 
 def render_cards(subjects):
     out = ['<div class="cards">']
-    for i, s in enumerate(subjects, 1):
+    for s in subjects:
         out.extend([
             '    <article data-matiere-card="%s" class="card %s">' % (s["id"], s["cardTheme"]),
             '      <p class="tag">%s</p>' % s["tag"],
@@ -35,12 +38,12 @@ def render_cards(subjects):
             '      <ul class="dars">'])
         for lesson in s["lessons"]:
             meta = lesson["meta"]
-            out.append('        <li><a href="%s#%s" data-lesson="%s">%s</a></li>' %
-                       (s["file"], meta["legacyLessonId"], meta["number"], meta["homeLabel"]))
+            out.append('        <li><a href="%s" data-lesson="%s">%s</a></li>' %
+                       (lesson_url(s, lesson), meta["number"], meta["homeLabel"]))
         out.extend([
             '      </ul>',
             '      <div class="mprog">',
-            '        <div class="bar" role="progressbar" aria-label="دروس %s" data-matiere-learning="%s" aria-valuemin="0" aria-valuemax="%d" aria-valuenow="0" aria-valuetext="0 من %d دروس مكتملة"><span class="pfill"></span></div>' % (s["name"].replace("مادة ", "مادة "), s["id"], s["lessonsCount"], s["lessonsCount"]),
+            '        <div class="bar" role="progressbar" aria-label="دروس %s" data-matiere-learning="%s" aria-valuemin="0" aria-valuemax="%d" aria-valuenow="0" aria-valuetext="0 من %d دروس مكتملة"><span class="pfill"></span></div>' % (s["name"], s["id"], s["lessonsCount"], s["lessonsCount"]),
             '        <span class="mlabel">0 من %d</span>' % s["lessonsCount"],
             '      </div>',
             '    </article>'])
@@ -53,12 +56,13 @@ def search_sections(subjects):
     for s in subjects:
         for lesson in s["lessons"]:
             meta = lesson["meta"]
+            url = lesson_url(s, lesson)
             for section in lesson["sections"]:
                 if section.get("searchOrder") is None:
                     continue
-                result.append({"_order": section["searchOrder"], "sub": s["id"], "file": s["file"], "lesson": str(meta["number"]),
-                               "lessonId": meta["legacyLessonId"], "title": meta["title"],
-                               "id": section["id"], "section": section["searchLabel"]})
+                result.append({"_order": section["searchOrder"], "sub": s["id"], "file": url, "url": url,
+                               "lesson": str(meta["number"]), "lessonId": meta["legacyLessonId"],
+                               "title": meta["title"], "id": section["id"], "section": section["searchLabel"]})
     result.sort(key=lambda x: x["_order"])
     for item in result:
         del item["_order"]
@@ -69,23 +73,92 @@ def render_search_index(items):
     return "/* Index léger des titres de sections pour la recherche inter-matières. */\nvar ZLEARN_SEARCH_SECTIONS = " + json.dumps(items, ensure_ascii=False, indent=2) + ";\n"
 
 
+def replace_tokens(template, values):
+    for key, value in values.items():
+        template = template.replace("{{" + key + "}}", str(value))
+    return template
+
+
+def render_home(subjects):
+    template = (ROOT / "templates/current/index.html").read_text(encoding="utf-8")
+    if template.count("<!-- GENERATED_CARDS -->") != 1:
+        raise ValueError("Marqueur de cartes d'accueil invalide")
+    template = template.replace("<!-- GENERATED_LESSON_TOTAL -->", str(sum(s["lessonsCount"] for s in subjects)))
+    return template.replace("<!-- GENERATED_CARDS -->", render_cards(subjects))
+
+
+def render_summary(subject):
+    template = (ROOT / "templates/subject-index.html").read_text(encoding="utf-8")
+    cards = []
+    redirects = {}
+    for lesson in subject["lessons"]:
+        meta = lesson["meta"]
+        url = lesson_url(subject, lesson)
+        relative_url = "%02d-%s/index.html" % (meta["number"], meta["slug"])
+        redirects[meta["legacyLessonId"]] = relative_url + "#" + meta["legacyLessonId"]
+        rows = []
+        for section in lesson["sections"]:
+            sid = section["id"]
+            redirects[sid] = relative_url + "#" + sid
+            label = section.get("heading") or sid
+            rows.append('<li><a id="%s" href="%s#%s">%s</a></li>' % (sid, relative_url, sid, label))
+        cards.append('''<article id="%s" class="card %s lesson-summary">
+  <p class="tag">الدرس %02d</p><h3><a href="%s">%s</a></h3>
+  <a class="btn primary" href="%s">افتح الدرس</a>
+  <details><summary>محاور الدرس</summary><ul class="section-links">%s</ul></details>
+</article>''' % (meta["legacyLessonId"], subject["cardTheme"], meta["number"], relative_url, meta["title"], relative_url, "".join(rows)))
+    content = replace_tokens(template, {
+        "SUBJECT_TITLE": subject["title"], "SUBJECT_NAME": subject["name"], "SUBJECT_ID": subject["id"],
+        "BOOK": subject["book"], "TOTAL_LESSONS": sum(s["lessonsCount"] for s in read_json(ROOT / "content/subjects.json")),
+        "LESSON_CARDS": "\n".join(cards),
+        "LEGACY_REDIRECTS": json.dumps(redirects, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")})
+    return content
+
+
+def render_lesson_page(subject, lesson, index, subjects):
+    template = (ROOT / "templates/lesson-page.html").read_text(encoding="utf-8")
+    meta = lesson["meta"]
+    url = lesson_url(subject, lesson)
+    previous = "../%02d-%s/index.html" % (subject["lessons"][index-1]["meta"]["number"], subject["lessons"][index-1]["meta"]["slug"]) if index else ""
+    following = "../%02d-%s/index.html" % (subject["lessons"][index+1]["meta"]["number"], subject["lessons"][index+1]["meta"]["slug"]) if index < len(subject["lessons"])-1 else ""
+    label = meta["homeLabel"].split(" — ", 1)[0].replace("الدرس ", "")
+    chips = []
+    for section in lesson["sections"]:
+        if not section.get("heading"):
+            continue
+        chips.append('<a href="#%s">%s</a>' % (section["id"], section["heading"]))
+    fragment = (ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"])) / "lesson.html").read_text(encoding="utf-8")
+    previous_label = "الدرس السابق"
+    next_label = "الدرس التالي ←"
+    stepper_parts = ['<nav class="lesson-stepper" aria-label="التنقل بين دروس المادة">']
+    if previous:
+        stepper_parts.append('<a class="btn" href="%s">%s</a>' % (previous, previous_label))
+    else:
+        stepper_parts.append('<span class="lesson-step-placeholder" aria-hidden="true"></span>')
+    stepper_parts.append('<span class="lesson-step-count">الدرس %d من %d</span>' % (meta["number"], len(subject["lessons"])))
+    if following:
+        stepper_parts.append('<a class="btn primary" href="%s">%s</a>' % (following, next_label))
+    else:
+        stepper_parts.append('<a class="btn primary" href="../index.html">اختر مادة أخرى</a>')
+    stepper_parts.append('</nav>')
+    values = {
+        "SUBJECT_ID": subject["id"], "SUBJECT_NAME": subject["name"], "BOOK": subject["book"],
+        "LESSON_TITLE": meta["title"], "SHORT_TITLE": meta["shortTitle"],
+        "LESSON_URL": url, "LESSON_NUMBER": meta["number"], "LESSON_COUNT": len(subject["lessons"]),
+        "PREVIOUS_URL": previous, "NEXT_URL": following, "LESSON_LABEL": label,
+        "LEGACY_ID": meta["legacyLessonId"], "SITE_PREFIX": "../../", "TOTAL_LESSONS": sum(s["lessonsCount"] for s in subjects),
+        "CHIPS": "".join(chips), "LESSON_HTML": fragment, "STEPPER": "".join(stepper_parts),
+    }
+    return replace_tokens(template, values)
+
+
 def build():
     subjects = read_json(ROOT / "content/subjects.json")
-    html_paths = {}
-    for s in subjects:
-        page = (ROOT / "templates/current" / (s["id"] + ".html")).read_text(encoding="utf-8")
-        for lesson in s["lessons"]:
-            marker = "<!-- LESSON:%s:%s -->" % (s["id"], lesson["meta"]["number"])
-            fragment = (ROOT / "content" / s["id"] / ("%02d-%s" % (lesson["meta"]["number"], lesson["meta"]["slug"])) / "lesson.html").read_text(encoding="utf-8")
-            if page.count(marker) != 1:
-                raise ValueError("Marqueur manquant ou dupliqué : " + marker)
-            page = page.replace(marker, fragment)
-        html_paths[s["file"]] = page
-    home_tpl = (ROOT / "templates/current/index.html").read_text(encoding="utf-8")
-    if home_tpl.count("<!-- GENERATED_CARDS -->") != 1:
-        raise ValueError("Marqueur de cartes d'accueil invalide")
-    home_tpl = home_tpl.replace("<!-- GENERATED_LESSON_TOTAL -->", str(sum(s["lessonsCount"] for s in subjects)))
-    html_paths["index.html"] = home_tpl.replace("<!-- GENERATED_CARDS -->", render_cards(subjects))
+    html_paths = {"index.html": render_home(subjects)}
+    for subject in subjects:
+        html_paths[subject["file"]] = render_summary(subject)
+        for i, lesson in enumerate(subject["lessons"]):
+            html_paths[lesson_url(subject, lesson)] = render_lesson_page(subject, lesson, i, subjects)
     js = (ROOT / "templates/current/site.js").read_text(encoding="utf-8")
     js = re.sub(r"var ZLEARN_MATIERES = \[[\s\S]*?\n\];", manifest_js(subjects), js, count=1)
     output = {OUT / name: text for name, text in html_paths.items()}
@@ -105,7 +178,6 @@ def build():
         return 1
     print("Build vérifié : %d fichiers générés." % len(output) if "--check" in sys.argv else "Build terminé : %d fichiers générés." % len(output))
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(build())

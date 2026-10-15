@@ -80,14 +80,23 @@ def main():
     baseline = json.loads((ROOT / "tests/baseline.json").read_text(encoding="utf-8"))
     failures = []
     total = 0
+    subjects = json.loads((ROOT / "content/subjects.json").read_text(encoding="utf-8"))
+    subject_data = {item["id"]: item for item in subjects}
     for subject, expected_lessons in baseline["subjects"].items():
-        page = (ROOT / "site" / subject / "index.html").read_text(encoding="utf-8")
-        from migrate_v1 import blocks_with_class
-        actual_ranges = blocks_with_class(page, "div", "lesson")
-        if len(actual_ranges) != len(expected_lessons):
-            failures.append("%s: %d dars, baseline %d" % (subject, len(actual_ranges), len(expected_lessons)))
+        rows = subject_data[subject]["lessons"]
+        if len(rows) != len(expected_lessons):
+            failures.append("%s: %d dars, baseline %d" % (subject, len(rows), len(expected_lessons)))
             continue
-        for i, (start, end, _opening) in enumerate(actual_ranges):
+        for i, lesson in enumerate(rows):
+            meta = lesson["meta"]
+            page_path = ROOT / "site" / subject / ("%02d-%s" % (meta["number"], meta["slug"])) / "index.html"
+            page = page_path.read_text(encoding="utf-8")
+            from migrate_v1 import blocks_with_class
+            actual_ranges = blocks_with_class(page, "div", "lesson")
+            if len(actual_ranges) != 1:
+                failures.append("%s dars %d: page avec %d leçon(s)" % (subject, i + 1, len(actual_ranges)))
+                continue
+            start, end, _opening = actual_ranges[0]
             parser = VisibleLesson(); parser.feed(page[start:end])
             actual = parser.record()
             expected = {key: expected_lessons[i][key] for key in ("id", "sections", "checkboxes", "questions", "data_keys", "text_sha256")}

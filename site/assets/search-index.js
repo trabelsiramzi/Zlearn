@@ -2,7 +2,8 @@
 var ZLEARN_SEARCH_SECTIONS = [
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -11,7 +12,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -20,7 +22,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -29,7 +32,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -38,7 +42,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -47,7 +52,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -56,7 +62,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -65,7 +72,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -74,7 +82,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -83,7 +92,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -92,7 +102,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -101,7 +112,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -110,7 +122,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -119,7 +132,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -128,7 +142,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -137,7 +152,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -146,7 +162,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -155,7 +172,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -164,7 +182,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -173,7 +192,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -182,7 +202,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -191,7 +212,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -200,7 +222,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -209,7 +232,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -218,7 +242,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -227,7 +252,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -236,7 +262,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -245,7 +272,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -254,7 +282,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -263,7 +292,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -272,7 +302,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -281,7 +312,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -290,7 +322,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -299,7 +332,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -308,7 +342,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -317,7 +352,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -326,7 +362,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -335,7 +372,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -344,7 +382,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -353,7 +392,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -362,7 +402,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -371,7 +412,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -380,7 +422,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -389,7 +432,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -398,7 +442,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -407,7 +452,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -416,7 +462,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -425,7 +472,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -434,7 +482,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -443,7 +492,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -452,7 +502,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -461,7 +512,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -470,7 +522,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/03-lesson/index.html",
+    "url": "aqida/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-aq3",
     "title": "التراجم وقراءة مقدمة الشذرات الذهبية",
@@ -479,7 +532,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -488,7 +542,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -497,7 +552,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -506,7 +562,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -515,7 +572,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -524,7 +582,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -533,7 +592,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -542,7 +602,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -551,7 +612,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -560,7 +622,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -569,7 +632,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -578,7 +642,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -587,7 +652,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -596,7 +662,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -605,7 +672,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -614,7 +682,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -623,7 +692,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -632,7 +702,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -641,7 +712,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -650,7 +722,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -659,7 +732,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -668,7 +742,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -677,7 +752,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
@@ -686,7 +762,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -695,7 +772,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -704,7 +782,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -713,7 +792,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -722,7 +802,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -731,7 +812,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -740,7 +822,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/03-lesson/index.html",
+    "url": "tajwid/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-tj3",
     "title": "نظم المقدمة — مقدمة تحفة الأطفال",
@@ -749,7 +832,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -758,7 +842,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -767,7 +852,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -776,7 +862,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -785,7 +872,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -794,7 +882,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -803,7 +892,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -812,7 +902,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -821,7 +912,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -830,7 +922,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -839,7 +932,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/01-lesson/index.html",
+    "url": "sira/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-h1",
     "title": "مدخل إلى السيرة النبوية ونسب النبي ﷺ",
@@ -848,7 +942,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -857,7 +952,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -866,7 +962,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -875,7 +972,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -884,7 +982,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -893,7 +992,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -902,7 +1002,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -911,7 +1012,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/02-lesson/index.html",
+    "url": "sira/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-s2",
     "title": "مولده ﷺ ويتمه ووفاة أمه",
@@ -920,7 +1022,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -929,7 +1032,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -938,7 +1042,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -947,7 +1052,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -956,7 +1062,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -965,7 +1072,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -974,7 +1082,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -983,7 +1092,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -992,7 +1102,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -1001,7 +1112,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "sira",
-    "file": "sira/index.html",
+    "file": "sira/03-lesson/index.html",
+    "url": "sira/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-s3",
     "title": "زمزم والإيلاف — هاشم بن عبد مناف",
@@ -1010,7 +1122,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1019,7 +1132,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1028,7 +1142,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1037,7 +1152,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1046,7 +1162,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1055,7 +1172,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1064,7 +1182,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1073,7 +1192,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1082,7 +1202,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1091,7 +1212,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/01-lesson/index.html",
+    "url": "hadith/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-hd1",
     "title": "مدخل إلى شرح الأربعين النووية",
@@ -1100,7 +1222,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1109,7 +1232,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1118,7 +1242,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1127,7 +1252,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1136,7 +1262,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1145,7 +1272,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1154,7 +1282,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1163,7 +1292,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1172,7 +1302,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1181,7 +1312,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1190,7 +1322,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1199,7 +1332,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/02-lesson/index.html",
+    "url": "hadith/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-hd2",
     "title": "حديث النية — إنما الأعمال بالنيات",
@@ -1208,7 +1342,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1217,7 +1352,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1226,7 +1362,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1235,7 +1372,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1244,7 +1382,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1253,7 +1392,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1262,7 +1402,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1271,7 +1412,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1280,7 +1422,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1289,7 +1432,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1298,7 +1442,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1307,7 +1452,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1316,7 +1462,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1325,7 +1472,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1334,7 +1482,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1343,7 +1492,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "hadith",
-    "file": "hadith/index.html",
+    "file": "hadith/03-lesson/index.html",
+    "url": "hadith/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-hd3",
     "title": "حديث جبريل — مراتب الدين (الإسلام والإيمان والإحسان)",
@@ -1352,7 +1502,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1361,7 +1512,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1370,7 +1522,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1379,7 +1532,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1388,7 +1542,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1397,7 +1552,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1406,7 +1562,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/01-lesson/index.html",
+    "url": "akhlaq/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-ak1",
     "title": "مدخل إلى علم الأخلاق وآداب العلم",
@@ -1415,7 +1572,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1424,7 +1582,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1433,7 +1592,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1442,7 +1602,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1451,7 +1612,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1460,7 +1622,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1469,7 +1632,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1478,7 +1642,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/02-lesson/index.html",
+    "url": "akhlaq/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-ak2",
     "title": "مقدمة الكتاب وفضل العلم والعلماء",
@@ -1487,7 +1652,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1496,7 +1662,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1505,7 +1672,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1514,7 +1682,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1523,7 +1692,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1532,7 +1702,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1541,7 +1712,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "akhlaq",
-    "file": "akhlaq/index.html",
+    "file": "akhlaq/03-lesson/index.html",
+    "url": "akhlaq/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-ak3",
     "title": "إخلاص النية وآداب العالم في نفسه",
@@ -1550,7 +1722,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1559,7 +1732,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1568,7 +1742,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1577,7 +1752,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1586,7 +1762,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1595,7 +1772,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1604,7 +1782,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1613,7 +1792,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/01-lesson/index.html",
+    "url": "nahw/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-nh1",
     "title": "مدخل إلى علم النحو وبرنامج المادة",
@@ -1622,7 +1802,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1631,7 +1812,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1640,7 +1822,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1649,7 +1832,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1658,7 +1842,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1667,7 +1852,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1676,7 +1862,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/02-lesson/index.html",
+    "url": "nahw/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-nh2",
     "title": "أقسام الكلمة: اسم وفعل وحرف",
@@ -1685,7 +1872,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1694,7 +1882,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1703,7 +1892,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1712,7 +1902,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1721,7 +1912,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1730,7 +1922,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1739,7 +1932,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "nahw",
-    "file": "nahw/index.html",
+    "file": "nahw/03-lesson/index.html",
+    "url": "nahw/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-nh3",
     "title": "حروف المباني وحروف المعاني",
@@ -1748,7 +1942,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/01-lesson/index.html",
+    "url": "fiqh/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-1",
     "title": "مقدمة المنظومة",
@@ -1757,7 +1952,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/02-lesson/index.html",
+    "url": "fiqh/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-2",
     "title": "أقسام الحكم الشرعي",
@@ -1766,7 +1962,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "fiqh",
-    "file": "fiqh/index.html",
+    "file": "fiqh/03-lesson/index.html",
+    "url": "fiqh/03-lesson/index.html",
     "lesson": "3",
     "lessonId": "lesson-3",
     "title": "كتاب الطهارة",
@@ -1775,7 +1972,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/01-lesson/index.html",
+    "url": "aqida/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-aq1",
     "title": "مدخل إلى علم العقيدة",
@@ -1784,7 +1982,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "aqida",
-    "file": "aqida/index.html",
+    "file": "aqida/02-lesson/index.html",
+    "url": "aqida/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-aq2",
     "title": "المبادئ العشرة لعلم العقيدة",
@@ -1793,7 +1992,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/01-lesson/index.html",
+    "url": "tajwid/01-lesson/index.html",
     "lesson": "1",
     "lessonId": "lesson-tj1",
     "title": "مقدمة علم التجويد وتعريفه",
@@ -1802,7 +2002,8 @@ var ZLEARN_SEARCH_SECTIONS = [
   },
   {
     "sub": "tajwid",
-    "file": "tajwid/index.html",
+    "file": "tajwid/02-lesson/index.html",
+    "url": "tajwid/02-lesson/index.html",
     "lesson": "2",
     "lessonId": "lesson-tj2",
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",

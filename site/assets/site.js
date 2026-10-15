@@ -101,7 +101,7 @@ var ZLEARN_MATIERES = [
   var chipRows = Array.prototype.slice.call(document.querySelectorAll(".chips"));
   var toc = document.querySelector(".toc");
   var PAGE = (document.body && document.body.getAttribute("data-page")) || "page";
-  if (!subjects.length) return;
+  if (!subjects.length || !subjects.some(function (el) { return el.querySelector(".lesson"); })) return;
 
   function lessonsOf(sub) { return Array.prototype.slice.call(document.querySelector('.subject[data-subject="' + sub + '"]').querySelectorAll(".lesson")); }
 
@@ -299,12 +299,16 @@ var ZLEARN_MATIERES = [
       completion.appendChild(note);
       footer.appendChild(completion);
 
+      var staticStepper = doc.querySelector(".lesson-stepper");
+      if (!staticStepper) {
       var stepper = doc.createElement("nav");
       stepper.className = "lesson-stepper";
       stepper.setAttribute("aria-label", "التنقل بين دروس المادة");
       var count = doc.createElement("span");
       count.className = "lesson-step-count";
-      count.textContent = "الدرس " + number + " من " + lessons.length;
+      var lessonCount = parseInt((doc.body && doc.body.getAttribute("data-lesson-count")) || lessons.length, 10);
+      count.textContent = "الدرس " + number + " من " + lessonCount;
+      var previousUrl = doc.body && doc.body.getAttribute("data-previous-url");
       if (index > 0) {
         var prev = doc.createElement("button");
         prev.type = "button";
@@ -315,12 +319,19 @@ var ZLEARN_MATIERES = [
           if (tab) tab.click();
         });
         stepper.appendChild(prev);
+      } else if (previousUrl) {
+        var prevLink = doc.createElement("a");
+        prevLink.className = "btn";
+        prevLink.href = previousUrl;
+        prevLink.textContent = "الدرس السابق";
+        stepper.appendChild(prevLink);
       } else {
         var start = doc.createElement("span");
         start.className = "lesson-step-placeholder";
         stepper.appendChild(start);
       }
       stepper.appendChild(count);
+      var nextUrl = doc.body && doc.body.getAttribute("data-next-url");
       if (index < lessons.length - 1) {
         var next = doc.createElement("button");
         next.type = "button";
@@ -331,6 +342,12 @@ var ZLEARN_MATIERES = [
           if (tab) tab.click();
         });
         stepper.appendChild(next);
+      } else if (nextUrl) {
+        var nextLink = doc.createElement("a");
+        nextLink.className = "btn primary";
+        nextLink.href = nextUrl;
+        nextLink.textContent = "الدرس التالي ←";
+        stepper.appendChild(nextLink);
       } else {
         var other = doc.createElement("a");
         other.className = "btn primary";
@@ -339,6 +356,7 @@ var ZLEARN_MATIERES = [
         stepper.appendChild(other);
       }
       footer.appendChild(stepper);
+      }
       lesson.appendChild(footer);
       complete.addEventListener("click", function () {
         state = readState(page);
@@ -566,6 +584,7 @@ var ZLEARN_MATIERES = [
     if (!found) return;
     var boxes = doc.querySelectorAll(".check input[type=checkbox]");
     var total = boxes.length, done = 0, j;
+    if (!total) return;
     for (j = 0; j < total; j++) { if (boxes[j].checked) done++; }
     try { localStorage.setItem("mourshid-prog-" + PAGE, JSON.stringify({ done: done, total: total })); } catch (e) {}
   }
@@ -598,7 +617,9 @@ var ZLEARN_MATIERES = [
         var h = s.querySelector("h2");
         if (!h) return;
         index.push({
-          sub: sub, lesson: n, id: s.id, subjName: subjName,
+          sub: sub, lesson: n, id: s.id,
+          url: (doc.body && doc.body.getAttribute("data-lesson-url")) || "",
+          subjName: subjName,
           sec: h.textContent.trim(), title: titleRaw,
           hay: norm(h.textContent) + " " + titleNorm + " " + norm(subjName) + " " + norm(s.textContent)
         });
@@ -629,14 +650,15 @@ var ZLEARN_MATIERES = [
     var crossIndex = (typeof ZLEARN_SEARCH_SECTIONS !== "undefined") ? ZLEARN_SEARCH_SECTIONS : [];
     for (i = 0; i < crossIndex.length; i++) {
       var cross = crossIndex[i];
-      if (cross.sub === PAGE) continue;
+      var currentLessonUrl = doc.body && doc.body.getAttribute("data-lesson-url");
+      if (cross.sub === PAGE && currentLessonUrl && cross.url === currentLessonUrl) continue;
       var crossName = SUBJ_NAMES[cross.sub] || cross.sub;
       var crossHay = norm(cross.section + " " + cross.title + " " + crossName), crossOk = true;
       for (j = 0; j < terms.length; j++) if (crossHay.indexOf(terms[j]) < 0) { crossOk = false; break; }
       if (crossOk) {
         var crossStrong = terms.some(function (t) { return norm(cross.section).indexOf(t) >= 0; });
         var crossTitle = terms.some(function (t) { return norm(cross.title).indexOf(t) >= 0; });
-        hits.push({ it: { sub: cross.sub, lesson: cross.lesson, id: cross.id, file: cross.file, subjName: crossName, sec: cross.section, title: cross.title }, score: (crossStrong ? 2 : 0) + (crossTitle ? 1 : 0) });
+        hits.push({ it: { sub: cross.sub, lesson: cross.lesson, id: cross.id, file: cross.file, url: cross.url || cross.file, subjName: crossName, sec: cross.section, title: cross.title }, score: (crossStrong ? 2 : 0) + (crossTitle ? 1 : 0) });
       }
     }
     hits.sort(function (a, b) { return b.score - a.score; });
@@ -652,8 +674,10 @@ var ZLEARN_MATIERES = [
     hits.slice(0, 20).forEach(function (h) {
       var it = h.it;
       var a = doc.createElement("a");
-      var localResult = it.sub === PAGE;
-      a.setAttribute("href", localResult ? "#" + it.id : it.file + "#" + it.id);
+      var currentLessonUrl = doc.body && doc.body.getAttribute("data-lesson-url");
+      var localResult = it.sub === PAGE && currentLessonUrl && it.url === currentLessonUrl;
+      var sitePrefix = doc.body && doc.body.getAttribute("data-site-prefix");
+      a.setAttribute("href", localResult ? "#" + it.id : (sitePrefix || "") + (it.url || it.file) + "#" + it.id);
       a.textContent = it.sec;
       var c = doc.createElement("span");
       c.className = "ctx";

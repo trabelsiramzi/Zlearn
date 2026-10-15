@@ -39,6 +39,7 @@ import sys
 import json
 from collections import Counter
 from html.parser import HTMLParser
+from urllib.parse import unquote, urlsplit
 
 VOID = {
     "area", "base", "br", "col", "embed", "hr", "img", "input",
@@ -70,6 +71,7 @@ class SiteParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids: list[tuple[str, int]] = []
         self.anchors: list[tuple[str, int]] = []
+        self.links: list[str] = []
         self.open_stack: list[str] = []
         self.stack_errors: list[str] = []
         self.html_attrs: dict[str, str] | None = None
@@ -113,8 +115,13 @@ class SiteParser(HTMLParser):
         if _id:
             self.ids.append((_id, line))
         href = self._get(attrs, "href")
-        if href and href.startswith("#") and len(href) > 1:
-            self.anchors.append((href[1:], line))
+        if href:
+            self.links.append(href)
+            if href.startswith("#") and len(href) > 1:
+                self.anchors.append((href[1:], line))
+        src = self._get(attrs, "src")
+        if src:
+            self.links.append(src)
         classes = self._classes(attrs)
 
         if tag == "div" and "subject" in classes and self._get(attrs, "data-subject"):
@@ -302,6 +309,7 @@ def main(argv: list[str]) -> int:
         print(f"[ERREUR] aucune page HTML trouvée dans : {target}", file=sys.stderr)
         return 2
     directory_mode = os.path.isdir(target)
+    generated_site_mode = directory_mode and os.path.basename(os.path.abspath(target)) == "site"
 
     all_errors: list[str] = []
     subjects_seen: list[str] = []
@@ -311,17 +319,27 @@ def main(argv: list[str]) -> int:
     ids_by_page: dict[str, set[str]] = {}
     search_sections_by_page: dict[str, set[str]] = {}
     scripts_by_page: dict[str, list[str]] = {}
+    ids_by_file: dict[str, set[str]] = {}
+    summary_pages: Counter = Counter()
+    generated_link_refs: list[tuple[str, str]] = []
 
     for page in pages:
         parser, errors, warnings = validate_file(page)
         subjects_seen.extend(parser.subjects)
         if parser.subjects:
-            totals_by_page[parser.subjects[0]] = parser.checkbox_total
-            lessons_by_page[parser.subjects[0]] = len(parser.lessons)
-            lesson_numbers_by_page[parser.subjects[0]] = {n for n, _ in parser.lessons}
-            ids_by_page[parser.subjects[0]] = {i for i, _ in parser.ids}
-            search_sections_by_page[parser.subjects[0]] = parser.search_sections
-            scripts_by_page[parser.subjects[0]] = parser.scripts
+            sub = parser.subjects[0]
+            totals_by_page[sub] = totals_by_page.get(sub, 0) + parser.checkbox_total
+            lessons_by_page[sub] = lessons_by_page.get(sub, 0) + len(parser.lessons)
+            lesson_numbers_by_page.setdefault(sub, set()).update(n for n, _ in parser.lessons)
+            ids_by_page.setdefault(sub, set()).update(i for i, _ in parser.ids)
+            search_sections_by_page.setdefault(sub, set()).update(parser.search_sections)
+            scripts_by_page.setdefault(sub, []).extend(parser.scripts)
+            relative = os.path.relpath(page, target).replace(os.sep, "/") if generated_site_mode else page
+            ids_by_file[relative] = {i for i, _ in parser.ids}
+            if generated_site_mode:
+                generated_link_refs.extend((relative, link) for link in parser.links)
+            if generated_site_mode and not parser.lessons:
+                summary_pages[sub] += 1
             numbers = [n for n, _ in parser.lessons]
             if len(numbers) != len(set(numbers)):
                 all_errors.append(f"{page} : numéro data-lesson dupliqué")
@@ -343,14 +361,30 @@ def main(argv: list[str]) -> int:
             print("  ✓ page valide")
         print()
 
+    if generated_site_mode:
+        for source_page, raw_link in generated_link_refs:
+            parsed = urlsplit(raw_link)
+            if parsed.scheme or parsed.netloc or not parsed.path:
+                continue
+            destination = os.path.normpath(os.path.join(os.path.dirname(source_page), unquote(parsed.path)))
+            if destination == ".." or destination.startswith("../"):
+                all_errors.append(f"{source_page} : lien qui sort de site/ ({raw_link})")
+                continue
+            full_destination = os.path.join(target, destination)
+            if os.path.isdir(full_destination):
+                destination = os.path.join(destination, "index.html")
+                full_destination = os.path.join(target, destination)
+            if not os.path.isfile(full_destination):
+                all_errors.append(f"{source_page} : cible interne absente ({raw_link})")
+            elif parsed.fragment and destination.endswith(".html") and unquote(parsed.fragment) not in ids_by_file.get(destination, set()):
+                all_errors.append(f"{source_page} : ancre absente dans {destination} (#{unquote(parsed.fragment)})")
+
     if directory_mode:
-        # matières attendues
+        # matières attendues (sortie v1 : une page matière ; sortie générée : un sommaire par matière)
         for sub in EXPECTED_SUBJECTS:
-            if subjects_seen.count(sub) != 1:
-                all_errors.append(
-                    f"matière « {sub} » présente {subjects_seen.count(sub)}× "
-                    f"(attendu : 1 page)"
-                )
+            count = summary_pages[sub] if generated_site_mode else subjects_seen.count(sub)
+            if count != 1:
+                all_errors.append(f"matière « {sub} » présente {count}× (attendu : 1 page de sommaire)")
         # manifeste de progression
         site_js = os.path.join(target, "assets", "site.js")
         if os.path.isfile(site_js):
@@ -395,11 +429,20 @@ def main(argv: list[str]) -> int:
                     if key in seen_search:
                         all_errors.append(f"assets/search-index.js : entrée dupliquée {key}")
                     seen_search.add(key)
-                    if sub not in EXPECTED_SUBJECTS or file_name != f"{sub}/index.html":
-                        all_errors.append(f"assets/search-index.js : matière ou fichier invalide pour {key}")
+                    if sub not in EXPECTED_SUBJECTS:
+                        all_errors.append(f"assets/search-index.js : matière invalide pour {key}")
                         continue
-                    if anchor not in ids_by_page.get(sub, set()):
-                        all_errors.append(f"assets/search-index.js : ancre {anchor!r} absente de {sub}/index.html")
+                    if generated_site_mode:
+                        route = row.get("url") or file_name
+                        route_path = os.path.join(target, route or "")
+                        if not route or not os.path.isfile(route_path) or anchor not in ids_by_file.get(route, set()):
+                            all_errors.append(f"assets/search-index.js : URL ou ancre invalide pour {key} ({route})")
+                    else:
+                        if file_name != f"{sub}/index.html":
+                            all_errors.append(f"assets/search-index.js : fichier invalide pour {key}")
+                            continue
+                        if anchor not in ids_by_page.get(sub, set()):
+                            all_errors.append(f"assets/search-index.js : ancre {anchor!r} absente de {sub}/index.html")
                     if row.get("lesson") not in lesson_numbers_by_page.get(sub, set()):
                         all_errors.append(f"assets/search-index.js : numéro de dars invalide pour {key}")
                 if not search_rows:
@@ -422,8 +465,8 @@ def main(argv: list[str]) -> int:
                         + ", ".join(f"{sub}#{anchor}" for sub, anchor in sorted(stale_search)[:12])
                     )
                 for sub in EXPECTED_SUBJECTS:
-                    expected_script = "../assets/search-index.js"
-                    if expected_script not in scripts_by_page.get(sub, []):
+                    expected_scripts = {"../assets/search-index.js", "../../../assets/search-index.js"} if generated_site_mode else {"../assets/search-index.js"}
+                    if not expected_scripts.intersection(scripts_by_page.get(sub, [])):
                         all_errors.append(f"{sub}/index.html : chargement de search-index.js absent")
         else:
             all_errors.append("assets/search-index.js introuvable (recherche inter-matières)")
