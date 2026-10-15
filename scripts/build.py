@@ -73,6 +73,46 @@ def render_search_index(items):
     return "/* Index léger des titres de sections pour la recherche inter-matières. */\nvar ZLEARN_SEARCH_SECTIONS = " + json.dumps(items, ensure_ascii=False, indent=2) + ";\n"
 
 
+def storage_catalog(subjects):
+    keys = {"mourshid-theme"}
+    lesson_keys, check_ids, group_ids, answer_ids, quiz_ids = {}, {}, {}, {}, {}
+    for subject in subjects:
+        sid = subject["id"]
+        for lesson in subject["lessons"]:
+            meta = lesson["meta"]
+            folder = ROOT / "content" / sid / ("%02d-%s" % (meta["number"], meta["slug"]))
+            html = (folder / "lesson.html").read_text(encoding="utf-8")
+            for number in range(1, subject["lessonsCount"] + 1):
+                lesson_keys[sid + ":" + str(number)] = next((x["meta"]["id"] for x in subject["lessons"] if x["meta"]["number"] == number), "")
+            for tag in re.findall(r'<input\b[^>]*>', html, re.I):
+                if not re.search(r'type=["\']checkbox["\']', tag, re.I):
+                    continue
+                found = re.search(r'id=["\']([^"\']+)', tag, re.I)
+                if not found:
+                    continue
+                oldid = found.group(1)
+                check_ids[oldid] = meta["prefix"] + "-k" + str(len([v for v in check_ids.values() if v.startswith(meta["prefix"] + "-k")]) + 1)
+            for oldkey in re.findall(r'data-key=["\']([^"\']+)', html):
+                group_ids[oldkey] = meta["prefix"]
+                keys.add("mourshid-" + oldkey)
+                answer_ids[oldkey + "-verses"] = meta["id"] + "-verses"
+                keys.add("mourshid-" + oldkey + "-verses")
+            activity = re.findall(r'<(?:div|section)[^>]*id=["\']([^"\']+-activity)["\']', html)
+            for aid in activity:
+                answer_ids[aid] = aid
+                keys.add("zlearn-answer-" + aid)
+            qids = [q["id"] for q in read_json(folder / "questions.json")]
+            qid = re.search(r'<(?:section|div)[^>]*id=["\']([^"\']+-quiz)["\']', html)
+            if qid:
+                qname = qid.group(1)
+                quiz_ids[qname] = {str(i): q for i, q in enumerate(qids)}
+                keys.add("mourshid-quiz-" + qname)
+        for suffix in ("tab-", "last-", "learning-", "prog-"):
+            keys.add("mourshid-" + suffix + sid)
+    return {"keys": sorted(keys), "lessonKeys": lesson_keys, "checkIds": check_ids,
+            "groupIds": group_ids, "answerIds": answer_ids, "quizIds": quiz_ids}
+
+
 def replace_tokens(template, values):
     for key, value in values.items():
         template = template.replace("{{" + key + "}}", str(value))
@@ -165,6 +205,8 @@ def build():
     output[OUT / "assets/site.css"] = (ROOT / "assets/site.css").read_text(encoding="utf-8")
     output[OUT / "assets/site.js"] = js
     output[OUT / "assets/search-index.js"] = render_search_index(search_sections(subjects))
+    output[OUT / "assets/storage.js"] = (ROOT / "src/js/storage.js").read_text(encoding="utf-8")
+    output[OUT / "assets/storage-catalog.js"] = "var ZLEARN_STORAGE_CATALOG = " + json.dumps(storage_catalog(subjects), ensure_ascii=False, separators=(",", ":")) + ";\n"
     mismatches = []
     for path, text in output.items():
         if "--check" in sys.argv:

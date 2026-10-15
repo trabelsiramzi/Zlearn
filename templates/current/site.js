@@ -16,7 +16,7 @@ var ZLEARN_MATIERES = [
   document.querySelectorAll(".group").forEach(function (g) {
     var gkey = "mourshid-" + g.getAttribute("data-key");
     var gstate = {};
-    try { gstate = JSON.parse(localStorage.getItem(gkey) || "{}") || {}; } catch (e) { gstate = {}; }
+    try { gstate = JSON.parse(ZLEARN_STORAGE.getItem(gkey) || "{}") || {}; } catch (e) { gstate = {}; }
     var boxes = Array.prototype.slice.call(g.querySelectorAll(".check input"));
     var label = g.querySelector(".plabel");
     var fill = g.querySelector(".pfill");
@@ -29,7 +29,7 @@ var ZLEARN_MATIERES = [
       if (gstate[b.id]) b.checked = true;
       b.addEventListener("change", function () {
         gstate[b.id] = b.checked;
-        try { localStorage.setItem(gkey, JSON.stringify(gstate)); } catch (e) {}
+        try { ZLEARN_STORAGE.setItem(gkey, JSON.stringify(gstate)); } catch (e) {}
         update();
       });
     });
@@ -38,8 +38,8 @@ var ZLEARN_MATIERES = [
 
   document.querySelectorAll("textarea[data-key]").forEach(function (ta) {
     var tkey = "mourshid-" + ta.getAttribute("data-key") + "-verses";
-    try { var v = localStorage.getItem(tkey); if (v) ta.value = v; } catch (e) {}
-    ta.addEventListener("input", function () { try { localStorage.setItem(tkey, ta.value); } catch (e) {} });
+    try { var v = ZLEARN_STORAGE.getItem(tkey); if (v) ta.value = v; } catch (e) {}
+    ta.addEventListener("input", function () { try { ZLEARN_STORAGE.setItem(tkey, ta.value); } catch (e) {} });
   });
 
   document.querySelectorAll(".toggle-all").forEach(function (btn) {
@@ -124,11 +124,11 @@ var ZLEARN_MATIERES = [
     });
     chipRows.forEach(function (c) { c.hidden = !(c.getAttribute("data-subject") === sub && c.getAttribute("data-for") === n); });
     try {
-      localStorage.setItem("mourshid-tab-" + PAGE, sub + ":" + n);
-      var learningState = JSON.parse(localStorage.getItem("mourshid-learning-" + sub) || "{}") || {};
+      ZLEARN_STORAGE.setItem("mourshid-tab-" + PAGE, sub + ":" + n);
+      var learningState = JSON.parse(ZLEARN_STORAGE.getItem("mourshid-learning-" + sub) || "{}") || {};
       learningState.lastLesson = n;
       learningState.lastAt = new Date().getTime();
-      localStorage.setItem("mourshid-learning-" + sub, JSON.stringify(learningState));
+      ZLEARN_STORAGE.setItem("mourshid-learning-" + sub, JSON.stringify(learningState));
     } catch (e) {}
     if (scroll) {
       var top = document.querySelector("main").getBoundingClientRect().top + window.pageYOffset - toc.offsetHeight;
@@ -142,7 +142,7 @@ var ZLEARN_MATIERES = [
       var ls = lessonsOf(sub);
       var last = ls.length ? ls[0].getAttribute("data-lesson") : "1";
       var keep = null;
-      try { var saved = localStorage.getItem("mourshid-last-" + sub); if (saved) keep = saved; } catch (e) {}
+      try { var saved = ZLEARN_STORAGE.getItem("mourshid-last-" + sub); if (saved) keep = saved; } catch (e) {}
       show(sub, keep || last, true);
     });
   });
@@ -151,7 +151,7 @@ var ZLEARN_MATIERES = [
       t.addEventListener("click", function () {
         var sub = row.getAttribute("data-subject");
         var n = t.getAttribute("data-lesson");
-        try { localStorage.setItem("mourshid-last-" + sub, n); } catch (e) {}
+        try { ZLEARN_STORAGE.setItem("mourshid-last-" + sub, n); } catch (e) {}
         show(sub, n, true);
         var panel = doc.querySelector('.subject[data-subject="' + sub + '"] .lesson[data-lesson="' + n + '"]');
         if (panel && window.history && window.history.pushState && window.location.hash !== "#" + panel.id) {
@@ -172,7 +172,7 @@ var ZLEARN_MATIERES = [
     n0 = holder.getAttribute("data-lesson");
   } else {
     try {
-      var st = localStorage.getItem("mourshid-tab-" + PAGE);
+      var st = ZLEARN_STORAGE.getItem("mourshid-tab-" + PAGE);
       if (st && st.indexOf(":") > 0) { sub0 = st.split(":")[0]; n0 = st.split(":")[1]; }
     } catch (e) {}
     if (!document.querySelector('.subject[data-subject="' + sub0 + '"]')) { sub0 = lastSub; n0 = ls0[0].getAttribute("data-lesson"); }
@@ -193,7 +193,7 @@ var ZLEARN_MATIERES = [
   var doc = document;
   var mats = (typeof ZLEARN_MATIERES !== "undefined") ? ZLEARN_MATIERES : [];
   function readState(id) {
-    try { return JSON.parse(localStorage.getItem("mourshid-learning-" + id) || "{}") || {}; }
+    try { return JSON.parse(ZLEARN_STORAGE.getItem("mourshid-learning-" + id) || "{}") || {}; }
     catch (e) { return {}; }
   }
   function finishedCount(id) {
@@ -366,7 +366,7 @@ var ZLEARN_MATIERES = [
         state.lastAt = new Date().getTime();
         complete.setAttribute("aria-pressed", state.completed[number] ? "true" : "false");
         complete.textContent = state.completed[number] ? "أتممت هذا الدرس ✓" : "أتممت هذا الدرس";
-        try { localStorage.setItem("mourshid-learning-" + page, JSON.stringify(state)); } catch (e) {}
+        try { ZLEARN_STORAGE.setItem("mourshid-learning-" + page, JSON.stringify(state)); } catch (e) {}
         updateProgress();
       });
     });
@@ -388,14 +388,14 @@ var ZLEARN_MATIERES = [
     answer.rows = 4;
     answer.placeholder = "اكتب إجابتك هنا…";
     answer.setAttribute("aria-describedby", id + "-saved");
-    try { answer.value = localStorage.getItem(key) || ""; } catch (e) {}
+    try { answer.value = ZLEARN_STORAGE.getItem(key) || ""; } catch (e) {}
     var status = document.createElement("p");
     status.id = id + "-saved";
     status.className = "application-status";
     status.setAttribute("role", "status");
     status.textContent = answer.value ? "إجابتك محفوظة على هذا الجهاز." : "تُحفظ إجابتك على هذا الجهاز فقط.";
     answer.addEventListener("input", function () {
-      try { localStorage.setItem(key, answer.value); status.textContent = "حُفظت إجابتك على هذا الجهاز."; }
+      try { ZLEARN_STORAGE.setItem(key, answer.value); status.textContent = "حُفظت إجابتك على هذا الجهاز."; }
       catch (e) { status.textContent = "تعذر حفظ الإجابة؛ يمكنك متابعة المحاولة دون حفظ."; }
     });
     var clear = document.createElement("button");
@@ -404,7 +404,7 @@ var ZLEARN_MATIERES = [
     clear.textContent = "مسح إجابتي";
     clear.addEventListener("click", function () {
       answer.value = "";
-      try { localStorage.removeItem(key); } catch (e) {}
+      try { ZLEARN_STORAGE.removeItem(key); } catch (e) {}
       status.textContent = "مُسحت الإجابة المحفوظة.";
       answer.focus();
     });
@@ -425,65 +425,37 @@ var ZLEARN_MATIERES = [
   });
 })();
 
-/* Export/import local : seules les données Zlearn sont incluses, sans thème ni
-   données d'autres applications. L'import est validé puis relit la page. */
+/* Export/import v2 ; les fichiers v1 sont importés par la couche de stockage. */
 (function () {
-  var doc = document;
-  var exportButtons = doc.querySelectorAll("[data-progress-export]");
-  var fileInput = doc.getElementById("progress-import");
-  var status = doc.querySelector(".progress-transfer-status");
-  if (!exportButtons.length || !fileInput || !status) return;
-  function allowedKey(key) {
-    return /^mourshid-(theme|tab-[a-z-]+|last-[a-z-]+|learning-[a-z-]+|prog-[a-z-]+|quiz-[a-z0-9-]+|[a-z0-9-]+)$/.test(key) || /^zlearn-answer-[a-z0-9-]+$/.test(key);
-  }
-  function collect() {
-    var data = {}, i, key;
-    for (i = 0; i < localStorage.length; i++) {
-      key = localStorage.key(i);
-      if (key && allowedKey(key)) data[key] = localStorage.getItem(key);
-    }
-    return data;
-  }
-  Array.prototype.forEach.call(exportButtons, function (button) {
+  var doc = document, buttons = doc.querySelectorAll("[data-progress-export]"), input = doc.getElementById("progress-import"), status = doc.querySelector(".progress-transfer-status");
+  if (!buttons.length || !input || !status) return;
+  Array.prototype.forEach.call(buttons, function (button) {
     button.addEventListener("click", function () {
-      var payload;
-      try { payload = JSON.stringify({ format: "zlearn-progress", version: 1, exportedAt: new Date().toISOString(), data: collect() }); }
+      var payload, link, url;
+      try { payload = JSON.stringify(ZLEARN_STORAGE.exportV2()); }
       catch (e) { status.textContent = "تعذر قراءة التقدم المحفوظ."; return; }
-      var link = doc.createElement("a"), url;
       try {
-        if (window.Blob && window.URL && window.URL.createObjectURL) {
-          url = window.URL.createObjectURL(new Blob([payload], { type: "application/json" }));
-        } else url = "data:application/json;charset=utf-8," + encodeURIComponent(payload);
-        link.href = url;
-        link.download = "zlearn-progress.json";
-        link.style.display = "none";
-        doc.body.appendChild(link);
-        link.click();
-        doc.body.removeChild(link);
-        if (window.URL && window.URL.revokeObjectURL && url.indexOf("blob:") === 0) window.setTimeout(function () { window.URL.revokeObjectURL(url); }, 1000);
-        status.textContent = "نُزّل ملف تقدمك. احتفظ به لاستيراده على جهاز آخر.";
-      } catch (e2) { status.textContent = "تعذر إنشاء ملف التقدم في هذا المتصفح."; }
+        link = doc.createElement("a");
+        if (window.Blob && window.URL && window.URL.createObjectURL) url = window.URL.createObjectURL(new Blob([payload], {type:"application/json"}));
+        else url = "data:application/json;charset=utf-8," + encodeURIComponent(payload);
+        link.href=url; link.download="zlearn-progress.json"; link.style.display="none"; doc.body.appendChild(link); link.click(); doc.body.removeChild(link);
+        status.textContent="نُزّل ملف تقدمك. احتفظ به لاستيراده على جهاز آخر.";
+      } catch (e2) { status.textContent="تعذر إنشاء ملف التقدم في هذا المتصفح."; }
     });
   });
-  fileInput.addEventListener("change", function () {
-    var file = fileInput.files && fileInput.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onerror = function () { status.textContent = "تعذرت قراءة الملف."; };
-    reader.onload = function () {
-      var payload;
-      try { payload = JSON.parse(reader.result); }
-      catch (e) { status.textContent = "الملف ليس JSON صالحًا."; return; }
-      if (!payload || payload.format !== "zlearn-progress" || payload.version !== 1 || !payload.data || typeof payload.data !== "object" || Array.isArray(payload.data)) {
-        status.textContent = "هذا الملف ليس نسخة تقدم صالحة من Zlearn."; return;
-      }
-      try {
-        Object.keys(payload.data).forEach(function (key) {
-          if (allowedKey(key) && typeof payload.data[key] === "string") localStorage.setItem(key, payload.data[key]);
-        });
-        status.textContent = "استُورد التقدم. يجري تحديث الصفحة…";
-        window.setTimeout(function () { window.location.reload(); }, 350);
-      } catch (e2) { status.textContent = "تعذر حفظ بعض البيانات المستوردة في هذا المتصفح."; }
+  input.addEventListener("change", function () {
+    var file=input.files && input.files[0]; if(!file) return;
+    var reader=new FileReader();
+    reader.onerror=function(){status.textContent="تعذرت قراءة الملف.";};
+    reader.onload=function(){
+      var payload, ok=false;
+      try { payload=JSON.parse(reader.result); } catch(e) { status.textContent="الملف ليس JSON صالحًا."; return; }
+      if(!payload || payload.format!=="zlearn-progress") { status.textContent="هذا الملف ليس نسخة تقدم صالحة من Zlearn."; return; }
+      if(payload.version===1 && payload.data) ok=ZLEARN_STORAGE.importV1(payload.data);
+      else if(payload.version===2) ok=ZLEARN_STORAGE.importV2(payload);
+      if(!ok) { status.textContent="هذا الملف ليس نسخة تقدم صالحة من Zlearn."; return; }
+      status.textContent="استُورد التقدم. يجري تحديث الصفحة…";
+      window.setTimeout(function(){window.location.reload();},350);
     };
     reader.readAsText(file);
   });
@@ -548,7 +520,7 @@ var ZLEARN_MATIERES = [
     themeBtn.setAttribute("aria-label", dark ? "التبديل إلى الوضع النهاري" : "التبديل إلى الوضع الليلي");
   }
   try {
-    var savedTheme = localStorage.getItem("mourshid-theme");
+    var savedTheme = ZLEARN_STORAGE.getItem("mourshid-theme");
     if (savedTheme === "dark" || savedTheme === "light") rootEl.setAttribute("data-theme", savedTheme);
   } catch (e) {}
   paintThemeBtn();
@@ -556,7 +528,7 @@ var ZLEARN_MATIERES = [
     themeBtn.addEventListener("click", function () {
       var next = currentTheme() === "dark" ? "light" : "dark";
       rootEl.setAttribute("data-theme", next);
-      try { localStorage.setItem("mourshid-theme", next); } catch (e) {}
+      try { ZLEARN_STORAGE.setItem("mourshid-theme", next); } catch (e) {}
       paintThemeBtn();
     });
   }
@@ -575,7 +547,7 @@ var ZLEARN_MATIERES = [
   var PAGE = (doc.body && doc.body.getAttribute("data-page")) || "";
   var MATS = (typeof ZLEARN_MATIERES !== "undefined") ? ZLEARN_MATIERES : [];
   function readAgg(id) {
-    try { return JSON.parse(localStorage.getItem("mourshid-prog-" + id) || "null"); }
+    try { return JSON.parse(ZLEARN_STORAGE.getItem("mourshid-prog-" + id) || "null"); }
     catch (e) { return null; }
   }
   function storeAgg() {
@@ -586,7 +558,7 @@ var ZLEARN_MATIERES = [
     var total = boxes.length, done = 0, j;
     if (!total) return;
     for (j = 0; j < total; j++) { if (boxes[j].checked) done++; }
-    try { localStorage.setItem("mourshid-prog-" + PAGE, JSON.stringify({ done: done, total: total })); } catch (e) {}
+    try { ZLEARN_STORAGE.setItem("mourshid-prog-" + PAGE, JSON.stringify({ done: done, total: total })); } catch (e) {}
   }
   function updateGlobal() {
     if (window.ZLEARN_UPDATE_LEARNING) window.ZLEARN_UPDATE_LEARNING();
@@ -807,8 +779,8 @@ var ZLEARN_MATIERES = [
     if (!items.length) return;
     var key = "mourshid-quiz-" + quiz.id;
     var st = { g: {}, at: 0 };
-    try { var raw = JSON.parse(localStorage.getItem(key) || "null"); if (raw && raw.g) st = raw; } catch (e) {}
-    function save() { try { localStorage.setItem(key, JSON.stringify(st)); } catch (e) {} }
+    try { var raw = JSON.parse(ZLEARN_STORAGE.getItem(key) || "null"); if (raw && raw.g) st = raw; } catch (e) {}
+    function save() { try { ZLEARN_STORAGE.setItem(key, JSON.stringify(st)); } catch (e) {} }
 
     var bar = doc.createElement("div");
     bar.className = "quiz-tools";
