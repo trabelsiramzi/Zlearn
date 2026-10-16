@@ -314,19 +314,14 @@ section { scroll-margin-top: 230px; }
 .review-item > a { font-weight: 600; }
 .review-empty { margin-block: 24px; padding: 18px; background: var(--surface); border-radius: 12px; }
 
-/* Page Mahfoudhat */
+/* Page المحفوظات : réutilise les composants du site (cartes, poèmes, cases). */
 .mahfoudhat-list { margin-top: 10px; }
-.mahfoudhat-lesson { margin-bottom: 18px; }
-.mahfoudhat-lesson h4 { font-family: var(--display); font-size: 1.2rem; margin: 0 0 6px; }
+.mahfoudhat-lesson + .mahfoudhat-lesson { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.mahfoudhat-lesson h4 { font-family: var(--display); font-size: 1.3rem; margin: 0 0 6px; }
 .mahfoudhat-lesson h4 a { color: var(--accent); text-decoration: none; }
 .mahfoudhat-lesson h4 a:hover { text-decoration: underline; }
-.mahfoudhat-lesson ul { margin: 0; padding-inline-start: 1.3rem; }
-.mahfoudhat-lesson li { margin-bottom: 4px; }
-.memo-count { margin: 0; color: var(--muted); font-size: .9rem; }
-.mahfoudhat-abyat, .mahfoudhat-memo { margin-top: 10px; }
-.mahfoudhat-abyat h5, .mahfoudhat-memo h5 { font-family: var(--display); font-size: 1rem; margin: 0 0 4px; color: var(--accent); }
-.mahfoudhat-abyat ul, .mahfoudhat-memo ul { margin: 0; padding-inline-start: 1.3rem; }
-.mahfoudhat-abyat li, .mahfoudhat-memo li { margin-bottom: 4px; }
+.mahfoudhat-label { font-family: var(--display); font-size: 1.15rem; color: var(--accent); margin: 0 0 6px; }
+.mahfoudhat-lesson .check { background: var(--bg); }
 
 /* Classes qui remplacent les anciens styles locaux des schémas et contenus. */
 .diagram-color { fill: var(--c); }
