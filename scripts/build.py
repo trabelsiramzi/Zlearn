@@ -215,6 +215,29 @@ def extract_memorize_items(folder, section_id):
     return cleaned
 
 
+def extract_abyat(folder, section_id):
+    """Extract abyat (verses) from a source section in a lesson fragment."""
+    html = (folder / "lesson.html").read_text(encoding="utf-8")
+    # Find the section with the given id
+    pattern = r'<section[^>]*\bid=["\']' + re.escape(section_id) + r'"[^>]*>(.*?)</section>'
+    match = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
+    if not match:
+        return []
+    section_html = match.group(1)
+    # Extract abyat from .bayt elements
+    abyat = re.findall(r'<div[^>]*class=["\'][^"\']*\bbayt\b[^"\']*["\'][^>]*>(.*?)</div>\s*(?=<div[^>]*class=["\'][^"\']*\bbayt\b|</div>\s*</div>\s*</section>)', section_html, re.DOTALL | re.IGNORECASE)
+    cleaned = []
+    for bayt in abyat:
+        # Extract text from .bayt-text spans
+        texts = re.findall(r'<span[^>]*class=["\'][^"\']*\bbayt-text\b[^"\']*["\'][^>]*>(.*?)</span>', bayt, re.DOTALL | re.IGNORECASE)
+        if texts:
+            verse = ' '.join(re.sub(r'<[^>]+>', '', t).strip() for t in texts)
+            verse = re.sub(r'\s+', ' ', verse).strip()
+            if verse:
+                cleaned.append(verse)
+    return cleaned
+
+
 def render_mahfoudhat(subjects):
     """Render the Mahfoudhat page listing all memorization items by subject."""
     template = (ROOT / "templates/mahfoudhat.html").read_text(encoding="utf-8")
@@ -234,17 +257,32 @@ def render_mahfoudhat(subjects):
             folder = ROOT / "content" / sid / ("%02d-%s" % (meta["number"], meta["slug"]))
             # Find the memorize section id
             memo_section = next((sec for sec in lesson["sections"] if "memorize" in sec["id"]), None)
-            if not memo_section:
+            # Find the source section id (for abyat)
+            source_section = next((sec for sec in lesson["sections"] if "source" in sec["id"]), None)
+            if not memo_section and not source_section:
                 continue
-            items = extract_memorize_items(folder, memo_section["id"])
-            if not items:
+            items = extract_memorize_items(folder, memo_section["id"]) if memo_section else []
+            abyat = extract_abyat(folder, source_section["id"]) if source_section else []
+            if not items and not abyat:
                 continue
             parts.append('      <div class="mahfoudhat-lesson">')
-            parts.append('        <h4><a href="%s#%s">%s</a></h4>' % (url, memo_section["id"], meta["title"]))
-            parts.append('        <ul>')
-            for item in items:
-                parts.append('          <li>%s</li>' % item)
-            parts.append('        </ul>')
+            parts.append('        <h4><a href="%s">%s</a></h4>' % (url, meta["title"]))
+            if abyat:
+                parts.append('        <div class="mahfoudhat-abyat">')
+                parts.append('          <h5>الأبيات</h5>')
+                parts.append('          <ul>')
+                for bayt in abyat:
+                    parts.append('            <li>%s</li>' % bayt)
+                parts.append('          </ul>')
+                parts.append('        </div>')
+            if items:
+                parts.append('        <div class="mahfoudhat-memo">')
+                parts.append('          <h5>نقاط الحفظ</h5>')
+                parts.append('          <ul>')
+                for item in items:
+                    parts.append('            <li>%s</li>' % item)
+                parts.append('          </ul>')
+                parts.append('        </div>')
             parts.append('      </div>')
         parts.append('    </div>')
         parts.append('    </details>')

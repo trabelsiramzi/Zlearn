@@ -18,7 +18,7 @@ Vérifie l’état Git et protège le contenu publié.
   `python3 scripts/build.py --check`. Corriger les erreurs avant livraison.
 - Préserver toutes les leçons existantes et comparer les 21 leçons migrées au golden master.
 - Vérifier que la page المحفوظات (mahfoudhat/index.html) a bien été générée et contient
-  نقاط الحفظ من جميع الدروس.
+  نقاط الحفظ والأبيات من جميع الدروس. هذه الصفحة تُحدَّث تلقائيًا عند كل build.
 
 Rapporte fichiers sources, sorties, commandes exécutées et résultat exact. Toute incertitude
 sur la matière ou le numéro exige une question avant modification.
