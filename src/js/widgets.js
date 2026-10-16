@@ -27,16 +27,4 @@
     try { var v = ZLEARN_STORAGE.getItem(tkey); if (v) ta.value = v; } catch (e) {}
     ta.addEventListener("input", function () { try { ZLEARN_STORAGE.setItem(tkey, ta.value); } catch (e) {} });
   });
-
-  document.querySelectorAll(".toggle-all").forEach(function (btn) {
-    var open = false;
-    btn.addEventListener("click", function () {
-      open = !open;
-      var target = document.getElementById(btn.getAttribute("data-target"));
-      Array.prototype.forEach.call(target.children, function (d) {
-        if (d.tagName && d.tagName.toLowerCase() === "details") d.open = open;
-      });
-      btn.textContent = open ? "إخفاء كل الأجوبة" : "إظهار كل الأجوبة";
-    });
-  });
 })();

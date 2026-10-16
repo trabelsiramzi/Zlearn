@@ -19,12 +19,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - run: npm ci
       - run: python3 scripts/build.py
       - run: python3 scripts/validate.py
       - run: python3 scripts/build.py --check
       - run: node --check site/assets/site.js
       - run: node tests/srs.cjs
       - run: node tests/storage.cjs
+      - run: node tests/quiz-dom.cjs
       - run: node tests/offline.cjs
 
   deploy:

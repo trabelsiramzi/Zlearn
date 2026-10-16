@@ -114,6 +114,16 @@ def validate_content():
                     fail(errors, question_path, "placeholder dans la question %s" % qid)
                 if q["section"] not in ids:
                     fail(errors, question_path, "section inexistante pour %s: %s" % (qid, q["section"]))
+                elif q["section"] not in section_ids:
+                    fail(errors, question_path, "section doit viser une <section> de cours (%s: %s)" % (qid, q["section"]))
+                if re.search(r"(^|-)quiz$", str(q["section"])):
+                    fail(errors, question_path, "section ne doit pas viser le quiz (%s: %s)" % (qid, q["section"]))
+                if str(q.get("explain", "")).strip() == str(q.get("answer", "")).strip():
+                    fail(errors, question_path, "explain ne doit pas recopier answer (%s)" % qid)
+                if q["type"] == "mcq" and len(q.get("options") or []) < 2:
+                    fail(errors, question_path, "question mcq sans options (%s)" % qid)
+                if q["type"] == "cloze" and not re.search(r"_{2,}|…", str(q.get("prompt", ""))):
+                    fail(errors, question_path, "question cloze sans trou (%s)" % qid)
             if len(questions) < 8:
                 fail(errors, question_path, "au moins 8 questions sont requises (%d trouvée(s))" % len(questions))
             if len(questions) > 12:
