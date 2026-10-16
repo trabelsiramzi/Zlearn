@@ -251,14 +251,14 @@ def render_mahfoudhat(subjects):
         total_items = sum(row.get("checkboxes", 0) for row in s["lessons"])
         parts.append('  <article class="card %s" data-mahfoudhat-subject="%s">' % (s["cardTheme"], sid))
         parts.append('    <p class="tag">%s</p>' % s["tag"])
-        parts.append('    <h3><a href="%s">%s</a></h3>' % (s["file"], s["title"]))
+        parts.append('    <h3><a href="../%s">%s</a></h3>' % (s["file"], s["title"]))
         parts.append('    <p class="book">%s</p>' % s["book"])
-        parts.append('    <a class="btn primary" href="%s">افتح المادة</a>' % s["file"])
+        parts.append('    <a class="btn primary" href="../%s">افتح المادة</a>' % s["file"])
         parts.append('    <details><summary>عرض المحفوظات · %d نقطة حفظ في %d دروس</summary>' % (total_items, s["lessonsCount"]))
         parts.append('    <div class="mahfoudhat-list">')
         for lesson in s["lessons"]:
             meta = lesson["meta"]
-            url = lesson_url(s, lesson)
+            url = "../" + lesson_url(s, lesson)
             folder = ROOT / "content" / sid / ("%02d-%s" % (meta["number"], meta["slug"]))
             # Find the memorize section id
             memo_section = next((sec for sec in lesson["sections"] if "memorize" in sec["id"]), None)
