@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the static multi-page site from content/ and templates/ (stdlib only)."""
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -168,8 +169,12 @@ def render_lesson_page(subject, lesson, index, subjects):
         if not section.get("heading"):
             continue
         chips.append('<a href="#%s">%s</a>' % (section["id"], section["heading"]))
-    fragment = (ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"])) / "lesson.html").read_text(encoding="utf-8")
-    questions = json.dumps(read_json(ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"])) / "questions.json"), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    folder = ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"]))
+    fragment = (folder / "lesson.html").read_text(encoding="utf-8")
+    questions_list = read_json(folder / "questions.json")
+    fragment = insert_checkpoint_mounts(fragment, questions_list)
+    fragment, extra_review = extract_extra_review(fragment)
+    questions = json.dumps(questions_list, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     previous_label = "الدرس السابق"
     next_label = "الدرس التالي ←"
     stepper_parts = ['<nav class="lesson-stepper" aria-label="التنقل بين دروس المادة">']
@@ -190,8 +195,63 @@ def render_lesson_page(subject, lesson, index, subjects):
         "PREVIOUS_URL": previous, "NEXT_URL": following, "LESSON_LABEL": label,
         "LEGACY_ID": meta["legacyLessonId"], "SITE_PREFIX": "../../", "TOTAL_LESSONS": sum(s["lessonsCount"] for s in subjects),
         "CHIPS": "".join(chips), "LESSON_HTML": fragment, "QUESTION_DATA": questions, "STEPPER": "".join(stepper_parts),
+        "EXTRA_REVIEW": extra_review,
+        "READING_TIME": minutes_label(reading_minutes(fragment, questions_list)),
     }
     return replace_tokens(template, values)
+
+
+def insert_checkpoint_mounts(fragment, questions):
+    """Add an empty mount point after every course section cited by a question checkpoint."""
+    sections = sorted({q.get("checkpoint") for q in questions if q.get("checkpoint")})
+    for section_id in sections:
+        pattern = re.compile(r'(<section\b[^>]*\bid=["\']' + re.escape(section_id) + r'["\'][^>]*>.*?</section>)', re.S | re.I)
+
+        def add(match, section_id=section_id):
+            return match.group(1) + '<div class="checkpoint" data-checkpoint="%s"></div>' % section_id
+
+        fragment, count = pattern.subn(add, fragment, count=1)
+        if count != 1:
+            raise ValueError("checkpoint vers une section absente: %s" % section_id)
+    return fragment
+
+
+def extract_extra_review(fragment):
+    """Wrap the historical quiz <details> in one collapsed « مراجعة إضافية » block (D6)."""
+    match = re.search(r'<section\b[^>]*\bid=["\'][^"\']*quiz["\'][^>]*>(.*?)</section>', fragment, re.S | re.I)
+    if not match:
+        return fragment, ""
+    body = match.group(1)
+    head, marker, tail = body.partition('<div class="application"')
+    details = re.findall(r'<details\b.*?</details>', head, re.S | re.I)
+    if not details:
+        return fragment, ""
+    cleaned_head = re.sub(r'<details\b.*?</details>', '', head, flags=re.S | re.I)
+    section = match.group(0)
+    start = match.start(1) - match.start(0)
+    end = match.end(1) - match.start(0)
+    new_section = section[:start] + cleaned_head + marker + tail + section[end:]
+    fragment = fragment.replace(section, new_section, 1)
+    extra = ('<section class="extra-review"><details><summary>مراجعة إضافية</summary>'
+             + "".join(details) + '</details></section>')
+    return fragment, extra
+
+
+def reading_minutes(fragment, questions):
+    """D8 estimate: 4 min per 500 words of course text, 30 s per card."""
+    text = re.sub(r"<[^>]+>", " ", fragment)
+    words = len([word for word in re.split(r"\s+", text) if word.strip()])
+    return max(1, int(math.ceil(words / 500.0 * 4 + len(questions) * 0.5)))
+
+
+def minutes_label(n):
+    if n == 1:
+        return "دقيقة واحدة"
+    if n == 2:
+        return "دقيقتان"
+    if 3 <= n <= 10:
+        return "%d دقائق" % n
+    return "%d دقيقة" % n
 
 
 def extract_memorize_items(folder, section_id):

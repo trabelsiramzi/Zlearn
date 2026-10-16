@@ -313,6 +313,12 @@ section { scroll-margin-top: 230px; }
 .study-revisit { display: inline-flex; align-items: center; min-height: 44px; }
 .review-item > a { font-weight: 600; }
 .review-empty { margin-block: 24px; padding: 18px; background: var(--surface); border-radius: 12px; }
+.checkpoint:empty { display: none; }
+.review-confirm { margin: 12px 0 0; padding: 12px 14px; background: var(--green-tint); border-radius: 10px; font-weight: 600; }
+.extra-review { margin-block: 22px; }
+.extra-review > details { padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.extra-review summary { cursor: pointer; font-family: var(--display); font-size: 1.2rem; color: var(--accent); }
+.extra-review details details { margin-block: 10px; padding-block: 6px; border-top: 1px solid var(--line); }
 
 /* Page المحفوظات : réutilise les composants du site (cartes, poèmes, cases). */
 .mahfoudhat-lesson + .mahfoudhat-lesson { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
@@ -357,7 +363,7 @@ section { scroll-margin-top: 230px; }
 @media print {
   :root { --bg: #FFFFFF; --surface: #FFFFFF; --panel: #F2F2F2; --ink: #111111; --muted: #333333; --line: #BBBBBB; --hero: #FFFFFF; --hero-ink: #111111; --hero-muted: #333333; }
   body { background: var(--bg); color: var(--ink); font-size: 12pt; }
-  .toc, .skip, .toTop, .progress-tools, .lesson-stepper, .review-summary, [data-pretest], [data-practice], .study-card, .search { display: none !important; }
+  .toc, .skip, .toTop, .progress-tools, .lesson-stepper, .review-summary, [data-pretest], [data-practice], .study-card, .search, .checkpoint, .review-confirm { display: none !important; }
   .hero { padding: 0 0 10pt; background: var(--bg); border-bottom: 1px solid var(--line); }
   .hero h1 { font-size: 24pt; }
   .hero-sub, .eyebrow { color: var(--muted); }

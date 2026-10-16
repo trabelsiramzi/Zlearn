@@ -24,5 +24,10 @@
     while(order.length&&result.length<(max||20)){var next=[];order.forEach(function(s){if(groups[s].length){result.push(groups[s].shift());if(groups[s].length)next.push(s);}});order=next;}
     return result.map(function(x){return x.item;});
   }
-  return {intervals:intervals.slice(),shiftDate:shift,grade:grade,dueCards:dueCards};
+  function soonestDue(cards){
+    var best="";
+    Object.keys(cards||{}).forEach(function(id){var c=cards[id]; if(c&&c.due&&(!best||c.due<best))best=c.due;});
+    return best;
+  }
+  return {intervals:intervals.slice(),shiftDate:shift,grade:grade,dueCards:dueCards,soonestDue:soonestDue};
 }));

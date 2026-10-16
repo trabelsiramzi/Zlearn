@@ -55,6 +55,47 @@ neverBody("second self-assessment");
 assert.strictEqual(doc.querySelectorAll("[data-pretest] .study-card").length, 3, "high-confidence failure returns later in this session");
 lesson.window.close();
 
+// Phase 2 : micro-questions montées après leur section de cours + clôture confirmée.
+const phase2 = boot("akhlaq/01-lesson/index.html");
+const p2 = phase2.window.document;
+const host = p2.querySelector('[data-checkpoint="ak1-context"]');
+assert(host, "course section has a checkpoint mount");
+assert.strictEqual(host.querySelectorAll(".study-card").length, 2, "micro-questions mount in the checkpoint host");
+assert.strictEqual(p2.querySelectorAll("[data-practice] .study-card").length, 6, "remaining cards stay in the closure session");
+const micro = host.querySelector(".study-card");
+function answer(card) {
+  const ta = card.querySelector("textarea");
+  if (!ta.disabled) { ta.value = "الجواب"; ta.dispatchEvent(new phase2.window.Event("input", {bubbles:true})); }
+  const attempt = [...card.querySelectorAll("button")].find(b => b.textContent === "سجّلت محاولتي");
+  if (attempt && !attempt.disabled) attempt.click();
+  const sure = [...card.querySelectorAll("button")].find(b => b.textContent === "واثق");
+  if (sure) sure.click();
+  const ok = [...card.querySelectorAll("button")].find(b => b.textContent === "نعم، إجابتي صحيحة");
+  if (ok) ok.click();
+}
+answer(micro);
+assert.notStrictEqual(p2.activeElement, p2.body, "focus is not on BODY on a checkpoint card");
+const secondMicro = host.querySelectorAll(".study-card")[1];
+assert(secondMicro.contains(p2.activeElement), "focus moves to the next micro-question in the same section");
+answer(secondMicro);
+const adab = p2.querySelector('[data-checkpoint="ak1-adab"]');
+assert(adab.contains(p2.activeElement), "focus crosses to the next section's micro-question");
+// Answer every remaining card; the closure confirmation must appear at the end.
+let guard = 0;
+while (guard++ < 60) {
+  const card = [...p2.querySelectorAll(".study-card")].find(c => {
+    const btn = [...c.querySelectorAll("button")].find(b => b.textContent === "سجّلت محاولتي");
+    return btn && !btn.hidden;
+  });
+  if (!card) break;
+  answer(card);
+}
+const confirm = p2.querySelector("[data-review-confirm]");
+assert(confirm && !confirm.hidden, "closure confirms the cards were added to review");
+assert(confirm.textContent.includes("أُضيفت للمراجعة"), "confirmation names the review session");
+assert(confirm.textContent.includes("أقرب مراجعة"), "confirmation shows the next review date");
+phase2.window.close();
+
 const review = boot("review/index.html");
 const w = review.window;
 const state = w.ZLEARN_STORAGE.getState();
