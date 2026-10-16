@@ -18,7 +18,10 @@ Références : `SKILL-general.md`, `docs/CONVENTIONS.md`, `docs/ARCHITECTURE.md`
    liens précédent/suivant, index de recherche et catalogue cohérents au build.
 5. Préserver les ids stables existants. Les questions suivent `<id>-q<NN>`, référencent une
    section réelle, contiennent réponse et explication, et couvrent rappel, compréhension et
-   application. N’inventer aucune information ; marquer les incertitudes.
+   application. N'inventer aucune information ; marquer les incertitudes.
+   OBLIGATOIRE : ajouter قسم « تحقق من فهمك » (memorize) في lesson.html مع 5 إلى 12 نقطة
+   حفظ حقيقية من الدرس. هذه النقاط تظهر تلقائيًا في صفحة المحفوظات (mahfoudhat/index.html).
+   تحديث subjects.json : sections (avec memorize)، checkboxes، dataKeys.
 6. Exécuter `python3 scripts/build.py`, `python3 scripts/validate.py` et
    `python3 scripts/build.py --check`. Exécuter les tests pertinents du moteur si celui-ci a
    été touché. Comparer les contenus migrés à `tests/baseline.json`.

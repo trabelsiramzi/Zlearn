@@ -44,10 +44,20 @@ def main(argv):
             "shortTitle": short_title, "prefix": prefix, "legacyLessonId": legacy_id,
             "homeLabel": "الدرس %s — %s" % (number, short_title), "sourceFile": "source.md"}
     section_id = prefix + "-summary"
+    memorize_id = prefix + "-memorize"
     fragment = ('<div class="lesson" id="%s" data-lesson="%d" role="tabpanel" aria-labelledby="tab-%s-%d" tabindex="0">\n'
                 '  <div class="part-head"><p>الدرس %d</p><h2>%s</h2></div>\n'
                 '  <section id="%s"><h2>خلاصة الدرس</h2><p>أكمل هذا المحتوى من transcription.</p></section>\n'
-                '</div>\n') % (legacy_id, number, sid, number, number, title, section_id)
+                '  <section id="%s"><h2>تحقق من فهمك</h2>\n'
+                '    <p class="lede">علّم على النقطة بعد أن تستطيع شرحها من ذاكرتك. تحفظ حالتك على هذا الجهاز.</p>\n'
+                '    <div class="group" data-key="%s"><div class="progress"><div class="bar" aria-hidden="true"><span class="pfill"></span></div><span class="plabel">0 من 5</span></div><ul class="checks">\n'
+                '      <li><label class="check"><input type="checkbox" id="%s-k1"><span>النقطة الأولى التي يجب حفظها من هذا الدرس.</span></label></li>\n'
+                '      <li><label class="check"><input type="checkbox" id="%s-k2"><span>النقطة الثانية التي يجب حفظها من هذا الدرس.</span></label></li>\n'
+                '      <li><label class="check"><input type="checkbox" id="%s-k3"><span>النقطة الثالثة التي يجب حفظها من هذا الدرس.</span></label></li>\n'
+                '      <li><label class="check"><input type="checkbox" id="%s-k4"><span>النقطة الرابعة التي يجب حفظها من هذا الدرس.</span></label></li>\n'
+                '      <li><label class="check"><input type="checkbox" id="%s-k5"><span>النقطة الخامسة التي يجب حفظها من هذا الدرس.</span></label></li>\n'
+                '    </ul></div></section>\n'
+                '</div>\n') % (legacy_id, number, sid, number, number, title, section_id, memorize_id, prefix, prefix, prefix, prefix, prefix)
     questions = [{"id": "%s-q%02d" % (prefix, i), "type": "recall",
                   "phase": "pretest" if i <= 2 else "practice", "prompt": "À compléter",
                   "answer": "À compléter", "explain": "À compléter", "section": section_id,
@@ -57,7 +67,10 @@ def main(argv):
     (folder / "lesson.html").write_text(fragment, encoding="utf-8")
     (folder / "questions.json").write_text(json.dumps(questions, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (folder / "source.md").write_text("# Transcription source\n\nÀ remplacer par la transcription d'origine.\n", encoding="utf-8")
-    row = {"meta": meta, "sections": [{"id": section_id, "heading": "خلاصة الدرس", "searchOrder": None, "searchLabel": "خلاصة الدرس"}], "checkboxes": 0, "questionCount": 8, "dataKeys": []}
+    row = {"meta": meta, "sections": [
+        {"id": section_id, "heading": "خلاصة الدرس", "searchOrder": None, "searchLabel": "خلاصة الدرس"},
+        {"id": memorize_id, "heading": "تحقق من فهمك", "searchOrder": None, "searchLabel": "تحقق من فهمك"}
+    ], "checkboxes": 5, "questionCount": 8, "dataKeys": [prefix]}
     subject["lessons"].append(row)
     subject["lessons"].sort(key=lambda item: item["meta"]["number"])
     subject["lessonsCount"] = len(subject["lessons"])

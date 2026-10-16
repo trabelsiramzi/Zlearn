@@ -22,6 +22,11 @@ restent secondaires. Propose un tableau, arbre, étapes ou autre visuel seulemen
 aide la compréhension. N'ajoute aucun fait absent de la source sans vérification et
 attribution explicite (étiquette **إضافة تعليمية** et source).
 
+OBLIGATOIRE — محفوظات الدرس : قسم « تحقق من فهمك » (memorize) إلزامي في كل درس.
+يجب أن يحتوي على 5 إلى 12 نقطة حفظ حقيقية مستخرجة من الدرس (تعريفات، قواعد، ترتيب،
+أسماء، تواريخ، أبيات...). كل عنصر = حفظًا ملموسًا يُختبر في الاختبار. هذه النقاط
+تظهر تلقائيًا في صفحة المحفوظات (mahfoudhat/index.html).
+
 Livrable de travail : métadonnées (matière, numéro, titre, préfixe d'id, slug),
 plan détaillé, glossaire, questions avec réponses, checklist, section « À vérifier ». Si un
 fichier est nécessaire, le nommer `brouillon-dars-<id>.md` à la racine et le supprimer après

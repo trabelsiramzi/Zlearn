@@ -194,16 +194,79 @@ def render_lesson_page(subject, lesson, index, subjects):
     return replace_tokens(template, values)
 
 
+def extract_memorize_items(folder, section_id):
+    """Extract checkbox label texts from a memorize section in a lesson fragment."""
+    html = (folder / "lesson.html").read_text(encoding="utf-8")
+    # Find the section with the given id
+    pattern = r'<section[^>]*\bid=["\']' + re.escape(section_id) + r'"[^>]*>(.*?)</section>'
+    match = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
+    if not match:
+        return []
+    section_html = match.group(1)
+    # Extract text from span elements inside labels (checkbox items)
+    items = re.findall(r'<label[^>]*class=["\'][^"\']*\bcheck\b[^"\']*["\'][^>]*>.*?<span>(.*?)</span>.*?</label>', section_html, re.DOTALL | re.IGNORECASE)
+    # Clean up whitespace and HTML tags
+    cleaned = []
+    for item in items:
+        text = re.sub(r'<[^>]+>', '', item)
+        text = re.sub(r'\s+', ' ', text).strip()
+        if text:
+            cleaned.append(text)
+    return cleaned
+
+
+def render_mahfoudhat(subjects):
+    """Render the Mahfoudhat page listing all memorization items by subject."""
+    template = (ROOT / "templates/mahfoudhat.html").read_text(encoding="utf-8")
+    parts = ['<div class="cards">']
+    for s in subjects:
+        sid = s["id"]
+        total_items = sum(row.get("checkboxes", 0) for row in s["lessons"])
+        parts.append('  <article class="card %s" data-mahfoudhat-subject="%s">' % (s["cardTheme"], sid))
+        parts.append('    <h3><a href="%s">%s</a></h3>' % (s["file"], s["title"]))
+        parts.append('    <p class="book">%s</p>' % s["book"])
+        parts.append('    <p class="memo-count">%d نقطة حفظ في %d دروس</p>' % (total_items, s["lessonsCount"]))
+        parts.append('    <details><summary>عرض المحفوظات</summary>')
+        parts.append('    <div class="mahfoudhat-list">')
+        for lesson in s["lessons"]:
+            meta = lesson["meta"]
+            url = lesson_url(s, lesson)
+            folder = ROOT / "content" / sid / ("%02d-%s" % (meta["number"], meta["slug"]))
+            # Find the memorize section id
+            memo_section = next((sec for sec in lesson["sections"] if "memorize" in sec["id"]), None)
+            if not memo_section:
+                continue
+            items = extract_memorize_items(folder, memo_section["id"])
+            if not items:
+                continue
+            parts.append('      <div class="mahfoudhat-lesson">')
+            parts.append('        <h4><a href="%s#%s">%s</a></h4>' % (url, memo_section["id"], meta["title"]))
+            parts.append('        <ul>')
+            for item in items:
+                parts.append('          <li>%s</li>' % item)
+            parts.append('        </ul>')
+            parts.append('      </div>')
+        parts.append('    </div>')
+        parts.append('    </details>')
+        parts.append('  </article>')
+    parts.append('</div>')
+    content = template.replace("<!-- GENERATED_MAHFOUDHAT -->", "\n".join(parts))
+    return content
+
+
 def build():
     subjects = read_json(ROOT / "content/subjects.json")
     html_paths = {"index.html": render_home(subjects)}
     html_paths["review/index.html"] = (ROOT / "templates/review.html").read_text(encoding="utf-8")
+    html_paths["mahfoudhat/index.html"] = render_mahfoudhat(subjects)
     html_paths["404.html"] = (ROOT / "templates/404.html").read_text(encoding="utf-8")
     for subject in subjects:
         html_paths[subject["file"]] = render_summary(subject)
         for i, lesson in enumerate(subject["lessons"]):
             html_paths[lesson_url(subject, lesson)] = render_lesson_page(subject, lesson, i, subjects)
-    js = (ROOT / "templates/current/site.js").read_text(encoding="utf-8")
+    js = "\n".join((ROOT / "src/js" / (name + ".js")).read_text(encoding="utf-8") for name in
+                   ("manifest", "widgets", "sw-register", "toc", "nav", "progress",
+                    "activities", "transfer", "interactions", "quiz-legacy", "mindmap"))
     js = re.sub(r"var ZLEARN_MATIERES = \[[\s\S]*?\n\];", manifest_js(subjects), js, count=1)
     js = "\n".join([(ROOT / "src/js/storage.js").read_text(encoding="utf-8"), js,
                      (ROOT / "src/js/srs.js").read_text(encoding="utf-8"),

@@ -17,6 +17,8 @@ Vérifie l’état Git et protège le contenu publié.
 - Générer avec `python3 scripts/build.py`, puis exécuter `python3 scripts/validate.py` et
   `python3 scripts/build.py --check`. Corriger les erreurs avant livraison.
 - Préserver toutes les leçons existantes et comparer les 21 leçons migrées au golden master.
+- Vérifier que la page المحفوظات (mahfoudhat/index.html) a bien été générée et contient
+  نقاط الحفظ من جميع الدروس.
 
 Rapporte fichiers sources, sorties, commandes exécutées et résultat exact. Toute incertitude
 sur la matière ou le numéro exige une question avant modification.

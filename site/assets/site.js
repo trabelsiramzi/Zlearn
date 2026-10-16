@@ -70,7 +70,7 @@
 
 /* Zlearn — script partagé par toutes les pages (ES5, sans dépendance).
    Le manifeste suit séparément les cases de mémorisation (total) et les dars publiés
-   (lessons) ; le parcours d’apprentissage ne compte que les leçons terminées. */
+   (lessons) ; le parcours d'apprentissage ne compte que les leçons terminées. */
 var ZLEARN_MATIERES = [
   { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 35, lessons: 3 },
   { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41, lessons: 3 },
@@ -80,7 +80,6 @@ var ZLEARN_MATIERES = [
   { id: "akhlaq", name: "مادة الأخلاق", book: "تذكرة السامع والمتكلم في أدب العالم والمتعلم", file: "akhlaq/index.html", total: 23, lessons: 3 },
   { id: "nahw", name: "مادة النحو", book: "الدروس النحوية", file: "nahw/index.html", total: 27, lessons: 3 }
 ];
-
 
 (function () {
   document.querySelectorAll(".group").forEach(function (g) {
@@ -125,6 +124,7 @@ var ZLEARN_MATIERES = [
   });
 })();
 
+
 /* Cache hors ligne ; le préfixe respecte les URLs du déploiement GitHub Pages. */
 (function () {
   if (!("serviceWorker" in navigator)) return;
@@ -132,6 +132,7 @@ var ZLEARN_MATIERES = [
   if (window.location.protocol !== "https:" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") return;
   navigator.serviceWorker.register(prefix + "sw.js").catch(function () {});
 }());
+
 
 /* Table des matières automatique : complète (ou crée) la ligne .chips de chaque dars
    à partir des titres <h2> de ses sections. Les liens déjà écrits sont conservés ;
@@ -171,6 +172,7 @@ var ZLEARN_MATIERES = [
     });
   });
 })();
+
 
 (function () {
   var subjBtns = Array.prototype.slice.call(document.querySelectorAll(".subj"));
@@ -264,6 +266,7 @@ var ZLEARN_MATIERES = [
     else show(sub0, n0, false);
   });
 })();
+
 
 /* Parcours d’apprentissage : suivi des leçons terminées et reprise du parcours.
    Les checklists de mémorisation restent séparées et ne comptent pas comme leçons terminées. */
@@ -452,6 +455,7 @@ var ZLEARN_MATIERES = [
   updateProgress();
 })();
 
+
 /* Activités : conserver les réponses de l'apprenant localement et révéler le
    critère seulement quand il le demande. Les réponses restent distinctes du quiz. */
 (function () {
@@ -503,6 +507,7 @@ var ZLEARN_MATIERES = [
   });
 })();
 
+
 /* Export/import v2 ; les fichiers v1 sont importés par la couche de stockage. */
 (function () {
   var doc = document, buttons = doc.querySelectorAll("[data-progress-export]"), input = doc.getElementById("progress-import"), status = doc.querySelector(".progress-transfer-status");
@@ -538,6 +543,7 @@ var ZLEARN_MATIERES = [
     reader.readAsText(file);
   });
 })();
+
 
 /* Interactions : thème clair/sombre, recherche globale, progression globale,
    navigation clavier des onglets, section active, retour en haut.
@@ -843,6 +849,7 @@ var ZLEARN_MATIERES = [
   setTimeout(updateActiveChip, 300);
 })();
 
+
 /* Quiz : auto-évaluation (عرفتها / أحتاج مراجعة), score, filtre « à revoir »,
    rappel de révision espacée. Les résultats sont sauvegardés dans le navigateur
    sous « mourshid-quiz-<id du quiz> ». ES5, sans dépendance. */
@@ -947,6 +954,7 @@ var ZLEARN_MATIERES = [
     refresh();
   });
 })();
+
 
 /* Cartes mentales : version simplifiée en cartes sur petit écran (≤ 700 px),
    générée depuis le SVG ; un bouton permet d'afficher la carte complète. */
