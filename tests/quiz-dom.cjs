@@ -20,6 +20,9 @@ function boot(relative) {
 
 const lesson = boot("nahw/01-lesson/index.html");
 const doc = lesson.window.document;
+function neverBody(label) {
+  assert.notStrictEqual(doc.activeElement, doc.body, "focus is not on BODY after " + label);
+}
 const first = doc.querySelector("[data-pretest] .study-card");
 assert(first, "lesson renders pretest questions");
 const response = first.querySelector("textarea");
@@ -29,12 +32,15 @@ response.value = "محاولة إجابة";
 response.dispatchEvent(new lesson.window.Event("input", {bubbles:true}));
 assert(!attempted.disabled);
 attempted.click();
+neverBody("recording the attempt");
 const confident = [...first.querySelectorAll("button")].find(b => b.textContent === "واثق");
 assert(confident, "confidence is requested after the answer");
 confident.click();
+neverBody("choosing confidence");
 assert(first.textContent.includes("الإجابة النموذجية"));
 const correct = [...first.querySelectorAll("button")].find(b => b.textContent === "نعم، إجابتي صحيحة");
 correct.click();
+neverBody("self-assessment");
 const questionId = JSON.parse(doc.getElementById("lesson-question-data").textContent)[0].id;
 const card = lesson.window.ZLEARN_STORAGE.getState().cards[questionId];
 assert.strictEqual(card.box, 2);
@@ -45,6 +51,7 @@ second.querySelector("textarea").dispatchEvent(new lesson.window.Event("input", 
 second.querySelector("button").click();
 [...second.querySelectorAll("button")].find(b => b.textContent === "واثق").click();
 [...second.querySelectorAll("button")].find(b => b.textContent === "أحتاج إلى مراجعة").click();
+neverBody("second self-assessment");
 assert.strictEqual(doc.querySelectorAll("[data-pretest] .study-card").length, 3, "high-confidence failure returns later in this session");
 lesson.window.close();
 
