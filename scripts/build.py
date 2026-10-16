@@ -242,61 +242,77 @@ def extract_abyat(folder, section_id):
     return abyat
 
 
+def render_mahfoudhat_subject_content(subject):
+    """Render memorization items for one subject."""
+    parts = []
+    sid = subject["id"]
+    for lesson in subject["lessons"]:
+        meta = lesson["meta"]
+        url = "../../" + lesson_url(subject, lesson)
+        folder = ROOT / "content" / sid / ("%02d-%s" % (meta["number"], meta["slug"]))
+        memo_section = next((sec for sec in lesson["sections"] if "memorize" in sec["id"]), None)
+        source_section = next((sec for sec in lesson["sections"] if "source" in sec["id"]), None)
+        items = extract_memorize_items(folder, memo_section["id"]) if memo_section else []
+        abyat = extract_abyat(folder, source_section["id"]) if source_section else []
+        if not abyat:
+            for sec in lesson["sections"]:
+                if sec is source_section or "memorize" in sec["id"]:
+                    continue
+                abyat = extract_abyat(folder, sec["id"])
+                if abyat:
+                    break
+        if not items and not abyat:
+            continue
+        parts.append('  <section class="mahfoudhat-lesson">')
+        parts.append('    <h2><a href="%s">%s</a></h2>' % (url, meta["title"]))
+        if abyat:
+            parts.append('    <div class="rule-box">')
+            parts.append('      <h3 class="mahfoudhat-label">الأبيات</h3>')
+            parts.append('      <div class="poem" dir="rtl" lang="ar" aria-label="الأبيات مع فصل الشطرين بمسافة">')
+            for bayt in abyat:
+                parts.append('        <div class="bayt">%s</div>' %
+                             "".join('<div class="bayt-part"><span class="bayt-text">%s</span></div>' % part for part in bayt))
+            parts.append('      </div>')
+            parts.append('    </div>')
+        if items:
+            parts.append('    <div class="rule-box">')
+            parts.append('      <h3 class="mahfoudhat-label">نقاط الحفظ</h3>')
+            parts.append('      <ul class="checks">')
+            for item in items:
+                parts.append('        <li class="check check-static">%s</li>' % item)
+            parts.append('      </ul>')
+            parts.append('    </div>')
+        parts.append('  </section>')
+    return "\n".join(parts) if parts else '<p class="lede">لا توجد عناصر حفظ مسجلة لهذه المادة.</p>'
+
+
+def render_mahfoudhat_subject(subject, subjects):
+    """Render the dedicated memorization page for one subject."""
+    template = (ROOT / "templates/mahfoudhat-subject.html").read_text(encoding="utf-8")
+    replacements = {
+        "{{SUBJECT_ID}}": subject["id"],
+        "{{SUBJECT_TITLE}}": subject["title"],
+        "{{SUBJECT_TAG}}": subject["tag"],
+        "{{SUBJECT_BOOK}}": subject["book"],
+        "{{SUBJECT_CONTENT}}": render_mahfoudhat_subject_content(subject),
+        "{{LESSON_TOTAL}}": str(sum(s["lessonsCount"] for s in subjects)),
+    }
+    for placeholder, value in replacements.items():
+        template = template.replace(placeholder, value)
+    return template
+
+
 def render_mahfoudhat(subjects):
-    """Render the المحفوظات page from lesson memorize and source sections."""
+    """Render the المحفوظات index with one link per subject."""
     template = (ROOT / "templates/mahfoudhat.html").read_text(encoding="utf-8")
     parts = ['<div class="cards">']
-    for s in subjects:
-        sid = s["id"]
-        total_items = sum(row.get("checkboxes", 0) for row in s["lessons"])
-        parts.append('  <article class="card %s" data-mahfoudhat-subject="%s">' % (s["cardTheme"], sid))
-        parts.append('    <p class="tag">%s</p>' % s["tag"])
-        parts.append('    <h3><a href="../%s">%s</a></h3>' % (s["file"], s["title"]))
-        parts.append('    <p class="book">%s</p>' % s["book"])
-        parts.append('    <a class="btn primary" href="../%s">افتح المادة</a>' % s["file"])
-        parts.append('    <details><summary>عرض المحفوظات · %d نقطة حفظ في %d دروس</summary>' % (total_items, s["lessonsCount"]))
-        parts.append('    <div class="mahfoudhat-list">')
-        for lesson in s["lessons"]:
-            meta = lesson["meta"]
-            url = "../" + lesson_url(s, lesson)
-            folder = ROOT / "content" / sid / ("%02d-%s" % (meta["number"], meta["slug"]))
-            # Find the memorize section id
-            memo_section = next((sec for sec in lesson["sections"] if "memorize" in sec["id"]), None)
-            # Find the source section id (for abyat); fall back to any section with .bayt
-            source_section = next((sec for sec in lesson["sections"] if "source" in sec["id"]), None)
-            items = extract_memorize_items(folder, memo_section["id"]) if memo_section else []
-            abyat = extract_abyat(folder, source_section["id"]) if source_section else []
-            if not abyat:
-                for sec in lesson["sections"]:
-                    if sec is source_section or "memorize" in sec["id"]:
-                        continue
-                    abyat = extract_abyat(folder, sec["id"])
-                    if abyat:
-                        break
-            if not items and not abyat:
-                continue
-            parts.append('      <div class="mahfoudhat-lesson">')
-            parts.append('        <h4><a href="%s">%s</a></h4>' % (url, meta["title"]))
-            if abyat:
-                parts.append('        <div class="rule-box">')
-                parts.append('          <h5 class="mahfoudhat-label">الأبيات</h5>')
-                parts.append('          <div class="poem" dir="rtl" lang="ar" aria-label="الأبيات مع فصل الشطرين بمسافة">')
-                for bayt in abyat:
-                    parts.append('            <div class="bayt">%s</div>' %
-                                 "".join('<div class="bayt-part"><span class="bayt-text">%s</span></div>' % part for part in bayt))
-                parts.append('          </div>')
-                parts.append('        </div>')
-            if items:
-                parts.append('        <div class="rule-box">')
-                parts.append('          <h5 class="mahfoudhat-label">نقاط الحفظ</h5>')
-                parts.append('          <ul class="checks">')
-                for item in items:
-                    parts.append('            <li class="check check-static">%s</li>' % item)
-                parts.append('          </ul>')
-                parts.append('        </div>')
-            parts.append('      </div>')
-        parts.append('    </div>')
-        parts.append('    </details>')
+    for subject in subjects:
+        parts.append('  <article class="card %s" data-mahfoudhat-subject="%s">' %
+                     (subject["cardTheme"], subject["id"]))
+        parts.append('    <p class="tag">%s</p>' % subject["tag"])
+        parts.append('    <h3><a href="%s/index.html">%s</a></h3>' % (subject["id"], subject["title"]))
+        parts.append('    <p class="book">%s</p>' % subject["book"])
+        parts.append('    <a class="btn primary" href="%s/index.html">افتح المحفوظات</a>' % subject["id"])
         parts.append('  </article>')
     parts.append('</div>')
     content = template.replace("<!-- GENERATED_MAHFOUDHAT -->", "\n".join(parts))
@@ -309,6 +325,8 @@ def build():
     html_paths = {"index.html": render_home(subjects)}
     html_paths["review/index.html"] = (ROOT / "templates/review.html").read_text(encoding="utf-8")
     html_paths["mahfoudhat/index.html"] = render_mahfoudhat(subjects)
+    for subject in subjects:
+        html_paths["mahfoudhat/%s/index.html" % subject["id"]] = render_mahfoudhat_subject(subject, subjects)
     html_paths["404.html"] = (ROOT / "templates/404.html").read_text(encoding="utf-8")
     for subject in subjects:
         html_paths[subject["file"]] = render_summary(subject)

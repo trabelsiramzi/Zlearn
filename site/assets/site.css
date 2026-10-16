@@ -315,11 +315,10 @@ section { scroll-margin-top: 230px; }
 .review-empty { margin-block: 24px; padding: 18px; background: var(--surface); border-radius: 12px; }
 
 /* Page المحفوظات : réutilise les composants du site (cartes, poèmes, cases). */
-.mahfoudhat-list { margin-top: 10px; }
 .mahfoudhat-lesson + .mahfoudhat-lesson { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
-.mahfoudhat-lesson h4 { font-family: var(--display); font-size: 1.3rem; margin: 0 0 6px; }
-.mahfoudhat-lesson h4 a { color: var(--accent); text-decoration: none; }
-.mahfoudhat-lesson h4 a:hover { text-decoration: underline; }
+.mahfoudhat-lesson h2 { font-size: 1.55rem; margin: 0 0 8px; }
+.mahfoudhat-lesson h2 a { color: var(--accent); text-decoration: none; }
+.mahfoudhat-lesson h2 a:hover { text-decoration: underline; }
 .mahfoudhat-label { font-family: var(--display); font-size: 1.15rem; color: var(--accent); margin: 0 0 6px; }
 .mahfoudhat-lesson .check { background: var(--bg); }
 
