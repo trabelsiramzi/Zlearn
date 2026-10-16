@@ -67,6 +67,15 @@ class VisibleLesson(HTMLParser):
                 "text_sha256": hashlib.sha256(normalized.encode()).hexdigest()}
 
 
+def extra_review_sha256(page):
+    """Hash the collapsed historical review block, which lives outside the lesson wrapper (D6)."""
+    match = re.search(r'<section class="extra-review">(.*?)</section>', page, re.S)
+    if not match:
+        return ""
+    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", match.group(1))).strip()
+    return hashlib.sha256(text.encode()).hexdigest()
+
+
 def lesson_ranges(page):
     pattern = re.compile(r'<div\b(?=[^>]*\bclass=["\'][^"\']*\blesson\b)[^>]*>', re.I)
     # The baseline is built from each complete lesson wrapper; use the same token-balanced
@@ -103,7 +112,10 @@ def main():
             start, end, _opening = actual_ranges[0]
             parser = VisibleLesson(); parser.feed(page[start:end])
             actual = parser.record()
+            actual["extra_review_sha256"] = extra_review_sha256(page)
             expected = {key: expected_lesson[key] for key in ("id", "sections", "checkboxes", "questions", "data_keys", "text_sha256")}
+            if "extra_review_sha256" in expected_lesson:
+                expected["extra_review_sha256"] = expected_lesson["extra_review_sha256"]
             if actual != expected:
                 failures.append("%s/%s: différence avec la baseline" % (subject, expected_lesson["id"]))
             total += 1

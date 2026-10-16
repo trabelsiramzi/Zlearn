@@ -124,6 +124,13 @@ def validate_content():
                     fail(errors, question_path, "question mcq sans options (%s)" % qid)
                 if q["type"] == "cloze" and not re.search(r"_{2,}|…", str(q.get("prompt", ""))):
                     fail(errors, question_path, "question cloze sans trou (%s)" % qid)
+                if q.get("checkpoint"):
+                    if q["checkpoint"] not in ids:
+                        fail(errors, question_path, "checkpoint inexistant pour %s: %s" % (qid, q["checkpoint"]))
+                    elif q["checkpoint"] not in section_ids:
+                        fail(errors, question_path, "checkpoint doit viser une <section> de cours (%s: %s)" % (qid, q["checkpoint"]))
+                    if re.search(r"(^|-)quiz$", str(q["checkpoint"])):
+                        fail(errors, question_path, "checkpoint ne doit pas viser le quiz (%s: %s)" % (qid, q["checkpoint"]))
             if len(questions) < 8:
                 fail(errors, question_path, "au moins 8 questions sont requises (%d trouvée(s))" % len(questions))
             if len(questions) > 12:
@@ -132,6 +139,15 @@ def validate_content():
                 fail(errors, question_path, "deux questions de pré-test sont requises")
             if not any(q.get("type") in ("mcq", "classify", "cloze") for q in questions if isinstance(q, dict)):
                 legacy_taxonomy += 1
+            covered = {q.get("section") for q in questions if isinstance(q, dict)}
+            covered.update(q.get("checkpoint") for q in questions if isinstance(q, dict) and q.get("checkpoint"))
+            for match in re.finditer(r'<section\b[^>]*\bid=["\']([^"\']+)["\'][^>]*>(.*?)</section>', fragment, re.S | re.I):
+                section_id, body = match.group(1), match.group(2)
+                if re.search(r"(^|-)(summary|map|terms|memorize|quiz)$", section_id) or section_id.endswith("-card") or section_id.endswith("-source") or section_id == "identity":
+                    continue
+                words = len(re.findall(r"[^\s]+", re.sub(r"<[^>]+>", " ", body)))
+                if words > 250 and section_id not in covered:
+                    print("AVERTISSEMENT %s: section « %s » (%d mots) sans question" % (question_path.relative_to(ROOT), section_id, words))
     if legacy_taxonomy:
         print("AVERTISSEMENT: %d banques migrées utilisent uniquement type=recall ; compréhension/application ne sont pas distinguées par le schéma v1." % legacy_taxonomy)
     return errors

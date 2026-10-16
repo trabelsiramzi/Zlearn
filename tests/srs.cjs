@@ -22,4 +22,7 @@ assert.strictEqual(srs.dueCards(catalog,{cards:{a:{due:day}}},day,20).length,1);
 const many = Array.from({length:25},(_,i)=>({question:{id:"q"+i},subject:"s"+(i%4)}));
 const manyState={cards:{}}; many.forEach(x=>{manyState.cards[x.question.id]={due:day};});
 assert.strictEqual(srs.dueCards(many,manyState,day,20).length,20,"review session is capped at 20 cards");
+assert.strictEqual(srs.soonestDue({a:{due:"2026-10-20"},b:{due:"2026-10-16"},c:{due:"2026-11-01"}}), "2026-10-16");
+assert.strictEqual(srs.soonestDue({}), "");
+assert.strictEqual(srs.soonestDue({a:{box:1}}), "");
 console.log("srs tests passed");
