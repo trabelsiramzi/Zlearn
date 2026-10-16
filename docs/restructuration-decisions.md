@@ -19,3 +19,21 @@ Confirmées par l'utilisateur le 15 octobre 2026.
 
 Confirmées par l'utilisateur le 16 octobre 2026.
 
+## Mise en œuvre — phase 2 (cycle de leçon en 5 temps)
+
+- Champ optionnel `checkpoint` dans `questions.json` : la carte est montée après la
+  `<section>` citée ; sans `checkpoint`, la carte reste dans la clôture « استرجع وتدرّب ».
+- Pour les 21 dars migrés : 1 à 2 micro-questions par bloc de cours (premières questions du
+  bloc), le reste demeurant dans la clôture (au moins 2 cartes). Les sections de type
+  `summary`, `map`, `terms`, `memorize`, `quiz`, `identity`, `*-card`, `*-source` ne reçoivent
+  pas de `checkpoint`.
+- D6 en pratique : `build.py` retire les `<details>` historiques de la section quiz et les
+  replace, après la clôture, dans un unique bloc replié « مراجعة إضافية » (aucun bouton « tout
+  afficher »). Le texte est conservé, seul l'emplacement change ; `compare_baseline.py` couvre
+  désormais ce bloc via `extra_review_sha256`.
+- D8 en pratique : l'en-tête affiche « مدة القراءة التقريبية … » calculée au build.
+- Focus : après chaque carte, le focus passe à la carte suivante dans l'ordre du document
+  (traversée des points de montage) ; jamais sur `BODY`. La clôture affiche
+  « أُضيفت للمراجعة · أقرب مراجعة: … » une fois toutes les cartes traitées.
+
+
