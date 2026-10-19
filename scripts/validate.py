@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate source content and the generated static site (Python stdlib only)."""
+import html as html_lib
 import json
 import re
 import subprocess
@@ -7,6 +8,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import fiche as fiche_mod  # noqa: E402
 VALID_TYPES = {"recall", "mcq", "classify", "cloze"}
 VALID_PHASES = {"pretest", "practice"}
 REQUIRED_QUESTION_FIELDS = {"id", "type", "phase", "prompt", "answer", "explain", "section", "difficulty"}
@@ -89,6 +92,7 @@ def validate_content():
                     if order in search_orders:
                         fail(errors, subjects_path, "searchOrder dupliqué: %s" % order)
                     search_orders.add(order)
+            validate_fiche_file(errors, folder, fragment)
             if not isinstance(questions, list):
                 fail(errors, question_path, "une liste de questions est requise")
                 continue
@@ -153,6 +157,33 @@ def validate_content():
     return errors
 
 
+def validate_fiche_file(errors, folder, fragment):
+    """Contrôle de fiche.json : structure, sections citées, fidélité au cours."""
+    path = folder / "fiche.json"
+    if not path.is_file():
+        print("AVERTISSEMENT %s: fiche.json absente (ورقة الدرس non générée)" % path.relative_to(ROOT).parent)
+        return
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        fail(errors, path, "JSON invalide (%s)" % exc)
+        return
+    for message in fiche_mod.validate_fiche(data):
+        fail(errors, path, message)
+    sticky = data.get("sticky") or {} if isinstance(data, dict) else {}
+    section_ids = set(re.findall(r'<section\b[^>]*\bid=["\']([^"\']+)', fragment, re.I))
+    for key in ("abyatSection", "pointsSection"):
+        if sticky.get(key) and sticky[key] not in section_ids:
+            fail(errors, path, "sticky.%s: section absente du fragment (%s)" % (key, sticky[key]))
+    if isinstance(data, dict) and not fiche_mod.validate_fiche(data):
+        text = html_lib.unescape(re.sub(r"<[^>]+>", " ", fragment))
+        for ratio, snippet in fiche_mod.fidelity(data, text):
+            if ratio < 0.6:
+                fail(errors, path, "texte peu fidèle au cours (%.0f %% des mots retrouvés): %s" % (ratio * 100, snippet[:60]))
+            elif ratio < 0.75:
+                print("AVERTISSEMENT %s: fidélité %.0f %%: %s" % (path.relative_to(ROOT), ratio * 100, snippet[:50]))
+
+
 def contrast_ratio(foreground, background):
     def luminance(color):
         values = [int(color[index:index + 2], 16) / 255.0 for index in (1, 3, 5)]
@@ -175,7 +206,11 @@ def validate_palette():
              ("muted", "bg"), ("muted", "surface"), ("hero-ink", "hero"),
              ("hero-muted", "hero"), ("accent", "bg"), ("accent", "surface"),
              ("blue", "blue-tint"), ("green", "green-tint"),
-             ("amber", "amber-tint"), ("red", "red-tint"))
+             ("amber", "amber-tint"), ("red", "red-tint"),
+             ("sticky-ink", "sticky"), ("sticky-head", "sticky"))
+    for tone in ("green", "blue", "purple", "orange", "teal", "rose"):
+        pairs += (("on-tone", "f-" + tone), ("f-%s-ink" % tone, "f-%s-tint" % tone), ("f-%s-ink" % tone, "surface"),
+                  ("f-%s-ink" % tone, "bg"), ("ink", "f-%s-tint" % tone))
     for theme, block in palettes:
         values = {name: color for name, color in re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6})\b", block)}
         for foreground, background in pairs:
