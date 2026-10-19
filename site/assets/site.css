@@ -504,76 +504,109 @@ h2 { color: var(--hero); }
 /* Encadrés pointillés */
 .sum-box, .rule-box, .goals, .active-recall, .review-summary, .review-item, .learning-start, .application, .progress-tools, .extra-review > details, .mahfoudhat-lesson .check {
   border: 2px dashed var(--line); border-radius: 16px 12px 18px 12px / 12px 18px 12px 16px; }
+.hero h1 { font-family: var(--head); }
 
-/* Fiche : bandeau d'outils */
-.fiche { padding-block: 14px 2px; }
-.fiche-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
-.fiche-bar h2 { margin: 0; font-size: 1.15rem; margin-inline-end: auto; }
-.fiche-time { margin: 0; color: var(--muted); font-size: .88rem; }
-.fiche-time span { margin-inline-start: 4px; }
-.fiche-print { min-height: 44px; }
-
-/* Post-it des abyat */
-.fsticky { position: relative; max-width: 760px; margin: 28px auto 22px; padding: 28px 24px 18px; background: var(--sticky); color: var(--sticky-ink); border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.5deg); }
-.ftape { position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
-.fsticky-title { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 1.05rem; color: var(--sticky-head); }
-.fverses { display: grid; gap: 4px; font-family: var(--display); font-size: clamp(1.15rem, 3.6vw, 1.55rem); line-height: 1.95; }
-.fverse { display: grid; grid-template-columns: 1fr 1fr; gap: 6px clamp(14px, 6vw, 56px); margin: 0; }
-.fverse span:first-child { text-align: start; }
-.fverse span:last-child { text-align: end; }
-.fpoints { color: var(--sticky-ink); }
-.fpoints .fcheck { color: var(--sticky-head); }
-
-/* Blocs numérotés */
-.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
-.fspan-full { grid-column: 1 / -1; }
-@media (max-width: 700px) { .fgrid { grid-template-columns: 1fr; } .fspan-half { grid-column: 1 / -1; } }
+/* ===== Présentation « ورقة » des sections d'un dars : numéro, icône, ton, post-it (classes ajoutées par build.py) ===== */
 .tone-green { --c: var(--f-green); --ci: var(--f-green-ink); --t: var(--f-green-tint); }
 .tone-blue { --c: var(--f-blue); --ci: var(--f-blue-ink); --t: var(--f-blue-tint); }
 .tone-purple { --c: var(--f-purple); --ci: var(--f-purple-ink); --t: var(--f-purple-tint); }
 .tone-orange { --c: var(--f-orange); --ci: var(--f-orange-ink); --t: var(--f-orange-tint); }
 .tone-teal { --c: var(--f-teal); --ci: var(--f-teal-ink); --t: var(--f-teal-tint); }
 .tone-rose { --c: var(--f-rose); --ci: var(--f-rose-ink); --t: var(--f-rose-tint); }
-.fblock { min-width: 0; }
-.fblock-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.fnum { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: var(--on-tone); font-family: var(--head); font-weight: 700; font-size: 1.05rem; line-height: 1; }
-.fblock h3 { margin: 0; padding-inline: 6px; font-size: 1.3rem; line-height: 1.6; color: var(--ink); background: linear-gradient(transparent 58%, var(--t) 58%); }
-.ficon { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.fblock-icon { margin-inline-start: auto; width: 46px; height: 46px; color: var(--c); }
-.fcheck { flex: none; width: 18px; height: 18px; margin-top: 7px; color: var(--c); stroke-width: 2.6; }
-.fbullets { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.fbullets li { display: flex; align-items: flex-start; gap: 8px; }
-.fbullets li > span { min-width: 0; }
-.fblock strong, .ft { color: var(--ci); font-weight: 600; }
-.fterm { color: var(--ci); font-family: var(--head); font-weight: 700; }
-.frows { margin: 0; }
-.frow { display: grid; grid-template-columns: minmax(6.5rem, max-content) minmax(0, 1fr); gap: 2px 18px; padding: 9px 4px; border-bottom: 2px dashed var(--line); }
-.frow:last-child { border-bottom: 0; }
-.frow dt { font-family: var(--head); font-weight: 700; font-size: 1.12rem; color: var(--ci); }
-.frow dd { margin: 0; }
-@media (max-width: 520px) { .frow { grid-template-columns: 1fr; } }
-.fcards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
-.fcard, .fwarn { display: grid; justify-items: center; align-content: start; gap: 2px; padding: 10px 14px 12px; text-align: center; border-radius: 14px 10px 16px 12px / 12px 16px 10px 14px; }
-.fcard { border: 2px solid var(--c); background: var(--surface); }
-.fcard-t { font-weight: 600; }
-.fcard-s { color: var(--muted); font-size: .92rem; }
-.fwarn { border: 2px dashed var(--muted); color: var(--ink); }
-.fwarn-icon { width: 22px; height: 22px; color: var(--ink); }
-.fwarn-inline { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; padding: 8px 14px; text-align: start; border: 2px dashed var(--muted); border-radius: 12px; }
-.fkhulasa { margin-top: 26px; padding: 14px 24px 18px; background: var(--f-purple-tint); border: 2px solid var(--f-purple); border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px; box-shadow: 4px 4px 0 var(--f-purple); }
-.fkhulasa h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; color: var(--f-purple-ink); font-size: 1.25rem; }
-.fkhulasa p { margin: 0; font-size: 1.08rem; line-height: 2.05; }
-.fkhulasa strong { color: var(--f-purple-ink); }
+[data-icon="bulb"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z'/%3E%3C/svg%3E"); }
+[data-icon="scales"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18M7 21h10M5 6h14M5 6l-3 7a3 3 0 0 0 6 0L5 6zM19 6l-3 7a3 3 0 0 0 6 0l-3-7z'/%3E%3C/svg%3E"); }
+[data-icon="pencil"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20l1-4L16 5l3 3L8 19l-4 1zM14 7l3 3'/%3E%3C/svg%3E"); }
+[data-icon="list"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM9 8h6M9 12h6M9 16h4'/%3E%3C/svg%3E"); }
+[data-icon="star"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7L12 3z'/%3E%3C/svg%3E"); }
+[data-icon="book"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2V5zM8 7h7M4 20a2 2 0 0 1 2-2h13'/%3E%3C/svg%3E"); }
+[data-icon="alert"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l10 18H2L12 3zM12 10v5M12 18h.01'/%3E%3C/svg%3E"); }
+[data-icon="pin"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 16v6M8 3h8l-1 6 3 4H6l3-4-1-6z'/%3E%3C/svg%3E"); }
+[data-icon="target"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 12h.01'/%3E%3C/svg%3E"); }
+[data-icon="key"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 15a4 4 0 1 1 3.9-4.9L21 10v3h-2v2h-3v-2h-2.6A4 4 0 0 1 8 15zM7 11h.01'/%3E%3C/svg%3E"); }
+[data-icon="compass"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM15.5 8.5l-2 5-5 2 2-5 5-2z'/%3E%3C/svg%3E"); }
+[data-icon="flag"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 21V4M5 4h11l-2 4 2 4H5'/%3E%3C/svg%3E"); }
+[data-icon="heart"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z'/%3E%3C/svg%3E"); }
+[data-icon="pen"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z'/%3E%3C/svg%3E"); }
 
-/* Impression A4 de la ورقة seule */
+.lesson { counter-reset: snum; }
+.lsec.numbered { counter-increment: snum; }
+.lsec > h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; padding-bottom: 6px; border-bottom: 3px solid var(--t); color: var(--ink); }
+.lsec.numbered > h2::before { content: counter(snum); flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: var(--on-tone); font-family: var(--head); font-weight: 700; font-size: 1.05rem; line-height: 1; }
+.lsec > h2::after { content: ""; flex: none; margin-inline-start: auto; width: 44px; height: 44px; background: var(--c); -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+.lsec ul li::marker { color: var(--c); }
+.lsec .check input { accent-color: var(--c); }
+
+/* الخلاصة */
+.lsec[data-kind="summary"] .sum-box { background: var(--t); border: 2px solid var(--c); border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px; box-shadow: 4px 4px 0 var(--c); }
+.lsec[data-kind="summary"] > h2 { color: var(--ci); }
+
+/* Post-it : vers et textes à lire */
+.lsec[data-kind="source"] > h2 { border-bottom-style: dashed; }
+.lsec[data-kind="source"] :is(.rule-box, .hadith-box) { position: relative; max-width: 780px; margin: 30px auto 6px; padding: 28px 24px 18px; background: var(--sticky); color: var(--sticky-ink); border: 0; border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.4deg); }
+.lsec[data-kind="source"] :is(.rule-box, .hadith-box)::before { content: ""; position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
+.lsec[data-kind="source"] .rule-box h3 { color: var(--sticky-head); }
+.lsec[data-kind="source"] .poem { gap: 4px; }
+.lsec[data-kind="source"] .bayt { padding: 4px 6px; background: none; border: 0; }
+.lsec[data-kind="source"] .bayt-text { font-size: clamp(1.15rem, 3.6vw, 1.55rem); line-height: 1.95; }
+.lsec[data-kind="source"] .bayt-part:first-child { text-align: start; }
+.lsec[data-kind="source"] .bayt-part:last-child { text-align: end; }
+.lsec[data-kind="source"] .lede { color: var(--muted); }
+
+/* Lexique, tableaux, cases, remarques */
+.terms div { border: 2px dashed var(--line); border-radius: 14px 10px 16px 12px / 12px 16px 10px 14px; }
+.terms dt { color: var(--ci, var(--ink)); }
+.scroll { border: 2px dashed var(--line); border-radius: 16px 12px 18px 12px / 12px 18px 12px 16px; }
+.gtable th, .gtable td { border-bottom: 2px dashed var(--line); }
+.gtable thead th { background: var(--t, var(--panel)); color: var(--ink); }
+.check, details { border: 2px dashed var(--line); }
+.note { background: var(--surface); border: 2px dashed var(--muted); border-radius: 14px 10px 16px 12px / 12px 16px 10px 14px; }
+.note h3 { display: flex; align-items: center; gap: 8px; }
+.note h3::before { content: ""; flex: none; width: 22px; height: 22px; background: var(--ink); -webkit-mask: var(--icon-alert) center / contain no-repeat; mask: var(--icon-alert) center / contain no-repeat; }
+:root { --icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l10 18H2L12 3zM12 10v5M12 18h.01'/%3E%3C/svg%3E"); }
+
+/* Étiquette de leçon : le titre est déjà dans le nuage */
+.part-head { background: none; border: 0; padding: 0; margin-top: 8px; color: var(--muted); }
+.part-head p { color: var(--muted); }
+.part-head h2 { display: none; }
+
 @media print {
-  @page { size: A4; margin: 12mm; }
-  body.printing-fiche .toc, body.printing-fiche footer, body.printing-fiche .toTop, body.printing-fiche .fiche-bar,
-  body.printing-fiche .subject > :not(.fiche), body.printing-fiche .eyebrow, body.printing-fiche .crumb { display: none !important; }
-  body.printing-fiche .fsticky, body.printing-fiche .fnum, body.printing-fiche .fkhulasa, body.printing-fiche .hero .wrap::before { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  body.printing-fiche .fsticky { transform: none; box-shadow: none; }
-  .fblock, .fkhulasa, .fsticky { break-inside: avoid; }
+  .lsec.numbered > h2::before, .lsec[data-kind="source"] :is(.rule-box, .hadith-box), .hero .wrap::before { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .lsec[data-kind="source"] :is(.rule-box, .hadith-box) { transform: none; box-shadow: none; }
 }
-.hero h1 { font-family: var(--head); }
-.fcard-t { display: inline-flex; align-items: center; gap: 6px; }
-.fcard-t .fcheck, .fcard-t .fwarn-icon { margin-top: 0; }
+:root { --ic-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E"); --ic-target: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 12h.01'/%3E%3C/svg%3E"); --ic-pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 16v6M8 3h8l-1 6 3 4H6l3-4-1-6z'/%3E%3C/svg%3E"); --ic-bulb: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z'/%3E%3C/svg%3E"); --ic-list: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM9 8h6M9 12h6M9 16h4'/%3E%3C/svg%3E"); }
+
+/* Accueil : encadrés d'action avec icône ; المحفوظات en post-it */
+.learning-start, .review-summary { --c: var(--f-green); --t: var(--f-green-tint); }
+.review-summary { --c: var(--f-teal); --t: var(--f-teal-tint); }
+.learning-start h3::after, .review-summary h2::after { content: ""; display: inline-block; vertical-align: middle; margin-inline-start: 12px; width: 34px; height: 34px; background: var(--c); -webkit-mask: var(--ic-bulb) center / contain no-repeat; mask: var(--ic-bulb) center / contain no-repeat; }
+.review-summary h2::after { -webkit-mask-image: var(--ic-target); mask-image: var(--ic-target); }
+.review-summary:has(a[href^="mahfoudhat"]) { position: relative; background: var(--sticky); color: var(--sticky-ink); border: 0; border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.4deg); margin-top: 34px; }
+.review-summary:has(a[href^="mahfoudhat"])::before { content: ""; position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
+.review-summary:has(a[href^="mahfoudhat"]) h2 { color: var(--sticky-head); }
+.review-summary:has(a[href^="mahfoudhat"]) h2::after { background: var(--sticky-head); -webkit-mask-image: var(--ic-pin); mask-image: var(--ic-pin); }
+.review-summary:has(a[href^="mahfoudhat"]) > p { color: var(--sticky-ink); }
+.review-summary:has(a[href^="mahfoudhat"]) .btn, .review-summary:has(a[href^="mahfoudhat"]) a { color: var(--sticky-ink); border-color: var(--sticky-ink); background: transparent; }
+
+/* Page المحفوظات : une section numérotée et colorée par dars, vers sur post-it */
+main:has(.mahfoudhat-lesson) { counter-reset: mdars; }
+.mahfoudhat-lesson { counter-increment: mdars; --c: var(--f-green); --ci: var(--f-green-ink); --t: var(--f-green-tint); }
+.mahfoudhat-lesson:nth-child(6n+3) { --c: var(--f-blue); --ci: var(--f-blue-ink); --t: var(--f-blue-tint); }
+.mahfoudhat-lesson:nth-child(6n+4) { --c: var(--f-purple); --ci: var(--f-purple-ink); --t: var(--f-purple-tint); }
+.mahfoudhat-lesson:nth-child(6n+5) { --c: var(--f-orange); --ci: var(--f-orange-ink); --t: var(--f-orange-tint); }
+.mahfoudhat-lesson:nth-child(6n+6) { --c: var(--f-teal); --ci: var(--f-teal-ink); --t: var(--f-teal-tint); }
+.mahfoudhat-lesson:nth-child(6n+7) { --c: var(--f-rose); --ci: var(--f-rose-ink); --t: var(--f-rose-tint); }
+.mahfoudhat-lesson > h2 { display: flex; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 3px solid var(--t); }
+.mahfoudhat-lesson > h2::before { content: counter(mdars); flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: var(--on-tone); font-family: var(--head); font-weight: 700; font-size: 1.05rem; line-height: 1; }
+.mahfoudhat-lesson > h2 a { color: var(--ink); }
+.mahfoudhat-label { color: var(--ci); }
+.mahfoudhat-lesson .rule-box:has(.poem) { position: relative; max-width: 780px; margin: 30px auto 14px; padding: 26px 24px 16px; background: var(--sticky); color: var(--sticky-ink); border: 0; border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.4deg); }
+.mahfoudhat-lesson .rule-box:has(.poem)::before { content: ""; position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
+.mahfoudhat-lesson .rule-box:has(.poem) .mahfoudhat-label { color: var(--sticky-head); }
+.mahfoudhat-lesson .poem .bayt { background: none; border: 0; padding: 4px 6px; }
+.mahfoudhat-lesson .poem .bayt-text { font-size: clamp(1.1rem, 3.4vw, 1.45rem); line-height: 1.95; }
+.mahfoudhat-lesson .poem .bayt-part:first-child { text-align: start; }
+.mahfoudhat-lesson .poem .bayt-part:last-child { text-align: end; }
+.mahfoudhat-lesson .checks { gap: 4px; }
+.mahfoudhat-lesson .check-static { position: relative; padding-inline-start: 38px; border: 0; background: none; border-bottom: 2px dashed var(--line); border-radius: 0; }
+.mahfoudhat-lesson .check-static::before { content: ""; position: absolute; inset-inline-start: 8px; top: 12px; width: 20px; height: 20px; background: var(--c); -webkit-mask: var(--ic-check) center / contain no-repeat; mask: var(--ic-check) center / contain no-repeat; }
+@media print { .review-summary:has(a[href^="mahfoudhat"]), .mahfoudhat-lesson .rule-box:has(.poem) { transform: none; box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; } }

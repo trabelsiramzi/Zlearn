@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Validate source content and the generated static site (Python stdlib only)."""
-import html as html_lib
 import json
 import re
 import subprocess
@@ -8,8 +7,6 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
-import fiche as fiche_mod  # noqa: E402
 VALID_TYPES = {"recall", "mcq", "classify", "cloze"}
 VALID_PHASES = {"pretest", "practice"}
 REQUIRED_QUESTION_FIELDS = {"id", "type", "phase", "prompt", "answer", "explain", "section", "difficulty"}
@@ -92,7 +89,6 @@ def validate_content():
                     if order in search_orders:
                         fail(errors, subjects_path, "searchOrder dupliqué: %s" % order)
                     search_orders.add(order)
-            validate_fiche_file(errors, folder, fragment)
             if not isinstance(questions, list):
                 fail(errors, question_path, "une liste de questions est requise")
                 continue
@@ -155,33 +151,6 @@ def validate_content():
     if legacy_taxonomy:
         print("AVERTISSEMENT: %d banques migrées utilisent uniquement type=recall ; compréhension/application ne sont pas distinguées par le schéma v1." % legacy_taxonomy)
     return errors
-
-
-def validate_fiche_file(errors, folder, fragment):
-    """Contrôle de fiche.json : structure, sections citées, fidélité au cours."""
-    path = folder / "fiche.json"
-    if not path.is_file():
-        print("AVERTISSEMENT %s: fiche.json absente (ورقة الدرس non générée)" % path.relative_to(ROOT).parent)
-        return
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        fail(errors, path, "JSON invalide (%s)" % exc)
-        return
-    for message in fiche_mod.validate_fiche(data):
-        fail(errors, path, message)
-    sticky = data.get("sticky") or {} if isinstance(data, dict) else {}
-    section_ids = set(re.findall(r'<section\b[^>]*\bid=["\']([^"\']+)', fragment, re.I))
-    for key in ("abyatSection", "pointsSection"):
-        if sticky.get(key) and sticky[key] not in section_ids:
-            fail(errors, path, "sticky.%s: section absente du fragment (%s)" % (key, sticky[key]))
-    if isinstance(data, dict) and not fiche_mod.validate_fiche(data):
-        text = html_lib.unescape(re.sub(r"<[^>]+>", " ", fragment))
-        for ratio, snippet in fiche_mod.fidelity(data, text):
-            if ratio < 0.6:
-                fail(errors, path, "texte peu fidèle au cours (%.0f %% des mots retrouvés): %s" % (ratio * 100, snippet[:60]))
-            elif ratio < 0.75:
-                print("AVERTISSEMENT %s: fidélité %.0f %%: %s" % (path.relative_to(ROOT), ratio * 100, snippet[:50]))
 
 
 def contrast_ratio(foreground, background):
