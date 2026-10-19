@@ -1,22 +1,21 @@
 [hidden]:not([hidden=until-found i]){display:none!important}
-/* Mise en page : bandeau sombre en tête, puis fiche de révision en sections.
-   Vert (accent) + beige (fond), or en filet ; bleu-sarcelle / vert / ambre = couleurs des cartes et des leçons. */
 :root {
   --display: "Amiri", "Noto Naskh Arabic", serif;
+  --head: "Baloo Bhaijaan 2", "IBM Plex Sans Arabic", "Noto Sans Arabic", Tahoma, sans-serif;
   --body: "IBM Plex Sans Arabic", "Noto Sans Arabic", Tahoma, sans-serif;
-  /* Palette : vert islamique + beige, touche d'or */
-  --bg: #F5EEDC;
-  --surface: #FFFBF1;
-  --panel: #EBE1C8;
-  --ink: #1D2B22;
-  --muted: #5A6657;
-  --line: #D9CBA9;
-  --hero: #0F4C3A;
-  --hero-ink: #F8F2E2;
-  --hero-muted: #BFD3C6;
-  --gold: #76520D;
-  --accent: #0F6B4F;
-  --accent-tint: #E0EDDD;
+  /* Papier clair, titres bleu-sarcelle, blocs colorés numérotés (ورقة الدرس) */
+  --bg: #FDFBF6;
+  --surface: #FFFFFF;
+  --panel: #F4F0E6;
+  --ink: #1F2D36;
+  --muted: #56646E;
+  --line: #D8D2C2;
+  --hero: #1F6A86;
+  --hero-ink: #FFFFFF;
+  --hero-muted: #D9ECF4;
+  --gold: #7A5410;
+  --accent: #1F6A86;
+  --accent-tint: #E3F0F6;
   --blue: #1D6A7A;
   --blue-tint: #DCEBEA;
   --green: #176A3F;
@@ -25,23 +24,47 @@
   --amber-tint: #F4E5C0;
   --red: #A63A2B;
   --red-tint: #F6DDD6;
+  --on-tone: #FFFFFF;
+  --f-green: #2A7F4F; --f-green-ink: #1E6B41; --f-green-tint: #E4F3EA;
+  --f-blue: #2C6FA6; --f-blue-ink: #1F5C8C; --f-blue-tint: #E3EEF8;
+  --f-purple: #7650B0; --f-purple-ink: #5E3C96; --f-purple-tint: #EEE8F8;
+  --f-orange: #B8590E; --f-orange-ink: #8F4408; --f-orange-tint: #FBEADB;
+  --f-teal: #1B7F78; --f-teal-ink: #146560; --f-teal-tint: #DDF1EF;
+  --f-rose: #B03A64; --f-rose-ink: #8F2B4E; --f-rose-tint: #F9E3EB;
+  --sticky: #FFF2A8; --sticky-ink: #3B3000; --sticky-head: #9A3412; --tape: rgba(125, 185, 225, .7);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0B1912; --surface: #12261C; --panel: #193426; --ink: #EDF1E3; --muted: #A7BAA6; --line: #2A4A39;
-    --hero: #061F16; --hero-ink: #F4EFDF; --hero-muted: #A9C2B2; --gold: #D8B866;
-    --accent: #6FCF9F; --accent-tint: #14382A;
+    --bg: #0E1A22; --surface: #14232D; --panel: #1B2F3B; --ink: #EAF1F4; --muted: #A9BAC4; --line: #2C4554;
+    --hero: #7DC1DE; --hero-ink: #0B1A22; --hero-muted: #123140; --gold: #D8B866;
+    --accent: #7DC1DE; --accent-tint: #173341;
     --blue: #6BC3D0; --blue-tint: #12333A; --green: #7BD39A; --green-tint: #143A27; --amber: #E6B85C; --amber-tint: #3B2C0E;
     --red: #F08A7A; --red-tint: #40201B;
+    --on-tone: #0B1A22;
+    --f-green: #6FCF9F; --f-green-ink: #8FE0B4; --f-green-tint: #163626;
+    --f-blue: #7DB8EA; --f-blue-ink: #A4CFF5; --f-blue-tint: #14293D;
+    --f-purple: #B79BEA; --f-purple-ink: #CDB8F3; --f-purple-tint: #251B3D;
+    --f-orange: #F0A25E; --f-orange-ink: #F7BD8A; --f-orange-tint: #3A2512;
+    --f-teal: #5FCFC4; --f-teal-ink: #8BE0D8; --f-teal-tint: #123533;
+    --f-rose: #EE8AAE; --f-rose-ink: #F5AFC8; --f-rose-tint: #3A1A28;
+    --sticky: #4A3D0F; --sticky-ink: #FFF0A0; --sticky-head: #FFB48A; --tape: rgba(80, 130, 170, .6);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0B1912; --surface: #12261C; --panel: #193426; --ink: #EDF1E3; --muted: #A7BAA6; --line: #2A4A39;
-  --hero: #061F16; --hero-ink: #F4EFDF; --hero-muted: #A9C2B2; --gold: #D8B866;
-  --accent: #6FCF9F; --accent-tint: #14382A;
+  --bg: #0E1A22; --surface: #14232D; --panel: #1B2F3B; --ink: #EAF1F4; --muted: #A9BAC4; --line: #2C4554;
+  --hero: #7DC1DE; --hero-ink: #0B1A22; --hero-muted: #123140; --gold: #D8B866;
+  --accent: #7DC1DE; --accent-tint: #173341;
   --blue: #6BC3D0; --blue-tint: #12333A; --green: #7BD39A; --green-tint: #143A27; --amber: #E6B85C; --amber-tint: #3B2C0E;
   --red: #F08A7A; --red-tint: #40201B;
+  --on-tone: #0B1A22;
+  --f-green: #6FCF9F; --f-green-ink: #8FE0B4; --f-green-tint: #163626;
+  --f-blue: #7DB8EA; --f-blue-ink: #A4CFF5; --f-blue-tint: #14293D;
+  --f-purple: #B79BEA; --f-purple-ink: #CDB8F3; --f-purple-tint: #251B3D;
+  --f-orange: #F0A25E; --f-orange-ink: #F7BD8A; --f-orange-tint: #3A2512;
+  --f-teal: #5FCFC4; --f-teal-ink: #8BE0D8; --f-teal-tint: #123533;
+  --f-rose: #EE8AAE; --f-rose-ink: #F5AFC8; --f-rose-tint: #3A1A28;
+  --sticky: #4A3D0F; --sticky-ink: #FFF0A0; --sticky-head: #FFB48A; --tape: rgba(80, 130, 170, .6);
   color-scheme: dark;
 }
 
@@ -56,6 +79,9 @@ a:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visi
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("fonts/IBMPlexSansArabic-Regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("fonts/IBMPlexSansArabic-Medium.woff2") format("woff2"); font-style: normal; font-weight: 500; font-display: swap; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("fonts/IBMPlexSansArabic-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: swap; }
+
+@font-face { font-family: "Baloo Bhaijaan 2"; src: url("fonts/BalooBhaijaan2-SemiBold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: "Baloo Bhaijaan 2"; src: url("fonts/BalooBhaijaan2-Bold.woff2") format("woff2"); font-style: normal; font-weight: 700; font-display: swap; }
 
 .blue { --c: var(--blue); --t: var(--blue-tint); }
 .green { --c: var(--green); --t: var(--green-tint); }
@@ -436,3 +462,151 @@ details[data-grade="review"] { border-inline-start: 5px solid var(--amber); }
   .lesson-stepper > :last-child { justify-self: end; }
   .lesson-stepper .btn { padding-inline: 10px; }
 }
+
+/* ===== ورقة الدرس : thème « fiche » (nuage-titre, post-it, blocs numérotés colorés) ===== */
+:root { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -10 600 200' preserveAspectRatio='none'%3E%3Cg fill='%23EAF4FB' stroke='%23A9D3EE' stroke-width='5'%3E%3Crect x='36' y='46' width='528' height='92' rx='44'/%3E%3Ccircle cx='108' cy='52' r='34'/%3E%3Ccircle cx='178' cy='38' r='36'/%3E%3Ccircle cx='262' cy='32' r='38'/%3E%3Ccircle cx='348' cy='34' r='36'/%3E%3Ccircle cx='428' cy='40' r='35'/%3E%3Ccircle cx='498' cy='52' r='32'/%3E%3Ccircle cx='112' cy='134' r='32'/%3E%3Ccircle cx='190' cy='142' r='30'/%3E%3Ccircle cx='270' cy='146' r='28'/%3E%3Ccircle cx='352' cy='146' r='28'/%3E%3Ccircle cx='430' cy='140' r='30'/%3E%3Ccircle cx='500' cy='132' r='32'/%3E%3Ccircle cx='50' cy='92' r='40'/%3E%3Ccircle cx='550' cy='92' r='40'/%3E%3C/g%3E%3Cg fill='%23EAF4FB'%3E%3Crect x='36' y='46' width='528' height='92' rx='44'/%3E%3Ccircle cx='108' cy='52' r='34'/%3E%3Ccircle cx='178' cy='38' r='36'/%3E%3Ccircle cx='262' cy='32' r='38'/%3E%3Ccircle cx='348' cy='34' r='36'/%3E%3Ccircle cx='428' cy='40' r='35'/%3E%3Ccircle cx='498' cy='52' r='32'/%3E%3Ccircle cx='112' cy='134' r='32'/%3E%3Ccircle cx='190' cy='142' r='30'/%3E%3Ccircle cx='270' cy='146' r='28'/%3E%3Ccircle cx='352' cy='146' r='28'/%3E%3Ccircle cx='430' cy='140' r='30'/%3E%3Ccircle cx='500' cy='132' r='32'/%3E%3Ccircle cx='50' cy='92' r='40'/%3E%3Ccircle cx='550' cy='92' r='40'/%3E%3C/g%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -10 600 200' preserveAspectRatio='none'%3E%3Cg fill='%23173341' stroke='%233B7A93' stroke-width='5'%3E%3Crect x='36' y='46' width='528' height='92' rx='44'/%3E%3Ccircle cx='108' cy='52' r='34'/%3E%3Ccircle cx='178' cy='38' r='36'/%3E%3Ccircle cx='262' cy='32' r='38'/%3E%3Ccircle cx='348' cy='34' r='36'/%3E%3Ccircle cx='428' cy='40' r='35'/%3E%3Ccircle cx='498' cy='52' r='32'/%3E%3Ccircle cx='112' cy='134' r='32'/%3E%3Ccircle cx='190' cy='142' r='30'/%3E%3Ccircle cx='270' cy='146' r='28'/%3E%3Ccircle cx='352' cy='146' r='28'/%3E%3Ccircle cx='430' cy='140' r='30'/%3E%3Ccircle cx='500' cy='132' r='32'/%3E%3Ccircle cx='50' cy='92' r='40'/%3E%3Ccircle cx='550' cy='92' r='40'/%3E%3C/g%3E%3Cg fill='%23173341'%3E%3Crect x='36' y='46' width='528' height='92' rx='44'/%3E%3Ccircle cx='108' cy='52' r='34'/%3E%3Ccircle cx='178' cy='38' r='36'/%3E%3Ccircle cx='262' cy='32' r='38'/%3E%3Ccircle cx='348' cy='34' r='36'/%3E%3Ccircle cx='428' cy='40' r='35'/%3E%3Ccircle cx='498' cy='52' r='32'/%3E%3Ccircle cx='112' cy='134' r='32'/%3E%3Ccircle cx='190' cy='142' r='30'/%3E%3Ccircle cx='270' cy='146' r='28'/%3E%3Ccircle cx='352' cy='146' r='28'/%3E%3Ccircle cx='430' cy='140' r='30'/%3E%3Ccircle cx='500' cy='132' r='32'/%3E%3Ccircle cx='50' cy='92' r='40'/%3E%3Ccircle cx='550' cy='92' r='40'/%3E%3C/g%3E%3C/svg%3E"); } }
+:root[data-theme="dark"] { --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -10 600 200' preserveAspectRatio='none'%3E%3Cg fill='%23173341' stroke='%233B7A93' stroke-width='5'%3E%3Crect x='36' y='46' width='528' height='92' rx='44'/%3E%3Ccircle cx='108' cy='52' r='34'/%3E%3Ccircle cx='178' cy='38' r='36'/%3E%3Ccircle cx='262' cy='32' r='38'/%3E%3Ccircle cx='348' cy='34' r='36'/%3E%3Ccircle cx='428' cy='40' r='35'/%3E%3Ccircle cx='498' cy='52' r='32'/%3E%3Ccircle cx='112' cy='134' r='32'/%3E%3Ccircle cx='190' cy='142' r='30'/%3E%3Ccircle cx='270' cy='146' r='28'/%3E%3Ccircle cx='352' cy='146' r='28'/%3E%3Ccircle cx='430' cy='140' r='30'/%3E%3Ccircle cx='500' cy='132' r='32'/%3E%3Ccircle cx='50' cy='92' r='40'/%3E%3Ccircle cx='550' cy='92' r='40'/%3E%3C/g%3E%3Cg fill='%23173341'%3E%3Crect x='36' y='46' width='528' height='92' rx='44'/%3E%3Ccircle cx='108' cy='52' r='34'/%3E%3Ccircle cx='178' cy='38' r='36'/%3E%3Ccircle cx='262' cy='32' r='38'/%3E%3Ccircle cx='348' cy='34' r='36'/%3E%3Ccircle cx='428' cy='40' r='35'/%3E%3Ccircle cx='498' cy='52' r='32'/%3E%3Ccircle cx='112' cy='134' r='32'/%3E%3Ccircle cx='190' cy='142' r='30'/%3E%3Ccircle cx='270' cy='146' r='28'/%3E%3Ccircle cx='352' cy='146' r='28'/%3E%3Ccircle cx='430' cy='140' r='30'/%3E%3Ccircle cx='500' cy='132' r='32'/%3E%3Ccircle cx='50' cy='92' r='40'/%3E%3Ccircle cx='550' cy='92' r='40'/%3E%3C/g%3E%3C/svg%3E"); }
+
+h1, h2, h3, .brand, .card h3, .subj, .goals h3, .rule-box h3, .study-card h3, .steps h3, .pillar h3, .note h3, .map-list h3,
+.content-heading, .content-heading-compact, .content-heading-before, .content-heading-after, .terms-sub, .application h3,
+.learning-start h3, .part-head h2, .extra-review summary, .mahfoudhat-label { font-family: var(--head); font-weight: 700; }
+h2 { color: var(--hero); }
+.part-head h2 { color: var(--hero-ink); }
+.hero h1 { color: var(--hero); }
+
+/* Nuage-titre */
+.hero { background: none; color: var(--ink); padding-block: 14px 6px; border-bottom: 0; }
+.hero .wrap { display: grid; grid-template-columns: 1fr; position: relative; }
+.hero .wrap::before { content: ""; grid-column: 1; grid-row: 3 / 5; margin-inline: 1%; background: var(--cloud) center / 100% 100% no-repeat; z-index: 0; }
+.eyebrow { grid-row: 1; grid-column: 1; color: var(--muted); font-size: .8rem; }
+.crumb { grid-row: 2; grid-column: 1; margin: 2px 0 12px; }
+.crumb a { color: var(--accent); }
+.crumb a:hover { color: var(--ink); }
+.hero h1 { grid-row: 3; grid-column: 1; position: relative; z-index: 1; text-align: center; margin: 0; padding: 26px 8% 0; font-size: clamp(1.9rem, 6vw, 2.9rem); line-height: 1.5; }
+.hero-sub { grid-row: 4; grid-column: 1; position: relative; z-index: 1; text-align: center; color: var(--muted); margin: 0; padding: 0 8% 30px; font-size: 1.02rem; }
+.meta { grid-row: 5; grid-column: 1; justify-content: center; }
+.meta li { border-color: var(--line); color: var(--muted); background: var(--surface); }
+@media (max-width: 560px) { .hero h1 { padding-inline: 11%; } .hero-sub { padding-inline: 11%; font-size: .95rem; } }
+
+/* Cartes d'accueil : numéro coloré, bord dessiné à la main */
+.cards { counter-reset: subject; }
+.card { counter-increment: subject; position: relative; border: 2px solid var(--c, var(--accent)); border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px; box-shadow: 4px 4px 0 var(--t, var(--accent-tint)); padding-top: 26px; }
+.card::before { content: counter(subject); position: absolute; inset-block-start: -14px; inset-inline-end: 18px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--c, var(--accent)); color: var(--on-tone); font-family: var(--head); font-weight: 700; }
+.cards > .card:nth-child(6n+1) { --c: var(--f-green); --t: var(--f-green-tint); }
+.cards > .card:nth-child(6n+2) { --c: var(--f-blue); --t: var(--f-blue-tint); }
+.cards > .card:nth-child(6n+3) { --c: var(--f-purple); --t: var(--f-purple-tint); }
+.cards > .card:nth-child(6n+4) { --c: var(--f-orange); --t: var(--f-orange-tint); }
+.cards > .card:nth-child(6n+5) { --c: var(--f-teal); --t: var(--f-teal-tint); }
+.cards > .card:nth-child(6n+6) { --c: var(--f-rose); --t: var(--f-rose-tint); }
+.card .tag { color: var(--c); }
+
+/* Encadrés pointillés */
+.sum-box, .rule-box, .goals, .active-recall, .review-summary, .review-item, .learning-start, .application, .progress-tools, .extra-review > details, .mahfoudhat-lesson .check {
+  border: 2px dashed var(--line); border-radius: 16px 12px 18px 12px / 12px 18px 12px 16px; }
+.hero h1 { font-family: var(--head); }
+
+/* ===== Présentation « ورقة » des sections d'un dars : numéro, icône, ton, post-it (classes ajoutées par build.py) ===== */
+.tone-green { --c: var(--f-green); --ci: var(--f-green-ink); --t: var(--f-green-tint); }
+.tone-blue { --c: var(--f-blue); --ci: var(--f-blue-ink); --t: var(--f-blue-tint); }
+.tone-purple { --c: var(--f-purple); --ci: var(--f-purple-ink); --t: var(--f-purple-tint); }
+.tone-orange { --c: var(--f-orange); --ci: var(--f-orange-ink); --t: var(--f-orange-tint); }
+.tone-teal { --c: var(--f-teal); --ci: var(--f-teal-ink); --t: var(--f-teal-tint); }
+.tone-rose { --c: var(--f-rose); --ci: var(--f-rose-ink); --t: var(--f-rose-tint); }
+[data-icon="bulb"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z'/%3E%3C/svg%3E"); }
+[data-icon="scales"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18M7 21h10M5 6h14M5 6l-3 7a3 3 0 0 0 6 0L5 6zM19 6l-3 7a3 3 0 0 0 6 0l-3-7z'/%3E%3C/svg%3E"); }
+[data-icon="pencil"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20l1-4L16 5l3 3L8 19l-4 1zM14 7l3 3'/%3E%3C/svg%3E"); }
+[data-icon="list"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM9 8h6M9 12h6M9 16h4'/%3E%3C/svg%3E"); }
+[data-icon="star"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7L12 3z'/%3E%3C/svg%3E"); }
+[data-icon="book"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2V5zM8 7h7M4 20a2 2 0 0 1 2-2h13'/%3E%3C/svg%3E"); }
+[data-icon="alert"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l10 18H2L12 3zM12 10v5M12 18h.01'/%3E%3C/svg%3E"); }
+[data-icon="pin"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 16v6M8 3h8l-1 6 3 4H6l3-4-1-6z'/%3E%3C/svg%3E"); }
+[data-icon="target"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 12h.01'/%3E%3C/svg%3E"); }
+[data-icon="key"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 15a4 4 0 1 1 3.9-4.9L21 10v3h-2v2h-3v-2h-2.6A4 4 0 0 1 8 15zM7 11h.01'/%3E%3C/svg%3E"); }
+[data-icon="compass"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM15.5 8.5l-2 5-5 2 2-5 5-2z'/%3E%3C/svg%3E"); }
+[data-icon="flag"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 21V4M5 4h11l-2 4 2 4H5'/%3E%3C/svg%3E"); }
+[data-icon="heart"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z'/%3E%3C/svg%3E"); }
+[data-icon="pen"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z'/%3E%3C/svg%3E"); }
+
+.lesson { counter-reset: snum; }
+.lsec.numbered { counter-increment: snum; }
+.lsec > h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; padding-bottom: 6px; border-bottom: 3px solid var(--t); color: var(--ink); }
+.lsec.numbered > h2::before { content: counter(snum); flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: var(--on-tone); font-family: var(--head); font-weight: 700; font-size: 1.05rem; line-height: 1; }
+.lsec > h2::after { content: ""; flex: none; margin-inline-start: auto; width: 44px; height: 44px; background: var(--c); -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+.lsec ul li::marker { color: var(--c); }
+.lsec .check input { accent-color: var(--c); }
+
+/* الخلاصة */
+.lsec[data-kind="summary"] .sum-box { background: var(--t); border: 2px solid var(--c); border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px; box-shadow: 4px 4px 0 var(--c); }
+.lsec[data-kind="summary"] > h2 { color: var(--ci); }
+
+/* Post-it : vers et textes à lire */
+.lsec[data-kind="source"] > h2 { border-bottom-style: dashed; }
+.lsec[data-kind="source"] :is(.rule-box, .hadith-box) { position: relative; max-width: 780px; margin: 30px auto 6px; padding: 28px 24px 18px; background: var(--sticky); color: var(--sticky-ink); border: 0; border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.4deg); }
+.lsec[data-kind="source"] :is(.rule-box, .hadith-box)::before { content: ""; position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
+.lsec[data-kind="source"] .rule-box h3 { color: var(--sticky-head); }
+.lsec[data-kind="source"] .poem { gap: 4px; }
+.lsec[data-kind="source"] .bayt { padding: 4px 6px; background: none; border: 0; }
+.lsec[data-kind="source"] .bayt-text { font-size: clamp(1.15rem, 3.6vw, 1.55rem); line-height: 1.95; }
+.lsec[data-kind="source"] .bayt-part:first-child { text-align: start; }
+.lsec[data-kind="source"] .bayt-part:last-child { text-align: end; }
+.lsec[data-kind="source"] .lede { color: var(--muted); }
+
+/* Lexique, tableaux, cases, remarques */
+.terms div { border: 2px dashed var(--line); border-radius: 14px 10px 16px 12px / 12px 16px 10px 14px; }
+.terms dt { color: var(--ci, var(--ink)); }
+.scroll { border: 2px dashed var(--line); border-radius: 16px 12px 18px 12px / 12px 18px 12px 16px; }
+.gtable th, .gtable td { border-bottom: 2px dashed var(--line); }
+.gtable thead th { background: var(--t, var(--panel)); color: var(--ink); }
+.check, details { border: 2px dashed var(--line); }
+.note { background: var(--surface); border: 2px dashed var(--muted); border-radius: 14px 10px 16px 12px / 12px 16px 10px 14px; }
+.note h3 { display: flex; align-items: center; gap: 8px; }
+.note h3::before { content: ""; flex: none; width: 22px; height: 22px; background: var(--ink); -webkit-mask: var(--icon-alert) center / contain no-repeat; mask: var(--icon-alert) center / contain no-repeat; }
+:root { --icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l10 18H2L12 3zM12 10v5M12 18h.01'/%3E%3C/svg%3E"); }
+
+/* Étiquette de leçon : le titre est déjà dans le nuage */
+.part-head { background: none; border: 0; padding: 0; margin-top: 8px; color: var(--muted); }
+.part-head p { color: var(--muted); }
+.part-head h2 { display: none; }
+
+@media print {
+  .lsec.numbered > h2::before, .lsec[data-kind="source"] :is(.rule-box, .hadith-box), .hero .wrap::before { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .lsec[data-kind="source"] :is(.rule-box, .hadith-box) { transform: none; box-shadow: none; }
+}
+:root { --ic-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E"); --ic-target: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 12h.01'/%3E%3C/svg%3E"); --ic-pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 16v6M8 3h8l-1 6 3 4H6l3-4-1-6z'/%3E%3C/svg%3E"); --ic-bulb: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z'/%3E%3C/svg%3E"); --ic-list: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM9 8h6M9 12h6M9 16h4'/%3E%3C/svg%3E"); }
+
+/* Accueil : encadrés d'action avec icône ; المحفوظات en post-it */
+.learning-start, .review-summary { --c: var(--f-green); --t: var(--f-green-tint); }
+.review-summary { --c: var(--f-teal); --t: var(--f-teal-tint); }
+.learning-start h3::after, .review-summary h2::after { content: ""; display: inline-block; vertical-align: middle; margin-inline-start: 12px; width: 34px; height: 34px; background: var(--c); -webkit-mask: var(--ic-bulb) center / contain no-repeat; mask: var(--ic-bulb) center / contain no-repeat; }
+.review-summary h2::after { -webkit-mask-image: var(--ic-target); mask-image: var(--ic-target); }
+.review-summary:has(a[href^="mahfoudhat"]) { position: relative; background: var(--sticky); color: var(--sticky-ink); border: 0; border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.4deg); margin-top: 34px; }
+.review-summary:has(a[href^="mahfoudhat"])::before { content: ""; position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
+.review-summary:has(a[href^="mahfoudhat"]) h2 { color: var(--sticky-head); }
+.review-summary:has(a[href^="mahfoudhat"]) h2::after { background: var(--sticky-head); -webkit-mask-image: var(--ic-pin); mask-image: var(--ic-pin); }
+.review-summary:has(a[href^="mahfoudhat"]) > p { color: var(--sticky-ink); }
+.review-summary:has(a[href^="mahfoudhat"]) .btn, .review-summary:has(a[href^="mahfoudhat"]) a { color: var(--sticky-ink); border-color: var(--sticky-ink); background: transparent; }
+
+/* Page المحفوظات : une section numérotée et colorée par dars, vers sur post-it */
+main:has(.mahfoudhat-lesson) { counter-reset: mdars; }
+.mahfoudhat-lesson { counter-increment: mdars; --c: var(--f-green); --ci: var(--f-green-ink); --t: var(--f-green-tint); }
+.mahfoudhat-lesson:nth-child(6n+3) { --c: var(--f-blue); --ci: var(--f-blue-ink); --t: var(--f-blue-tint); }
+.mahfoudhat-lesson:nth-child(6n+4) { --c: var(--f-purple); --ci: var(--f-purple-ink); --t: var(--f-purple-tint); }
+.mahfoudhat-lesson:nth-child(6n+5) { --c: var(--f-orange); --ci: var(--f-orange-ink); --t: var(--f-orange-tint); }
+.mahfoudhat-lesson:nth-child(6n+6) { --c: var(--f-teal); --ci: var(--f-teal-ink); --t: var(--f-teal-tint); }
+.mahfoudhat-lesson:nth-child(6n+7) { --c: var(--f-rose); --ci: var(--f-rose-ink); --t: var(--f-rose-tint); }
+.mahfoudhat-lesson > h2 { display: flex; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 3px solid var(--t); }
+.mahfoudhat-lesson > h2::before { content: counter(mdars); flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: var(--on-tone); font-family: var(--head); font-weight: 700; font-size: 1.05rem; line-height: 1; }
+.mahfoudhat-lesson > h2 a { color: var(--ink); }
+.mahfoudhat-label { color: var(--ci); }
+.mahfoudhat-lesson .rule-box:has(.poem) { position: relative; max-width: 780px; margin: 30px auto 14px; padding: 26px 24px 16px; background: var(--sticky); color: var(--sticky-ink); border: 0; border-radius: 4px 4px 16px 4px; box-shadow: 0 8px 16px rgba(80, 60, 0, .18); transform: rotate(-.4deg); }
+.mahfoudhat-lesson .rule-box:has(.poem)::before { content: ""; position: absolute; inset-block-start: -13px; inset-inline-start: 50%; width: 96px; height: 26px; margin-inline-start: -48px; background: var(--tape); transform: rotate(-2deg); }
+.mahfoudhat-lesson .rule-box:has(.poem) .mahfoudhat-label { color: var(--sticky-head); }
+.mahfoudhat-lesson .poem .bayt { background: none; border: 0; padding: 4px 6px; }
+.mahfoudhat-lesson .poem .bayt-text { font-size: clamp(1.1rem, 3.4vw, 1.45rem); line-height: 1.95; }
+.mahfoudhat-lesson .poem .bayt-part:first-child { text-align: start; }
+.mahfoudhat-lesson .poem .bayt-part:last-child { text-align: end; }
+.mahfoudhat-lesson .checks { gap: 4px; }
+.mahfoudhat-lesson .check-static { position: relative; padding-inline-start: 38px; border: 0; background: none; border-bottom: 2px dashed var(--line); border-radius: 0; }
+.mahfoudhat-lesson .check-static::before { content: ""; position: absolute; inset-inline-start: 8px; top: 12px; width: 20px; height: 20px; background: var(--c); -webkit-mask: var(--ic-check) center / contain no-repeat; mask: var(--ic-check) center / contain no-repeat; }
+@media print { .review-summary:has(a[href^="mahfoudhat"]), .mahfoudhat-lesson .rule-box:has(.poem) { transform: none; box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; } }

@@ -170,7 +170,7 @@ def render_lesson_page(subject, lesson, index, subjects):
             continue
         chips.append('<a href="#%s">%s</a>' % (section["id"], section["heading"]))
     folder = ROOT / "content" / subject["id"] / ("%02d-%s" % (meta["number"], meta["slug"]))
-    fragment = (folder / "lesson.html").read_text(encoding="utf-8")
+    fragment = decorate_lesson((folder / "lesson.html").read_text(encoding="utf-8"))
     questions_list = read_json(folder / "questions.json")
     fragment = insert_checkpoint_mounts(fragment, questions_list)
     fragment, extra_review = extract_extra_review(fragment)
@@ -199,6 +199,56 @@ def render_lesson_page(subject, lesson, index, subjects):
         "READING_TIME": minutes_label(reading_minutes(fragment, questions_list)),
     }
     return replace_tokens(template, values)
+
+
+SECTION_KINDS = {"summary": "summary", "source": "source", "text": "source", "hadith-text": "source", "verse": "source",
+                 "map": "map", "mindmap": "map", "tree": "map", "terms": "terms", "memorize": "memorize",
+                 "quiz": "quiz", "table": "table"}
+KIND_ICONS = {"summary": "star", "source": "pin", "map": "compass", "terms": "pencil", "memorize": "list",
+              "quiz": "target", "table": "scales"}
+CONTENT_ICONS = ("bulb", "book", "key", "flag", "heart", "pen")
+UNNUMBERED_KINDS = {"summary", "source", "quiz"}
+TONES = ("green", "blue", "purple", "orange", "teal", "rose")
+
+
+def decorate_lesson(fragment):
+    """Présentation « ورقة » : classes, ton, numéro et icône de chaque section du cours.
+
+    Ajoute uniquement des attributs à la balise <section> ; le texte du dars n'est pas modifié.
+    Le numéro (pastille), l'icône et les couleurs sont dessinés par le CSS.
+    """
+    state = {"number": 0, "content": 0}
+
+    def decorate(match):
+        attrs = match.group(1)
+        id_match = re.search(r'\bid=["\']([^"\']+)', attrs)
+        if not id_match or "data-kind" in attrs:
+            return match.group(0)
+        suffix = id_match.group(1).split("-", 1)[-1]
+        kind = SECTION_KINDS.get(suffix, "content")
+        classes = ["lsec"]
+        if kind in UNNUMBERED_KINDS:
+            tone = {"summary": "purple", "source": "orange", "quiz": "teal"}[kind]
+        else:
+            tone = TONES[state["number"] % len(TONES)]
+            state["number"] += 1
+            classes.append("numbered")
+        classes.append("tone-" + tone)
+        if kind == "content":
+            icon = CONTENT_ICONS[state["content"] % len(CONTENT_ICONS)]
+            state["content"] += 1
+        else:
+            icon = KIND_ICONS[kind]
+        class_match = re.search(r'\bclass=["\']([^"\']*)["\']', attrs)
+        if class_match:
+            attrs = attrs.replace(class_match.group(0), 'class="%s"' % (class_match.group(1) + " " + " ".join(classes)))
+        else:
+            attrs += ' class="%s"' % " ".join(classes)
+        return '<section%s data-kind="%s" data-icon="%s">' % (attrs, kind, icon)
+
+    fragment = re.sub(r"<section\b([^>]*)>", decorate, fragment)
+    # Zones défilantes (schémas, tableaux) : accessibles au clavier.
+    return re.sub(r'<div class="scroll([^"]*)"(?![^>]*tabindex)', r'<div class="scroll\1" tabindex="0"', fragment)
 
 
 def insert_checkpoint_mounts(fragment, questions):

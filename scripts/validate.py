@@ -175,7 +175,11 @@ def validate_palette():
              ("muted", "bg"), ("muted", "surface"), ("hero-ink", "hero"),
              ("hero-muted", "hero"), ("accent", "bg"), ("accent", "surface"),
              ("blue", "blue-tint"), ("green", "green-tint"),
-             ("amber", "amber-tint"), ("red", "red-tint"))
+             ("amber", "amber-tint"), ("red", "red-tint"),
+             ("sticky-ink", "sticky"), ("sticky-head", "sticky"))
+    for tone in ("green", "blue", "purple", "orange", "teal", "rose"):
+        pairs += (("on-tone", "f-" + tone), ("f-%s-ink" % tone, "f-%s-tint" % tone), ("f-%s-ink" % tone, "surface"),
+                  ("f-%s-ink" % tone, "bg"), ("ink", "f-%s-tint" % tone))
     for theme, block in palettes:
         values = {name: color for name, color in re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6})\b", block)}
         for foreground, background in pairs:
