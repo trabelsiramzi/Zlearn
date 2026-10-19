@@ -18,7 +18,7 @@ description: Build a cumulative Zlearn lesson from a transcript, preserving sour
 
 ## Parcours d’apprentissage
 
-Ordre conseillé : 2 à 4 objectifs observables, pré-test de 2 questions sans note,
+Ordre conseillé : 2 à 4 objectifs observables,
 explications courtes et ordonnées, exemples résolus suivis d’exemples parallèles, pratique
 avec retour expliqué, synthèse et lien vers la suite. Viser 8 à 12 questions de rappel,
 compréhension et application. Chaque question a une réponse expliquée, une section de retour
