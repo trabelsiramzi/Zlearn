@@ -4,7 +4,7 @@
     "name": "مادة الفقه",
     "book": "المرشد المعين على الضروري من علوم الدين",
     "file": "fiqh/index.html",
-    "total": 35,
+    "total": 47,
     "lessons": [
       {
         "meta": {
@@ -224,9 +224,132 @@
         "dataKeys": [
           "l3"
         ]
+      },
+      {
+        "meta": {
+          "id": "fq4",
+          "subject": "fiqh",
+          "number": 4,
+          "slug": "lesson",
+          "title": "الوضوء: تعريفه وحكمه وفرائضه",
+          "shortTitle": "الوضوء وفرائضه",
+          "prefix": "fq4",
+          "legacyLessonId": "lesson-fq4",
+          "homeLabel": "الدرس الرابع — الوضوء وفرائضه",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "fq4-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 213,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "fq4-bayt",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 214,
+            "searchLabel": "بيتات فرائض الوضوء"
+          },
+          {
+            "id": "fq4-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 215,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "fq4-def",
+            "heading": "تعريف الوضوء",
+            "searchOrder": 216,
+            "searchLabel": "تعريف الوضوء"
+          },
+          {
+            "id": "fq4-hukm",
+            "heading": "حكم الوضوء ودليله",
+            "searchOrder": 217,
+            "searchLabel": "حكم الوضوء ودليله"
+          },
+          {
+            "id": "fq4-nawawib",
+            "heading": "المندوبات في الوضوء",
+            "searchOrder": 218,
+            "searchLabel": "المندوبات في الوضوء"
+          },
+          {
+            "id": "fq4-faraid",
+            "heading": "فرائض الوضوء السبعة",
+            "searchOrder": 219,
+            "searchLabel": "فرائض الوضوء السبعة"
+          },
+          {
+            "id": "fq4-dalak",
+            "heading": "الفرض الأول والثاني: الدلك والفور",
+            "searchOrder": 220,
+            "searchLabel": "الدلك والفور"
+          },
+          {
+            "id": "fq4-niyya",
+            "heading": "الفرض الثالث: النية",
+            "searchOrder": 221,
+            "searchLabel": "النية"
+          },
+          {
+            "id": "fq4-face",
+            "heading": "الفرض الرابع: غسل الوجه",
+            "searchOrder": 222,
+            "searchLabel": "غسل الوجه"
+          },
+          {
+            "id": "fq4-hands",
+            "heading": "الفرض الخامس: غسل اليدين",
+            "searchOrder": 223,
+            "searchLabel": "غسل اليدين"
+          },
+          {
+            "id": "fq4-head",
+            "heading": "الفرض السادس: مسح الرأس",
+            "searchOrder": 224,
+            "searchLabel": "مسح الرأس"
+          },
+          {
+            "id": "fq4-feet",
+            "heading": "الفرض السابع: غسل الرجلين",
+            "searchOrder": 225,
+            "searchLabel": "غسل الرجلين"
+          },
+          {
+            "id": "fq4-khatera",
+            "heading": "فائدة: أمورٌ يبطلها الوضوء",
+            "searchOrder": 226,
+            "searchLabel": "أمور يبطلها الوضوء"
+          },
+          {
+            "id": "fq4-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 227,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "fq4-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 228,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "fq4-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 229,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 12,
+        "dataKeys": [
+          "fq4"
+        ]
       }
     ],
-    "lessonsCount": 3,
+    "lessonsCount": 4,
     "tag": "المادة الأولى",
     "title": "مادة الفقه",
     "cardTheme": "blue",
@@ -245,6 +368,11 @@
         "lessonId": "lesson-3",
         "number": 3,
         "label": "الدرس الثالث — كتاب الطهارة"
+      },
+      {
+        "lessonId": "lesson-fq4",
+        "number": 4,
+        "label": "الدرس الرابع — الوضوء وفرائضه"
       }
     ]
   },

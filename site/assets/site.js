@@ -72,7 +72,7 @@
    Le manifeste suit séparément les cases de mémorisation (total) et les dars publiés
    (lessons) ; le parcours d'apprentissage ne compte que les leçons terminées. */
 var ZLEARN_MATIERES = [
-  { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 35, lessons: 3 },
+  { id: "fiqh", name: "مادة الفقه", book: "المرشد المعين على الضروري من علوم الدين", file: "fiqh/index.html", total: 47, lessons: 4 },
   { id: "aqida", name: "مادة العقيدة", book: "الشذرات الذهبية", file: "aqida/index.html", total: 41, lessons: 3 },
   { id: "tajwid", name: "مادة التجويد", book: "علم التجويد", file: "tajwid/index.html", total: 46, lessons: 4 },
   { id: "sira", name: "مادة السيرة النبوية", book: "السيرة النبوية منذ المولد إلى الوفاة", file: "sira/index.html", total: 36, lessons: 3 },

@@ -2129,5 +2129,175 @@ var ZLEARN_SEARCH_SECTIONS = [
     "title": "أحكام النون الساكنة والتنوين: الإظهار",
     "id": "tj4-quiz",
     "section": "تدرّب وتحقق من فهمك"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-summary",
+    "section": "الخلاصة في ثلاث جمل"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-bayt",
+    "section": "بيتات فرائض الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-map",
+    "section": "الخريطة الذهنية"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-def",
+    "section": "تعريف الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-hukm",
+    "section": "حكم الوضوء ودليله"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-nawawib",
+    "section": "المندوبات في الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-faraid",
+    "section": "فرائض الوضوء السبعة"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-dalak",
+    "section": "الدلك والفور"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-niyya",
+    "section": "النية"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-face",
+    "section": "غسل الوجه"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-hands",
+    "section": "غسل اليدين"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-head",
+    "section": "مسح الرأس"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-feet",
+    "section": "غسل الرجلين"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-khatera",
+    "section": "أمور يبطلها الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-terms",
+    "section": "المصطلحات"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-memorize",
+    "section": "تحقق من فهمك"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-quiz",
+    "section": "تدرّب وتحقق من فهمك"
   }
 ];

@@ -1,0 +1,12 @@
+{
+  "id": "fq4",
+  "subject": "fiqh",
+  "number": 4,
+  "slug": "lesson",
+  "title": "الوضوء: تعريفه وحكمه وفرائضه",
+  "shortTitle": "الوضوء وفرائضه",
+  "prefix": "fq4",
+  "legacyLessonId": "lesson-fq4",
+  "homeLabel": "الدرس الرابع — الوضوء وفرائضه",
+  "sourceFile": "source.md"
+}
