@@ -37,7 +37,7 @@ squelette contient volontairement des champs de travail.
 
 ## Contenu pédagogique
 
-Ordre recommandé : objectifs observables → pré-test de 2 questions → explication par blocs →
+Ordre recommandé : objectifs observables → explication par blocs →
 exemples résolus et parallèles → pratique → synthèse → étape suivante. Viser 2 à 4 objectifs,
 8 à 12 questions, et des questions de rappel, compréhension et application ; chaque réponse
 est expliquée et renvoie à la section pertinente. Une question entre dans la révision après

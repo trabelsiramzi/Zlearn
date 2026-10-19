@@ -23,8 +23,9 @@ const doc = lesson.window.document;
 function neverBody(label) {
   assert.notStrictEqual(doc.activeElement, doc.body, "focus is not on BODY after " + label);
 }
-const first = doc.querySelector("[data-pretest] .study-card");
-assert(first, "lesson renders pretest questions");
+const initialCards = doc.querySelectorAll("[data-practice] .study-card").length;
+const first = doc.querySelector("[data-practice] .study-card");
+assert(first, "lesson renders its questions (no separate pre-test block)");
 const response = first.querySelector("textarea");
 const attempted = [...first.querySelectorAll("button")].find(b => b.textContent === "سجّلت محاولتي");
 assert(attempted.disabled, "answer is required before continuing");
@@ -45,14 +46,23 @@ const questionId = JSON.parse(doc.getElementById("lesson-question-data").textCon
 const card = lesson.window.ZLEARN_STORAGE.getState().cards[questionId];
 assert.strictEqual(card.box, 2);
 assert.strictEqual(card.due, lesson.window.ZLEARN_SRS.shiftDate(new Date().getFullYear()+"-"+("0"+(new Date().getMonth()+1)).slice(-2)+"-"+("0"+new Date().getDate()).slice(-2), 3));
-const second = doc.querySelectorAll("[data-pretest] .study-card")[1];
+const second = doc.querySelectorAll("[data-practice] .study-card")[1];
 second.querySelector("textarea").value = "محاولة ثانية";
 second.querySelector("textarea").dispatchEvent(new lesson.window.Event("input", {bubbles:true}));
 second.querySelector("button").click();
 [...second.querySelectorAll("button")].find(b => b.textContent === "واثق").click();
 [...second.querySelectorAll("button")].find(b => b.textContent === "أحتاج إلى مراجعة").click();
 neverBody("second self-assessment");
-assert.strictEqual(doc.querySelectorAll("[data-pretest] .study-card").length, 3, "high-confidence failure returns later in this session");
+// L'échec très confiant revient une fois la file de la session terminée.
+doc.querySelectorAll("[data-practice] .study-card").forEach((card, index) => {
+  if (index < 2) return;
+  const area = card.querySelector("textarea");
+  area.value = "جواب"; area.dispatchEvent(new lesson.window.Event("input", {bubbles:true}));
+  card.querySelector("button").click();
+  [...card.querySelectorAll("button")].find(b => b.textContent === "متردد").click();
+  [...card.querySelectorAll("button")].find(b => b.textContent === "نعم، إجابتي صحيحة").click();
+});
+assert.strictEqual(doc.querySelectorAll("[data-practice] .study-card").length, initialCards + 1, "high-confidence failure returns later in this session");
 lesson.window.close();
 
 // Phase 2 : micro-questions montées après leur section de cours + clôture confirmée.
@@ -61,7 +71,7 @@ const p2 = phase2.window.document;
 const host = p2.querySelector('[data-checkpoint="ak1-context"]');
 assert(host, "course section has a checkpoint mount");
 assert.strictEqual(host.querySelectorAll(".study-card").length, 2, "micro-questions mount in the checkpoint host");
-assert.strictEqual(p2.querySelectorAll("[data-practice] .study-card").length, 6, "remaining cards stay in the closure session");
+assert.strictEqual(p2.querySelectorAll("[data-practice] .study-card").length, 8, "remaining cards (including former pre-test ones) stay in the closure session");
 const micro = host.querySelector(".study-card");
 function answer(card) {
   const ta = card.querySelector("textarea");
