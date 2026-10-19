@@ -538,7 +538,7 @@
     "name": "مادة التجويد",
     "book": "علم التجويد",
     "file": "tajwid/index.html",
-    "total": 36,
+    "total": 46,
     "lessons": [
       {
         "meta": {
@@ -794,9 +794,102 @@
         "dataKeys": [
           "tj3"
         ]
+      },
+      {
+        "meta": {
+          "id": "tj4",
+          "subject": "tajwid",
+          "number": 4,
+          "slug": "lesson",
+          "title": "أحكام النون الساكنة والتنوين: الإظهار",
+          "shortTitle": "أحكام النون الساكنة والتنوين",
+          "prefix": "tj4",
+          "legacyLessonId": "lesson-tj4",
+          "homeLabel": "الدرس الرابع — أحكام النون الساكنة والتنوين",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "tj4-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 201,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "tj4-bayt",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 202,
+            "searchLabel": "بيتات أحكام النون الساكنة والتنوين"
+          },
+          {
+            "id": "tj4-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 203,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "tj4-hukm",
+            "heading": "ما الحكم؟ وإعرابه",
+            "searchOrder": 204,
+            "searchLabel": "معنى الحكم وإعرابه"
+          },
+          {
+            "id": "tj4-two",
+            "heading": "النون الساكنة والتنوين: أين يقعان؟",
+            "searchOrder": 205,
+            "searchLabel": "مواضع النون الساكنة والتنوين"
+          },
+          {
+            "id": "tj4-four",
+            "heading": "الأحكام الأربعة",
+            "searchOrder": 206,
+            "searchLabel": "الأحكام الأربعة"
+          },
+          {
+            "id": "tj4-izhar",
+            "heading": "الإظهار: اللغة والاصطلاح وحروفه",
+            "searchOrder": 207,
+            "searchLabel": "الإظهار وحروف الحلق الستة"
+          },
+          {
+            "id": "tj4-examples",
+            "heading": "أمثلة الإظهار في القرآن",
+            "searchOrder": 208,
+            "searchLabel": "أمثلة الإظهار في القرآن"
+          },
+          {
+            "id": "tj4-notice",
+            "heading": "تنبيه: الإظهار برفقٍ لا بسرعة",
+            "searchOrder": 209,
+            "searchLabel": "تنبيه الإظهار"
+          },
+          {
+            "id": "tj4-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 210,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "tj4-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 211,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "tj4-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 212,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 10,
+        "questionCount": 11,
+        "dataKeys": [
+          "tj4"
+        ]
       }
     ],
-    "lessonsCount": 3,
+    "lessonsCount": 4,
     "tag": "المادة الثالثة",
     "title": "مادة التجويد",
     "cardTheme": "amber",
@@ -815,6 +908,11 @@
         "lessonId": "lesson-tj3",
         "number": 3,
         "label": "الدرس الثالث — نظم المقدمة"
+      },
+      {
+        "lessonId": "lesson-tj4",
+        "number": 4,
+        "label": "الدرس الرابع — أحكام النون الساكنة والتنوين"
       }
     ]
   },

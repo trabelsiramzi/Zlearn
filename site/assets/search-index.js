@@ -2009,5 +2009,125 @@ var ZLEARN_SEARCH_SECTIONS = [
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
     "id": "tj2-source",
     "section": "الآية التي سنقرأها في هذا الدرس"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-summary",
+    "section": "الخلاصة في ثلاث جمل"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-bayt",
+    "section": "بيتات أحكام النون الساكنة والتنوين"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-map",
+    "section": "الخريطة الذهنية"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-hukm",
+    "section": "معنى الحكم وإعرابه"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-two",
+    "section": "مواضع النون الساكنة والتنوين"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-four",
+    "section": "الأحكام الأربعة"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-izhar",
+    "section": "الإظهار وحروف الحلق الستة"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-examples",
+    "section": "أمثلة الإظهار في القرآن"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-notice",
+    "section": "تنبيه الإظهار"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-terms",
+    "section": "المصطلحات"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-memorize",
+    "section": "تحقق من فهمك"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-quiz",
+    "section": "تدرّب وتحقق من فهمك"
   }
 ];
