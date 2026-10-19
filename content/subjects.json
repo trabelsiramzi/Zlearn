@@ -381,7 +381,7 @@
     "name": "مادة العقيدة",
     "book": "الشذرات الذهبية",
     "file": "aqida/index.html",
-    "total": 41,
+    "total": 51,
     "lessons": [
       {
         "meta": {
@@ -637,9 +637,108 @@
         "dataKeys": [
           "aq3"
         ]
+      },
+      {
+        "meta": {
+          "id": "aq4",
+          "subject": "aqida",
+          "number": 4,
+          "slug": "lesson",
+          "title": "الشذرات الذهبية: البسملة والحمد لله",
+          "shortTitle": "العقائد الشرنوبية",
+          "prefix": "aq4",
+          "legacyLessonId": "lesson-aq4",
+          "homeLabel": "الدرس الرابع — العقائد الشرنوبية",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "aq4-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 230,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "aq4-bayt",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 231,
+            "searchLabel": "بيتات افتتاح المنظومة"
+          },
+          {
+            "id": "aq4-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 232,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "aq4-muqaddima",
+            "heading": "ترجمة الناظم",
+            "searchOrder": 233,
+            "searchLabel": "ترجمة الناظم عبد المجيد الأزهري الشرنوبي"
+          },
+          {
+            "id": "aq4-basmala",
+            "heading": "البسملة",
+            "searchOrder": 234,
+            "searchLabel": "البسملة"
+          },
+          {
+            "id": "aq4-hamd",
+            "heading": "الحمد لله الذي توحد في ذاته وبالبقاء تفرد",
+            "searchOrder": 235,
+            "searchLabel": "الحمد لله"
+          },
+          {
+            "id": "aq4-wahdaniyya",
+            "heading": "توحيد الذات",
+            "searchOrder": 236,
+            "searchLabel": "توحيد الذات"
+          },
+          {
+            "id": "aq4-baqa",
+            "heading": "البقاء",
+            "searchOrder": 237,
+            "searchLabel": "البقاء والقديم الباقي"
+          },
+          {
+            "id": "aq4-salat",
+            "heading": "الصلاة على النبي ﷺ",
+            "searchOrder": 238,
+            "searchLabel": "الصلاة على النبي"
+          },
+          {
+            "id": "aq4-aqida",
+            "heading": "تعريف العقيدة",
+            "searchOrder": 239,
+            "searchLabel": "تعريف العقيدة"
+          },
+          {
+            "id": "aq4-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 240,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "aq4-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 241,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "aq4-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 242,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 10,
+        "questionCount": 11,
+        "dataKeys": [
+          "aq4"
+        ]
       }
     ],
-    "lessonsCount": 3,
+    "lessonsCount": 4,
     "tag": "المادة الثانية",
     "title": "مادة العقيدة",
     "cardTheme": "green",
@@ -658,6 +757,11 @@
         "lessonId": "lesson-aq3",
         "number": 3,
         "label": "الدرس الثالث — التراجم وقراءة المقدمة"
+      },
+      {
+        "lessonId": "lesson-aq4",
+        "number": 4,
+        "label": "الدرس الرابع — العقائد الشرنوبية"
       }
     ]
   },

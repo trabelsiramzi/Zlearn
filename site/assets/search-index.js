@@ -2299,5 +2299,135 @@ var ZLEARN_SEARCH_SECTIONS = [
     "title": "الوضوء: تعريفه وحكمه وفرائضه",
     "id": "fq4-quiz",
     "section": "تدرّب وتحقق من فهمك"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-summary",
+    "section": "الخلاصة في ثلاث جمل"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-bayt",
+    "section": "بيتات افتتاح المنظومة"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-map",
+    "section": "الخريطة الذهنية"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-muqaddima",
+    "section": "ترجمة الناظم عبد المجيد الأزهري الشرنوبي"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-basmala",
+    "section": "البسملة"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-hamd",
+    "section": "الحمد لله"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-wahdaniyya",
+    "section": "توحيد الذات"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-baqa",
+    "section": "البقاء والقديم الباقي"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-salat",
+    "section": "الصلاة على النبي"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-aqida",
+    "section": "تعريف العقيدة"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-terms",
+    "section": "المصطلحات"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-memorize",
+    "section": "تحقق من فهمك"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-quiz",
+    "section": "تدرّب وتحقق من فهمك"
   }
 ];
