@@ -2009,5 +2009,425 @@ var ZLEARN_SEARCH_SECTIONS = [
     "title": "مبادئ علم التجويد: الموضوع والثمرة والفضل والحكم",
     "id": "tj2-source",
     "section": "الآية التي سنقرأها في هذا الدرس"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-summary",
+    "section": "الخلاصة في ثلاث جمل"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-bayt",
+    "section": "بيتات أحكام النون الساكنة والتنوين"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-map",
+    "section": "الخريطة الذهنية"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-hukm",
+    "section": "معنى الحكم وإعرابه"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-two",
+    "section": "مواضع النون الساكنة والتنوين"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-four",
+    "section": "الأحكام الأربعة"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-izhar",
+    "section": "الإظهار وحروف الحلق الستة"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-examples",
+    "section": "أمثلة الإظهار في القرآن"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-notice",
+    "section": "تنبيه الإظهار"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-terms",
+    "section": "المصطلحات"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-memorize",
+    "section": "تحقق من فهمك"
+  },
+  {
+    "sub": "tajwid",
+    "file": "tajwid/04-lesson/index.html",
+    "url": "tajwid/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-tj4",
+    "title": "أحكام النون الساكنة والتنوين: الإظهار",
+    "id": "tj4-quiz",
+    "section": "تدرّب وتحقق من فهمك"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-summary",
+    "section": "الخلاصة في ثلاث جمل"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-bayt",
+    "section": "بيتات فرائض الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-map",
+    "section": "الخريطة الذهنية"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-def",
+    "section": "تعريف الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-hukm",
+    "section": "حكم الوضوء ودليله"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-nawawib",
+    "section": "المندوبات في الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-faraid",
+    "section": "فرائض الوضوء السبعة"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-dalak",
+    "section": "الدلك والفور"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-niyya",
+    "section": "النية"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-face",
+    "section": "غسل الوجه"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-hands",
+    "section": "غسل اليدين"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-head",
+    "section": "مسح الرأس"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-feet",
+    "section": "غسل الرجلين"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-khatera",
+    "section": "أمور يبطلها الوضوء"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-terms",
+    "section": "المصطلحات"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-memorize",
+    "section": "تحقق من فهمك"
+  },
+  {
+    "sub": "fiqh",
+    "file": "fiqh/04-lesson/index.html",
+    "url": "fiqh/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-fq4",
+    "title": "الوضوء: تعريفه وحكمه وفرائضه",
+    "id": "fq4-quiz",
+    "section": "تدرّب وتحقق من فهمك"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-summary",
+    "section": "الخلاصة في ثلاث جمل"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-bayt",
+    "section": "بيتات افتتاح المنظومة"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-map",
+    "section": "الخريطة الذهنية"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-muqaddima",
+    "section": "ترجمة الناظم عبد المجيد الأزهري الشرنوبي"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-basmala",
+    "section": "البسملة"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-hamd",
+    "section": "الحمد لله"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-wahdaniyya",
+    "section": "توحيد الذات"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-baqa",
+    "section": "البقاء والقديم الباقي"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-salat",
+    "section": "الصلاة على النبي"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-aqida",
+    "section": "تعريف العقيدة"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-terms",
+    "section": "المصطلحات"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-memorize",
+    "section": "تحقق من فهمك"
+  },
+  {
+    "sub": "aqida",
+    "file": "aqida/04-lesson/index.html",
+    "url": "aqida/04-lesson/index.html",
+    "lesson": "4",
+    "lessonId": "lesson-aq4",
+    "title": "الشذرات الذهبية: البسملة والحمد لله",
+    "id": "aq4-quiz",
+    "section": "تدرّب وتحقق من فهمك"
   }
 ];

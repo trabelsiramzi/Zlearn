@@ -57,7 +57,7 @@ def main(argv):
                 '      <li><label class="check"><input type="checkbox" id="%s-k4"><span>النقطة الرابعة التي يجب حفظها من هذا الدرس.</span></label></li>\n'
                 '      <li><label class="check"><input type="checkbox" id="%s-k5"><span>النقطة الخامسة التي يجب حفظها من هذا الدرس.</span></label></li>\n'
                 '    </ul></div></section>\n'
-                '</div>\n') % (legacy_id, number, sid, number, number, title, section_id, memorize_id, prefix, prefix, prefix, prefix, prefix)
+                '</div>\n') % (legacy_id, number, sid, number, number, title, section_id, memorize_id, prefix, prefix, prefix, prefix, prefix, prefix)
     questions = [{"id": "%s-q%02d" % (prefix, i), "type": "recall",
                   "phase": "pretest" if i <= 2 else "practice", "prompt": "À compléter",
                   "answer": "À compléter", "explain": "À compléter", "section": section_id,

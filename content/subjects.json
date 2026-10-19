@@ -4,7 +4,7 @@
     "name": "مادة الفقه",
     "book": "المرشد المعين على الضروري من علوم الدين",
     "file": "fiqh/index.html",
-    "total": 35,
+    "total": 47,
     "lessons": [
       {
         "meta": {
@@ -224,9 +224,132 @@
         "dataKeys": [
           "l3"
         ]
+      },
+      {
+        "meta": {
+          "id": "fq4",
+          "subject": "fiqh",
+          "number": 4,
+          "slug": "lesson",
+          "title": "الوضوء: تعريفه وحكمه وفرائضه",
+          "shortTitle": "الوضوء وفرائضه",
+          "prefix": "fq4",
+          "legacyLessonId": "lesson-fq4",
+          "homeLabel": "الدرس الرابع — الوضوء وفرائضه",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "fq4-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 213,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "fq4-bayt",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 214,
+            "searchLabel": "بيتات فرائض الوضوء"
+          },
+          {
+            "id": "fq4-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 215,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "fq4-def",
+            "heading": "تعريف الوضوء",
+            "searchOrder": 216,
+            "searchLabel": "تعريف الوضوء"
+          },
+          {
+            "id": "fq4-hukm",
+            "heading": "حكم الوضوء ودليله",
+            "searchOrder": 217,
+            "searchLabel": "حكم الوضوء ودليله"
+          },
+          {
+            "id": "fq4-nawawib",
+            "heading": "المندوبات في الوضوء",
+            "searchOrder": 218,
+            "searchLabel": "المندوبات في الوضوء"
+          },
+          {
+            "id": "fq4-faraid",
+            "heading": "فرائض الوضوء السبعة",
+            "searchOrder": 219,
+            "searchLabel": "فرائض الوضوء السبعة"
+          },
+          {
+            "id": "fq4-dalak",
+            "heading": "الفرض الأول والثاني: الدلك والفور",
+            "searchOrder": 220,
+            "searchLabel": "الدلك والفور"
+          },
+          {
+            "id": "fq4-niyya",
+            "heading": "الفرض الثالث: النية",
+            "searchOrder": 221,
+            "searchLabel": "النية"
+          },
+          {
+            "id": "fq4-face",
+            "heading": "الفرض الرابع: غسل الوجه",
+            "searchOrder": 222,
+            "searchLabel": "غسل الوجه"
+          },
+          {
+            "id": "fq4-hands",
+            "heading": "الفرض الخامس: غسل اليدين",
+            "searchOrder": 223,
+            "searchLabel": "غسل اليدين"
+          },
+          {
+            "id": "fq4-head",
+            "heading": "الفرض السادس: مسح الرأس",
+            "searchOrder": 224,
+            "searchLabel": "مسح الرأس"
+          },
+          {
+            "id": "fq4-feet",
+            "heading": "الفرض السابع: غسل الرجلين",
+            "searchOrder": 225,
+            "searchLabel": "غسل الرجلين"
+          },
+          {
+            "id": "fq4-khatera",
+            "heading": "فائدة: أمورٌ يبطلها الوضوء",
+            "searchOrder": 226,
+            "searchLabel": "أمور يبطلها الوضوء"
+          },
+          {
+            "id": "fq4-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 227,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "fq4-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 228,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "fq4-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 229,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 12,
+        "questionCount": 12,
+        "dataKeys": [
+          "fq4"
+        ]
       }
     ],
-    "lessonsCount": 3,
+    "lessonsCount": 4,
     "tag": "المادة الأولى",
     "title": "مادة الفقه",
     "cardTheme": "blue",
@@ -245,6 +368,11 @@
         "lessonId": "lesson-3",
         "number": 3,
         "label": "الدرس الثالث — كتاب الطهارة"
+      },
+      {
+        "lessonId": "lesson-fq4",
+        "number": 4,
+        "label": "الدرس الرابع — الوضوء وفرائضه"
       }
     ]
   },
@@ -253,7 +381,7 @@
     "name": "مادة العقيدة",
     "book": "الشذرات الذهبية",
     "file": "aqida/index.html",
-    "total": 41,
+    "total": 51,
     "lessons": [
       {
         "meta": {
@@ -509,9 +637,108 @@
         "dataKeys": [
           "aq3"
         ]
+      },
+      {
+        "meta": {
+          "id": "aq4",
+          "subject": "aqida",
+          "number": 4,
+          "slug": "lesson",
+          "title": "الشذرات الذهبية: البسملة والحمد لله",
+          "shortTitle": "العقائد الشرنوبية",
+          "prefix": "aq4",
+          "legacyLessonId": "lesson-aq4",
+          "homeLabel": "الدرس الرابع — العقائد الشرنوبية",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "aq4-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 230,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "aq4-bayt",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 231,
+            "searchLabel": "بيتات افتتاح المنظومة"
+          },
+          {
+            "id": "aq4-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 232,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "aq4-muqaddima",
+            "heading": "ترجمة الناظم",
+            "searchOrder": 233,
+            "searchLabel": "ترجمة الناظم عبد المجيد الأزهري الشرنوبي"
+          },
+          {
+            "id": "aq4-basmala",
+            "heading": "البسملة",
+            "searchOrder": 234,
+            "searchLabel": "البسملة"
+          },
+          {
+            "id": "aq4-hamd",
+            "heading": "الحمد لله الذي توحد في ذاته وبالبقاء تفرد",
+            "searchOrder": 235,
+            "searchLabel": "الحمد لله"
+          },
+          {
+            "id": "aq4-wahdaniyya",
+            "heading": "توحيد الذات",
+            "searchOrder": 236,
+            "searchLabel": "توحيد الذات"
+          },
+          {
+            "id": "aq4-baqa",
+            "heading": "البقاء",
+            "searchOrder": 237,
+            "searchLabel": "البقاء والقديم الباقي"
+          },
+          {
+            "id": "aq4-salat",
+            "heading": "الصلاة على النبي ﷺ",
+            "searchOrder": 238,
+            "searchLabel": "الصلاة على النبي"
+          },
+          {
+            "id": "aq4-aqida",
+            "heading": "تعريف العقيدة",
+            "searchOrder": 239,
+            "searchLabel": "تعريف العقيدة"
+          },
+          {
+            "id": "aq4-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 240,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "aq4-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 241,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "aq4-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 242,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 10,
+        "questionCount": 11,
+        "dataKeys": [
+          "aq4"
+        ]
       }
     ],
-    "lessonsCount": 3,
+    "lessonsCount": 4,
     "tag": "المادة الثانية",
     "title": "مادة العقيدة",
     "cardTheme": "green",
@@ -530,6 +757,11 @@
         "lessonId": "lesson-aq3",
         "number": 3,
         "label": "الدرس الثالث — التراجم وقراءة المقدمة"
+      },
+      {
+        "lessonId": "lesson-aq4",
+        "number": 4,
+        "label": "الدرس الرابع — العقائد الشرنوبية"
       }
     ]
   },
@@ -538,7 +770,7 @@
     "name": "مادة التجويد",
     "book": "علم التجويد",
     "file": "tajwid/index.html",
-    "total": 36,
+    "total": 46,
     "lessons": [
       {
         "meta": {
@@ -794,9 +1026,102 @@
         "dataKeys": [
           "tj3"
         ]
+      },
+      {
+        "meta": {
+          "id": "tj4",
+          "subject": "tajwid",
+          "number": 4,
+          "slug": "lesson",
+          "title": "أحكام النون الساكنة والتنوين: الإظهار",
+          "shortTitle": "أحكام النون الساكنة والتنوين",
+          "prefix": "tj4",
+          "legacyLessonId": "lesson-tj4",
+          "homeLabel": "الدرس الرابع — أحكام النون الساكنة والتنوين",
+          "sourceFile": "source.md"
+        },
+        "sections": [
+          {
+            "id": "tj4-summary",
+            "heading": "الخلاصة في ثلاث جمل",
+            "searchOrder": 201,
+            "searchLabel": "الخلاصة في ثلاث جمل"
+          },
+          {
+            "id": "tj4-bayt",
+            "heading": "الأبيات التي سنبني عليها الدرس",
+            "searchOrder": 202,
+            "searchLabel": "بيتات أحكام النون الساكنة والتنوين"
+          },
+          {
+            "id": "tj4-map",
+            "heading": "الخريطة الذهنية",
+            "searchOrder": 203,
+            "searchLabel": "الخريطة الذهنية"
+          },
+          {
+            "id": "tj4-hukm",
+            "heading": "ما الحكم؟ وإعرابه",
+            "searchOrder": 204,
+            "searchLabel": "معنى الحكم وإعرابه"
+          },
+          {
+            "id": "tj4-two",
+            "heading": "النون الساكنة والتنوين: أين يقعان؟",
+            "searchOrder": 205,
+            "searchLabel": "مواضع النون الساكنة والتنوين"
+          },
+          {
+            "id": "tj4-four",
+            "heading": "الأحكام الأربعة",
+            "searchOrder": 206,
+            "searchLabel": "الأحكام الأربعة"
+          },
+          {
+            "id": "tj4-izhar",
+            "heading": "الإظهار: اللغة والاصطلاح وحروفه",
+            "searchOrder": 207,
+            "searchLabel": "الإظهار وحروف الحلق الستة"
+          },
+          {
+            "id": "tj4-examples",
+            "heading": "أمثلة الإظهار في القرآن",
+            "searchOrder": 208,
+            "searchLabel": "أمثلة الإظهار في القرآن"
+          },
+          {
+            "id": "tj4-notice",
+            "heading": "تنبيه: الإظهار برفقٍ لا بسرعة",
+            "searchOrder": 209,
+            "searchLabel": "تنبيه الإظهار"
+          },
+          {
+            "id": "tj4-terms",
+            "heading": "المصطلحات",
+            "searchOrder": 210,
+            "searchLabel": "المصطلحات"
+          },
+          {
+            "id": "tj4-memorize",
+            "heading": "تحقق من فهمك",
+            "searchOrder": 211,
+            "searchLabel": "تحقق من فهمك"
+          },
+          {
+            "id": "tj4-quiz",
+            "heading": "تدرّب وتحقق من فهمك",
+            "searchOrder": 212,
+            "searchLabel": "تدرّب وتحقق من فهمك"
+          }
+        ],
+        "checkboxes": 10,
+        "questionCount": 11,
+        "dataKeys": [
+          "tj4"
+        ]
       }
     ],
-    "lessonsCount": 3,
+    "lessonsCount": 4,
     "tag": "المادة الثالثة",
     "title": "مادة التجويد",
     "cardTheme": "amber",
@@ -815,6 +1140,11 @@
         "lessonId": "lesson-tj3",
         "number": 3,
         "label": "الدرس الثالث — نظم المقدمة"
+      },
+      {
+        "lessonId": "lesson-tj4",
+        "number": 4,
+        "label": "الدرس الرابع — أحكام النون الساكنة والتنوين"
       }
     ]
   },
