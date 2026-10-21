@@ -48,6 +48,13 @@
       globalBar.setAttribute("aria-valuetext", done + " من " + total + " درسًا منشورًا مكتملًا");
     }
 
+    var statDone = doc.querySelector("[data-stat-done]"), statTotal = doc.querySelector("[data-stat-total]"), statPercent = doc.querySelector("[data-stat-percent]"), statFill = doc.querySelector(".stat-fill");
+    var percent = total ? Math.round(done / total * 100) : 0;
+    if (statDone) statDone.textContent = String(done);
+    if (statTotal) statTotal.textContent = String(total);
+    if (statPercent) statPercent.textContent = String(percent);
+    if (statFill) statFill.style.width = percent + "%";
+
     var resume = doc.getElementById("continue-learning");
     var hint = doc.getElementById("continue-hint");
     if (resume) {

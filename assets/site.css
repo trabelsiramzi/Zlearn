@@ -10,12 +10,12 @@
   --ink: #1F2D36;
   --muted: #56646E;
   --line: #D8D2C2;
-  --hero: #1F6A86;
+  --hero: #2D6A4F;
   --hero-ink: #FFFFFF;
-  --hero-muted: #D9ECF4;
+  --hero-muted: #D8F3DC;
   --gold: #7A5410;
-  --accent: #1F6A86;
-  --accent-tint: #E3F0F6;
+  --accent: #2D6A4F;
+  --accent-tint: #E3F1EA;
   --blue: #1D6A7A;
   --blue-tint: #DCEBEA;
   --green: #176A3F;
@@ -36,8 +36,8 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0E1A22; --surface: #14232D; --panel: #1B2F3B; --ink: #EAF1F4; --muted: #A9BAC4; --line: #2C4554;
-    --hero: #7DC1DE; --hero-ink: #0B1A22; --hero-muted: #123140; --gold: #D8B866;
-    --accent: #7DC1DE; --accent-tint: #173341;
+    --hero: #74C69D; --hero-ink: #0B1A22; --hero-muted: #0F3A29; --gold: #D8B866;
+    --accent: #74C69D; --accent-tint: #14382A;
     --blue: #6BC3D0; --blue-tint: #12333A; --green: #7BD39A; --green-tint: #143A27; --amber: #E6B85C; --amber-tint: #3B2C0E;
     --red: #F08A7A; --red-tint: #40201B;
     --on-tone: #0B1A22;
@@ -53,8 +53,8 @@
 }
 :root[data-theme="dark"] {
   --bg: #0E1A22; --surface: #14232D; --panel: #1B2F3B; --ink: #EAF1F4; --muted: #A9BAC4; --line: #2C4554;
-  --hero: #7DC1DE; --hero-ink: #0B1A22; --hero-muted: #123140; --gold: #D8B866;
-  --accent: #7DC1DE; --accent-tint: #173341;
+  --hero: #74C69D; --hero-ink: #0B1A22; --hero-muted: #0F3A29; --gold: #D8B866;
+  --accent: #74C69D; --accent-tint: #14382A;
   --blue: #6BC3D0; --blue-tint: #12333A; --green: #7BD39A; --green-tint: #143A27; --amber: #E6B85C; --amber-tint: #3B2C0E;
   --red: #F08A7A; --red-tint: #40201B;
   --on-tone: #0B1A22;
@@ -610,3 +610,15 @@ main:has(.mahfoudhat-lesson) { counter-reset: mdars; }
 .mahfoudhat-lesson .check-static { position: relative; padding-inline-start: 38px; border: 0; background: none; border-bottom: 2px dashed var(--line); border-radius: 0; }
 .mahfoudhat-lesson .check-static::before { content: ""; position: absolute; inset-inline-start: 8px; top: 12px; width: 20px; height: 20px; background: var(--c); -webkit-mask: var(--ic-check) center / contain no-repeat; mask: var(--ic-check) center / contain no-repeat; }
 @media print { .review-summary:has(a[href^="mahfoudhat"]), .mahfoudhat-lesson .rule-box:has(.poem) { transform: none; box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+
+/* Tableau de bord de l'accueil */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 18px 0 20px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-block-start: 4px solid var(--accent); border-radius: 14px; padding: 14px 18px 16px; }
+.stat-label { margin: 0; color: var(--muted); font-size: .92rem; }
+.stat-value { margin: 2px 0 0; font-family: var(--head); font-weight: 700; font-size: 2.1rem; line-height: 1.4; color: var(--ink); }
+.stat-sep { color: var(--muted); font-weight: 400; }
+.stat-bar { height: 8px; margin-top: 6px; background: var(--panel); border-radius: 99px; overflow: hidden; }
+.stat-fill { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .25s; }
+.quick { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: start; }
+.section-title { margin-top: 26px; }
+@media (prefers-reduced-motion: reduce) { .stat-fill { transition: none; } }
